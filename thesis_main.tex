@@ -94,6 +94,7 @@ sortlocale=de]{biblatex}
 
 \sloppy					%Abstände variieren
 \pagestyle{headings}
+
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
@@ -103,6 +104,11 @@ sortlocale=de]{biblatex}
 \renewcommand{\nomlabel}[1]{#1 \dotfill}
 \setlength{\nomitemsep}{-\parsep}
 \makenomenclature
+
+%-----------------------------------
+% Meta informationen
+%-----------------------------------
+\input{skripte/meta}
 
 %-----------------------------------
 % Kopfbereich / Header definieren
@@ -131,27 +137,31 @@ sortlocale=de]{biblatex}
 \begin{titlepage}
 	\newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
 	\begin{center}
-		\textbf{FOM Hochschule für Oekonomie \& Management Düsseldorf}\\
+		\textbf{\myHochschulName}\\
 		\vspace{1cm}
 			\includegraphics[width=3cm]{abbildungen/fomLogo.jpg} \\
 		\vspace{1cm}
-		\textbf{Berufsbegleitender Studiengang }\\
-		\textbf{Wirtschaftsinformatik, 7. Semester}\\
-		\vspace{3.5cm}
-		\Huge{\LaTeX{}-Vorlage \\ - mit Biblatex}\\
+		Berufsbegleitender Studiengang\\
+		\myStudiengang, \mySemesterZahl. Semester\\
+		\vspace{1.5cm}
+		\textbf{\myThesisArt}\\
+		\textbf{zur Erlangung des Grades eines}\\
+		\textbf{\myAkademischerGrad}\\
+		\vspace{1.5cm}
+		über das Thema\\
+		\Huge{\myTitel}\\
 		\vspace{0.2cm}
 	\end{center}
 	\normalsize
 	\vfill
 	\begin{tabbing}
 		Links \= Mitte \= Rechts\kill
-		Betreuer: \> \> Prof. Dr. Peter Lustig\\
+		Betreuer: \> \> \myBetreuer\\
 		\> \> \\
-		Autor: \> \> Max Mustermann (m/w)\\
-		\> \> Matrikelnr.: 000007\\
-		\> \> 7. Fachsemester\\
+		Autor: \> \> \myAutor\\
+		\> \> Matrikelnr.: \myMatrikelNr\\
+		Abgabe: \> \> \myAbgabeDatum
 	\end{tabbing}
-	Neuss, den \today
 \end{titlepage}
 
 %-------Ende Titelseite-------------
