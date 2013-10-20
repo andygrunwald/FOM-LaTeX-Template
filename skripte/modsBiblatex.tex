@@ -1,0 +1,97 @@
+% Opptionen für Biblatex
+\ExecuteBibliographyOptions{%
+firstinits=false,
+isbn=true, 
+url=true, 
+doi=false, 
+eprint=false,
+maxbibnames=7, % Alle Autoren (kein et al.)
+maxcitenames=1, % Kürzel nur aus 1. Autor
+backref=false, % Rückverweise auf Zitatseiten
+bibencoding=utf8, % wenn .bib in utf8, sonst ascii
+bibwarn=true, % Warnung bei fehlerhafter bib-Datei
+}%
+
+% et al. an Stelle von u.a.
+\DefineBibliographyStrings{ngerman}{ 
+   andothers = {{et\,al\adddot}},             
+}
+
+% Klammern um das Jahr in der Fußnote
+\renewbibmacro*{cite:labelyear+extrayear}{% 
+  \iffieldundef{labelyear} 
+    {} 
+    {\printtext[bibhyperref]{% 
+       \mkbibparens{% 
+         \printfield{labelyear}% 
+         \printfield{extrayear}}}}}
+
+\DeclareNameFormat{last-first}{%
+  \iffirstinits
+    {\usebibmacro{name:last-first}{#1}{#4}{#5}{#7}}
+    {\usebibmacro{name:last-first}{#1}{#3}{#5}{#7}}%
+  \usebibmacro{name:andothers}}
+
+%Autoren (Nachname, Vorname)
+\DeclareNameAlias{default}{last-first}
+
+%Reihenfolge von publisher, year, address verändern
+% Achtung, bisher nur für den Typ @book definiert
+
+%% Definiert @Book Eintrag
+\DeclareBibliographyDriver{book}{%
+  \printnames{author}%
+  \newunit\addcolon\space
+  \printfield{title}%
+  \setunit*{,\space}%
+  \printfield{edition}%
+  \setunit*{\addcomma\space}%
+  \printlist{publisher}%
+  \newunit\newblockpunct
+  \printlist{location}%
+  \setunit*{\space}%
+  \printfield{year}%
+  \setunit*{,\space}% 
+  \printfield{isbn}%
+  \finentry}
+
+%% Definiert @Online Eintrag
+\DeclareBibliographyDriver{online}{%
+  \printnames{author}%
+  \newunit\newblockpunct
+  \printfield{title}%
+  \setunit*{.\space}%
+  %\newunit\newblock
+  \printfield{url}%
+  \setunit*{.\space}%
+  \printfield{note}%
+  \finentry}
+  
+%% Definiert @Article Eintrag
+\DeclareBibliographyDriver{article}{%
+  \printnames{author}%
+  \newunit\newblockpunct
+  \printfield{title}%
+  \setunit*{.\space In:\space}%
+  %\newunit\newblock
+  \usebibmacro{journal}%
+  \setunit*{\space (}%
+  \printfield{year}\newunit{)}%
+  \finentry}  
+
+%Doppelpunkt nach dem letzten Autor
+\renewcommand*{\labelnamepunct}{\addcolon\addspace }
+
+%Komma an Stelle des Punktes
+\renewcommand*{\newunitpunct}{\addcomma\space}
+
+%Autoren durch Semikolon trennen
+\newcommand*{\bibmultinamedelim}{\addsemicolon\space}% 
+\newcommand*{\bibfinalnamedelim}{\addsemicolon\space}% 
+\AtBeginBibliography{% 
+  \let\multinamedelim\bibmultinamedelim 
+  \let\finalnamedelim\bibfinalnamedelim 
+}
+
+%Titel nicht kursiv anzeigen 
+\DeclareFieldFormat{title}{#1\isdot}

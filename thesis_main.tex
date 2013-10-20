@@ -1,0 +1,203 @@
+%-----------------------------------
+% Define document and include general packages
+%-----------------------------------
+\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[babel,german=quotes]{csquotes}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+\usepackage[a4paper, left=4cm, right=2cm, top=2.8cm, bottom=2.3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{float}      %Positionierung von Abb. und Tabellen mit [H] erzwingen
+\usepackage{footnote}
+\usepackage{caption} 
+\usepackage{mdwlist}
+\usepackage{amssymb}
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage[table]{xcolor}
+\usepackage{marvosym}			% Verwendung von Symbolen, z.B. perfektes Eurozeichen
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\definecolor{darkblack}{rgb}{0,0,0}
+\hypersetup{pdftex=true, colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, pagecolor=darkblack, urlcolor=darkblack}
+\usepackage{times}
+\fontfamily{ptm}\selectfont
+
+%Pakete für Tabellen
+\usepackage{epstopdf}
+\usepackage{nicefrac} % Brüche
+\usepackage{multirow} 
+\usepackage{rotating} % vertikal schreiben
+\usepackage{colortbl}
+\usepackage{mdwlist}
+
+\definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
+\definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
+
+% sauber formatierter Quelltext
+\usepackage{listings}
+\lstset{numbers=left,
+	numberstyle=\tiny,
+	numbersep=5pt,
+	breaklines=true,
+	showstringspaces=false,
+	frame=l ,
+	xleftmargin=5pt,
+	xrightmargin=5pt,
+	basicstyle=\ttfamily\scriptsize,
+	stepnumber=1,
+	keywordstyle=\color{blue},          % keyword style
+  	commentstyle=\color{dkgreen},       % comment style
+  	stringstyle=\color{mauve}         % string literal style
+}
+
+% Biblatex
+\usepackage[
+backend=biber,
+style=numeric,
+citestyle=authoryear,
+url=false,
+isbn=false,
+notetype=footonly,
+hyperref=false,
+sortlocale=de]{biblatex}
+
+%weitere Anpassungen für BibLaTex
+\input{skripte/modsBiblatex}
+
+
+%Bib-Datei einbinden 
+\addbibresource{literatur/literatur.bib} 
+
+% Pfad fuer Abbildungen
+\graphicspath{{./}{./abbildungen/}}
+
+%-----------------------------------
+% Weitere Ebene einfügen
+\input{skripte/weitereEbene}
+
+%-----------------------------------
+% Zeilenabstand 1,5-zeilig							
+%-----------------------------------
+\usepackage{setspace}
+\onehalfspacing
+
+%-----------------------------------
+% Absätze durch eine neue Zeile
+%-----------------------------------
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{0.8em plus 0.5em minus 0.3em}
+
+\sloppy					%Abstände variieren
+\pagestyle{headings}
+%-----------------------------------
+% Abkürzungsverzeichnis
+%-----------------------------------
+\usepackage[intoc]{nomencl}
+\renewcommand{\nomname}{Abkürzungsverzeichnis}
+\setlength{\nomlabelwidth}{.20\hsize}
+\renewcommand{\nomlabel}[1]{#1 \dotfill}
+\setlength{\nomitemsep}{-\parsep}
+\makenomenclature
+
+%-----------------------------------
+% Kopfbereich / Header definieren
+%-----------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}								% Seitenzahl oben, rechts
+%\fancyhead[L]{\leftmark}							% kein Footer vorhanden
+\renewcommand{\headrulewidth}{0.4pt}
+
+
+%-----------------------------------
+% Start the document here:
+%-----------------------------------
+\begin{document}
+
+\pagenumbering{Roman}								% Seitennumerierung auf römisch umstellen
+\renewcommand{\refname}{Literaturverzeichnis}		% "Literatur" in
+%"Literaturverzeichnis" umbenennen
+\newcolumntype{C}{>{\centering\arraybackslash}X}	% Neuer Tabellen-Spalten-Typ:
+%Zentriert und umbrechbar
+
+%-----------------------------------
+% Titlepage
+%-----------------------------------
+\begin{titlepage}
+	\newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+	\begin{center}
+		\textbf{FOM Hochschule für Oekonomie \& Management Düsseldorf}\\
+		\vspace{1cm}
+			\includegraphics[width=3cm]{abbildungen/fomLogo.jpg} \\
+		\vspace{1cm}
+		\textbf{Berufsbegleitender Studiengang }\\
+		\textbf{Wirtschaftsinformatik, 7. Semester}\\
+		\vspace{3.5cm}
+		\Huge{\LaTeX{}-Vorlage \\ - mit Biblatex}\\
+		\vspace{0.2cm}
+	\end{center}
+	\normalsize
+	\vfill
+	\begin{tabbing}
+		Links \= Mitte \= Rechts\kill
+		Betreuer: \> \> Prof. Dr. Peter Lustig\\
+		\> \> \\
+		Autor: \> \> Max Mustermann (m/w)\\
+		\> \> Matrikelnr.: 000007\\
+		\> \> 7. Fachsemester\\
+	\end{tabbing}
+	Neuss, den \today
+\end{titlepage}
+
+%-------Ende Titelseite-------------
+
+
+%-----------------------------------
+% Inhaltsverzeichnis
+%-----------------------------------
+\tableofcontents
+\newpage
+
+%-----------------------------------
+% Abkürzungsverzeichnis
+%-----------------------------------
+\printnomenclature
+\newpage
+%-----------------------------------
+% Abbildungsverzeichnis
+%-----------------------------------
+\listoffigures
+\newpage
+%-----------------------------------
+% Tabellenverzeichnis
+%-----------------------------------
+\listoftables
+\newpage
+%-----------------------------------
+% Seitennummerierung auf arabisch und ab 1 beginnend umstellen
+%-----------------------------------
+\pagenumbering{arabic}
+\setcounter{page}{1}
+%-----------------------------------
+% Kapitel / Inhalte
+%-----------------------------------
+\input{kapitel/einleitung/einleitung}
+\input{kapitel/kapitel_1/kapitel_1}
+\input{kapitel/kapitel_2/kapitel_2}
+\input{kapitel/fazit/fazit}
+
+%-----------------------------------
+% Literaturverzeichnis
+%-----------------------------------
+\newpage
+%\addcontentsline{toc}{section}{Literatur}
+
+\printbibliography
+
+\input{kapitel/anhang/erklaerung}
+\end{document}
