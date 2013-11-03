@@ -1,15 +1,15 @@
 .DS_Store
 
 # Diese Dateien werden beim kompilieren erzeugt:
-thesis_mainr.blg
-thesis_main.aux
-thesis_main.bcf
-thesis_main.ilg
-thesis_main.lof
-thesis_main.log
-thesis_main.lot
-thesis_main.nlo
-thesis_main.nlsr
-thesis_main.out
-thesis_main.toc
-thesis_main.run.xml
+*.blg
+*.aux
+*.bcf
+*.ilg
+*.lof
+*.log
+*.lot
+*.nlo
+*.nls*
+*.out
+*.toc
+*.run.xml
