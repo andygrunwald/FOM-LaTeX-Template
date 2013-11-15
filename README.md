@@ -3,6 +3,9 @@ Dies soll eine LaTeX-Vorlage für den persönlichen Gebrauch werden. Sie kann f
 
 Diese Vorlage hat weder einen Anspruch auf Richtigkeit, noch auf Vollständigkeit. Verbesserungen sind jederzeit willkommen.
 
+## Vorlage personalisieren
+Damit der Einstieg in die LaTeX-Vorlage so einfach wie möglich ist, haben wir in der Datei ```skripte/meta.tex``` einige "Variablen" hinterlegt. Dort kannst Du Deine Informationen für das Deckblatt hinterlegen und musst nicht lange nach der entsprechenden Stelle im Quelltext suchen.
+
 ## Vorraussetzungen
 
 ### LaTeX-Pakete
