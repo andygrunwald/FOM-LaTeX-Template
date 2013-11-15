@@ -1,6 +1,7 @@
 .DS_Store
 
 # Diese Dateien werden beim kompilieren erzeugt:
+*.bbl
 *.blg
 *.aux
 *.bcf
