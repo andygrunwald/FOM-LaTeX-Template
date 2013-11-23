@@ -12,7 +12,7 @@ Damit der Einstieg in die LaTeX-Vorlage so einfach wie möglich ist, haben wir i
 Diese LaTeX-Vorlage verwendet verschiedene Pakate. Wenn Du _[MikTex](http://miktex.org/)_ oder _[MacTex](http://tug.org/mactex/)_ verwendest, dann brauchst Du keine weiteren LaTeX-Pakete installieren.
 
 ### Zusatzsoftware
-Für die Erstellung des Literaturverzeichnisses wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ benötigt.
+Für die Erstellung des Literaturverzeichnisses wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Version 1.8, siehe [#10](https://github.com/andygrunwald/FOM-LaTeX-Template/issues/10)) benötigt.
 
 ## Kompilieren
 Um die LaTeX-Dateien in eine PDF zu kompilieren müsst ihr unter **Windows** einfach die beiliegende ```compile.bat``` ausführen. Benutzer von **Mac OSX** und **Linux** verwenden bitte die ```compile.sh```.
