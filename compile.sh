@@ -1,5 +1,7 @@
-pdflatex thesis_main.tex
+CURRENT_DIR=`pwd`
+
+pdflatex "$CURRENT_DIR/thesis_main.tex"
 makeindex thesis_main.nlo -s nomencl.ist -o thesis_main.nls
-biber thesis_main
-pdflatex thesis_main.tex
-pdflatex thesis_main.tex
+biber "$CURRENT_DIR/thesis_main"
+pdflatex "$CURRENT_DIR/thesis_main.tex"
+pdflatex "$CURRENT_DIR/thesis_main.tex"
