@@ -1,3 +1,5 @@
+#!/bin/sh
+
 CURRENT_DIR=`pwd`
 
 pdflatex "$CURRENT_DIR/thesis_main.tex"
