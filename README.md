@@ -17,6 +17,15 @@ Für die Erstellung des Literaturverzeichnisses wird _[Biblatex](http://www.ctan
 ## Kompilieren
 Um die LaTeX-Dateien in eine PDF zu kompilieren müsst ihr unter **Windows** einfach die beiliegende ```compile.bat``` ausführen. Benutzer von **Mac OSX** und **Linux** verwenden bitte die ```compile.sh```. Zum Kompilieren muss bereits MikTex komplett installiert sein, damit auch das Literaturverzeichnis kompiliert wird. 
 
+## Fußnoten
+Einige Professoren bevorzugen ein anderes Fußnoten-Format. Das Standard-Format kann mit `\footcite[Vgl. ][Seite 1]{Balzert.2008}` genutzt werden und gibt folgendes aus:
+
+```Vgl. Balzert et al. (2008), Seite 1.```
+
+Es besteht auch die Möglichkeit, den Vornamen des Autors mit auszugeben. Dazu kann ein der Custom-Command `\fullfootcite[Vgl. ][Seite 1]{Balzert.2008}` genutzt werden der folgendes Resultat liefert:
+```Vgl. Balzert, Helmut et al. (2008), Seite 1.
+```
+
 ## IDE nutzen
 Zum schreiben der Arbeit könnt Ihr auch einen IDE verwenden. Hierzu gibt es nachfolgend einige Software:
 
