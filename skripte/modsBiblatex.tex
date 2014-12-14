@@ -32,6 +32,17 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
     {\usebibmacro{name:last-first}{#1}{#3}{#5}{#7}}%
   \usebibmacro{name:andothers}}
 
+% Alternative Notation der Fußnoten 
+% Zeigt sowohl den Nachnamen als auch den Vornamen an
+% Beispiel: \fullfootcite[Vgl. ][Seite 5]{Tanenbaum.2003} 
+\DeclareCiteCommand{\fullfootcite}[\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \printnames[sortname][1-1]{author}%
+    \addspace (\printfield{year})}
+  {\addsemicolon\space}
+  {\usebibmacro{postnote}}
+
 %Autoren (Nachname, Vorname)
 \DeclareNameAlias{default}{last-first}
 
