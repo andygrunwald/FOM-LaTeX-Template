@@ -20,10 +20,33 @@ Um die LaTeX-Dateien in eine PDF zu kompilieren müsst ihr unter **Windows** ein
 ## Fußnoten
 Einige Professoren bevorzugen ein anderes Fußnoten-Format. Das Standard-Format kann mit `\footcite[Vgl. ][Seite 1]{Balzert.2008}` genutzt werden und gibt folgendes aus:
 
-```Vgl. Balzert et al. (2008), Seite 1.```
+```
+Vgl. Balzert et al. (2008), Seite 1.
+```
 
 Es besteht auch die Möglichkeit, den Vornamen des Autors mit auszugeben. Dazu kann ein der Custom-Command `\fullfootcite[Vgl. ][Seite 1]{Balzert.2008}` genutzt werden der folgendes Resultat liefert:
-```Vgl. Balzert, Helmut et al. (2008), Seite 1.
+```
+Vgl. Balzert, Helmut et al. (2008), Seite 1.
+```
+
+## Literaturverzeichnis
+Einige Professoren bevorzugen ein sortiertes (Webseite, Buch, Artikel...) Literaturverzeichnis.
+
+Dies kann mit folgender Änderung im Quellcode (thesis_main.tex) erreicht werden:
+
+Zunächst Zeile 213 auskommentieren:
+
+```latex
+%\printbibliography
+```
+
+Und die Zeilen 219-222 einkommentieren und ggf. anpassen.
+
+```latex
+\printbibheading
+\printbibliography[type=article,heading=subbibliography,title={Artikel}]
+\printbibliography[type=book,heading=subbibliography,title={Bücher}]
+\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
 ```
 
 ## IDE nutzen
