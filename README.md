@@ -17,6 +17,12 @@ Für die Erstellung des Literaturverzeichnisses wird _[Biblatex](http://www.ctan
 ## Kompilieren
 Um die LaTeX-Dateien in eine PDF zu kompilieren müsst ihr unter **Windows** einfach die beiliegende ```compile.bat``` ausführen. Benutzer von **Mac OSX** und **Linux** verwenden bitte die ```compile.sh```. Zum Kompilieren muss bereits MikTex komplett installiert sein, damit auch das Literaturverzeichnis kompiliert wird. 
 
+### Kompilieren mit Docker unter Linux
+Mit der Datei ```compile-docker.sh``` kann das Dokument ohne die Installation der LaTeX-Pakete durchgeführt werden. Die benötigten Pakete befinden sich in dem Docker-Image texlive (https://registry.hub.docker.com/u/koep/texlive/). Kompiliert wird das Dokument direkt in einem isolierten Container.
+
+Voraussetzung ist eine aktuelle Docker Version (https://docs.docker.com/installation/).
+Getestet unter Fedora 21 (Kernel 3.19.1).
+
 ## Fußnoten
 Einige Professoren bevorzugen ein anderes Fußnoten-Format. Das Standard-Format kann mit `\footcite[Vgl. ][Seite 1]{Balzert.2008}` genutzt werden und gibt folgendes aus:
 
