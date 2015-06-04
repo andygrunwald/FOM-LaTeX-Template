@@ -3,7 +3,9 @@ before_install:
   - sudo apt-get update
 
 install:
-  - sudo apt-get install texlive-latex-recommended texlive-fonts-recommended biber
+  - sudo apt-get install biber
+  - apt-cache search biber
+  - apt-cache search tex
 
 script:
   - pdflatex --version
