@@ -1,5 +1,5 @@
 install:
-    - sudo apt-get install texlive-latex-recommended texlive-fonts-recommended biber
+    - sudo apt-get install texlive-latex-recommended texlive-fonts-recommended biblatex
 
 script:
     - pdflatex --version
