@@ -1,0 +1,7 @@
+install:
+    - sudo apt-get install texlive-latex-recommended texlive-fonts-recommended
+
+script:
+    - pdflatex --version
+    - makeindex --version
+    - biber --help
