@@ -12,3 +12,4 @@ script:
   - makeindex --version
   - which biber
   - biber --help
+  - bibtex --help
