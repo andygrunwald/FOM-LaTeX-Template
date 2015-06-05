@@ -3,13 +3,13 @@ before_install:
   - sudo apt-get update
 
 install:
-  - sudo apt-get install biber
-  - apt-cache search biber
-  - apt-cache search tex
+  - sudo apt-get install texlive-latex-recommended
+  - wget http://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/0.9.9/binaries/Linux/biber-linux_x86_64.tar.gz/download --output-document biber-linux_x86_32.tar.gz
+  - tar -xvzf biber-linux_x86_32.tar.gz
+  - sudo mv biber /usr/bin/
 
 script:
   - pdflatex --version
   - makeindex --version
-  - which biber
-  - biber --help
-  - bibtex --help
+  - biber --version
+  - ./compile.sh
