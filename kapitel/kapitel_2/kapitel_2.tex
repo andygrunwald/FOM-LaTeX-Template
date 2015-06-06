@@ -6,7 +6,7 @@
 \item Betriebssystem: Windows 8
 \item MikTex: 2.9, 32-bit
 \item Biblatex: 2.7a, Zusatz: Biber.exe
-\item Editor: TexStudio (kann ich empfehlen), Notepad++ 
+\item Editor: TexStudio (kann ich empfehlen), Notepad++
 \end{itemize}
 
 \subsection{Dokumentenklasse}
@@ -16,21 +16,22 @@ Eigentlich hatte Prof. Finke empfohlen die Dokumentklassen \enquote{Book} oder \
 \subsection{Grafiken}
 Das Paket \textbackslash usepackage\{float\} ermöglicht es die Grafiken und Tabellen an der Stelle im Text zu positionieren, wo diese im Quelltext stehen (Option H). Ansonsten würde \LaTeX{} diese dort unterbringen, wo es typographisch sinnvoll wäre - das wollen wir ja nicht ;-).
 
-Die Breite der Grafiken am Besten relativ zum Text angeben. 
+Die Breite der Grafiken am Besten relativ zum Text angeben.
 
 \subsection{Quellcode}
 Quellcode kann auf unterschiedliche Arten eingebaut werden.
 Zum einen kann es hier durch direktives Einbinden in der Kapitel-Datei geschehen.
 \begin{lstlisting}
-% Hier wird aufgezeigt, wie man eine Grafik einbindet, es wird also in der PDF angezeigt, 
-% da es in einem Quellcode-listing steht. Auch wenn es hier fälschlischerweise als Latex-Befehl angezeigt wird!
+% Hier wird aufgezeigt, wie man eine Grafik einbindet, es wird also in der PDF angezeigt,
+% da es in einem Quellcode-Listing steht.
+% Auch wenn es hier faelschlicherweise als LaTeX-Befehl angezeigt wird.
 \includegraphics[width=0.9\textwidth]{sup}
 \end{lstlisting}
 
 Bei längeren Quellcode-Listings empfiehlt es sich jedoch auf eine externe Datei im Ordner Quellcode zu verlinken und diese einzubauen:
 \lstinputlisting[language=HTML]{./Quellcode/Beispiel.html}
 
-Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur noch der Name des Bildes ohne Dateiendung stehen (sup). 
+Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur noch der Name des Bildes ohne Dateiendung stehen (sup).
 
 
 \begin{figure}[H]
@@ -60,8 +61,8 @@ Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur n
   	SEKVt & Sondereinzelkosten des Vertriebes & \\
 	\hline\hline
 	\multicolumn{3}{|l|}{\textbf{= Selbstkosten}} \\
-	\hline\hline	
-	\multicolumn{3}{|l|}{+ Gewinnaufschlag} \\	
+	\hline\hline
+	\multicolumn{3}{|l|}{+ Gewinnaufschlag} \\
 	\multicolumn{3}{|l|}{+ Rabatte} \\
 	\hline\hline
 	\multicolumn{3}{|l|}{\textbf{= Nettoverkaufspreis (NVP)}} \\
@@ -70,7 +71,7 @@ Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur n
 	\hline\hline
 	\multicolumn{3}{|l|}{\textbf{= Bruttoverkaufspreis (BVP)}} \\
 	\hline
-\end{tabular} \\		
+\end{tabular} \\
 		\caption{Beispieltabelle 1}
 		\label{tbl:beispieltabelle2}
 \end{table}
@@ -83,7 +84,7 @@ Von den vielen verfügbaren Literatur-Paketen habe ich mich für Biblatex entsch
 \subsection{Listen und Aufzählungen}
 \subsubsection{Listen}
 \begin{itemize}
-\item ein wichtiger Punkt 
+\item ein wichtiger Punkt
 \item noch ein wichtiger Punkt
 \item und so weiter
 \end{itemize}
@@ -95,7 +96,7 @@ Von den vielen verfügbaren Literatur-Paketen habe ich mich für Biblatex entsch
 \end{enumerate}
 
 \subsubsubsection{Tiefste Ebene 1}
-Dies ist die tiefste Gliederungsebene. Sollten doch mehr Ebenen benötigt werden, muss eine andere Dokumentenklasse verwendet werden. 
+Dies ist die tiefste Gliederungsebene. Sollten doch mehr Ebenen benötigt werden, muss eine andere Dokumentenklasse verwendet werden.
 
 \subsubsubsection{Tiefste Ebene 2}
 Der zweite Punkt in dieser Ebene ist zur Erinnerung daran, dass es nie nie niemals nur einen Unterpunkt geben darf.
