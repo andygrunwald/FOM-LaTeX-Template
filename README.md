@@ -66,18 +66,17 @@ Und die folgenden Zeilen einkommentieren und ggf. anpassen.
 ```
 
 ## Quellcode einbinden
-Um euren Quellcode einzubinden, wurde bereits das packet listings in der Datei thesis_main.tex eingebunden.
-Dieses wird dort auch mit den Farben für Kommentare, Strings, etc konfiguriert. 
+
+Um euren Quellcode einzubinden, wurde bereits das Packet *listings* in der Datei thesis_main.tex eingebunden.
+Dieses wird dort auch mit den Farben für Kommentare, Strings, etc konfiguriert.
 Folgendermaßen könnt ihr Quellcode einbauen:
-Für Javascript gibt es noch keine eigene Sprache, daher benutzt am besten Java.
+Für Javascript gibt es noch keine eigene Sprache, daher benutzt am besten *Java*
 
 ```latex
 \lstinputlisting[language=Java]{./Quellcode/Dateiname.js}
 ```
 
-Für eine genauere Beschreibung empfehlen wir folgenden Artikel:
-http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
-
+Für eine genauere Beschreibung empfehlen wir folgenden Artikel: [LaTeX/Source Code Listings @ Wikibooks](http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings).
 
 ## IDE nutzen
 
