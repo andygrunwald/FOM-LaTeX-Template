@@ -17,9 +17,19 @@ Eigentlich hatte Prof. Finke empfohlen die Dokumentklassen \enquote{Book} oder \
 Das Paket \textbackslash usepackage\{float\} ermöglicht es die Grafiken und Tabellen an der Stelle im Text zu positionieren, wo diese im Quelltext stehen (Option H). Ansonsten würde \LaTeX{} diese dort unterbringen, wo es typographisch sinnvoll wäre - das wollen wir ja nicht ;-).
 
 Die Breite der Grafiken am Besten relativ zum Text angeben. 
+
+\subsection{Quellcode}
+Quellcode kann auf unterschiedliche Arten eingebaut werden.
+Zum einen kann es hier durch direktives Einbinden in der Kapitel-Datei geschehen.
 \begin{lstlisting}
-		\includegraphics[width=0.9\textwidth]{sup}
+% Hier wird aufgezeigt, wie man eine Grafik einbindet, es wird also in der PDF angezeigt, 
+% da es in einem Quellcode-listing steht. Auch wenn es hier fälschlischerweise als Latex-Befehl angezeigt wird!
+\includegraphics[width=0.9\textwidth]{sup}
 \end{lstlisting}
+
+Bei längeren Quellcode-Listings empfiehlt es sich jedoch auf eine externe Datei im Ordner Quellcode zu verlinken und diese einzubauen:
+\lstinputlisting[language=HTML]{./Quellcode/Beispiel.html}
+
 Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur noch der Name des Bildes ohne Dateiendung stehen (sup). 
 
 
