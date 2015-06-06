@@ -50,13 +50,13 @@ Einige Professoren bevorzugen ein sortiertes (Webseite, Buch, Artikel...) Litera
 
 Dies kann mit folgender Änderung im Quellcode (thesis_main.tex) erreicht werden:
 
-Zunächst Zeile 213 auskommentieren:
+Zunächst diese Zeile auskommentieren:
 
 ```latex
 %\printbibliography
 ```
 
-Und die Zeilen 219-222 einkommentieren und ggf. anpassen.
+Und die folgenden Zeilen einkommentieren und ggf. anpassen.
 
 ```latex
 \printbibheading
@@ -64,6 +64,20 @@ Und die Zeilen 219-222 einkommentieren und ggf. anpassen.
 \printbibliography[type=book,heading=subbibliography,title={Bücher}]
 \printbibliography[type=online,heading=subbibliography,title={Webseiten}]
 ```
+
+## Quellcode einbinden
+Um euren Quellcode einzubinden, wurde bereits das packet listings in der Datei thesis_main.tex eingebunden.
+Dieses wird dort auch mit den Farben für Kommentare, Strings, etc konfiguriert. 
+Folgendermaßen könnt ihr Quellcode einbauen:
+Für Javascript gibt es noch keine eigene Sprache, daher benutzt am besten Java.
+
+```latex
+\lstinputlisting[language=Java]{./Quellcode/Dateiname.js}
+```
+
+Für eine genauere Beschreibung empfehlen wir folgenden Artikel:
+http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+
 
 ## IDE nutzen
 
