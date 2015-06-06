@@ -71,10 +71,12 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
   \printnames{author}%
   \newunit\newblockpunct
   \printfield{title}%
-  \setunit*{.\space}%
+  \setunit*{,\space}%
   %\newunit\newblock
   \printfield{url}%
-  \setunit*{.\space}%
+  \setunit*{,\space Erscheinungsjahr:\space}%
+  \printfield{year}%
+  \setunit*{,\space Aufruf am:\space}%
   \printfield{note}%
   \finentry}
   
