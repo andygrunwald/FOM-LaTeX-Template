@@ -88,3 +88,7 @@ Zum schreiben der Arbeit könnt Ihr auch einen IDE verwenden. Hierzu gibt es nac
 ### Texpad
 
 Für die Nutzung von Texpad unter Mac OSX müssen einige Einstellungen beachtet werden. Standardmäßig ist _biber_ nicht aktiviert. Dies führt dazu, dass das Literaturverzeichnis einfach "verschwindet", wenn man mit Texpad kompliliert. Daher musst Du unter _Preferences_ > _Typesettings_ > _Bibliography Compilation_ als Engine _biber_ auswählen.
+
+## License
+
+This project is released under the terms of the [MIT license](http://en.wikipedia.org/wiki/MIT_License).
