@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-
-CURRENT_DIR=`pwd`
+#Run the Script from the folder you are in...
+CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 pdflatex "$CURRENT_DIR/thesis_main.tex"
 RETVAL="$?"
