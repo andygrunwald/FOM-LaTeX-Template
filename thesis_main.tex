@@ -8,7 +8,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{fancyhdr}
 \usepackage{fancybox}
-\usepackage[a4paper, left=4cm, right=2cm, top=2.8cm, bottom=2.3cm]{geometry}
+\usepackage[a4paper,left=4cm,right=2cm,top=1.5cm,bottom=2cm,includeheadfoot]{geometry}
 \usepackage{graphicx}
 \usepackage{colortbl}
 \usepackage{array}
@@ -141,16 +141,20 @@ sortlocale=de]{biblatex}
 	\newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
 	\begin{center}
 		\textbf{\myHochschulName}\\
-		\vspace{1cm}
+		\textbf{\myHochschulStandort}\\
+		\vspace{1.5cm}
 			\includegraphics[width=3cm]{abbildungen/fomLogo.jpg} \\
-		\vspace{1cm}
+		\vspace{1.5cm}
 		Berufsbegleitender Studiengang\\
 		\myStudiengang, \mySemesterZahl. Semester\\
-		\vspace{1.5cm}
+		\vspace{2cm}
 		\textbf{\myThesisArt}\\
 		\textbf{zur Erlangung des Grades eines}\\
 		\textbf{\myAkademischerGrad}\\
-		\vspace{1.5cm}
+		% Oder für Hausarbeiten:		
+		%\textbf{im Rahmen der Lehrveranstaltung}\\
+		%\textbf{\myLehrveranstaltung}\\
+		\vspace{2cm}
 		über das Thema\\
 		\Huge{\myTitel}\\
 		\vspace{0.2cm}
@@ -161,18 +165,26 @@ sortlocale=de]{biblatex}
 		Links \= Mitte \= Rechts\kill
 		Betreuer: \> \> \myBetreuer\\
 		\> \> \\
+		
 		Autor: \> \> \myAutor\\
-		\> \> Matrikelnr.: \myMatrikelNr\\
+		\> \>  Matrikelnr.: \myMatrikelNr\\
+		\> \> \myAdresse\\
+		\> \> \\
 		Abgabe: \> \> \myAbgabeDatum
 	\end{tabbing}
 \end{titlepage}
 
 %-------Ende Titelseite-------------
 
+%-----------------------------------
+% Sperrvermerk
+%-----------------------------------
+%\input{kapitel/anhang/sperrvermerk}
 
 %-----------------------------------
 % Inhaltsverzeichnis
 %-----------------------------------
+\setcounter{page}{1}
 \tableofcontents
 \newpage
 
@@ -211,13 +223,13 @@ sortlocale=de]{biblatex}
 %\addcontentsline{toc}{section}{Literatur}
 
 \pagenumbering{Roman} %Zähler wieder römisch ausgeben
-\setcounter{page}{6}  %Zähler manuell hochsetzen
+\setcounter{page}{4}  %Zähler manuell hochsetzen
 
 \printbibliography
 
 % Alternative Darstellung:
 % Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
-% Dazu die Zeile 213 (\printbibliography) auskommentieren und folgenden code verwenden:
+% Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
 
 %\printbibheading
 %\printbibliography[type=article,heading=subbibliography,title={Artikel}]
