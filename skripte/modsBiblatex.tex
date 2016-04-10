@@ -1,6 +1,6 @@
 % Opptionen für Biblatex
 \ExecuteBibliographyOptions{%
-firstinits=false,
+giveninits=false,
 isbn=true, 
 url=true, 
 doi=false, 
@@ -28,8 +28,18 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 
 \DeclareNameFormat{last-first}{%
   \iffirstinits
-    {\usebibmacro{name:last-first}{#1}{#4}{#5}{#7}}
-    {\usebibmacro{name:last-first}{#1}{#3}{#5}{#7}}%
+    {\usebibmacro{name:last-first}
+        {\namepartfamily}
+        {\namepartgiveni}
+        {\namepartprefix}
+        {\namepartsuffix}
+    }
+    {\usebibmacro{name:last-first}
+        {\namepartfamily}
+        {\namepartgiven}
+        {\namepartprefix}
+        {\namepartsuffix}
+    }%
   \usebibmacro{name:andothers}}
 
 % Alternative Notation der Fußnoten 
