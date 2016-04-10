@@ -64,6 +64,13 @@ Und die folgenden Zeilen einkommentieren und ggf. anpassen.
 \printbibliography[type=book,heading=subbibliography,title={Bücher}]
 \printbibliography[type=online,heading=subbibliography,title={Webseiten}]
 ```
+## Sperrvermerk
+
+Sollte ein Sperrvermerk für die Arbeit notwendig sein, so kann dieser durch einkommentieren dieser Zeile aktiviert werden. Die Angaben zu Titel der Arbeit und Name der Firma werden dabei aus den Metadaten entnommen.
+
+```latex
+\input{kapitel/anhang/sperrvermerk}
+```
 
 ## Quellcode einbinden
 
