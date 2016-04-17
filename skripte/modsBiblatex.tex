@@ -1,6 +1,6 @@
 % Opptionen für Biblatex
 \ExecuteBibliographyOptions{%
-giveninits=false,
+firstinits=false,
 isbn=true, 
 url=true, 
 doi=false, 
@@ -29,16 +29,16 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 \DeclareNameFormat{last-first}{%
   \iffirstinits
     {\usebibmacro{name:last-first}
-        {\namepartfamily}
-        {\namepartgiveni}
-        {\namepartprefix}
-        {\namepartsuffix}
-    }
+        {#1}
+        {#4}
+        {#5}
+        {#7}
+    }%
     {\usebibmacro{name:last-first}
-        {\namepartfamily}
-        {\namepartgiven}
-        {\namepartprefix}
-        {\namepartsuffix}
+        {#1}
+        {#3}
+        {#5}
+        {#7}
     }%
   \usebibmacro{name:andothers}}
 
@@ -48,7 +48,7 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 \DeclareCiteCommand{\fullfootcite}[\mkbibfootnote]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
-    \printnames[sortname][1-1]{author}%
+    \printnames[sortname][1-2]{author}%
     \addspace (\printfield{year})}
   {\addsemicolon\space}
   {\usebibmacro{postnote}}
