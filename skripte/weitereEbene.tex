@@ -1,40 +1,20 @@
+\usepackage{titletoc}
+
 \makeatletter
-\renewcommand*\l@paragraph{\@dottedtocline{5}{7.0em}{4.1em}}
-\renewcommand*\l@subparagraph{\@dottedtocline{6}{10em}{5em}}
-\makeatother
- 
-\usepackage{titlesec}
-\usepackage[]{titletoc}
- 
-\titlecontents{subsubsubsection}[9em]{}{\contentslabel{3.9em}}%
-{\hspace*{-1.2em}}{\titlerule*[0.675pc]{.}\contentspage}
- 
-\makeatletter
-\newcounter{subsubsubsection}[subsubsection]
-\setcounter{subsubsubsection}{1}
+
+% Setze die Tiefe des Inhaltsverzeichnis auf 4 Ebenen
+% Damit erscheinen \paragraph-Sektionen auch im Inhaltsverzeichnis
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
-\renewcommand{\thesubsubsubsection}{\thesubsubsection.\@arabic\c@subsubsubsection}
- 
-\titleclass{\subsubsubsection}{straight}[\subsubsection]
-\titleformat{\subsubsubsection}{\sf}{\thetitle}{0.9em}{}[]                       
-\titlespacing{\subsubsubsection}{0pt}{3.25ex plus 1ex minus 0.2ex}{1.5ex plus 0.2ex}
- 
-\renewcommand\paragraph{\@startsection{paragraph}{5}%
-    {\z@}%
-    {3.25ex \@plus1ex \@minus.2ex}%
-    {-1em}%
-    {\normalfont\normalsize\bfseries}%
+
+% Fuege Abstand nach unten wie in einer normalen \section hinzu
+% Andernfalls haette \paragraph keinen Zeilenumbruch
+% Der Zeilenumbruch koennte mit einer leeren \mbox{} ersetzt werden
+% Jedoch klebt dann der Text relativ nah an der Ueberschrift
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}%
+  {\z@}{3.25ex \@plus 1ex \@minus .2ex}{1.5ex plus 0.2ex}%
+  {\normalfont\normalsize\bfseries\sffamily}%
 }
-\renewcommand\subparagraph{\@startsection{subparagraph}{6}%
-    {\parindent}%
-    {3.25ex \@plus1ex \@minus .2ex}%
-    {-1em}%
-    {\normalfont\normalsize\bfseries}%
-}
-\makeatother
-\makeatletter
-\newcommand*{\toclevel@subsubsubsection}{4}%
-\renewcommand*{\toclevel@paragraph}{5}%
-\renewcommand*{\toclevel@subparagraph}{6}%
+
 \makeatother
