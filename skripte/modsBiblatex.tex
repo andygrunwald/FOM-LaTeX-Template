@@ -28,13 +28,13 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 
 \DeclareNameFormat{last-first}{%
   \iffirstinits
-    {\usebibmacro{name:last-first}
+    {\usebibmacro{name:family-given}
         {\namepartfamily}
         {\namepartgiveni}
         {\namepartprefix}
         {\namepartsuffix}
     }
-    {\usebibmacro{name:last-first}
+    {\usebibmacro{name:family-given}
         {\namepartfamily}
         {\namepartgiven}
         {\namepartprefix}
