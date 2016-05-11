@@ -1,7 +1,10 @@
 % Opptionen für Biblatex
+% Note Cubasepp laut leitfaden:
+% - ist es besser den vornamen in kurzform anzugeben
+% - bücher ohne isbn anzugeben 
 \ExecuteBibliographyOptions{%
-giveninits=false,
-isbn=true, 
+giveninits=true,
+isbn=false, 
 url=true, 
 doi=false, 
 eprint=false,
@@ -56,27 +59,59 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 %Autoren (Nachname, Vorname)
 \DeclareNameAlias{default}{last-first}
 
-%Reihenfolge von publisher, year, address verändern
-% Achtung, bisher nur für den Typ @book definiert
+%% Note Cubasepp: Laut Leitfaden sind: 
+% - die Titel (egal welche) ohne Anführungszeichen
+% - Anpassung von @Inbook elementen
+% - Anpassung von Online Quellen
+\clareFieldFormat[article,book,inbook,inproceedings]{title}{{#1}}
+\DeclareFieldFormat[inproceedings]{booktitle}{{#1}}
+\DeclareFieldFormat[inbook]{chapter}{{#1}}
 
-%% Definiert @Book Eintrag
+% Laut Leitfaden...
+\DeclareFieldFormat{urldate}{\addcomma\space\bibstring{urlseen}\space#1}
+\DefineBibliographyStrings{german}{%
+	urlseen = {Abruf am},
+}
+
+%Reihenfolge von publisher, year, address verändern
+%Note Cubasepp - TodO: Achtung die ab jetzt verwendeten Änderungen sind dem Leitfaden zum Opfer gefallen.
+
+% Definiert @Book Eintrag
+% Note Cubasepp: laut leitfaden ...
 \DeclareBibliographyDriver{book}{%
   \printnames{author}%
+  \setunit*{\space (}%
+  \printfield{year}\newunit{)}%
   \newunit\addcolon\space
   \printfield{title}%
-  \setunit*{,\space}%
-  \printfield{edition}%
-  \setunit*{\addcomma\space}%
-  \printlist{publisher}%
-  \newunit\newblockpunct
-  \printlist{location}%
-  \setunit*{\space}%
-  \printfield{year}%
   \setunit*{,\space}% 
-  \printfield{isbn}%
+  \printlist{location}%
+  \setunit*{\space}% 
+  \printfield{year}%
   \finentry}
 
-%% Definiert @Online Eintrag
+% Add @Inbook style
+% Note Cubasepp: laut leitfaden ...
+\DeclareBibliographyDriver{inbook}{%
+  \printnames{author}%
+  \setunit*{\space (}%
+  \printfield{year}\newunit{)}%
+  \newunit\addcolon\space
+  \printfield{chapter}%
+  \setunit*{, in:\space}%
+  \printnames{editor}\newunit{\space (Hrsg.)}%
+  \setunit*{, \space}%
+  \printfield{title}%
+  \setunit*{,\space}% 
+  \printlist{location}%
+  \setunit*{\space}% 
+  \printfield{year}%
+  \setunit*{, \space}%
+  \printfield{pages}%
+  \finentry}
+
+% Definiert @Online Eintrag
+% Note Cubasepp: laut leitfaden ...
 \DeclareBibliographyDriver{online}{%
   \printnames{author}%
   \newunit\newblockpunct
@@ -89,18 +124,46 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
   \setunit*{,\space Aufruf am:\space}%
   \printfield{note}%
   \finentry}
-  
-%% Definiert @Article Eintrag
+
+% Definiert @Article Eintrag
+% Note Cubasepp: laut leitfaden ...
 \DeclareBibliographyDriver{article}{%
   \printnames{author}%
-  \newunit\newblockpunct
+  \setunit*{\space (}%
+  \printfield{year}\newunit{)}%
+  \newunit\addcolon\space
   \printfield{title}%
   \setunit*{.\space In:\space}%
   %\newunit\newblock
   \usebibmacro{journal}%
+  \setunit*{\space }%
+  \printfield{year}%
+  \setunit*{, \space}%
+  \setunit*{, Nr. \space}%
+  \printfield{number}\newunit{, \space}%
+  \printfield{pages}%
+  \finentry}  
+
+% Definiert @Inproceeedings Eintrag
+% (booktitle != title) - das ist Grund zum unterschied @Article
+% Note Cubasepp: laut leitfaden sieht es so aus
+\DeclareBibliographyDriver{inproceedings}{%
+  \printnames{author}%
   \setunit*{\space (}%
   \printfield{year}\newunit{)}%
+  \newunit\addcolon\space
+  \printfield{title}%
+  \setunit*{.\space In:\space}%
+  %\newunit\newblock
+  \printfield{booktitle}%
+  \setunit*{\space }%
+  \printfield{year}%
+  \setunit*{, \space}%
+  \setunit*{, Nr. \space}%
+  \printfield{number}\newunit{, \space}%
+  \printfield{pages}%
   \finentry}  
+
 
 %Doppelpunkt nach dem letzten Autor
 \renewcommand*{\labelnamepunct}{\addcolon\addspace }
