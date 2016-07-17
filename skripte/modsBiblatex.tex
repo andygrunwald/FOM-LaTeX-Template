@@ -1,12 +1,12 @@
-% Opptionen für Biblatex
-% Note Cubasepp laut leitfaden:
-% - ist es besser den vornamen in kurzform anzugeben
-% - bücher ohne isbn anzugeben 
+% Optionen für Biblatex
+% Laut Leitfaden:
+% - ist es besser den Vornamen in Kurzform anzugeben
+% - Bücher ohne ISBN anzugeben
 \ExecuteBibliographyOptions{%
 giveninits=true,
-isbn=false, 
-url=true, 
-doi=false, 
+isbn=false,
+url=true,
+doi=false,
 eprint=false,
 maxbibnames=7, % Alle Autoren (kein et al.)
 maxcitenames=2, % et al. ab dem 3. Autor
@@ -16,17 +16,17 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 }%
 
 % et al. an Stelle von u.a.
-\DefineBibliographyStrings{ngerman}{ 
-   andothers = {{et\,al\adddot}},             
+\DefineBibliographyStrings{ngerman}{
+   andothers = {{et\,al\adddot}},
 }
 
 % Klammern um das Jahr in der Fußnote
-\renewbibmacro*{cite:labelyear+extrayear}{% 
-  \iffieldundef{labelyear} 
-    {} 
-    {\printtext[bibhyperref]{% 
-       \mkbibparens{% 
-         \printfield{labelyear}% 
+\renewbibmacro*{cite:labelyear+extrayear}{%
+  \iffieldundef{labelyear}
+    {}
+    {\printtext[bibhyperref]{%
+       \mkbibparens{%
+         \printfield{labelyear}%
          \printfield{extrayear}}}}}
 
 \DeclareNameFormat{last-first}{%
@@ -45,9 +45,9 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
     }%
   \usebibmacro{name:andothers}}
 
-% Alternative Notation der Fußnoten 
+% Alternative Notation der Fußnoten
 % Zeigt sowohl den Nachnamen als auch den Vornamen an
-% Beispiel: \fullfootcite[Vgl. ][Seite 5]{Tanenbaum.2003} 
+% Beispiel: \fullfootcite[Vgl. ][Seite 5]{Tanenbaum.2003}
 \DeclareCiteCommand{\fullfootcite}[\mkbibfootnote]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -59,11 +59,11 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 %Autoren (Nachname, Vorname)
 \DeclareNameAlias{default}{family-given}
 
-%% Note Cubasepp: Laut Leitfaden sind: 
-% - die Titel (egal welche) ohne Anführungszeichen
+% Laut Leitfaden sind:
+% - die Titel (egal welche) ohne Anfuehrungszeichen
 % - Anpassung von @Inbook elementen
 % - Anpassung von Online Quellen
-\clareFieldFormat[article,book,inbook,inproceedings]{title}{{#1}}
+\DeclareFieldFormat[article,book,inbook,inproceedings]{title}{{#1}}
 \DeclareFieldFormat[inproceedings]{booktitle}{{#1}}
 \DeclareFieldFormat[inbook]{chapter}{{#1}}
 
@@ -73,25 +73,24 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 	urlseen = {Abruf am},
 }
 
-%Reihenfolge von publisher, year, address verändern
-%Note Cubasepp - TodO: Achtung die ab jetzt verwendeten Änderungen sind dem Leitfaden zum Opfer gefallen.
+% Reihenfolge von publisher, year, address verändern
 
 % Definiert @Book Eintrag
-% Note Cubasepp: laut leitfaden ...
+% Laut Leitfaden ...
 \DeclareBibliographyDriver{book}{%
   \printnames{author}%
   \setunit*{\space (}%
   \printfield{year}\newunit{)}%
   \newunit\addcolon\space
   \printfield{title}%
-  \setunit*{,\space}% 
+  \setunit*{,\space}%
   \printlist{location}%
-  \setunit*{\space}% 
+  \setunit*{\space}%
   \printfield{year}%
   \finentry}
 
 % Add @Inbook style
-% Note Cubasepp: laut leitfaden ...
+% Laut Leitfaden ...
 \DeclareBibliographyDriver{inbook}{%
   \printnames{author}%
   \setunit*{\space (}%
@@ -102,16 +101,16 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
   \printnames{editor}\newunit{\space (Hrsg.)}%
   \setunit*{, \space}%
   \printfield{title}%
-  \setunit*{,\space}% 
+  \setunit*{,\space}%
   \printlist{location}%
-  \setunit*{\space}% 
+  \setunit*{\space}%
   \printfield{year}%
   \setunit*{, \space}%
   \printfield{pages}%
   \finentry}
 
 % Definiert @Online Eintrag
-% Note Cubasepp: laut leitfaden ...
+% Laut Leitfaden ...
 \DeclareBibliographyDriver{online}{%
   \printnames{author}%
   \newunit\newblockpunct
@@ -126,7 +125,7 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
   \finentry}
 
 % Definiert @Article Eintrag
-% Note Cubasepp: laut leitfaden ...
+% Laut Leitfaden ...
 \DeclareBibliographyDriver{article}{%
   \printnames{author}%
   \setunit*{\space (}%
@@ -142,11 +141,11 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
   \setunit*{, Nr. \space}%
   \printfield{number}\newunit{, \space}%
   \printfield{pages}%
-  \finentry}  
+  \finentry}
 
 % Definiert @Inproceeedings Eintrag
 % (booktitle != title) - das ist Grund zum unterschied @Article
-% Note Cubasepp: laut leitfaden sieht es so aus
+% Laut Leitfaden ...
 \DeclareBibliographyDriver{inproceedings}{%
   \printnames{author}%
   \setunit*{\space (}%
@@ -162,7 +161,7 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
   \setunit*{, Nr. \space}%
   \printfield{number}\newunit{, \space}%
   \printfield{pages}%
-  \finentry}  
+  \finentry}
 
 
 %Doppelpunkt nach dem letzten Autor
@@ -172,12 +171,12 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 \renewcommand*{\newunitpunct}{\addcomma\space}
 
 %Autoren durch Semikolon trennen
-\newcommand*{\bibmultinamedelim}{\addsemicolon\space}% 
-\newcommand*{\bibfinalnamedelim}{\addsemicolon\space}% 
-\AtBeginBibliography{% 
-  \let\multinamedelim\bibmultinamedelim 
-  \let\finalnamedelim\bibfinalnamedelim 
+\newcommand*{\bibmultinamedelim}{\addsemicolon\space}%
+\newcommand*{\bibfinalnamedelim}{\addsemicolon\space}%
+\AtBeginBibliography{%
+  \let\multinamedelim\bibmultinamedelim
+  \let\finalnamedelim\bibfinalnamedelim
 }
 
-%Titel nicht kursiv anzeigen 
+%Titel nicht kursiv anzeigen
 \DeclareFieldFormat{title}{#1\isdot}
