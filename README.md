@@ -7,6 +7,27 @@ Eine [LaTeX](https://de.wikipedia.org/wiki/LaTeX)-Vorlage für den persönlichen
 Diese Vorlage hat weder einen Anspruch auf Richtigkeit, noch auf Vollständigkeit.
 Verbesserungen sind jederzeit willkommen (siehe TODO LINK).
 
+---
+
+## Table of Contents
+
+1. [Für die eigene Arbeit nutzen](#für-die-eigene-arbeit-nutzen)
+  1. [Klassischer Download](#klassischer-download)
+  2. [Fork auf Github](#fork-auf-github)
+2. [Vorlage personalisieren](#vorlage-personalisieren)
+3. [Fußnoten](#fußnoten)
+4. [Literaturverzeichnis](#literaturverzeichnis)
+5. [Sperrvermerk](#sperrvermerk)
+6. [Quellcode einbinden](#quellcode-einbinden)
+7. [Vorraussetzungen](#vorraussetzungen)
+  1. [LaTeX-Pakete](#latex-pakete)
+8. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
+	1. [Docker unter Linux / Mac / Windows](#docker-unter-linux--mac--windows)
+	  1. [Image selbst bauen](#image-selbst-bauen)
+9. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
+  1. [Texpad](#texpad)
+10. [Lizenz](#lizenz)
+
 ## Für die eigene Arbeit nutzen
 
 Aufgrund der gewählten [Lizenz](./LICENSE) [MIT Lizenz](https://en.wikipedia.org/wiki/MIT_License), darfst du diese Vorlage für den persönlichen oder kommerzielen Gebrauch nutzen und abändern.
@@ -157,6 +178,6 @@ Standardmäßig ist _biber_ nicht aktiviert.
 Dies führt dazu, dass das Literaturverzeichnis einfach "verschwindet", wenn man mit Texpad kompliliert.
 Daher musst Du unter _Preferences_ > _Typesettings_ > _Bibliography Compilation_ als Engine _biber_ auswählen.
 
-## License
+## Lizenz
 
 Dieses Projekt ist unter den Bedingungen der [MIT Lizenz](http://en.wikipedia.org/wiki/MIT_License) öffentlich verfügbar.
