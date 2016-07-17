@@ -7,11 +7,11 @@ Eine [LaTeX](https://de.wikipedia.org/wiki/LaTeX)-Vorlage für den persönlichen
 Wie das **Ergebnis** aussieht, könnt ihr euch in der Datei [*thesis_main.pdf*](./thesis_main.pdf) ansehen.
 
 Diese Vorlage hat weder einen Anspruch auf Richtigkeit, noch auf Vollständigkeit.
-Verbesserungen sind jederzeit willkommen (siehe TODO LINK).
+Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)).
 
 ---
 
-## Table of Contents
+## Inhaltsverzeichnis
 
 1. [Für die eigene Arbeit nutzen](#für-die-eigene-arbeit-nutzen)
   1. [Klassischer Download](#klassischer-download)
@@ -31,7 +31,7 @@ Verbesserungen sind jederzeit willkommen (siehe TODO LINK).
 10. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
 12. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
 13. [Disclaimer](#disclaimer)
-11. [Lizenz](#lizenz)
+14. [Lizenz](#lizenz)
 
 ## Für die eigene Arbeit nutzen
 
