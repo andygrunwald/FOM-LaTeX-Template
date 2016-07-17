@@ -4,6 +4,8 @@
 
 Eine [LaTeX](https://de.wikipedia.org/wiki/LaTeX)-Vorlage für den persönlichen Gebrauch für Haus-, Seminar-,Bachelor und Master-Arbeiten an der [FOM Hochschule für Oekonomie & Management](https://www.fom.de/).
 
+Wie das **Ergebnis** aussieht, könnt ihr euch in der Datei [*thesis_main.pdf*](./thesis_main.pdf) ansehen.
+
 Diese Vorlage hat weder einen Anspruch auf Richtigkeit, noch auf Vollständigkeit.
 Verbesserungen sind jederzeit willkommen (siehe TODO LINK).
 
@@ -26,7 +28,10 @@ Verbesserungen sind jederzeit willkommen (siehe TODO LINK).
 	  1. [Image selbst bauen](#image-selbst-bauen)
 9. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
   1. [Texpad](#texpad)
-10. [Lizenz](#lizenz)
+10. [Ich habe eine Frage oder ein Problem]() 
+12. [Ich möchte mithelfen, diese Vorlage zu verbessern]()
+13. [Disclaimer](#disclaimer)
+11. [Lizenz](#lizenz)
 
 ## Für die eigene Arbeit nutzen
 
@@ -177,6 +182,38 @@ Für die Nutzung von Texpad unter Mac OSX müssen einige Einstellungen beachtet 
 Standardmäßig ist _biber_ nicht aktiviert.
 Dies führt dazu, dass das Literaturverzeichnis einfach "verschwindet", wenn man mit Texpad kompliliert.
 Daher musst Du unter _Preferences_ > _Typesettings_ > _Bibliography Compilation_ als Engine _biber_ auswählen.
+
+## Ich habe eine Frage oder ein Problem
+
+Ab und zu kommt es vor, dass es nicht klappt wie beschrieben oder man eine Frage hat.
+Ich würde euch bitten mir nicht persönlich eine E-Mail zu schreiben, sondern lieber ein [neues Issue](https://github.com/andygrunwald/FOM-LaTeX-Template/issues/new) in diesem Projekt eröffnet.
+Dies hat folgende Vorteile:
+
+* andere Personen können zur Lösung beitragen (weil sie diese ggf. auch hatten)
+* wir haben eine Dokumentation an vorhandenen und gelösten Fehlern / Fragen
+* gelöste / wiederkehrende Probleme müssen nicht erneut beantwortet werden
+
+## Ich möchte mithelfen, diese Vorlage zu verbessern
+
+Verbesserungen an dieser Vorlage sind stehts erwünscht und Willkommen.
+Github (diese Plattform) selbst ist dafür gemacht um zusammen an Open Source Projekten zu arbeiten.
+Deswegen werden Änderungen über [Pull Requests](https://github.com/andygrunwald/FOM-LaTeX-Template/pulls) sehr gerne entgegen genommen.
+
+Wenn du das erste mal mit [Git](https://git-scm.com/), [Github](https://github.com/) und Pull Requests arbeitest, können dir folgende zwei Artikel weiter helfen:
+
+* [Using pull requests](https://help.github.com/articles/using-pull-requests/)
+* [Creating a pull request](https://help.github.com/articles/creating-a-pull-request/)
+
+## Disclaimer
+
+Diese Vorlage wurde zu meiner Studiumszeit erstellt und genutzt.
+Die Grundlage waren die damaligen Formatierungsregeln für Abschlussarbeiten der FOM (Standort Düsseldorf).
+I.d.R. sind diese jedoch für jeden Standort gültig.
+Ab und zu weichen einzelne Professoren davon ab.
+
+Mein Studium habe ich inzwischen abgeschlossen und deswegen nutze ich diese Vorlage nicht mehr aktiv.
+Jedoch wird sie von mehreren Personen genutzt, weiter gepflegt und angepasst.
+Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, wenn eine Antowrt nicht innerhalb einer Stunde vorliegt.
 
 ## Lizenz
 
