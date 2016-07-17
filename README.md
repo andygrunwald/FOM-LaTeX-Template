@@ -28,8 +28,8 @@ Verbesserungen sind jederzeit willkommen (siehe TODO LINK).
 	  1. [Image selbst bauen](#image-selbst-bauen)
 9. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
   1. [Texpad](#texpad)
-10. [Ich habe eine Frage oder ein Problem]() 
-12. [Ich möchte mithelfen, diese Vorlage zu verbessern]()
+10. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
+12. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
 13. [Disclaimer](#disclaimer)
 11. [Lizenz](#lizenz)
 
