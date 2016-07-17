@@ -22,14 +22,32 @@ Für die Erstellung des Literaturverzeichnisses wird _[Biblatex](http://www.ctan
 
 ## Kompilieren
 
-Um die LaTeX-Dateien in eine PDF zu kompilieren müsst ihr unter **Windows** einfach die beiliegende ```compile.bat``` ausführen. Benutzer von **Mac OSX** und **Linux** verwenden bitte die ```compile.sh```. Zum Kompilieren muss bereits MikTex komplett installiert sein, damit auch das Literaturverzeichnis kompiliert wird.
+Um die LaTeX-Dateien in eine PDF zu kompilieren müsst ihr unter **Windows** einfach die beiliegende ```compile.bat``` ausführen.
+Benutzer von **Mac OSX** und **Linux** verwenden bitte die ```compile.sh```.
+Zum Kompilieren muss bereits MikTex komplett installiert sein, damit auch das Literaturverzeichnis kompiliert wird.
 
-### Kompilieren mit Docker unter Linux
+### Docker unter Linux / Mac / Windows
 
-Mit der Datei ```compile-docker.sh``` kann das Dokument ohne die Installation der LaTeX-Pakete durchgeführt werden. Die benötigten Pakete befinden sich in dem Docker-Image texlive (https://registry.hub.docker.com/u/koep/texlive/). Kompiliert wird das Dokument direkt in einem isolierten Container.
+Voraussetzung ist eine installierte [Docker engine](https://docs.docker.com/engine/installation/).
 
-Voraussetzung ist eine aktuelle Docker Version (https://docs.docker.com/installation/).
-Getestet unter Fedora 21 (Kernel 3.19.1).
+Mit dem Befehl
+
+```
+docker run -it -v `pwd`:/data andygrunwald/fom-latex-template
+```
+
+kann das Dokument ohne die Installation der LaTeX-Pakete in das PDF-Format kompiliert werden.
+Die benötigten Pakete befinden sich in dem Docker-Image, welches auf Docker Hub X zur Verfügung steht.
+Es wird automatisch heruntergeladen.
+Kompiliert wird das Dokument direkt in einem isolierten Container.
+
+#### Image selbst bauen
+
+Wenn du das Docker Image selbst bauen möchtest, kannst du es mit dem nachfolgenden Befehl tun:
+
+```
+docker build -t andygrunwald/fom-latex-template .
+```
 
 ## Fußnoten
 
