@@ -1,7 +1,7 @@
 # Dockerfile for https://github.com/andygrunwald/FOM-LaTeX-Template
 #
 # Example usage:
-#   docker run -it -v `pwd`:/data andygrunwald/fom-latex-template
+#   docker run -it --rm -v `pwd`:/data andygrunwald/fom-latex-template
 #
 
 FROM ubuntu:14.04

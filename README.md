@@ -152,7 +152,7 @@ Voraussetzung ist eine installierte [Docker engine](https://docs.docker.com/engi
 Mit dem Befehl
 
 ```
-docker run -it -v `pwd`:/data andygrunwald/fom-latex-template
+docker run -it --rm -v `pwd`:/data andygrunwald/fom-latex-template
 ```
 
 kann das Dokument ohne die Installation der LaTeX-Pakete in das PDF-Format kompiliert werden.
