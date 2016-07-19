@@ -149,14 +149,13 @@ In diesem Container sind alle Vorraussetzungen mit der richtigen Software und de
 
 Voraussetzung ist eine installierte [Docker engine](https://docs.docker.com/engine/installation/).
 
-Bitte wechselt in eurem Terminal in den Ordner des Projektes, dort wo sich die *.tex-Datei sowie die [compile.sh](./compile.sh) befindet.
-Danach kann mit dem Befehl
+Um die **PDF ohne die Installation der LaTeX-Pakete zu kompilieren muss folgender Befehl in eurem Projekt-Ordner** ( da wo die compile.sh bzw compile.bat liegt) ausgeführt werden:
 
 ```
 docker run -it --rm -v `pwd`:/data andygrunwald/fom-latex-template
 ```
+Den Befehl lasst ihr einfach über eure CommandoZeilte laufen ( in Windows cmd.exe, beim Mac ist es das Terminal ). Zum Projektordner könnt ihr kommen, indem ihr über den cd Befehl dorthin navigiert oder im Windows-Explorer in diesen Ordner wechselt und dann bei gedrückter Shift-Taste die rechte Maus-Taste klickt. Dort müsst ihr dann im Menü den Eintrag : "Öffne Kommandozeile hier" auswählen.
 
-das TeX-Dokument ohne die Installation der LaTeX-Pakete in das PDF-Format kompiliert werden.
 Die benötigten Pakete befinden sich in dem Docker-Image, welches auf [Docker Hub unter andygrunwald/fom-latex-template](https://hub.docker.com/r/andygrunwald/fom-latex-template/) zur Verfügung steht.
 Es wird bei der Ausführung automatisch heruntergeladen.
 
