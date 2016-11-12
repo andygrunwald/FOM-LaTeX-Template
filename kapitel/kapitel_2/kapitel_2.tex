@@ -2,7 +2,38 @@
 \section{Analyse}
 
 \subsection{Ist-Analyse}
+Es gibt eine Vielzahl von verschiedenen Prozessmodellen die dazu beitragen, eine strukturierte und
+steuerbare Softwareentwicklung durchzuführen. Je nachdem welches Prozessmodell verwendet wird,
+sollte man das entsprechende Testen dem Vorgehensmodell zuordnen. Aus diesem Grund soll hier
+als erstes der bisherige Entwicklungsprozess der \nomenclature{ERP}{Enterprise-Resource-Planing} Shopware ERP-Schnittstelle Etos des vorherigen Agentur-Dienstleisters vorgestellt werden. Diese Schnittstelle greift auf die "Import- und Exportschnittstelle Internetshop" der Warenwirtschaft Apollon zu. 
 
-\subsection{SWOT Analyse für Testautomatisierung}
+Diese Schnittstelle bittet für den Import in das ERP-System, dass \nomenclature{ECSV}{Encapsulated Comma Separated Value}ECSV-Format an. Zum Export Richtung Shopsystem wird ein \nomenclature{CSV}{Comma Separated Value}CSV-Format angeboten. Beide Austauschformate nutzen als Zeichenkodierung das \nomenclature{ASCII}{American Standard Code for Information Interchange}ASCII Format.
+
+Auf Basis dieser Spezifikationen hat die vorherige Agentur eine Import- und Export Schnittstelle für Shopware entwickelt. Dies beinhaltete das Einspielen der vorhandenen Artikel inkl. Lagerbestände, Preise und Kategorien. Des Weiteren ermöglicht dies eine Übermittlung der Kunden und Bestellungen zum Warenwirtschaftssystem. Der Dienstleister ist hierbei nach einem klassischen Wasserfallmodel ohne Testautomatisierung vorgegangen. 
+
+Hierbei ist der Dienstleister in 5 verschiedenen Phasen vorgegangen. In dem ersten Abschnitt, der Anforderungsanalyse und -spezifikation, wurden vom Projektleiter die Erwartungen und notwendigen Eigenschaften einer Schnittstelle vom Kunden aufgenommen, verarbeitet und in ein Pflichtenheft niedergeschrieben.
+
+In der anschließenden Phase, Systemdesign und -spezifikation, wurde von den Softwareentwicklern die zu erstellende Softwarearchitektur konzipiert und niedergeschrieben. Dabei tauschten sich die Entwickler oft mit dem Projektleiter aus um zu überprüfen, dass alle Punkte aus dem Pflichtenheft berücksichtigt sind. Parallel dazu tauschte sich der Projektleiter mit dem Kunden aus um auf mögliche Änderungswünsche zu reagieren.
+
+Im Anschluss dieses Abschnittest wurde die Programmierung von den Softwareentwicklern durchgeführt. Erste manuelle Tests der Schnittstelle fanden hier bereits statt. Als Resultat dieser Phase entstand die eigentliche Software für den Kunden. 
+
+Darauf folgend wurde die Software in einer Testumgebung eingespielt und in Betrieb genommen. Hierbei fanden dann die manuellen Integrations- und Systemtest statt. Dies bedeutet das der Kunde in dem ERP-System verschiedene Artikel verändert hat, und diese Änderungen den Entwicklern mitteilte. Diese wiederum prüften, ob die Schnittstelle die gewünschten Veränderungen auch umgesetzt hat. Sobald bei dieser Testsituation ein Fehler aufgetreten ist, sind die Entwickler wieder in die vorherige Phase zurück gekehrt und haben diesen Fehler Analysiert, behoben und getestet. Anschließend haben die Entwickler die angepasste Version wieder in die Testumgebung eingespielt und die Phase erneut angestoßen.
+
+Erst nach Vollendung der Integrations- und Systemtests, hat die Schnittstelle eine Freigabe vom Kunden für das Live-System erhalten. Das Einspielen der neuen Softwareversion ins Produktiv-System übernahmen die Softwareentwickler. Darauf hin führte der Kunde und die Softwareentwickler weitere System- und Integrationstests durch.
+
+Dieser beschriebene Entwicklungsprozess 
+
+\subsection{Schwachstellen-Analyse}
+
 
 \subsection{Soll-Konzept}
+
+\subsection{SWOT Analyse für Testautomatisierung}
+\subsubsection{Durchführung}
+Anhand der vorliegenden Ist-Analyse wurde für eine detailliertere Entscheidungsgrundlage eine SWOT-Analyse durchgeführt.
+Zuerst wurden die Stärken und Schwächen der Testautmatisierung analysiert und festgelegt. Anschließend wurden die Chancen und die Risiken der Region erhoben. 
+\subsubsection{Stärken}
+\subsubsection{Schwächen}
+\subsubsection{Chancen}
+\subsubsection{Gefahren}
+
