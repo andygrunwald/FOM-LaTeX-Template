@@ -2,38 +2,132 @@
 \section{Analyse}
 
 \subsection{Ist-Analyse}
-Es gibt eine Vielzahl von verschiedenen Prozessmodellen die dazu beitragen, eine strukturierte und
-steuerbare Softwareentwicklung durchzuführen. Je nachdem welches Prozessmodell verwendet wird,
-sollte man das entsprechende Testen dem Vorgehensmodell zuordnen. Aus diesem Grund soll hier
-als erstes der bisherige Entwicklungsprozess der \nomenclature{ERP}{Enterprise-Resource-Planing} Shopware ERP-Schnittstelle Etos des vorherigen Agentur-Dienstleisters vorgestellt werden. Diese Schnittstelle greift auf die "Import- und Exportschnittstelle Internetshop" der Warenwirtschaft Apollon zu. 
+Es gibt eine Vielzahl von verschiedenen Prozessmodellen die dazu beitragen, eine strukturierte und steuerbare Softwareentwicklung durchzuführen. Je nachdem welches Prozessmodell verwendet wird,
+sollte man die entsprechenden Testprozesse dem Vorgehensmodell zuordnen. Aus diesem Grund soll hier als erstes der bisherige Entwicklungsprozess der \nomenclature{ERP}{Enterprise-Resource-Planing} Shopware ERP-Schnittstelle Etos des vorherigen Agentur-Dienstleisters vorgestellt werden. Diese Schnittstelle greift auf die "Import- und Exportschnittstelle Internetshop" der Warenwirtschaft Apollon zu. 
 
-Diese Schnittstelle bittet für den Import in das ERP-System, dass \nomenclature{ECSV}{Encapsulated Comma Separated Value}ECSV-Format an. Zum Export Richtung Shopsystem wird ein \nomenclature{CSV}{Comma Separated Value}CSV-Format angeboten. Beide Austauschformate nutzen als Zeichenkodierung das \nomenclature{ASCII}{American Standard Code for Information Interchange}ASCII Format.
+Diese Schnittstelle bittet für den Import in das ERP-System, dass \nomenclature{ECSV}{Encapsulated Comma Separated Value}ECSV-Format an. Zum Export Richtung Shopsystem wird ein \nomenclature{CSV}{Comma Separated Value}CSV-Format offeriert. Beide Austauschformate nutzen als Zeichenkodierung das \nomenclature{ASCII}{American Standard Code for Information Interchange}ASCII Format.
 
-Auf Basis dieser Spezifikationen hat die vorherige Agentur eine Import- und Export Schnittstelle für Shopware entwickelt. Dies beinhaltete das Einspielen der vorhandenen Artikel inkl. Lagerbestände, Preise und Kategorien. Des Weiteren ermöglicht dies eine Übermittlung der Kunden und Bestellungen zum Warenwirtschaftssystem. Der Dienstleister ist hierbei nach einem klassischen Wasserfallmodel ohne Testautomatisierung vorgegangen. 
+Auf Basis dieser Spezifikationen hat die vorherige Agentur eine Import- und Export Schnittstelle für das Shopsystem Shopware in der Version 5.0 entwickelt. Dies beinhaltete das Einspielen der vorhandenen Artikel inkl. Lagerbestände, Preise und Kategorien. Des Weiteren ermöglicht dies eine Übermittlung der Kunden und Bestellungen zum Warenwirtschaftssystem. Der Dienstleister ist hierbei nach einem klassischen Wasserfallmodel ohne Testautomatisierung vorgegangen. 
 
-Hierbei ist der Dienstleister in 5 verschiedenen Phasen vorgegangen. In dem ersten Abschnitt, der Anforderungsanalyse und -spezifikation, wurden vom Projektleiter die Erwartungen und notwendigen Eigenschaften einer Schnittstelle vom Kunden aufgenommen, verarbeitet und in ein Pflichtenheft niedergeschrieben.
+Dabei ist die umsetzende Firma in 5 verschiedenen Phasen vorgegangen. In dem ersten Abschnitt, der Anforderungsanalyse und -spezifikation, wurden vom Projektleiter die Erwartungen und notwendigen Eigenschaften einer Schnittstelle vom Kunden aufgenommen, verarbeitet und in ein Pflichtenheft niedergeschrieben.
 
 In der anschließenden Phase, Systemdesign und -spezifikation, wurde von den Softwareentwicklern die zu erstellende Softwarearchitektur konzipiert und niedergeschrieben. Dabei tauschten sich die Entwickler oft mit dem Projektleiter aus um zu überprüfen, dass alle Punkte aus dem Pflichtenheft berücksichtigt sind. Parallel dazu tauschte sich der Projektleiter mit dem Kunden aus um auf mögliche Änderungswünsche zu reagieren.
 
-Im Anschluss dieses Abschnittest wurde die Programmierung von den Softwareentwicklern durchgeführt. Erste manuelle Tests der Schnittstelle fanden hier bereits statt. Als Resultat dieser Phase entstand die eigentliche Software für den Kunden. 
+Im Anschluss dieses Abschnittest wurde die Programmierung von den Softwareentwicklern durchgeführt. Die umgesetzten Module wurden auf Basis des Quellcodes überprüft, sogenannte Reviews. Erste manuelle Tests der Schnittstelle fanden hier bereits statt. Als Resultat dieser Phase entstand die eigentliche Software für den Kunden. 
 
 Darauf folgend wurde die Software in einer Testumgebung eingespielt und in Betrieb genommen. Hierbei fanden dann die manuellen Integrations- und Systemtest statt. Dies bedeutet das der Kunde in dem ERP-System verschiedene Artikel verändert hat, und diese Änderungen den Entwicklern mitteilte. Diese wiederum prüften, ob die Schnittstelle die gewünschten Veränderungen auch umgesetzt hat. Sobald bei dieser Testsituation ein Fehler aufgetreten ist, sind die Entwickler wieder in die vorherige Phase zurück gekehrt und haben diesen Fehler Analysiert, behoben und getestet. Anschließend haben die Entwickler die angepasste Version wieder in die Testumgebung eingespielt und die Phase erneut angestoßen.
 
 Erst nach Vollendung der Integrations- und Systemtests, hat die Schnittstelle eine Freigabe vom Kunden für das Live-System erhalten. Das Einspielen der neuen Softwareversion ins Produktiv-System übernahmen die Softwareentwickler. Darauf hin führte der Kunde und die Softwareentwickler weitere System- und Integrationstests durch.
 
-Dieser beschriebene Entwicklungsprozess 
+Diese Prozesse werden bei jeglichen Veränderungen des Warenwirtschafts- oder Shopsystems erneut angestoßen. 
 
 \subsection{Schwachstellen-Analyse}
+\subsubsection{Allgemein}
+Wir haben einen kurzen Entwicklungszyklus dem ein Planungszyklus voran geht. Nach der Entwicklung folgt eine zwei stufige Testphase. Dies sollte eigentlich ausreichend sein um eine annähernd fehlerfreie Software entwickeln zu können, oder? Bevor man diese Frage beantwortet, zeigen ein paar typische Szenen, was während der manuellen Testphasen im vorherigen Entwicklungsprozess passiert ist.
 
+
+\subsubsection{Schlechte Ressourcennutzung}
+Die meisten Testfälle von der ERP-Schnittstelle wie im Kapital Y!!§!§!§!§!§ geschildert, benötigen mindestens 1 Softwareentwickler und einen Sachbearbeiter auf Seiten des Kunden. Des Weiteren ist manuelles Testen eine sehr aufwendige, monotone und fehlerbehaftete
+Tätigkeit. Zum Beispiel: Um Features von der ERP-Schnittstelle zu testen, muss jemand in der Warenwirtschaft Änderungen vornehmen, diese übermitteln und dann anschließend prüfen ob diese auch korrekt übermittelt sind. Beim testen des Kunden- und Bestellexportes muss der Softwareentwickler einen Kunden anlegen, Artikel in den Warenkorb legen, Rechnungs- und Lieferadresse auswählen und schlussendlich die Bestellung mit einer Zahlungsart abschließen. Anschließend müssen die Importierten Daten in der Warenwirtschaft 	 
+
+\subsubsection{Ineffizient}
+Bevor der Integrationstest starten kann, muss die Testumgebung vom Online-Shop und Warenwirtschaftssystem aktualisiert und mit dem jeweils letzten Stand der Software bestückt werden. Dies erfordert auf Dienstleister, wie auch Kundenseite einen größeren 
+Vorbereitungsaufwand um mit dem eigentlichen testen anfangen zu können. Des Weiteren wird die Vorbereitung durch das Tagesgeschäft des Dienstleisters und Kunden beeinträchtigt. Z.B. kommt ein Notfall-Support für den Dienstleister rein weil der Kunde keine Bestellungen mehr ins ERP-System einspielen kann, oder beim Kunden funktionieren andere Elementare Anwendungen nicht, die vom Ansprechpartner des Kunden gelöst werden müssen. Man spricht in diesem Zusammenhang auch vom sogenannten „Sägeblatt-Effekt”
+
+
+\subsubsection{Sehr fehleranfällig}
+Durch die große Anzahl von einzelnen manuellen Testschritten ist der Prozess sehr anfällig. Es genügt das nur ein einzelner Abschnitt falsch oder nicht vollständig ausgeführt wird, dass der ganze Testprozess fehl schlägt und somit von vorne starten muss. Des Weiteren erfordertet diese Art von Testprozess eine exakte und perfekte Zusammenarbeit zwischen dem Dienstleister und dem Kunden. Es ist ausgeschlossen, dass die beteiligten Personen über einen so langen Zeitraum fehlerfrei arbeiten können.
+
+\subsubsection{Gesunkenes Vertrauen}
+Wegen mangelhafter Testabdeckung und fehlenden Integrationstests tauchten immer wieder nach der Veröffentlichung einer neuen Schnittstellenversion unangenehme Überraschungen auf. Z.B. fanden beim Import in das Shop-System nur noch Artikel ohne Varianten Berücksichtigung. Nach dem darauffolgenden Release und Fix des beschriebenen Problems, ließen sich zwar Artikel mit Varianten importieren, aber Artikel ohne Varianten fehlten gänzlich.
+
+Die Anhaltenden Probleme das z.B. Funktion A defekt ist und die Reparatur dadurch Funktion B beeinträchtigt hat das Vertrauen des Kunden in die ERP-Schnittstelle nachhaltig beeinflusst und jedes Release für den Kunden zu einer Zerreißprobe werden lassen. 
+
+\subsubsection{Review}
+Bei Reviews sollten Kollegen konkrete Feedbacks geben und codierte Stellen aufdecken, die gegen diese Richtlinien verstoßen, so dass keine unnötigen Fehler in den Sourcecode einfließen. Aber der vorherige Dienstleister
+hatte mit starker Entwickler Fluktuation zu kämpfen. 
+
+\subsubsection{Keine Regressionstests}
+
+\subsubsection{Schlussfolgerung}
+Die Fehlerquellen wie menschliches Versagen, Schwankungen und mangelnde Konsistenz lassen keinen Zweifel daran aufkommen, dass manuelle Prozesse nur eine geringe Chance haben, die
+schnellen und reproduzierbaren Ergebnisse zu liefern. Ganz zu schweigen davon, dass bei einer großen Code-Basis das manuelle Testen in aller Regel den für diese Iteration bemessenen Zeitrahmen
+bei weitem sprengt.
+
+Außerdem werden Integrationstests sehr viel seltener ausgeführt als eigentlich empfehlenswert. Somit steigt das Risiko, dass Fehler erst ziemlich auftauchen, enorm.  
+
+\subsection{SWOT-Analyse}
+\subsubsection{Durchführung}
+Anhand der vorliegenden Ist-Analyse wurde für eine detailliertere Entscheidungsgrundlage eine SWOT-Analyse durchgeführt. In dieser Analyse wird die Thematik der Automatisierung von Tests beleuchtet um eine Entscheidungsgrundlage für das zu erstellende Soll-Konzept zu schaffen.
+
+Zuerst wurden die Stärken und Schwächen der Testautmatisierung analysiert und festgelegt. Anschließend wurden die Chancen und Risiken des Prozesses erhoben. 
+\subsubsection{Stärken}
+\begin{itemize}	
+	\item Verlässlichkeit:
+	
+	Einmal erstellte Tests werden bei jeder Änderung wieder durchgeführt und Garantieren das die Software sich so verhält wie es der Test es überprüft. Ist dies nicht der Fall wird der betroffene Entwickler darüber informiert. Dadurch, dass die Tests immer ausgeführt werden, erhält der Entwickler deutlich früher eine Rückmeldung ob seine Veränderung des Quellcodes ggf. Seiteneffekte aufweist.
+	
+	\item Vollständigkeit (Testabdeckung):
+	
+	\item Wiederholbarkeit
+	
+	\item Reproduzierbarkeit
+	
+	\item Reporting
+	
+	\item Auswertung
+
+\end{itemize}
+
+\subsubsection{Schwächen}
+\begin{itemize}	
+	\item Hohe Einstiegshürde
+	
+	Aller Anfang ist schwer. Der initiale Aufwand um Automatisierte Tests, sogenannte Unit-Tests zu schreiben, ist sehr hoch HIER MICH SELBST ZITIEREN :D. Die Aufwände für die Einarbeitung amortisieren sich erst Mittel- und Langfristig.
+	
+	\item Hoher Planungsaufwand
+	
+	\item Aufdecken unerwarteter Fehler
+	
+	\item 
+	
+\end{itemize}
+\subsubsection{Chancen}
+\begin{itemize}	
+	\item gesteigertes Vertrauen in die Software bei den Kunden
+	
+	\item 
+	
+\end{itemize}
+\subsubsection{Gefahren}
+\begin{itemize}	
+	\item Skepsis der Kunden auf Wirtschaftlichkeit von automatisierten Tests
+	
+	\item 
+	
+\end{itemize}
 
 \subsection{Soll-Konzept}
+\subsubsection{Automatisierter Testprozess}
+Durch die Schwachstellen-Analyse können wir feststellen, dass es vom entscheidender Wichtigkeit
+ist, einen automatisierten Testprozess in dem Entwicklungsprozess von der Etos Schnittstelle einzubinden. Die dadurch eingebrachten Vorteile sind erheblich. Fast alle zuvor erwähnten Probleme können durch Automatisierung einfach gelöst werden. Automatisiertes Testen bringt mehr Flexibilität und Reproduzierbarkeit, ermöglicht Regressionstest in jeder Iteration und erleichtert Testern maßgeblich die Arbeit. Somit ist eine Steigerung der Effizienz und der Qualität in der Softwareentwicklung gewährleistet.
 
-\subsection{SWOT Analyse für Testautomatisierung}
-\subsubsection{Durchführung}
-Anhand der vorliegenden Ist-Analyse wurde für eine detailliertere Entscheidungsgrundlage eine SWOT-Analyse durchgeführt.
-Zuerst wurden die Stärken und Schwächen der Testautmatisierung analysiert und festgelegt. Anschließend wurden die Chancen und die Risiken der Region erhoben. 
-\subsubsection{Stärken}
-\subsubsection{Schwächen}
-\subsubsection{Chancen}
-\subsubsection{Gefahren}
+Basierend auf der im vorherigen Kapitel erstellten Schwachstellen- und SWOT-Analyse ist eine Umsetzungsstrategie entstanden, die nachhaltig die Probleme des Kunden löst.
+
+\subsubsection{Umsetzungsstrategien}
+Die zu erstellenden Testroutinen sollen anhand einer sogenannten Testpyramide (ABBILDUNG HIER EINFÜGEN VERLINKEN) umgesetzt werden. Dabei sollen die Testarten, die im Kapitel \ref{arten-von-tests} beschrieben sind, Anwendung finden. Zielsetzung ist die Verhinderung von automatisierten Test die nach Monaten oder sogar Jahren nach der eigentlichen Programmierung erst Berücksichtigung finden.
+
+Das Fundament der Pyramide bilden die Unit-Tests. Sie sind die Grundlage jeder soliden Vorgehensweise zur Testautmatisierung. Die Ausführung der jeweiligen Tests benötigen in der Regel nur ein paar Millisekunden und verwenden daher extrem wenig Computer-Ressourcen. Durch diese Art von Tests wird gewährleistet, dass einzelne Module Ihre getestete Funktionalität immer beibehält, ansonsten schlägt der Test fehl. 
+
+Dies alleine garantiert noch keine Fehlerfreie Software. Die Komponenten können einzelnen einwandfrei funktionieren aber durch die Kompositionsart der jeweiligen Module nicht die gewünschten Eigenschaften aufweisen. Z.B. können die einzelnen Komponenten einwandfrei funktionieren (Schiebeschloss und Schiebetür). Wenn man diese aber falsch miteinander verbindet, ist es trotz verriegeltem Schloss möglich die Tür zu öffnen. Um so ein Verhalten in der Softwareentwicklung zu verhindern sind die Integrationstests verantwortlich. 
+
+Die Integration-Tests-Ebene der Testautomatisierungspyramide ist dafür verantwortlich, dass das
+Systemverhalten zu prüfen ist, unabhängig von der Benutzeroberfläche. Wenn Testfälle auf dieser
+Ebene erledigt werden können, sollte dies nicht in der Oberfläche der Anwendung durchgeführt
+werden, weil  \nomenclature{GUI}{Graphical user interface}GUI-Test aufwändig zu schreiben, aufwendig durchzuführen und labil sind. 
+
+- Einführung Automatisierter Tests
+- Testpyramide
+- Einführung von Qualitätsüberprüfungstools 
+- bessere Ressourcen Nutzung
 

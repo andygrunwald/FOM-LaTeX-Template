@@ -3,14 +3,94 @@
 Siehe auch Wissenschaftliches Arbeiten~\footcite[Vgl. ][Seite 1]{Balzert.2008}. Damit sollten alle wichtigen Informationen abgedeckt sein ;-)
 
 \subsection{Codequalität}
-Unter dem Begriff Codequalität v
+Codequalität ist ein Teilaspekt der Softwarequalität und somit essentiell für die Softwareentwicklung. Folgende Parameter beschreiben, was die Qualität eines Programmcodes ausmacht:
 
-\subsection{Arten von automatisierten Tests}
-Es gibt verschiedene Arten von automatisierten Tests. Die häufigsten sind Modul-, Integration- und  
+1) Lesbarkeit
+\begin{itemize}
+	\item Der Programmcode ist für einen Entwickler einfach zu lesen und kann diesen ohne großes einarbeiten in der der Dokumentation verstehen
+	
+	\item Die Benennung der Klassen-, Methoden- und Variablen haben ein einheitliches Schema und nutzen Idealerweise einen Standard wie zum Beispiel den PSR-2 Standard.
+	
+	\item 
+		
+\end{itemize}
+
+2) Testbarkeit
+\begin{itemize}	
+	\item Der geschriebene Quellcode sollte so aufgebaut sein, dass dieser automatisiert in kleinen Modulen/Units getestet werden kann sofern nicht schon Test- beziehungsweise Verhaltensgetrieben entwickelt wurde.
+	
+\end{itemize}
+
+3) Variabilität
+\begin{itemize}	
+	\item Der Quellcode muss einfach erweiter- und anpassbar sein um die Möglichkeit für neue Funktionen in der Software nicht zu verwehren.
+	
+\end{itemize}
+
+4) Flexibilität
+\begin{itemize}	
+	\item Abhängigkeiten im eigenen Programmcode-Fundament und den Implementierungen sollten gering gehalten werden.
+	
+	\item Es sollten keine festen Konstanten im Quellcode vorhanden sein, z.B. 19 \% Mehrwertsteuer.
+	
+	\item Statisch programmierte Voraussetzungen über Datenstrukturen, Klassen oder Datengröße machen den Quellcode schwieriger adaptierbar.
+	
+\end{itemize}
+
+5) Performance
+\begin{itemize}	
+	\item Die Verwendung der vorhandenen Systemressourcen durch das entwickelte Programm sollte unnötige Verwendungen der \nomenclature{CPU}{Central Processing Unit}CPU oder dem Hauptspeicher vermeiden.
+	
+\end{itemize}
+
+Da diese Parameter eine große Auswirkung auf die Qualität der entwickelten Software hat, müssen diese während des gesamten Prozesses kontrolliert werden. Idealerweise geschieht dies durch geeignete Tools wie z.B. !"!"!"!"!"!"!"!
+
+Um die bestmögliche Codequalität zu garantieren, existieren verschiedene Ansätze den Softwareentwickler zu unterstützen. Schon bei der Analyse der Anforderungen und dem
+Design für eine Funktion, versuchen verhaltens- und testgetriebene Ansätze den Entwickler entscheidend zu unterstützen.
 
 \subsection{Testgetriebene Entwicklung}
+Wenn eine neue Funktionalität in einem Programm implementiert bzw. eine Funktionalität angepasst und erweitert werden soll, wie stellt man sicher, dass es im Nachhinein
+zu keinerlei Problemen kommt? Die Funktionalität per Hand zu testen ist aus mehreren Gründen nicht vorteilhaft.
+
+Die testgetriebene Entwicklung versucht dieses Problem zu beheben. Um dieses Ziel zu erreichen, wird zu Erst mit einem Test die Funktionalität spezifiziert. Nach der
+Fertigstellung des Tests wird der Programmcode entwickelt. Das führt dazu, dass nun die komplette Funktionalität überprüft werden kann. Wenn unerwünschte Seiteneffekte 
+entstehen, die auf Grund einer Codeänderung an einer anderen Stelle auftreten, können sie nun durch die Tests herausgefunden und dadurch
+behoben werden.
 
 \subsection{Verhaltensgetriebene Entwicklung}
+BDD wurde ursprünglich 2003 von Dan North als Weiterentwicklung von TDD bekannt gemacht. 6
+
+Dan North führte dabei syntaktische Konventionen für Unit-Tests ein. Als „Unit-Tests“ bezeichnet man Überprüfungen ob Komponenten wie gewünscht funktionieren. Er
+entwickelte „JBehave“ als Ersatz für „JUnit“, das alle verwandten Wörter von „Test“ mit dem Wort „Verhalten“ ersetzt hat. „JUnit“ ist ein Framework zum Testen von Java-
+Programmen welches von „JBehave“ durch veränderte Namenskonventionen abgelöst wurde.
+
+Wieso führte Dan North eine Vokabular Umstellung durch? Edward Sapir und Benjamin Whorf bildeten eine Hypothese die aussagt, dass die Sprache, die wir nutzen, unser 
+Denken beeinflusst 7 . Wollen wir unsere Denkweise verändern, hilft es demzufolge nach, die Sprache zu verändern.
+
+Die Testgetriebene Entwicklung führte dazu, dass viele Entwickler den Entwicklungszyklus nicht optimal verwendet haben. Deswegen kam Dan North auf die Idee, durch
+Namenskonventionen das Verhalten in den Mittelpunkt zu rücken. Die Basis von BDD sind flexible Methoden, die darauf abzielen, Teams mit wenig Erfahrung in agiler 
+Softwareentwicklung, den Einstieg zugänglicher und effizienter zu gestalten.
+
+
+\subsection{Arten von automatisierten Tests}\label{arten-von-tests} 
+\subsubsection{Unit-Tests}
+
+\subsubsection{Integrationtests}
+\subsubsection{GUI-Tests}
+\subsubsection{Integrationstests}
+Integrationstest sind Black Box System Tests. Jeder Integrationstest repräsentiert ein zu erwartendes
+Ergebnis von dem System. Integrationstest werden vom Testmanager erstellt, bezogen auf neue
+Features in diesem Release. Eine Feature kann mehrere Integrationstests haben. Ein Feature ist nicht
+als vollständig angesehen bis er seine Integrationstests bestanden hat. 
+
+\subsubsection{Regressionstests}
+In der Entwicklung sollte nach jeder Änderung ein Regressionstest ausgeführt werden. Bei Regressionstest
+müssen Sie darauf achten, dass 1) Sie immer die gleichen Tests ausführen, wenn Sie einen
+bestimmen Code-Abschnitt testen und 2) das betreffende Tests die Akzeptanzkriterien der jeweiligen
+Anforderung abgleicht. Wenn nun später aber Jenkins in den Testprozess integriert würde, könnte
+man sich diese Arbeit sparen. Mit Jenkins würde es dann möglich sein, die Regressionstest regelmäßig
+auszuführen, etwas nach jeder Codeänderung oder einmal pro Nacht (Nightly Build). Falls Probleme auftrenten sollte, würde das Team per Email, HipChat oder ähnlichen Kommunikationswege informiert.
+
 
 
 \subsection{Automatisches Deployment von Software}
