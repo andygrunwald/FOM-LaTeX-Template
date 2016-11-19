@@ -69,13 +69,23 @@ Zuerst wurden die Stärken und Schwächen der Testautmatisierung analysiert und 
 	
 	\item Vollständigkeit (Testabdeckung):
 	
+	Wenn der Quellcode zu 100 \% mit automatischen Tests abgedeckt ist, ermöglicht dies eine Neustrukturierung, sogenanntes Refaktoring, ohne das Funktionen vom Entwickler unbemerkt aus der Software verschwinden oder nicht wie gewohnt weiter funktionieren. Durch eine Vollständige Testabdeckung wird das Vertrauen in die Software beim Endanwender deutlich gesteigert da eine einmal bekannte Funktionalität des Programms sich nicht unbewusst verändert.
+	
 	\item Wiederholbarkeit
+	
+	Durch das automatisiertes Testing können nach jeder Änderung die vorher definierten Tests angestoßen werden. Durch diesen Automatismus sind keine Personal Ressourcen zur Überprüfung der Software notwendig. Zusätzlich sinkt die Fehleranfälligkeit der Tests enorm, da die erstellten Tests - bei jeder Ausführung immer wieder das genau gleiche Testmuster anwenden. Dies ist bei manuellen Tests nicht immer gegeben.
 	
 	\item Reproduzierbarkeit
 	
+	Einmal definierte Testmuster lassen sich immer wieder ausführen (siehe Wiederholbarkeit). Diese Eigenschaft ermöglicht es, dem Programmierer aufgetretene Fehler, zu reproduzieren. Hier ist kein investigativer Rechercheaufwand des Entwicklers beim Tester notwendig, da er durch den definierten Test, den exakten Systemkontext kennt.
+	
 	\item Reporting
 	
+	Eine zusätzliche Stärke der automatisierten Tests ist die Reportingmöglichkeit. Bevor Änderungen in den Hauptzweig der Versionsverwaltung dürfen, können diese durch automatisierten Tests auf Funktion und Qualität überprüft werden. Bei einem negativen Testergebnis ist die Übernahme der Anpassungen nicht möglich un der betroffene Entwickler erhält ein detaillierte Informationen zu den jeweils fehlgeschlagenen Tests.
+	
 	\item Auswertung
+	
+	Durch die ständige Ausführung der Tests können auch Statistiken erstellt werden. Wie hoch ist die Code-Coverage (Abdeckung des Quellcodes durch automatisierte Tests) und welche Qualitätsmetriken haben sich über die Zeit wie verändert. Dies sind für das Projektmanagement objektive Kennzahlen, die dem Kunden interessieren und eine Auskunft über den Status und Qualität der zu entwickelnden Software gibt.
 
 \end{itemize}
 
@@ -87,23 +97,33 @@ Zuerst wurden die Stärken und Schwächen der Testautmatisierung analysiert und 
 	
 	\item Hoher Planungsaufwand
 	
+	Um bei einem initialen neuem Software-Projekt automatisierte Tests zu verwenden ist ein hoher Planungsaufwand notwendig. Wo sollen die Tests ausgeführt werden? Benötigen wir eine Systemlandschaft für die automatisierten Tests? Können wir in diesem Projekt überhaupt alles Testen?
+	
 	\item Aufdecken unerwarteter Fehler
 	
-	\item 
+	Manuelle Tests decken deutlich mehr Fehler als das Automated Testing auf, weil Tester immer auch intuitiv agieren und von den geplanten Wegen durch die Anwendung abweichen können. Dazu kommt: Je erfahrener der Tester, desto besser ist meist auch seine persönliche „Testheuristik“ und damit die Erfolgsquote beim Auffinden von Fehlern.
+	
+	Durch die festgelegten Testszenarien ist kein destruktives Testen, wie es Menschliche Tester können, möglich. Dies bedeutet das Fehler die nicht durch Tests abgedeckt sind, beim Entwickler auch nicht erscheinen. Zum Beisiel wäre ein Warenkorbprozess innerhalb eines Shopsystem der zu 100 \% mit Tests abgedeckt und somit von den Metriken her ideal umgesetzt ist aber Wertlos wenn die Tests immer nur mit 19 \% Mehrwertsteuer durchgeführt werden. Sobald in dem Shop Bücher mit 7 \% zum verkauf stehen, besteht hier ein großes Fehlerpotenzial, dass die Artikel ggf. mit den falschen Mehrwertsteuern berechnet oder Mischwarenkörbe (Artikel mit 7 \% und 19 \% MwSt im Warenkorb) vollständig falsch kalkuliert sind. 
 	
 \end{itemize}
 \subsubsection{Chancen}
 \begin{itemize}	
 	\item gesteigertes Vertrauen in die Software bei den Kunden
 	
-	\item 
+	Durch die Zuverlässigkeit der einzelnen Funktionen innerhalb der Software wird das Vertrauen vom Kunden in ihr gestärkt. Eventuelle Ängste, dass nach jedem Update alles anders funktioniert als vorher, können damit entkräftet werden.
+	
+	\item Bessere Ressourcennutzung
+	Die automatisierten Tests ermöglichen dem Entwicklungsteam die freigewordenen Ressourcen, die vorher bei den manuellen Tests gebunden waren, für die Pflege und Weiterentwicklung der Software zu verwenden. Dies ermöglicht dem Kunden, dass vorhandenen Budget effektiver einzusetzen.
 	
 \end{itemize}
 \subsubsection{Gefahren}
 \begin{itemize}	
-	\item Skepsis der Kunden auf Wirtschaftlichkeit von automatisierten Tests
+	\item Skepsis der Kunden auf Wirtschaftlichkeit
+	Durch den am Anfang spürbaren Mehraufwand für Automatisierte Tests, besteht die Möglichkeit das der Kunde an der Wirtschaftlichkeit dieses Prozesses zweifelt. Der Messbare Erfolg ist erst Mittel- und Langfristig beweisbar.
 	
-	\item 
+	\item Integration Testprozess
+	Eine halbherzige Integration des Automatisierungs-Prozesses von den Software-Entwicklern stellt eine Gefahr da. Ohne Korrektur dessen, kann dem Kunden dann auch Mittel- und Langfristig kein Vorteil der Testautomatisierung bescheinigt werden und er verliert das Vertrauen in die Software und dem beauftragtem Unternehmen.
+	
 	
 \end{itemize}
 
