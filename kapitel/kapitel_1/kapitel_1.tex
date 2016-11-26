@@ -1,52 +1,522 @@
 \newpage
-\section{Theoretische Grundlagen}
+\chapter{Theoretische Grundlagen}
 Siehe auch Wissenschaftliches Arbeiten~\footcite[Vgl. ][Seite 1]{Balzert.2008}. Damit sollten alle wichtigen Informationen abgedeckt sein ;-)
 
-\subsection{Codequalität}
-Codequalität ist ein Teilaspekt der Softwarequalität und somit essentiell für die Softwareentwicklung. Folgende Parameter beschreiben, was die Qualität eines Programmcodes ausmacht:
+\subsection{Softwarequalität}
+\subsubsection{Was ist Softwarequalität?} % Zitat tüv pdf 
+Wichtige Einflussfaktoren für spätere Wartungsaufwände werden bei einem großen Softwaresystem bereits zur Entwicklungszeit festgelegt. Neben einer wartungsfreundlichen und durchdachten Architektur
+bestimmt vor allem die Qualität des Quellcodes darüber, ob ein System leicht verständlich, einfach durchschaubar und damit ohne große Aufwände anpassbar ist. Komplizierte Prozeduren, überlange Module, fehlende
+Kommentierungen oder Verstöße gegen Coding-Standards erschweren dagegen den Durchblick und damit spätere Anpassungen durch das Wartungsteam.
 
-1) Lesbarkeit
+% Vg Softwarequalität in PHP Projekten
+Doch was verstehen wir eigentlich unter der Qualität von Software? Das bei Hewlett-Packard entwickelte FURPS [Grady 1987] ist ein Beispiel für ein Softwarequalitätsmodell, 
+das verschiedene Aspekte von Softwarequalität berücksichtigt. Die Buchstaben des Akronyms stehen für 
 \begin{itemize}
-	\item Der Programmcode ist für einen Entwickler einfach zu lesen und kann diesen ohne großes einarbeiten in der der Dokumentation verstehen
-	
-	\item Die Benennung der Klassen-, Methoden- und Variablen haben ein einheitliches Schema und nutzen Idealerweise einen Standard wie zum Beispiel den PSR-2 Standard.
-	
-	\item 
-		
+	\item Functionality (Funktionalität)
+	\item Usability (Gebrauchstauglichkeit)
+	\item Reliability (Zuverlässigkeit)
+	\item Performance (Effizienz)
+	\item Supportability (Wartbarkeit)
 \end{itemize}
 
-2) Testbarkeit
-\begin{itemize}	
-	\item Der geschriebene Quellcode sollte so aufgebaut sein, dass dieser automatisiert in kleinen Modulen/Units getestet werden kann sofern nicht schon Test- beziehungsweise Verhaltensgetrieben entwickelt wurde.
+In der Einleitung von [Liggesmeyer 2009] beschreibt der Autor, dass Softwarequalität facettenreich ist:
+
+„Jedes Unternehmen, das Software entwickelt, bemüht sich, die beste Qualität auszuliefern. Man kann ein Ziel aber nur dann nachweisbar erreichen, wenn es präzise definiert ist, und das gilt für den Begriff „beste Qualität“ nicht. Softwarequalität ist facettenreich. Viele Eigenschaften einer Software ergeben gemeinsam die Software-Qualität. Nicht alle diese Eigenschaften sind gleichermaßen für den Benutzer und den
+Hersteller einer Software wichtig.“
+
+Die Anwender einer Applikation haben demzufolge eine andere Sicht auf die Qualität als die umsetzenden Softwareentwickler. Wir definieren diese unterschiedlichen Sichtweisen als externe beziehungsweise interne Qualität. Nigel Bevan erläutert diesen Ansatz aus [ISO/IEC 9126-1] in [Bevan 1999]. In den Folgenden zwei Kapiteln findet eine genaue Betrachtung der beiden Sichtweisen statt.
+
+\subsubsection{Interne Qualität}
+Die Bedürfnisse der Entwickler beziehungsweise der Administratoren einer Anwendung machen deren interne Qualität aus. Für Entwickler ist es beispielsweise wichtig, dass der
+Code einfach zu lesen, zu verstehen, anzupassen und zu erweitern ist. Ist dies nicht der Fall, so wird es mit der Zeit immer schwieriger und damit teurer, die kontinuierlich gestellten
+und meist unvorhersehbaren Änderungswünsche des Kunden umzusetzen. Irgendwann führen selbst minimale Änderungen zu unerwarteten Seiteneffekten.
+
+Die interne Qualität von Software ist für die Auftraggeber und Endbenutzer zunächst kaum wahrnehmbar. Für den Endbenutzer muss Software primär die an sie gestellten funktionalen 
+Anforderungen weitestgehend erfüllen, und sie muss leicht zu bedienen sein. Sofern das Produkt bei der Abnahme dann noch „schnell genug“ ist, sind viele Auftraggeber zufrieden.
+
+Mangelnde interne Qualität wird erst auf längere Sicht spürbar. Man stellt nämlich fest, dass es lange dauert, bis scheinbar triviale Fehler behoben sind. Änderungen oder 
+Erweiterungen sind nur mit großem Aufwand zu realisieren. Oftmals bitten die Entwickler früher oder später um Spielräume, um den Code zu refaktorieren, also „aufzuräumen“. Oftmals
+wird eine solche Refaktorierung des Codes allerdings nicht (regelmäßig) durchgeführt, weil Auftraggeber oder Management den Entwicklern nicht die notwendigen Spielräume einräumen.
+
+Eine Refaktorierung ist eine Änderung an der internen Struktur einer Software ohne ihr beobachtbares Verhalten zu ändern. [Fowler 2000]
+
+Automatisierte Entwicklertests auf Modulebene (englisch: Unit Tests), wie wir sie im nächsten Kapitel diskutieren werden, ermöglichen die unmittelbare Überprüfung, 
+ob durch eine Änderung neue Fehler eingeführt wurden. Ohne sie ist die Refaktorierung von Code nur unter hohen Risiken möglich.
+
+Ein Ziel der Qualitätssicherung, oder genauer genommen des Qualitätsmanagements, muss daher sein, für alle am Projekt beteiligten Parteien die Kosten und den Nutzen von
+interner Qualität transparent zu machen. Gelingt es, die Kosten zu quantifizieren, die durch schlechte interne Qualität langfristig entstehen, kann man davon ausgehend im
+Rückschluss die Kostenersparnis aufzeigen, die Code von hoher interner Qualität ermöglichen würde. Das ist eine wichtige Voraussetzung dafür, das Management beziehungsweise
+den Auftraggeber dazu zu bewegen, ein offizielles Budget für Code-Refaktorierung genehmigen.
+
+
+\subsubsection{Externe Qualität}
+Der Kunde beziehungsweise der Benutzer einer Anwendung interessiert sich für diejenigen Qualitätsaspekte, die für ihn greifbar sind. Diese machen die sogenannte externe Qualität
+der Anwendung aus und umfassen unter anderem: % Vergleich Qualität in PHP Projekten
+\begin{itemize}
+	\item \textbf{Funktionalität} bezeichnet die Fähigkeit der Anwendung, die an sie gestellten Aufgaben den Anforderungen entsprechend zu erfüllen.
+	
+	\item \textbf{Gebrauchstauglichkeit} meint, dass ein Nutzer eine Anwendung effizient, effektiv und zufriedenstellend nutzen kann. Hierzu gehört auch die Barrierefreiheit.
+
+	\item \textbf{Reaktionsfreudigkeit} bedeutet, dass die Antwortzeiten einer Anwendung auch unter Last die Benutzer zufrieden stellen. 
+
+	\item \textbf{Sicherheit}, gerade auch die gefühlte Sicherheit der Benutzer, ist ein weiterer wichtiger Faktor für den Erfolg einer Anwendung.
+
+	\item \textbf{Verfügbarkeit} und \textbf{Zuverlässigkeit} sind im Umfeld von Web-Plattformen mit hohem Nutzeraufkommen wichtige Themen. Die Anwendung muss auch unter großer Last funktionstüchtig sein und selbst in ungewöhnlichen Situationen sinnvoll funktionieren.
+\end{itemize}
+
+Den Aspekten der externen Qualität ist gemeinsam, dass sie durch End-to-End-Tests, also Tests, die eine gesamte Anwendung testen, überprüft werden können.
+
+So können beispielsweise die Anforderungen, die der Kunde an sein Produkt stellt, in sogenannten Akzeptanztests aufgeschrieben werden. Diese Akzeptanztests verbessern zum
+einen die Kommunikation zwischen dem Kunden und dem Entwickler der Software, zum anderen lässt sich mit ihnen automatisch verifizieren, ob die Anwendung die an sie gestellten funktionalen Anforderungen erfüllt.
+
+Für Verbesserungen in Bezug auf die Reaktionsfreudigkeit ist unter anderem das Messen der Antwortzeit relevant. Man benötigt Werkzeuge und Techniken, mit denen man diejenigen 
+Optimierungen finden kann, die bei minimalem Aufwand und minimalen Kosten den größten Nutzen versprechen. Sowohl Administratoren als auch Entwickler sind beim Capacity Planning 
+dafür verantwortlich, diejenigen Teile der Anwendung zu identifizieren, die zukünftig möglicherweise zu Botlenecks (Flaschenhälsen) werden können, wenn die Anwendung geändert wird 
+oder das Nutzeraufkommen wächst. Diese Informationen sind unverzichtbar, um die Qualität einer Anwendung in Bezug auf Verfügbarkeit und Zuverlässigkeit dauerhaft zu sichern.
+
+
+\subsubsection{Technische Schulden}
+Auf Ward Cunningham geht der Begriff der „technischen Schulden“ (englisch: Technical Debt) [Cunningham 1992] zurück:
+„Although immature code may work fine and be completely acceptable to the custo-
+mer, excess quantities will make a program unmasterable, leading to extreme specia-
+lization of programmers and finally an inflexible product. Shipping first time code is
+like going into debt. A little debt speeds development so long as it is paid back prompt-
+ly with a rewrite. Objects make the cost of this transaction tolerable. The danger occurs
+when the debt is not repaid. Every minute spent on not-quite-right code counts as in-
+terest on that debt. Entire engineering organizations can be brought to a stand-still
+under the debt load of an unconsolidated implementation, object-oriented or other-
+wise.“
+
+Cunningham vergleicht schlechten Code mit einem Darlehen, für das Zinsen fällig werden.
+Es kann durchaus sinnvoll oder gar notwendig sein, ein Darlehen aufzunehmen, wenn da-
+durch das Produkt schneller vermarktungsfähig ist. Wird aber das Darlehen nicht getilgt,
+indem die Codebasis refaktoriert und damit die interne Qualität erhöht wird, dann ent-
+stehen langfristig erhebliche Kosten für die Zinszahlungen. Häufen sich die Schulden erst
+einmal an, dann nehmen einem die Zinszahlungen mehr und mehr den Spielraum, bis
+man schließlich Konkurs anmelden muss. Bezogen auf die Software-Entwicklung bedeu-
+tet dies, dass man eine Anwendung als unwartbar bezeichnet. Die Kosten für jede noch so
+kleine Änderung sind so hoch geworden, dass es nicht mehr wirtschaftlich ist, den Code
+weiter zu pflegen.
+Mangelnde interne Qualität von Software wird oft besonders dann zu einem Problem,
+wenn die Entwicklung einer Anwendung an externe Dienstleister ausgelagert wird, da die
+Qualitätssicherung und insbesondere das Schreiben von Unit-Tests die Kosten im Projekt
+zunächst erhöhen, ohne dass dem ein unmittelbar messbarer Nutzen gegenübersteht. Ist
+dem Auftraggeber primär an niedrigen Kosten und einer kurzen Time-to-Market gelegen,
+hat der Dienstleister kaum Spielräume und daher Motivation, um qualitativ hochwerti-
+gen Code zu liefern. Den Schaden hat der Auftraggeber in Form von längerfristig deutlich
+höheren Wartungskosten.
+Es ist daher für jedes Software-Projekt und insbesondere beim Outsourcing besonders
+wichtig, dass nicht nur die zu erfüllenden Kriterien bezüglich der externen Qualität fest-
+gelegt werden, sondern vom Auftraggeber auch ein sinnvolles Maß an interner Qualität
+gefordert wird. Selbstverständlich muss der Auftraggeber dazu dem Dienstleister im Pro-
+jekt auch einen gewissen finanziellen und zeitlichen Spielraum zugestehen.
+Die Betriebs- und Wartungskosten für Software werden zumeist unterschätzt. Ein mittel-
+großes Software-Projekt dauert vielleicht ein oder zwei Jahre an, die entstandene Anwen-
+dung ist aber Jahrzehnte in Betrieb, zumeist viel länger als ursprünglich gedacht 1 . Der
+größte Kostenblock für langlebige Anwendungen sind meist der Betrieb und die Wartung,
+insbesondere für Anwendungen, die häufig geändert werden müssen. Gerade für Weban-
+wendungen sind häufige Änderungen typisch und letztlich einer der stärksten Motivato-
+ren, diese in dynamischen Sprachen wie PHP umzusetzen.
+Andere Anwendungen, beispielsweise solche für Großrechner im Finanzsektor oder hoch-
+verfügbare Telefonvermittlungen, müssen dagegen nur selten geändert werden. Während
+hier eine Änderung pro Quartal schon hektisch wirkt, sind für viele Webanwendungen
+mehrere Releases pro Monat schon längst die Regel.
+[Jeffries 2010] mahnt uns, nicht an der internen Qualität zu sparen, um die Entwicklung zu
+beschleunigen:
+„If slacking on quality makes us go faster, it is clear evidence that there is room to
+improve our ability to deliver quality rapidly.“
+Es liegt auf der Hand, dass der Wert von interner Qualität mit zunehmender Änderungs-
+häufigkeit von Anwendungen deutlich zunimmt. Die Abbildung 1.1 zeigt, dass die relati-
+ven Kosten für das Beheben eines Fehlers in der Code-Phase zehnmal, in der Operations-
+Phase sogar mehr als hundertmal höher sind als in der Requirements-Phase. Das zeigt, dass 
+es schon rein betriebswirtschaftlich gesehen nicht sinnvoll ist, Kosten in einem Software-
+Projekt dadurch in die Zukunft zu verlagern, dass man notwendige Tätigkeiten aufschiebt.
+
+\subsubsection{Konstruktive Qualitätssicherung}
+Die Capability Maturity Model Integration (CMMI) [Wikipedia 2012o] und die Softwa-
+re Process Improvement and Capability Determination (SPICE) [ISO/IEC 15504] sowie
+[ISO/IEC 12207] fassen den Begriff der Qualitätssicherung enger, als er oft verwendet wird,
+denn das Testen wird nicht eingeschlossen [Foegen 2007]. Die Maßnahmen von CMMI
+und SPICE für die Aufbau- und Ablauforganisation sind jedoch die Voraussetzung für den
+Erfolg von analytischen Maßnahmen wie Test und Review der fertigen Software sowie kon-
+struktiven Maßnahmen der Qualitätssicherung. [Schneider 2007] definiert konstruktive
+Qualitätssicherung als Maßnahmen, die bereits bei der Konstruktion von Software auf die
+Verbesserung ausgewählter Qualitätsaspekte abzielen und nicht erst nachträglich durch
+Prüfung und Korrektur.
+Die Erkenntnis, dass das Vermeiden von Fehlern besser ist als das nachträgliche Finden
+und Beheben von Fehlern, ist nicht neu. Schon in [Dijkstra 1972] können wir lesen:
+„Those who want really reliable software will discover that they must find means of
+avoiding the majority of bugs to start with, and as a result the programming process
+will become cheaper. If you want more effective programmers, you will discover that
+they should not waste their time debugging – they should not introduce bugs to start
+with.“
+
+Ein Ansatz, der das Schreiben von fehlerhafter Software verhindern soll, ist die Test-First-
+Programmierung. Sie gehört zu den technisch geprägten Praktiken, die als Bestandteil moderner 
+Software-Entwicklungsprozesse zur konstruktiven Qualitätssicherung beitragen.
+Der Testcode wird hierbei vor dem getesteten Code, dem sogenannten Produktionscode,
+geschrieben. Die hierauf aufbauende testgetriebene Entwicklung (englisch: Test-Driven
+Development) führt im Idealfall dazu, dass . . .
+\begin{itemize}
+	\item es keinen Produktionscode gibt, der nicht durch einen Test motiviert ist. Dies reduziert das Risiko, Produktionscode zu schreiben, der nicht benötigt wird.
+
+	\item  es keinen Produktionscode gibt, der nicht durch mindestens einen Test abgedeckt (Code-Coverage) ist, und damit Änderungen am Produktionscode nicht zu unbemerkten Seiteneffekten führen können.
+
+	\item testbarer Produktionscode, und damit sauberer Code (siehe nächster Abschnitt), geschrieben wird.
+
+	\item die „Schmerzen“, die bestehender schlechter Code verursacht, verstärkt werden, da dieser nicht oder nur mit unverhältnismäßig hohem Aufwand getestet werden kann. Dies motiviert dazu, bestehenden schlechten Code durch Refaktorierung konsequent zu verbessern.
+\end{itemize}
+
+Studien wie [Janzen 2006] zeigen, dass die testgetriebene Entwicklung zu signifikanten Ver-
+besserungen der Produktivität der Entwickler sowie der Softwarequalität führen kann.
+Der Übergang zwischen konstruktiver Qualitätssicherung und normaler Software-Ent-
+wicklung ist fließend. So wird die Anpassbarkeit der Software beispielsweise durch den
+Einsatz von objektorientierter Programmierung und die Verwendung von Entwurfsmus-
+tern verbessert. Das Schreiben von sauberem Code (siehe nächster Abschnitt) sowie die
+Verwendung von architekturellen Mustern wie Schichtenarchitektur, serviceorientierte Ar-
+chitektur oder Domain-Driven Design führen, sofern sie richtig umgesetzt werden, zu
+deutlichen Verbesserungen in Bezug auf Testbarkeit, Wartbarkeit und Wiederverwendbar-
+keit der einzelnen Komponenten der Software.
+
+\subsection{Clean Code}
+\subsubsection{Was ist Clean Code?}
+Die Frage Was ist clean Code? lässt Robert C. Martin in seinem Buch Clean Code
+[Martin 2008] unter anderem Dave Thomas beantworten:
+
+„Sauberer Code kann von anderen Entwicklern gelesen und verbessert werden. Er ver-
+fügt über Unit- und Acceptance-Tests. Er enthält bedeutungsvolle Namen. Er stellt zur
+Lösung einer Aufgabe nicht mehrere, sondern eine Lösung zur Verfügung. Er enthält
+minimale Abhängigkeiten, die ausdrücklich definiert sind, und stellt ein klares und
+minimales API zur Verfügung.“
+
+Steve Freeman und Nat Pryce führen den Gedanken in [Freeman 2009] mit der Aussage
+fort, dass Code, der einfach zu testen ist, gut sein muss:
+
+„For a class to be easy to unit-test, the class must have explicit dependencies that can
+easily be substituted and clear responsibilities that can easily be invoked and verified.
+In software-engineering terms, that means that the code must be loosely coupled and
+highly cohesive – in other words, well-designed.“
+
+Im Folgenden wollen wir diese Punkte genauer betrachten.
+
+\subsubsection{Explizite und minimale Abhängigkeiten}
+Die Abhängigkeiten einer zu testenden Methode müssen klar und explizit in der API definiert sein. Das bedeutet, dass benötigte Objekte entweder an den Konstruktor der entsprechenden Klasse oder an die Methode selbst übergeben werden müssen (Dependency Injection). Die benötigten Objekte sollen nicht im Rumpf der Methode erzeugt werden, da die Abhängigkeiten sonst nicht gekapselt sind und daher nicht gegen Stub- oder Mock-Objekte ausgetauscht werden können. Je weniger Abhängigkeiten eine Methode hat, desto einfacher gestaltet sich das Schreiben ihrer Tests.
+
+\subsubsection{Klare Verantwortlichkeiten}
+Das Single Responsibility Principle (SRP) [Martin 2002] verlangt, dass eine Klasse nur eine
+fest definierte Aufgabe zu erfüllen hat und lediglich über Methoden verfügen soll, die direkt
+zur Erfüllung dieser Aufgabe beitragen. Es sollte nie mehr als einen Grund geben, eine Klasse zu ändern.
+
+Ist die Verantwortlichkeit einer Klasse klar definiert und lassen sich ihre Methoden einfach
+aufrufen und über ihre Rückgabewerte verifizieren, so ist das Schreiben der entsprechen-
+den Unit-Tests einfach.
+
+\subsubsection{Keine Duplikation}
+Eine Klasse, die versucht, zu viel zu tun, und keine klare Verantwortlichkeit hat, ist eine
+hervorragende Brutstätte für duplizierten Code, Chaos und Tod [Fowler 2000]. Duplizierter
+Code erschwert die Wartung der Software, da die Konsistenz zwischen den einzelnen Duplikaten gewährleistet sein muss und ein Fehler, der in dupliziertem Code gefunden wird,
+nicht nur an einer einzigen Stelle behoben werden kann.
+
+\subsubsection{Kurze Methoden mit wenigen Ausführungszweigen}
+Eine Methode ist umso schwerer zu verstehen, je länger sie ist. Eine kurze Methode lässt
+sich nicht nur einfacher verstehen und wiederverwenden, sondern ist auch einfacher zu
+testen. Je weniger Ausführungspfade eine Methode hat, desto weniger Tests werden benötigt.
+
+\subsection{Software-Metriken}
+Für das Messen der internen Qualität gibt es verschiedene Software-Metriken. Sie sind eine
+Grundlage für das Quantifizieren der Kosten, die durch schlechte interne Qualität langfristig entstehen.
+
+Testbarkeit ist ein wichtiges Kriterium für die Wartbarkeit im Softwarequalitätsmodell von
+[ISO/IEC 9126-1]. [Bruntink 2004] und [Khan 2009] sind Beispiele für Ansätze zur Quantifizierung von Testbarkeit basierend auf objektorientierten Software-Metriken. Einen Überblick über objektorientierte Software-Metriken gibt beispielsweise [Lanza 2006].
+
+Man darf jedoch niemals vergessen, dass Metriken lediglich Indikatoren für Qualitätsprobleme sind. Metriken sollten immer als Hinweise auf bestimmte Stellen im Code verstanden werden,
+die man sich als Mensch ansehen sollte, um jeweils selbst zu beurteilen, ob und im welchem Maße der Code tatsächlich problematisch ist.
+
+Im Folgenden betrachten wir einige Software-Metriken, die für die Testbarkeit besonders relevant sind.
+
+\begin{itemize}
+	\item \textbf{Zyklomatische Komplexität und NPath-Komplexität}
+	Die zyklomatische Komplexität (englisch: Cyclomatic Complexity) ist die Anzahl der möglichen Entscheidungspfade 
+	innerhalb eines Programms beziehungsweise innerhalb einer Programmeinheit, normalerweise einer Methode oder Klasse [McCabe 1976]. 
+	Sie wird durch Zählen der Kontrollstrukturen und booleschen Operatoren innerhalb der Programmeinheit 
+	berechnet und sagt etwas über die strukturelle Schwierigkeit einer Programmeinheit aus. McCabe geht davon aus, 
+	dass die einfache Abfolge von sequenziellen Befehlen einfacher zu verstehen ist als eine Verzweigung im Programmfluss.
+
+	Eine hohe zyklomatische Komplexität ist ein Indikator dafür, dass eine Programmeinheit
+	anfällig für Fehler und schwer zu testen ist. Je mehr Ausführungspfade eine Programmeinheit hat, 
+	desto mehr Tests werden benötigt. Die NPath-Komplexität [Nejmeh 1988] zählt die azyklischen Ausführungspfade. 
+	Um die Anzahl der Ausführungspfade endlich zu halten und redundante Informationen auszuschließen, berücksichtigt die NPath-Komplexität
+	nicht jeden möglichen Schleifendurchlauf.
+	
+	\item \textbf{Change Risk Anti-Patterns (CRAP) Index}
+	Der Change Risk Anti-Patterns (CRAP) Index, ursprünglich als Change Risk Analysis and Predictions Index bekannt, 
+	sagt nicht direkt etwas über die Testbarkeit aus. Er soll an dieser Stelle aber nicht unerwähnt bleiben, da er sich 
+	neben der Cyclomatic Complexity auch aus der durch die Tests erreichten Code-Coverage berechnet.
+	
+	Code, der nicht zu komplex ist und über eine ausreichende Testabdeckung verfügt, weist
+	einen niedrigen CRAP-Wert auf. Das Risiko, dass Änderungen an diesem Code zu unerwarteten 
+	Seiteneffekten führen, ist geringer als bei Code, der einen hohen CRAP-Wert aufweist.
+	Letzteres ist für komplexen Code mit wenigen oder sogar gar keinen Tests der Fall.
+	
+	Der CRAP-Wert kann entweder durch das Schreiben von Tests oder durch eine geeignete Refaktorierung 
+	gesenkt werden. Beispielsweise helfen die Refaktorierungen Methode extrahieren und Bedingten Ausdruck 
+	durch Polymorphismus ersetzen dabei, eine Methode zu verkürzen und die Anzahl der möglichen 
+	Entscheidungspfade – und damit die zyklomatische Komplexität – zu verringern.
+	
+	\item \textbf{Kohäsion und Kopplung}
+	
+	Ein System mit starker Kohäsion besteht aus Komponenten, die nur für genau eine spezifizierte Aufgabe 
+	zuständig sind. Eine lose Kopplung ist dann erreicht, wenn Klassen voneinander weitgehend unabhängig 
+	sind und nur durch wohldefinierte Schnittstellen miteinander kommunizieren [Yourdon 1979].
+	
+	Das Gesetz von Demeter [Lieberherr 1989] verlangt, dass eine Methode eines Objekts nur Methoden desselben 
+	Objekts sowie von an die Methode per Parameter übergebenen und 	in der Methode erzeugten Objekten aufrufen darf. 
+	Die Einhaltung dieses Gesetzes führt zu loser Kopplung. Für die Testbarkeit ist es wichtig, auf das Erzeugen von Objekten im
+	Rumpf einer Methode zu verzichten, um so alle ihre Abhängigkeiten gegen Stub- oder
+	Mock-Objekte austauschen zu können. [Guo 2011] belegt empirisch, dass Verstöße gegen
+	das Gesetz von Demeter Indikatoren für die erhöhte Fehleranfälligkeit einer Software sind.
 	
 \end{itemize}
 
-3) Variabilität
-\begin{itemize}	
-	\item Der Quellcode muss einfach erweiter- und anpassbar sein um die Möglichkeit für neue Funktionen in der Software nicht zu verwehren.
-	
-\end{itemize}
+\subsection{Testen von Software}\label{arten-von-tests} 
+\subsubsection{Einführung}
+In der klassischen, nicht-iterativen Software-Entwicklung sind Programmierung sowie
+Integrations- und Systemtests zwei getrennte Phasen im Projekt, die oft von unterschiedlichen
+Teams durchgeführt werden. Es ist durchaus sinnvoll, wenn die Entwickler nicht
+ihre eigene Arbeit testen. Ein unabhängiger Tester hat eine ganz andere Sichtweise auf
+die zu testende Anwendung, da er die Implementierung nicht kennt. Er kann also nur
+die Bedienoberfläche (oder Schnittstelle) einer Anwendung testen. Dabei bedient er die
+Anwendung ganz anders als ein Entwickler, der beim Test noch den Code vor Augen hat
+und daher intuitiv vorwiegend die Funktionalität überprüft, von der er eigentlich weiß,
+dass sie funktioniert. Ein unabhängiger Tester – bewährt haben sich übrigens auch Tests
+durch Personen, die zum ersten Mal mit der zu testenden Anwendung arbeiten – entwickelt
+im Idealfall ausreichend destruktive Kreativität, um die Arbeit des Entwicklers auf
+eine harte Probe zu stellen und die Anwendung etwa mit wirklich unsinnigen Eingaben,
+abgebrochenen Aktionen oder etwa manipulierten URLs herauszufordern.
 
-4) Flexibilität
-\begin{itemize}	
-	\item Abhängigkeiten im eigenen Programmcode-Fundament und den Implementierungen sollten gering gehalten werden.
-	
-	\item Es sollten keine festen Konstanten im Quellcode vorhanden sein, z.B. 19 \% Mehrwertsteuer.
-	
-	\item Statisch programmierte Voraussetzungen über Datenstrukturen, Klassen oder Datengröße machen den Quellcode schwieriger adaptierbar.
-	
-\end{itemize}
+Tests, die ohne Kenntnis der Implementierung durchgeführt werden, nennt man Black-
+Box-Tests. Tests, die anhand des Quellcodes der zu testenden Anwendung entwickelt wer-
+den, nennt man dagegen White-Box-Tests.
 
-5) Performance
-\begin{itemize}	
-	\item Die Verwendung der vorhandenen Systemressourcen durch das entwickelte Programm sollte unnötige Verwendungen der \nomenclature{CPU}{Central Processing Unit}CPU oder dem Hauptspeicher vermeiden.
-	
-\end{itemize}
+Auf den ersten Blick scheint das Testen von Webanwendungen besonders einfach zu sein.
+Das zu testende Programm erhält einen HTTP-Request, also einen String, vom Browser
+und erzeugt einen HTML-String, der an den Browser zurückgesendet und dort dargestellt
+wird. Natürlich können auch andere Ausgabeformate wie JSON oder XML erzeugt werden,
+aber auch diese sind nur Zeichenketten. Ein Test der Webanwendung muss überprüfen, ob
+das Programm für eine bestimmte Eingabe-Zeichenkette die korrekte erwartete Ausgabe-
+Zeichenkette erzeugt.
 
-Da diese Parameter eine große Auswirkung auf die Qualität der entwickelten Software hat, müssen diese während des gesamten Prozesses kontrolliert werden. Idealerweise geschieht dies durch geeignete Tools wie z.B. !"!"!"!"!"!"!"!
+Während es in der Tat relativ einfach ist, die Korrektheit der Ausgabe für eine Eingabe zu
+prüfen, macht es bereits die unüberschaubar große Anzahl von möglichen Eingaben unmöglich 
+zu überprüfen, ob das Programm für alle möglichen Eingaben eine korrekte Ausgabe erzeugt. 
+Ein Programm erhält (leider) nicht nur sinnvolle Eingaben, deshalb kann man sich nicht
+einfach darauf zurückziehen, nur einige wenige sinnvolle Eingaben zu testen. In einer 
+URL sind 73 verschiedene Zeichen (die alphanumerischen Zeichen in Klein-und Großschrift 
+sowie einige Sonderzeichen) erlaubt, alle weiteren Zeichen müssen URL-kodiert werden. 
+Würde man versuchen, alle URLs bis zu einer Länge von 20 Zeichen aufzuzählen 
+(es gibt mehrere Sextillionen solcher URLs, das ist eine Zahl mit 37 Nullen), und könnte 
+pro Sekunde eine Million URLs aufzählen, dann bräuchte man dafür rund $10^{23}$ Jahre. Das bedeutet 
+in der Praxis, dass man diese Aufgabe niemals fertigstellen wird, da die Sonne in voraussichtlich $10^{9}$
+Jahren zu einer Supernova wird und dabei die Erde vernichtet.
 
-Um die bestmögliche Codequalität zu garantieren, existieren verschiedene Ansätze den Softwareentwickler zu unterstützen. Schon bei der Analyse der Anforderungen und dem
-Design für eine Funktion, versuchen verhaltens- und testgetriebene Ansätze den Entwickler entscheidend zu unterstützen.
+Durch Bildung von Äquivalenzklassen kann man die Anzahl der zu testenden Eingaben
+erheblich reduzieren. Unter einer Äquivalenzklasse versteht man eine Menge von Eingaben,
+für die der Programmablauf identisch ist, auch wenn mit anderen Variablen gerechnet wird. 
+Nehmen wir an, Sie wollen ein Programm testen, das eine gegebene ganze Zahl inkrementiert. 
+Es ist egal, ob dieses Programm eine Inkrement-Operation oder eine Addition verwendet 
+(oder ganz anderes implementiert ist). Wenn wir davon ausgehen, dass PHP korrekt funktioniert, 
+dann reicht es, eine einzige repräsentative Eingabe zu testen. Liefert das Programm für 
+diese Eingabe ein richtiges Ergebnis, dann können wir davon ausgehen, dass es korrekt funktioniert, 
+ohne dass wir es für alle ganzen Zahlen aufgerufen haben.
+
+Besondere Beachtung verdienen Grenzwerte und unzulässige Eingaben. Diese bilden neben
+den „normalen“ Eingaben weitere Äquivalenzklassen, die ebenfalls jeweils einen Test
+erfordern. Was geschieht beispielsweise, wenn wir die höchste darstellbare Integer-Zahl 
+inkrementieren? Und was geschieht, wenn wir versuchen, nichtnumerische Werte, beispielsweise
+eine Zeichenkette, zu inkrementieren?
+
+In der Praxis ist es nicht immer ganz einfach, die Äquivalenzklassen zu identifizieren 
+beziehungsweise mit repräsentativen Eingaben zu testen. Als Faustregel gilt, dass man immer
+zuerst den Erfolgsfall, den sogenannten \textit{Happy Path}, testen sollte. Danach widmet man
+sich Grenzwerten, also beispielsweise dem höchsten zulässigen Wert sowie dem höchsten
+zulässigen Wert plus eins beziehungsweise dem niedrigsten Wert und seinem Vorgänger.
+Nun kann man unsinnige Eingaben testen, etwa NULL -Werte oder falsche Datentypen.
+
+Für Black-Box-Tests ist das Identifizieren von Äquivalenzklassen schwieriger als für White-Box-Tests,
+bei denen man sich an den Fallunterscheidungen beziehungsweise den verschiedenen Ausführungspfaden orientieren kann.
+
+Da HTTP ein zustandsloses Protokoll ist, gibt es per Definition keinerlei Abhängigkeiten
+zwischen zwei aufeinanderfolgenden HTTP-Requests. Das Testen einer auf HTTP basierenden 
+Anwendung scheint also wiederum besonders einfach, da jeder HTTP-Request, also jede Eingabe,
+nur ein einziges Mal getestet werden muss.
+
+Wie wir aber alle wissen, wird die Zustandslosigkeit von HTTP in den meisten Webanwendungen
+durch die Verwendung von Cookies und eine serverseitige Session-Verwaltung durchbrochen. 
+Ohne einen Zustand könnte die Anwendung nicht zwischen einem anonymen und einem angemeldeten
+Benutzer unterscheiden, beziehungsweise man müsste die Zugangsdaten mit jedem HTTP-Request erneut übertragen.
+
+Da eine zustandsbehaftete Anwendung je nach ihrem Zustand unterschiedlich auf Eingaben reagieren kann,
+reicht es noch nicht einmal mehr aus, alle möglichen Eingaben zu testen, obwohl wir schon wissen, 
+dass es davon deutlich mehr gibt, als uns lieb sein kann. Um eine zustandsbehaftete Anwendung
+vollständig zu testen, müssten wir das Programm auch mit allen möglichen Abfolgen von Eingaben testen.
+
+Ein typisches Beispiel für zustandsabhängig variables Verhalten ist etwa der Versuch, auf
+nicht öffentliche Inhalte zuzugreifen. Ein anonymer Besucher wird aufgefordert, sich anzumelden,
+während ein angemeldeter Benutzer die entsprechenden Inhalte zu sehen bekommt, zumindest wenn er
+die dazu nötigen Berechtigungen besitzt. 
+
+Es bedarf wohl keiner weiteren Überschlagsrechnungen, um zu zeigen, dass es unmöglich 
+ist, einen umfassenden Test einer Webanwendung vor dem Weltuntergang zu Ende zu bringen, 
+wenn es uns noch nicht einmal annähernd gelingt, in dieser Zeit alle möglichen
+Eingaben aufzuzählen.
+
+\subsection{Systemtests}
+\subsubsection{Manuelle Tests im Browser}
+Einer der großen Vorteile von PHP-Anwendungen ist, dass man gerade geschriebenen Co-
+de direkt ausführen und das Ergebnis im Browser ansehen kann. Dieses direkte Feedback
+ist vermutlich einer der Hauptgründe, warum viele Entwickler PHP gegenüber einer über-
+setzten Sprache wie Java bevorzugen. Was liegt also näher, als die Anwendung insgesamt
+im Browser zu testen?
+Heutzutage generieren PHP-Anwendungen längst nicht mehr nur statisches HTML. Mittels
+JavaScript kann im Browser der DOM-Baum des HTML nahezu beliebig manipuliert wer-
+den. So können jederzeit Seitenelemente geändert, hinzugefügt oder verborgen werden.
+In Verbindung mit asynchron abgesetzten HTTP-Requests an den Server, auf die als Ant-
+wort meist XML- oder JSON-Datenstrukturen zum Browser zurückgesendet werden, lässt
+sich das ansonsten nötige Neuladen der Seite vermeiden. Dank AJAX erlebt der Benutzer
+heute im Web teilweise einen Bedienkomfort, wie es bis vor einigen Jahren ausschließlich
+klassischen GUI-Anwendungen vorbehalten war.
+Durch den Einsatz von AJAX wird allerdings auch im Browser die Zustandslosigkeit des
+HTTP-Protokolls aufgehoben. Das dargestellte HTML-Dokument wird mehr und mehr zu
+einer eigenen Client-Anwendung, die über AJAX-Anfragen mit dem Server kommuniziert
+und ihren eigenen, technisch gesehen vom Server völlig unabhängigen Zustand hat. Der
+Programmierer sieht sich plötzlich mit zusätzlichen Aufgaben konfrontiert, die zuvor in
+der Webprogrammierung keine große Rolle gespielt haben, beispielsweise mit Locking-
+Problemen sowie dem Umgang mit Verklemmungen (englisch: Deadlocks) und Timeouts.
+Es genügt also in den meisten Fällen längst nicht mehr, das durch eine PHP-Anwendung
+generierte HTML-Dokument statisch zu analysieren, um die syntaktische Korrektheit be-
+ziehungsweise, wenn XHTML zum Einsatz kommt, die Wohlgeformtheit zu überprüfen
+und durch mehr oder minder aufwendiges Parsing sicherzustellen, dass die Seite (nur) die
+gewünschten Informationen enthält.
+Da heute ein zunehmender Teil der Funktionalität einer Anwendung in JavaScript imple-
+mentiert wird, muss für einen umfassenden Test auch der JavaScript-Code ausgeführt werden. Man könnte dazu eine JavaScript-Engine wie Rhino, SpiderMonkey oder V8 verwen-
+den. Da man aber früher oder später auch die Darstellung der Seite überprüfen möch-
+te, führt letztlich am Test im Browser kein Weg vorbei. Wie wir wissen, hat jede Browser-
+Familie beziehungsweise jede Browser-Version ihre Eigenheiten nicht nur bezüglich der
+Darstellung, sondern auch bezüglich der Ausführung von JavaScript-Code. Obwohl sich
+die Situation in den letzten Jahren deutlich gebessert hat, können die kleinen Browser-
+Unterschiede den Entwicklern einer Webanwendung das Leben ganz schön schwer ma-
+chen.
+Verhält sich eine Anwendung im Browser-Test nicht wie erwartet, ist es oft nur schwer mög-
+lich, die tatsächliche Fehlerquelle zu lokalisieren. Ist das Problem auch in anderen Brow-
+sern vorhanden? Ändert sich das Verhalten eventuell mit anderen Sicherheitseinstellun-
+gen? Ist die Ursache des Fehlers ungültiges HTML oder ein Fehler im JavaScript- oder PHP-
+Code? Spielt etwa die Datenbank eine Rolle?
+Es ist ein generelles Problem von Systemtests, an denen naturgemäß viele Komponenten
+beteiligt sind, dass man die Ursache von Fehlern nur schwer einkreisen kann. Ein fehlge-
+schlagener Test, egal ob manuell oder automatisiert durchgeführt, zeigt zwar, dass die ge-
+testete Software nicht wie erwartet funktioniert, gibt aber keine Auskunft darüber, wo der
+Fehler liegen könnte.
+Im letzten Abschnitt wurde bereits ausgeführt, dass es unmöglich ist, eine Anwendung
+auch nur annähernd mit allen möglichen Eingaben zu testen. Selbst wenn wir uns darauf
+beschränken, alle Geschäftsvorfälle oder Geschäftsregeln mit jeweils einer repräsentativen
+Eingabe zu testen, erreichen wir schnell eine nicht mehr beherrschbare Komplexität. In ei-
+nem sozialen Netzwerk muss beispielsweise jeder Freund den neuesten Blog-Eintrag eines
+Benutzers kommentieren dürfen. Kommt Moderation ins Spiel, dann darf ein Kommentar
+zunächst für niemanden sichtbar sein (außer vielleicht für den Moderator und den Au-
+tor des Kommentares), muss aber nach der Freischaltung sichtbar werden. Darf der Autor
+des Kommentares diesen nun löschen oder ändern? Muss eine Änderung erneut moderiert
+werden?
+Um Geschäftsregeln wie diese zu testen, müsste man sich abwechselnd mit mindestens
+zwei verschiedenen Benutzerkonten an der Anwendung anmelden. Selbst wenn man sich
+diese Mühe macht, steht man spätestens vor dem nächsten Release der Anwendung vor
+der Frage, ob man nun alle Tests wiederholen möchte oder einfach riskiert, dass die An-
+wendung aufgrund von unerwünschten Nebeneffekten einer Änderung nicht mehr wie er-
+wartet funktioniert.
+Allein das Erstellen eines Testplanes, der beschreibt, welche Geschäftsvorfälle beziehungs-
+weise Geschäftsregeln zu testen sind, welche Aktionen dazu notwendig und welche Ergeb-
+nisse zu erwarten sind, ist eine langwierige Arbeit. Auf der anderen Seite dient ein Test-
+plan auch dazu, die funktionalen Anforderungen an die Anwendung zu dokumentieren.
+Der Testplan ist damit die Basis für Akzeptanztests, mit denen der Kunde prüft, ob die Soft-
+ware die an sie gestellten Anforderungen erfüllt.
+
+\subsubsection{Automatisierte Tests}
+Da das manuelle Testen einer Anwendung zeitintensiv und nervenaufreibend ist, bietet es
+sich an, Tests so weit wie möglich zu automatisieren. Durch Automation wird nicht nur die2.2 Systemtests
+Ausführungsgeschwindigkeit erhöht, sondern auch Flüchtigkeitsfehler werden vermieden.
+Abgesehen vom Stromverbrauch entstehen keine Mehrkosten, wenn man die Tests wieder-
+holt ausführt. Testautomation ist damit eine wichtige Voraussetzung, um Anwendungen
+mit verschiedenen Betriebssystemen, Datenbanken, PHP-Versionen und -Konfigurationen
+testen zu können.
+Ein erster Ansatz, Tests im Browser zu automatisieren, sind die sogenannten „Capture and
+Replay“-Werkzeuge. Im einfachsten Fall zeichnen diese die Mausbewegungen und Einga-
+ben auf und können diese später wiedergeben. Da gerade Webanwendungen mit verschie-
+denen Fenstergrößen und Bildschirmauflösungen betrieben werden, sollte die Aufzeich-
+nung nicht auf Bildschirmpositionen abstellen, sondern besser die im Browser ausgelösten
+Ereignisse auf DOM- beziehungsweise JavaScript-Ebene aufzeichnen.
+Die freie Software Selenium ist ein Werkzeug, das in Form einer Firefox-Erweiterung die
+Aufzeichnung und Ausführung von Browser-Tests ermöglicht. Ein in Java geschriebener
+Proxy-Server ermöglicht im Zusammenspiel mit PHPUnit auch die Fernsteuerung eines
+Browsers aus einem PHPUnit-Test. Somit können Browser-Tests auch im Rahmen von kon-
+tinuierlicher Integration ausgeführt werden.
+In den Selenium-Tests kann man mit Zusicherungen auf den DOM-Baum sicherstellen,
+dass die gerade dargestellte HTML-Seite bestimmten Prüfkriterien genügt. Da der Test di-
+rekt im Browser ausgeführt wird, wird der JavaScript-Code in der Seite ausgeführt, somit
+lassen sich auch AJAX-Anwendungen mit Selenium testen.
+In den Zusicherungen kann unter anderem das Vorhandensein oder der Inhalt beliebiger
+HTML-Elemente geprüft werden. Der Zugriff auf die einzelnen Elemente beziehungsweise
+DOM-Knoten erfolgt entweder über HTML-IDs, CSS-Selektoren, mittels JavaScript-Code
+oder mit einem XPath-Ausdruck. Da die Fernsteuerung des Browsers in JavaScript, das in
+die zu testende Seite injiziert wird, realisiert ist, gibt es beim Testen allerdings einige Ein-
+schränkungen, die auf Sicherheitsbeschränkungen zurückzuführen sind. Es ist beispiels-
+weise nicht möglich, einen Datei-Upload zu testen, da dazu das im Browser ausgeführte
+JavaScript auf das Dateisystem des Rechners zugreifen müsste, um die hochzuladende Da-
+tei auszuwählen. Man möchte aus naheliegenden Gründen normalerweise nicht, dass der
+JavaScript-Code einer Website Zugriff auf das lokale Dateisystem hat. In manchen Brow-
+sern lassen sich Einschränkungen in speziellen Betriebsmodi umgehen. Firefox etwa kann
+man in den Chrome-Modus schalten, in dem deutlich weniger Sicherheitsbeschränkungen
+für JavaScript-Code gelten.
+Systemtests, die eine Anwendung durch die Benutzeroberfläche testen, sind wie alle indi-
+rekten Tests eher fragil. Eine scheinbar harmlose Änderung am Layout der Benutzerober-
+fläche, etwa weil die Werbung eines wichtigen Kunden prominent platziert werden muss,
+kann schon dafür sorgen, dass Zusicherungen fehlschlagen, obwohl eigentlich nur eine
+kosmetische Änderung an der Anwendung vorgenommen wurde. Es bedarf einiger Vor-
+sicht und einer umsichtigen Planung sowohl der Seitenstruktur als auch der Zusicherun-
+gen, um vor zu häufig zerbrechenden Tests einigermaßen geschützt zu sein. Das Kapitel 17
+enthält zahlreiche wertvolle Praxiserfahrungen zum Einsatz von Selenium. Fragile Tests
+sind auch ein Thema von Kapitel 4.
+In den meisten Fällen werden Sie Systemtests nicht gegen ein Live-System laufen lassen,
+schließlich wären die Benutzer vermutlich wenig begeistert darüber, wenn ihre Daten wie
+von Geisterhand geändert würden. Für manche Anwendungen ist es allerdings schwieriger,
+als man denkt, ein Testsystem aufzusetzen, etwa weil das Produktivsystem so komplex oder
+2122
+2 Testen von Software
+leistungsfähig und damit teuer ist, dass man es sich nicht leisten kann oder will, ein nahe-
+zu identisches Testsystem vorzuhalten. Oftmals ist die Produktivdatenbank schlichtweg zu
+groß für das Testsystem, oder es gibt juristische Gründe, die es verbieten, beim Testen echte
+Benutzerdaten zu verwenden, beispielsweise, weil Kreditkartendaten im Spiel sind.
+
+
+\subsubsection{Unit-Tests}
+
+\subsubsection{Mutation-Tests}
+
+\subsubsection{Integrationstests}
+Integrationstest sind Black Box System Tests. Jeder Integrationstest repräsentiert ein zu erwartendes
+Ergebnis von dem System. Integrationstest werden vom Testmanager erstellt, bezogen auf neue
+Features in diesem Release. Eine Feature kann mehrere Integrationstests haben. Ein Feature ist nicht
+als vollständig angesehen bis er seine Integrationstests bestanden hat. 
+
+\subsubsection{GUI-Tests}
+Unter GUI
+
+\subsubsection{Regressionstests}
+In der Entwicklung sollte nach jeder Änderung ein Regressionstest ausgeführt werden. Bei Regressionstest
+müssen Sie darauf achten, dass 1) Sie immer die gleichen Tests ausführen, wenn Sie einen
+bestimmen Code-Abschnitt testen und 2) das betreffende Tests die Akzeptanzkriterien der jeweiligen
+Anforderung abgleicht. Wenn nun später aber Jenkins in den Testprozess integriert würde, könnte
+man sich diese Arbeit sparen. Mit Jenkins würde es dann möglich sein, die Regressionstest regelmäßig
+auszuführen, etwas nach jeder Codeänderung oder einmal pro Nacht (Nightly Build). Falls Probleme auftrenten sollte, würde das Team per Email, HipChat oder ähnlichen Kommunikationswege informiert.
+
 
 \subsection{Testgetriebene Entwicklung}
 Wenn eine neue Funktionalität in einem Programm implementiert bzw. eine Funktionalität angepasst und erweitert werden soll, wie stellt man sicher, dass es im Nachhinein
@@ -72,25 +542,3 @@ Namenskonventionen das Verhalten in den Mittelpunkt zu rücken. Die Basis von BD
 Softwareentwicklung, den Einstieg zugänglicher und effizienter zu gestalten.
 
 
-\subsection{Arten von automatisierten Tests}\label{arten-von-tests} 
-\subsubsection{Unit-Tests}
-
-\subsubsection{Integrationtests}
-\subsubsection{GUI-Tests}
-\subsubsection{Integrationstests}
-Integrationstest sind Black Box System Tests. Jeder Integrationstest repräsentiert ein zu erwartendes
-Ergebnis von dem System. Integrationstest werden vom Testmanager erstellt, bezogen auf neue
-Features in diesem Release. Eine Feature kann mehrere Integrationstests haben. Ein Feature ist nicht
-als vollständig angesehen bis er seine Integrationstests bestanden hat. 
-
-\subsubsection{Regressionstests}
-In der Entwicklung sollte nach jeder Änderung ein Regressionstest ausgeführt werden. Bei Regressionstest
-müssen Sie darauf achten, dass 1) Sie immer die gleichen Tests ausführen, wenn Sie einen
-bestimmen Code-Abschnitt testen und 2) das betreffende Tests die Akzeptanzkriterien der jeweiligen
-Anforderung abgleicht. Wenn nun später aber Jenkins in den Testprozess integriert würde, könnte
-man sich diese Arbeit sparen. Mit Jenkins würde es dann möglich sein, die Regressionstest regelmäßig
-auszuführen, etwas nach jeder Codeänderung oder einmal pro Nacht (Nightly Build). Falls Probleme auftrenten sollte, würde das Team per Email, HipChat oder ähnlichen Kommunikationswege informiert.
-
-
-
-\subsection{Automatisches Deployment von Software}

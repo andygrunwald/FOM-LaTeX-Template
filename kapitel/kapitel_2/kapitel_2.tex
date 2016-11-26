@@ -116,7 +116,7 @@ Zuerst wurden die Stärken und Schwächen der Testautmatisierung analysiert und 
 	Die automatisierten Tests ermöglichen dem Entwicklungsteam die freigewordenen Ressourcen, die vorher bei den manuellen Tests gebunden waren, für die Pflege und Weiterentwicklung der Software zu verwenden. Dies ermöglicht dem Kunden, dass vorhandenen Budget effektiver einzusetzen.
 	
 \end{itemize}
-\subsubsection{Gefahren}
+	\subsubsection{Gefahren}
 \begin{itemize}	
 	\item Skepsis der Kunden auf Wirtschaftlichkeit
 	Durch den am Anfang spürbaren Mehraufwand für Automatisierte Tests, besteht die Möglichkeit das der Kunde an der Wirtschaftlichkeit dieses Prozesses zweifelt. Der Messbare Erfolg ist erst Mittel- und Langfristig beweisbar.
@@ -124,13 +124,15 @@ Zuerst wurden die Stärken und Schwächen der Testautmatisierung analysiert und 
 	\item Integration Testprozess
 	Eine halbherzige Integration des Automatisierungs-Prozesses von den Software-Entwicklern stellt eine Gefahr da. Ohne Korrektur dessen, kann dem Kunden dann auch Mittel- und Langfristig kein Vorteil der Testautomatisierung bescheinigt werden und er verliert das Vertrauen in die Software und dem beauftragtem Unternehmen.
 	
+	\item Mangelnde Testpflege
+	Wenn die vorhandenen Unit-Tests nicht gewartet werden, verlieren sie sehr schnell an Effektivität. Nur durch eine vollständige Abdeckung des Quellcodes 
+	
 	
 \end{itemize}
 
 \subsection{Soll-Konzept}
 \subsubsection{Automatisierter Testprozess}
-Durch die Schwachstellen-Analyse können wir feststellen, dass es vom entscheidender Wichtigkeit
-ist, einen automatisierten Testprozess in dem Entwicklungsprozess von der Etos Schnittstelle einzubinden. Die dadurch eingebrachten Vorteile sind erheblich. Fast alle zuvor erwähnten Probleme können durch Automatisierung einfach gelöst werden. Automatisiertes Testen bringt mehr Flexibilität und Reproduzierbarkeit, ermöglicht Regressionstest in jeder Iteration und erleichtert Testern maßgeblich die Arbeit. Somit ist eine Steigerung der Effizienz und der Qualität in der Softwareentwicklung gewährleistet.
+Durch die Schwachstellen-Analyse können wir feststellen, dass es vom entscheidender Wichtigkeit ist, einen automatisierten Testprozess in dem Entwicklungsprozess von der Etos Schnittstelle einzubinden. Die dadurch eingebrachten Vorteile sind erheblich. Fast alle zuvor erwähnten Probleme können durch die Automatisierung des Testprozesses einfach gelöst werden. Automatisiertes Testen bringt mehr Flexibilität und Reproduzierbarkeit in den Entwicklungsprozess, ermöglicht Regressionstest in jeder Iteration und erleichtert Testern maßgeblich die Arbeit. Somit ist eine Steigerung der Effizienz und der Qualität in der Softwareentwicklung gewährleistet. Zusätzlich werden Mitarbeiterressourcen ertragreicher eingesetzt
 
 Basierend auf der im vorherigen Kapitel erstellten Schwachstellen- und SWOT-Analyse ist eine Umsetzungsstrategie entstanden, die nachhaltig die Probleme des Kunden löst.
 
@@ -144,10 +146,10 @@ Dies alleine garantiert noch keine Fehlerfreie Software. Die Komponenten können
 Die Integration-Tests-Ebene der Testautomatisierungspyramide ist dafür verantwortlich, dass das
 Systemverhalten zu prüfen ist, unabhängig von der Benutzeroberfläche. Wenn Testfälle auf dieser
 Ebene erledigt werden können, sollte dies nicht in der Oberfläche der Anwendung durchgeführt
-werden, weil  \nomenclature{GUI}{Graphical user interface}GUI-Test aufwändig zu schreiben, aufwendig durchzuführen und labil sind. 
+werden, weil GUI-Test aufwändig zu schreiben, aufwendig durchzuführen und labil sind. 
 
 - Einführung Automatisierter Tests
 - Testpyramide
 - Einführung von Qualitätsüberprüfungstools 
 - bessere Ressourcen Nutzung
-
+- Regressiontests
