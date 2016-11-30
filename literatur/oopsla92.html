@@ -1,0 +1,85 @@
+
+<!-- saved from url=(0031)http://c2.com/doc/oopsla92.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body bgcolor="white" cz-shortcut-listen="true">
+OOPSLA '92 <br>
+Experience Report  <p>
+
+</p><h1>The WyCash Portfolio Management System </h1>
+
+
+<em>Ward Cunningham <br>
+March 26, 1992 </em> <p>
+
+
+
+U.S. pension funds, corporations, and banks invest billions of dollars in the
+"cash" markets.  Cash securities are generally considered those with a
+remaining term to maturity of less than one year, but can include those
+with maturities as long as five years.  Incredibly diverse in nature, cash
+securities are actually negotiated between issuer and buyer, and new
+security types are frequently introduced into the market.  WyCASH+ is a
+portfolio management system which provides basic accounting, record-keeping
+and reporting, as well as analytical computations to assist the manager of
+cash portfolios. </p><p>
+
+For the development of WyCASH+, Wyatt Software chose to employ object
+technology in order to quickly and effectively address the diversity
+present in the market.  Objects help in two ways.  First, many security
+types fit nicely into an inheritance hierarchy which is directly supported
+by our language (Smalltalk) saving us considerable effort in coding.
+Second, changing market demands often require massive revisions which we
+have been able to accomodate because of the modularity intrinsic in a
+totally object-oriented implementation.  Our customers value our
+responsiveness as much as, if not more than, our product's fit to their
+current needs. </p><p>
+
+We developed the product by incremental growth from a working prototype.
+Each member of our small engineering team maintains at least general
+knowledge of all aspects of the roughly four megabytes of source code.  This
+includes some libraries provided by the vendor and others written to our
+specification by third-party contractors.  Mature sections of the program
+have been revised or rewritten many times providing the consolidation that
+is key to understanding and continued incremental development</p><p>
+
+
+
+
+We believe this process leads to the most appropriate product in the
+shortest possible time.  There are pitfalls, however.  Not everyone is
+comfortable with sudden changes in direction, especially programmers.
+Here the best antidote is more complete familiarity with the product and its
+implementation.  Changes will be accepted when they are recognized as
+do-able. </p><p>
+
+Another, more serious pitfall is the failure to consolidate.  Although
+immature code may work fine and be completely acceptable to the
+customer,  excess quantities will make a program unmasterable, leading to
+extreme specialization of programmers and finally an inflexible product.
+Shipping first time code is like going into debt.  A little debt speeds
+development so long as it is paid back promptly with a rewrite.  Objects
+make the cost of this transaction tolerable.  The danger occurs when the
+debt is not repaid.  Every minute spent on not-quite-right code counts as
+interest on that debt.  Entire engineering organizations can be brought to a
+stand-still under the debt load of an unconsolidated implementation, object-
+oriented or otherwise. </p><p>
+
+There is little doubt that Wyatt Software will continue to employ object
+technology.  Thoroughly versed in the leading object-oriented languages, our
+only decision is how best to employ their advantages.  The traditional
+waterfall development cycle has endeavored to avoid programming
+catastrophy by working out a program in detail before programming begins.
+We watch with some interest as the community attempts to apply these
+techniques to objects.  However, using our debt analogy, we recognize this
+amounts to preserving the concept of payment up-front and in-full.  The
+modularity offered by objects and the practice of consolidation make the
+alternative, incremental growth, both feasible and desirable (but not
+always comfortable) in the competitive financial software market.
+
+</p><p><i>Addendum: The author reflects on the Debt Metaphor in this five minute YouTube
+<a href="http://www.youtube.com/WardCunningham#p/a/E95B31B1A940296B/2/pqeJFYwnkjE">video</a>
+recorded in 2009. Comments include a history of the metaphor, its position
+as a defense of refactoring, and, corrections to common misinterpretations.
+June Kim and Lawrence Wang provide this 
+<a href="http://c2.com/cgi/wiki?WardExplainsDebtMetaphor">transcription</a>.</i>
+
+</p></body></html>

@@ -36,7 +36,7 @@ Vorbereitungsaufwand um mit dem eigentlichen testen anfangen zu können. Des Wei
 
 
 \subsubsection{Sehr fehleranfällig}
-Durch die große Anzahl von einzelnen manuellen Testschritten ist der Prozess sehr anfällig. Es genügt das nur ein einzelner Abschnitt falsch oder nicht vollständig ausgeführt wird, dass der ganze Testprozess fehl schlägt und somit von vorne starten muss. Des Weiteren erfordertet diese Art von Testprozess eine exakte und perfekte Zusammenarbeit zwischen dem Dienstleister und dem Kunden. Es ist ausgeschlossen, dass die beteiligten Personen über einen so langen Zeitraum fehlerfrei arbeiten können.
+Durch die große Anzahl von einzelnen manuellen Testschritten ist der Prozess sehr anfällig. Es genügt das nur ein einzelner Abschnitt falsch oder nicht vollständig ausgeführt wird, dass der ganze Testprozess fehl schlägt und dieser somit von vorne starten muss. Des Weiteren erfordertet diese Art von Testprozess eine exakte und perfekte Zusammenarbeit zwischen dem Dienstleister und dem Kunden. Es ist ausgeschlossen, dass die beteiligten Personen über einen so langen Zeitraum fehlerfrei arbeiten können.
 
 \subsubsection{Gesunkenes Vertrauen}
 Wegen mangelhafter Testabdeckung und fehlenden Integrationstests tauchten immer wieder nach der Veröffentlichung einer neuen Schnittstellenversion unangenehme Überraschungen auf. Z.B. fanden beim Import in das Shop-System nur noch Artikel ohne Varianten Berücksichtigung. Nach dem darauffolgenden Release und Fix des beschriebenen Problems, ließen sich zwar Artikel mit Varianten importieren, aber Artikel ohne Varianten fehlten gänzlich.
@@ -44,10 +44,10 @@ Wegen mangelhafter Testabdeckung und fehlenden Integrationstests tauchten immer 
 Die Anhaltenden Probleme das z.B. Funktion A defekt ist und die Reparatur dadurch Funktion B beeinträchtigt hat das Vertrauen des Kunden in die ERP-Schnittstelle nachhaltig beeinflusst und jedes Release für den Kunden zu einer Zerreißprobe werden lassen. 
 
 \subsubsection{Review}
-Bei Reviews sollten Kollegen konkrete Feedbacks geben und codierte Stellen aufdecken, die gegen diese Richtlinien verstoßen, so dass keine unnötigen Fehler in den Sourcecode einfließen. Aber der vorherige Dienstleister
-hatte mit starker Entwickler Fluktuation zu kämpfen. 
+Bei Reviews sollten Kollegen konkrete Rückmeldungen geben und fehlerhafte Stellen im Quellcode aufdecken, die gegen die definierten Richtlinien verstoßen. Dies sollte verhindern, dass unnötigen Fehler in den Quellcode der Software einfließen. Die Umsetzung sogenannten Code-Reviews fand bei den Entwicklern nur halbherzig statt. Die Entwickler empfanden diese als eine Art lästige Pflicht. Zusätzlich hatte der vorherige Dienstleister mit einer starken Entwickler Fluktuation zu kämpfen. 
 
 \subsubsection{Keine Regressionstests}
+Bereits umgesetzte und verwendete Funktionen veränderten plötzlich das Verhalten. Sogenannte Regressionen wurden durch keine Test, weder automatisiert noch manuell, festgehalten. Dies hatte zur Folge, dass jede Änderung an der Software beliebige Seiteneffekte aufweisen konnte. Eine Zuverlässige Entwicklung von neuen Funktionen war nur schwer möglich.
 
 \subsubsection{Schlussfolgerung}
 Die Fehlerquellen wie menschliches Versagen, Schwankungen und mangelnde Konsistenz lassen keinen Zweifel daran aufkommen, dass manuelle Prozesse nur eine geringe Chance haben, die
@@ -134,12 +134,12 @@ Zuerst wurden die Stärken und Schwächen der Testautmatisierung analysiert und 
 \subsubsection{Automatisierter Testprozess}
 Durch die Schwachstellen-Analyse können wir feststellen, dass es vom entscheidender Wichtigkeit ist, einen automatisierten Testprozess in dem Entwicklungsprozess von der Etos Schnittstelle einzubinden. Die dadurch eingebrachten Vorteile sind erheblich. Fast alle zuvor erwähnten Probleme können durch die Automatisierung des Testprozesses einfach gelöst werden. Automatisiertes Testen bringt mehr Flexibilität und Reproduzierbarkeit in den Entwicklungsprozess, ermöglicht Regressionstest in jeder Iteration und erleichtert Testern maßgeblich die Arbeit. Somit ist eine Steigerung der Effizienz und der Qualität in der Softwareentwicklung gewährleistet. Zusätzlich werden Mitarbeiterressourcen ertragreicher eingesetzt
 
-Basierend auf der im vorherigen Kapitel erstellten Schwachstellen- und SWOT-Analyse ist eine Umsetzungsstrategie entstanden, die nachhaltig die Probleme des Kunden löst.
+Basierend auf der im vorherigen Kapitel erstellten Schwachstellen- und SWOT-Analyse ist eine Umsetzungsstrategie entwickelt worden, die nachhaltig die Probleme des Kunden löst.
 
 \subsubsection{Umsetzungsstrategien}
-Die zu erstellenden Testroutinen sollen anhand einer sogenannten Testpyramide (ABBILDUNG HIER EINFÜGEN VERLINKEN) umgesetzt werden. Dabei sollen die Testarten, die im Kapitel \ref{arten-von-tests} beschrieben sind, Anwendung finden. Zielsetzung ist die Verhinderung von automatisierten Test die nach Monaten oder sogar Jahren nach der eigentlichen Programmierung erst Berücksichtigung finden.
+Die Strategie zur Umsetzung der benötigten Testroutinen sollen anhand der geschilderten Testpyramide umgesetzt werden. Dabei finden die Testarten, die im Kapitel \ref{arten-von-tests} beschrieben sind, Anwendung. Zielsetzung ist, dass es mindestens einen Test, egal auf welcher Ebene in der Pyramide, existiert der die entwickelte Erweiterung der Software überprüft. Damit ist eine Gewährleistung über die korrekte Funktionsweise der Software möglich und es treten keine unerwarteten Seiteneffekte auf.
 
-Das Fundament der Pyramide bilden die Unit-Tests. Sie sind die Grundlage jeder soliden Vorgehensweise zur Testautmatisierung. Die Ausführung der jeweiligen Tests benötigen in der Regel nur ein paar Millisekunden und verwenden daher extrem wenig Computer-Ressourcen. Durch diese Art von Tests wird gewährleistet, dass einzelne Module Ihre getestete Funktionalität immer beibehält, ansonsten schlägt der Test fehl. 
+Das Fundament der Pyramide bilden die Unit-Tests. Sie sind die Grundlage jeder soliden Vorgehensweise zur Testautmatisierung. Die Ausführung der jeweiligen Tests benötigen in der Regel nur ein paar Millisekunden und verwenden daher extrem wenig Computer-Ressourcen. Durch diese Art von Tests wird gewährleistet, dass einzelne Module Ihre getestete Funktionalität immer beibehält, ansonsten schlägt der Test fehl. Zusätzlicher Vorteil dieser Testart ist die mögliche parallele Ausführung der Tests, da diese isoliert von den anderen Komponenten überprüfbar sind.
 
 Dies alleine garantiert noch keine Fehlerfreie Software. Die Komponenten können einzelnen einwandfrei funktionieren aber durch die Kompositionsart der jeweiligen Module nicht die gewünschten Eigenschaften aufweisen. Z.B. können die einzelnen Komponenten einwandfrei funktionieren (Schiebeschloss und Schiebetür). Wenn man diese aber falsch miteinander verbindet, ist es trotz verriegeltem Schloss möglich die Tür zu öffnen. Um so ein Verhalten in der Softwareentwicklung zu verhindern sind die Integrationstests verantwortlich. 
 
@@ -148,8 +148,14 @@ Systemverhalten zu prüfen ist, unabhängig von der Benutzeroberfläche. Wenn Te
 Ebene erledigt werden können, sollte dies nicht in der Oberfläche der Anwendung durchgeführt
 werden, weil GUI-Test aufwändig zu schreiben, aufwendig durchzuführen und labil sind. 
 
-- Einführung Automatisierter Tests
-- Testpyramide
-- Einführung von Qualitätsüberprüfungstools 
-- bessere Ressourcen Nutzung
-- Regressiontests
+Durch alle Tests der Testpyramide soll der Quellcode eine möglichst 100 \% Code Coverage erhalten um ungewollte Veränderungen an der Software direkt zu bemerken. 
+
+Zusätzlich zu den automatisierten Softwaretests, soll der entwickelte Quelltext auch an den in Kapitel XX vorgestellten Metriken gemessen werden. Ziel ist es hiermit eine Art Frühwarnsystem zu haben um einen negativen Trend rechtzeitig entgegenwirken zu können.
+
+Trotz aller automatisierten Tests besteht die Möglichkeit, dass es Fehler in die veröffentlichte Software schaffen. Diese Fehler können z.B. aufgrund der Pflege, Erweiterung und Wartung der Software entstehen. Diese Fehler werden dann in Testfällen spezifiziert und mit einem Soll-Ergebnis versehen schriftlich festgehalten. Das Soll- wird mit dem Ist-Ergebnis eines Testfalles automatisch überprüft. Ein direkter Bezug auf die Ergebnisse eines vorherigen Testdurchlaufs findet nicht statt.
+
+Ergänzend zu alle den geschrieben Tests soll ein Mutation Testing Szenario Verwendung finden. Wie in Kapitel XX beschrieben, dient dies zur Überprüfung der erstellten Tests ob diese auch wirklich relevante Funktionen der Software abdecken.
+
+Dieses entwickelte Soll-Konzept geht speziell auf die in der Vergangenheit vorhandenen Probleme ein. Der Kunde beklagte sich über die Unzuverlässigkeit der Schnittstelle und die andauernden Veränderungen der eigentlichen Funktionalität. Diese Missstände, werden hervorragend durch die Stärken der Testautomatisierung wie z.B. Verlässlichkeit, Vollständigkeit und Reporting entkräftet um wieder ein gesteigertes Vertrauen des Kunden in eine neue Schnittstelle zu erhalten. 
+
+Die Verringerung von gegebenenfalls auftretender Skepsis des Kunden über die Wirtschaftlichkeit der Testautomatisierung ist durch die nun freiwerdenden Ressourcen möglich. Zusätzlich werden die Gefahren der halbherzigen Integration und mangelnde Testpflege durch die automatisierte Überprüfung der Quellcode Metriken und der Verifizierung der Test Suite durch Mutation Testing entgegen gewirkt.
