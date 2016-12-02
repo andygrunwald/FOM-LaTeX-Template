@@ -23,7 +23,7 @@ In der Einleitung von Software-Qualität: Testen, Analysieren und Verifizieren v
 
 „Jedes Unternehmen, das Software entwickelt, bemüht sich, die beste Qualität auszuliefern. Man kann ein Ziel aber nur dann nachweisbar erreichen, wenn es präzise definiert ist, und das gilt für den Begriff „beste Qualität“ nicht. Softwarequalität ist facettenreich. Viele Eigenschaften einer Software ergeben gemeinsam die Software-Qualität. Nicht alle diese Eigenschaften sind gleichermaßen für den Benutzer und den Hersteller einer Software wichtig.“ ~\footcite[S 1-3]{Liggesmeyer.2009}
 
-Die Anwender einer Applikation haben demzufolge eine andere Sicht auf die Qualität als die umsetzenden Softwareentwickler. Wir definieren diese unterschiedlichen Sichtweisen als externe beziehungsweise interne Qualität. Nigel Bevan erläutert diesen Ansatz aus [ISO/IEC 9126-1] in [Bevan 1999]. In den Folgenden zwei Kapiteln findet eine genaue Betrachtung der beiden Sichtweisen statt.
+Die Anwender einer Applikation haben demzufolge eine andere Sicht auf die Qualität als die umsetzenden Softwareentwickler. Wir definieren diese unterschiedlichen Sichtweisen als externe beziehungsweise interne Qualität. Nigel Bevan erläutert diesen Ansatz aus [ISO/IEC 9126-1] in [Bevan 1999]. In den Folgenden Abschnitten findet eine genaue Betrachtung der beiden Sichtweisen statt.
 
 \subsubsection{Interne Qualität}
 Die Bedürfnisse der Entwickler beziehungsweise der Administratoren einer Anwendung machen deren interne Qualität aus. Beispielsweise ist für Softwareentwickler wichtig, dass der Code einfach zu lesen, zu verstehen, anzupassen und zu erweitern ist. Ist dies nicht der Fall, so wird es mit der Zeit immer schwieriger, die kontinuierlich gestellten und meist unvorhersehbaren Änderungswünsche des Kunden umzusetzen. Dieser weiß selber am Anfang eines Projektes nicht was die perfekte Lösung ist, da die Problemdomäne in der Regel nicht konkret greifbar für ihn ist. Irgendwann führen selbst minimale Änderungen an der Software zu unerwarteten Seiteneffekten und damit zu hohen Entwicklungskosten.
@@ -78,64 +78,47 @@ when the debt is not repaid. Every minute spent on not-quite-right code counts a
 on that debt. Entire engineering organizations can be brought to a stand-still 
 under the debt load of an unconsolidated implementation, object-oriented or otherwise.“ ~\footcite[]{website:ward:cunningham} % @todo check format
 
-Cunningham vergleicht schlechten Code mit einem Darlehen, für das Zinsen fällig werden.
-Es kann durchaus sinnvoll oder gar notwendig sein, ein Darlehen aufzunehmen, wenn da-
-durch das Produkt schneller vermarktungsfähig ist. Wird aber das Darlehen nicht getilgt,
-indem die Codebasis refaktoriert und damit die interne Qualität erhöht wird, dann ent-
-stehen langfristig erhebliche Kosten für die Zinszahlungen. Häufen sich die Schulden erst
-einmal an, dann nehmen einem die Zinszahlungen mehr und mehr den Spielraum, bis
-man schließlich Konkurs anmelden muss. Bezogen auf die Software-Entwicklung bedeu-
-tet dies, dass man eine Anwendung als unwartbar bezeichnet. Die Kosten für jede noch so
-kleine Änderung sind so hoch geworden, dass es nicht mehr wirtschaftlich ist, den Code
-weiter zu pflegen.
-Mangelnde interne Qualität von Software wird oft besonders dann zu einem Problem,
-wenn die Entwicklung einer Anwendung an externe Dienstleister ausgelagert wird, da die
-Qualitätssicherung und insbesondere das Schreiben von Unit-Tests die Kosten im Projekt
-zunächst erhöhen, ohne dass dem ein unmittelbar messbarer Nutzen gegenübersteht. Ist
-dem Auftraggeber primär an niedrigen Kosten und einer kurzen Time-to-Market gelegen,
-hat der Dienstleister kaum Spielräume und daher Motivation, um qualitativ hochwerti-
-gen Code zu liefern. Den Schaden hat der Auftraggeber in Form von längerfristig deutlich
-höheren Wartungskosten.
+Cunningham vergleicht schlechten Quellcode mit einer Art von Hypothek, für das natürlich auch Zinsen fällig werden. Es kann durchaus sinnvoll oder gar notwendig sein, eine Hypothek aufzunehmen, wenn dadurch
+das Produkt schneller vermarktungsfähig ist. Findet aber keine Tilgung der Hypothek statt, durch die Refaktorierung der Codebasis und somit eine Steigerung der interne Qualität, dann entstehen
+langfristig erhebliche Kosten für die anfallenden Zinszahlungen. Wenn sich mit der Zeit die Schulden anhäufen, dann nehmen die dafür Notwendigen Zinszahlungen einem mehr und mehr den Spielraum, bis
+man schließlich Konkurs anmelden muss. Auf die Software-Entwicklung übertragen bedeutet dies,
+dass man eine Anwendung als unwartbar bezeichnet. Die Kosten für jede noch so kleine Änderung sind so hoch gestiegen, dass es unwirtschaftlich ist, den Code weiter zu warten geschweige weiterzuentwickeln.
+
+Mangelnde interne Qualität von Software wird besonders of dann zu einem Problem, wenn die zu entwickelnde
+Software an externe Agenturen/Dienstleister ausgelagert wird und der Auftraggeber primär an niedrigen Kosten und einer kurzen Time-to-Market gelegen ist. Da die Qualitätssicherung und insbesondere das Schreiben von Unit-Tests die Kosten im Projekt zunächst erhöhen, ohne dass den Kosten einen unmittelbaren und messbaren Nutzen gegenübersteht. Dadurch hat der beauftragte Dienstleister in den meisten Fällen kaum Freiräume, geschweige denn eine Motivation, um qualitativ hochwertigen Quellcode zu produzieren. Mittel- und Langfristig macht sich der Schaden für dem Auftraggeber in Form von deutlich höheren Wartungskosten bemerkbar.
+
 Es ist daher für jedes Software-Projekt und insbesondere beim Outsourcing besonders
-wichtig, dass nicht nur die zu erfüllenden Kriterien bezüglich der externen Qualität fest-
-gelegt werden, sondern vom Auftraggeber auch ein sinnvolles Maß an interner Qualität
-gefordert wird. Selbstverständlich muss der Auftraggeber dazu dem Dienstleister im Pro-
-jekt auch einen gewissen finanziellen und zeitlichen Spielraum zugestehen.
-Die Betriebs- und Wartungskosten für Software werden zumeist unterschätzt. Ein mittel-
-großes Software-Projekt dauert vielleicht ein oder zwei Jahre an, die entstandene Anwen-
-dung ist aber Jahrzehnte in Betrieb, zumeist viel länger als ursprünglich gedacht 1 . Der
-größte Kostenblock für langlebige Anwendungen sind meist der Betrieb und die Wartung,
-insbesondere für Anwendungen, die häufig geändert werden müssen. Gerade für Weban-
-wendungen sind häufige Änderungen typisch und letztlich einer der stärksten Motivato-
-ren, diese in dynamischen Sprachen wie PHP umzusetzen.
-Andere Anwendungen, beispielsweise solche für Großrechner im Finanzsektor oder hoch-
-verfügbare Telefonvermittlungen, müssen dagegen nur selten geändert werden. Während
-hier eine Änderung pro Quartal schon hektisch wirkt, sind für viele Webanwendungen
-mehrere Releases pro Monat schon längst die Regel.
-[Jeffries 2010] mahnt uns, nicht an der internen Qualität zu sparen, um die Entwicklung zu
+wichtig, dass nicht nur die zu erfüllenden Kriterien bezüglich der externen Qualität festgelegt
+werden, sondern vom Auftraggeber auch ein sinnvolles Maß an interner Qualität eingefordert wird. Selbstverständlich muss der Auftraggeber dazu dem Dienstleister im Projekt auch einen gewissen finanziellen und zeitlichen Spielraum zugestehen.
+
+Die Betriebs- und Wartungskosten für Software sind meisten zu niedrig kalkuliert da diese unterschätzt werden. Eine Realisierung eines mittelgroßes Software-Projekt dauert vielleicht ein oder zwei Jahre, die resultierende Anwendung ist aber in der Regel für Jahrzehnte in Betrieb. Jedenfalls meistens deutlich länger als bei der Planung ursprünglich gedacht.
+Der größte Kostenblock für Anwendungen mit langer Nutzungsdauer sind meist der Betrieb und die Wartung. Dies gilt besonders für Anwendungen, die häufigen Änderungen unterliegen. Gerade für Webanwendungen
+sind häufige Anpassungen typisch.
+
+Andere Anwendungen die zum Beispiel für Großrechner im Finanzsektor oder hochverfügbare Telefonvermittlungen ihren Einsatz finden, müssen dagegen nur selten verändert werden. Während hier eine Änderung pro Quartal schon einen kurzen Änderungsintervall darstellt, sind für viele Webanwendungen mehrere Releases pro Monat oder sogar Wöchentlich schon längst die Regel.
+
+[Jeffries 2010] ermahnt uns, nicht an der internen Qualität zu sparen, um die Entwicklung zu
 beschleunigen:
 „If slacking on quality makes us go faster, it is clear evidence that there is room to
 improve our ability to deliver quality rapidly.“
+
 Es liegt auf der Hand, dass der Wert von interner Qualität mit zunehmender Änderungs-
-häufigkeit von Anwendungen deutlich zunimmt. Die Abbildung 1.1 zeigt, dass die relati-
-ven Kosten für das Beheben eines Fehlers in der Code-Phase zehnmal, in der Operations-
-Phase sogar mehr als hundertmal höher sind als in der Requirements-Phase. Das zeigt, dass 
-es schon rein betriebswirtschaftlich gesehen nicht sinnvoll ist, Kosten in einem Software-
-Projekt dadurch in die Zukunft zu verlagern, dass man notwendige Tätigkeiten aufschiebt.
+häufigkeit von Anwendungen deutlich zunimmt. Die \textbf{Abbildung 1.1} zeigt, dass die relativen
+Kosten für das Beheben eines Fehlers in der Code-Phase zehnmal, in der Operations-Phase
+sogar mehr als hundertmal höher sind als in der Requirements-Phase. Das zeigt, dass 
+es schon rein betriebswirtschaftlich gesehen nicht sinnvoll ist, Kosten in einem Software-Projekt
+dadurch in die Zukunft zu verlagern, dass man notwendige Tätigkeiten aufschiebt.
+% Vergleich Software Qualität in PHP Projekten
 
 \subsubsection{Konstruktive Qualitätssicherung}
-Die Capability Maturity Model Integration (CMMI) [Wikipedia 2012o] und die Softwa-
-re Process Improvement and Capability Determination (SPICE) [ISO/IEC 15504] sowie
-[ISO/IEC 12207] fassen den Begriff der Qualitätssicherung enger, als er oft verwendet wird,
-denn das Testen wird nicht eingeschlossen [Foegen 2007]. Die Maßnahmen von CMMI
-und SPICE für die Aufbau- und Ablauforganisation sind jedoch die Voraussetzung für den
-Erfolg von analytischen Maßnahmen wie Test und Review der fertigen Software sowie kon-
-struktiven Maßnahmen der Qualitätssicherung. [Schneider 2007] definiert konstruktive
+Die Capability Maturity Model Integration (CMMI) [Wikipedia 2012o] und die Software Process Improvement and Capability Determination (SPICE) [ISO/IEC 15504] sowie [ISO/IEC 12207] fassen den Begriff der Qualitätssicherung enger, als er oft verwendet wird, denn das Testen wird nicht eingeschlossen [Foegen 2007]. Die Maßnahmen von CMMI und SPICE für die Aufbau- und Ablauforganisation sind jedoch die Voraussetzung für den Erfolg von analytischen Maßnahmen wie Test und Review der fertigen Software sowie konstruktiven Maßnahmen der Qualitätssicherung. [Schneider 2007] definiert konstruktive
 Qualitätssicherung als Maßnahmen, die bereits bei der Konstruktion von Software auf die
 Verbesserung ausgewählter Qualitätsaspekte abzielen und nicht erst nachträglich durch
 Prüfung und Korrektur.
+
 Die Erkenntnis, dass das Vermeiden von Fehlern besser ist als das nachträgliche Finden
 und Beheben von Fehlern, ist nicht neu. Schon in [Dijkstra 1972] können wir lesen:
+
 „Those who want really reliable software will discover that they must find means of
 avoiding the majority of bugs to start with, and as a result the programming process
 will become cheaper. If you want more effective programmers, you will discover that
@@ -590,7 +573,7 @@ Indikator für eine hohe interne Qualität der Software.
 
 \subsubsection{Die Stoftwaretestpyramide}
 
-hinzufügen aus dem buch
+hinzufügen aus dem Buch und beschreiben
 
 
 
@@ -667,6 +650,8 @@ man sich diese Arbeit sparen. Mit Jenkins würde es dann möglich sein, die Regr
 auszuführen, etwas nach jeder Codeänderung oder einmal pro Nacht (Nightly Build). Falls Probleme auftrenten sollte, würde das Team per Email, HipChat oder ähnlichen Kommunikationswege informiert.
 
 \subsubsection{Mutation-Tests}
+
+hier fehlt noch Inhalt
 
 \subsection{Testgetriebene Entwicklung}
 Wenn eine neue Funktionalität in einem Programm implementiert bzw. eine Funktionalität angepasst und erweitert werden soll, wie stellt man sicher, dass es im Nachhinein

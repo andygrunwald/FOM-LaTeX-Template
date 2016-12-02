@@ -156,6 +156,39 @@ Trotz aller automatisierten Tests besteht die Möglichkeit, dass es Fehler in di
 
 Ergänzend zu alle den geschrieben Tests soll ein Mutation Testing Szenario Verwendung finden. Wie in Kapitel XX beschrieben, dient dies zur Überprüfung der erstellten Tests ob diese auch wirklich relevante Funktionen der Software abdecken.
 
+Um all diese Testarten auch automatisch auszuführen, zu validieren und bei erfolgreichen Ausführung aller Test diese zu verteilen, ist in Anlehnung an Simon Wiest folgende Ziele für die Kontinuierliche Integration festgelegt worden.
+
+% Für die Einführung der Kontinuierlichen Integration haben sich 10 Voraussetzungen als Standard etabliert damit dieser Prozess funktionieren kann. \footnote{Vgl. Simon Wiest (2010), S. 13 ff}
+\begin{enumerate}
+	
+	\item \textbf{Gemeinsame Quellcodebasis} \newline
+	Der Quellcode des Projektes wird an einem Ort verwaltet, typischerweise in einem Versionskontrollsystem.
+	
+	\item \textbf{Automatisierter Build} \newline
+	Das Programm muss vollautomatisch aus seinen einzelnen Modulen übersetzt und zusammengebaut werden können.
+	
+	\item \textbf{Selbsttestender Build} \newline
+	Erstellte Programme werden während des Buildprozesses automatisch auf dessen Funktionalität geprüft. Alle Tests, die in Kapitel XXX beschrieben sind, sind in dem Prozess berücksichtigt.
+	
+	\item \textbf{Builds (und Tests) nach jeder Änderung} \newline
+	Nach jeder Änderung (commit) wird das Produkt vollautomatisch neu gebaut und getestet. Durch kleine Änderungsschritte lassen sich eventuell auftretende Fehler schnell beheben.
+	
+	\item \textbf{Schnelle Build Zyklen} \newline
+	Zwischen der Integration eines Entwicklers und der Rückmeldung durch das Kontinuierliche Integrationssystem sollte nicht viel Zeit verstreichen, idealerweise liegt diese Dauer im Minutenbereich.
+	
+	\item \textbf{Tests in gespiegelter Produktionsumgebung} \newline
+	Die Tests sollten in einer möglichst realitätsnahen Umgebung stattfinden.
+	
+	\item \textbf{Einfacher Zugriff auf Build-Ergebnisse} \newline
+	Der letzte Stand einer Entwicklung sollte für alle Produkt- und Projektverantwortlichen einfach zugänglich seien.
+	
+	\item \textbf{Automatisierte Berichte} \newline
+	Die Resultate aus dem Builds müssen so aufbereitet sein, dass ein Entwickler damit direkt arbeiten kann. Es Logdateien mit mehreren hundert oder gar tausenden Einträgen ist nicht das geeignete Format dafür.
+	
+	\item \textbf{Automatisierte Verteilung} \newline
+	Ein Kontinuierliches Integrationssystem sollte nicht nur den Softwareerstellungsprozess automatisieren, sondern auch die Verteilung zu den jeweiligen Anwendern bzw. das Ausbringen auf Test-, Demonstrations- und Produktionsservern. 
+\end{enumerate}
+
 Dieses entwickelte Soll-Konzept geht speziell auf die in der Vergangenheit vorhandenen Probleme ein. Der Kunde beklagte sich über die Unzuverlässigkeit der Schnittstelle und die andauernden Veränderungen der eigentlichen Funktionalität. Diese Missstände, werden hervorragend durch die Stärken der Testautomatisierung wie z.B. Verlässlichkeit, Vollständigkeit und Reporting entkräftet um wieder ein gesteigertes Vertrauen des Kunden in eine neue Schnittstelle zu erhalten. 
 
 Die Verringerung von gegebenenfalls auftretender Skepsis des Kunden über die Wirtschaftlichkeit der Testautomatisierung ist durch die nun freiwerdenden Ressourcen möglich. Zusätzlich werden die Gefahren der halbherzigen Integration und mangelnde Testpflege durch die automatisierte Überprüfung der Quellcode Metriken und der Verifizierung der Test Suite durch Mutation Testing entgegen gewirkt.
