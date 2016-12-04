@@ -1,0 +1,449 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0046)http://martinfowler.com/bliki/TestPyramid.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TestPyramid</title>
+
+<meta content="summary_large_image" name="twitter:card">
+
+<meta content="16665197" name="twitter:site:id">
+
+<meta content="bliki: TestPyramid" property="og:title">
+
+<meta content="http://martinfowler.com/bliki/TestPyramid.html" property="og:url">
+
+<meta content="Write most of your tests at a low level (unit tests) with a few broad-stack tests, eg via UI. UI tests tend to be fragile and slow." property="og:description">
+
+<meta content="http://martinfowler.com/bliki/images/testPyramid/test-pyramid.png" property="og:image">
+
+<meta content="martinfowler.com" property="og:site_name">
+
+<meta content="article" property="og:type">
+
+<meta content="2012-05-01 11:27:00 -0400" property="og:article:modified_time">
+
+<link href="./fowler_2012_files/bliki-entry.css" rel="stylesheet" type="text/css">
+</head>
+
+<body cz-shortcut-listen="true"><div id="banner" style="background-image: url(&quot;/banner.png&quot;); background-repeat: no-repeat">
+ <a href="http://martinfowler.com/">
+    <img class="name-logo" src="./fowler_2012_files/mf-name-white.png">
+<!--[if lte IE 6]>
+<img class = 'ie6-name-logo' src = '/mf-name-white-solid.png'/>
+<![endif]-->
+  </a>
+  
+  <div class="search">
+    <!-- SiteSearch Google -->
+    <form method="GET" action="https://www.google.com/search">
+      <input type="hidden" name="ie" value="UTF-8">
+      <input type="hidden" name="oe" value="UTF-8">
+      <input class="field" type="text" name="q" size="15" maxlength="255" value="">
+      <button class="button" type="submit" name="btnG" value=" " title="Search">
+      <input type="hidden" name="domains" value="martinfowler.com">
+      <input type="hidden" name="sitesearch" value=""> 
+      <input type="hidden" name="sitesearch" value="martinfowler.com">
+    
+  </button></form></div>
+
+<div class="menu-button navmenu-button"><a class="icon-bars" href="http://martinfowler.com/bliki/TestPyramid.html#navmenu-bottom"></a></div>
+
+<div class="main-navigation"><ul>
+  <li><a href="http://martinfowler.com/intro.html">Intro</a></li>
+  <li><a href="http://martinfowler.com/videos.html">Videos</a></li>
+  <li><a href="http://martinfowler.com/design.html">Design</a></li>
+  <li><a href="http://martinfowler.com/agile.html">Agile</a></li>
+  <li><a href="http://refactoring.com/">Refactoring</a></li>
+  <li>
+    <p><a href="http://martinfowler.com/aboutMe.html">About Me</a></p>
+
+    </li><li class="navmenu-button"><p><a href="http://martinfowler.com/bliki/TestPyramid.html#bottom-navmenu">All Sections <span class="icon-bars" title="Menu"></span></a></p></li>
+
+    <li><p>
+      <a href="http://www.thoughtworks.com/" class="tw">ThoughtWorks</a>
+</p></li>
+
+    <li><p>
+  <a href="http://martinfowler.com/feed.atom" title="feed" class="icon-rss">
+  </a>
+ </p></li>
+
+    <li><p>
+  <a href="http://www.twitter.com/martinfowler" title="Twitter stream" class="icon-twitter">
+  </a>
+ </p></li>
+  
+</ul>
+
+</div>
+</div>
+<div class="div" id="top-navmenu">
+<ul class="navmenu">
+<li class="top-line"><a class="link-home" href="http://martinfowler.com/">home</a>  <div class="search">
+    <!-- SiteSearch Google -->
+    <form method="GET" action="https://www.google.com/search">
+      <input type="hidden" name="ie" value="UTF-8">
+      <input type="hidden" name="oe" value="UTF-8">
+      <input class="field" type="text" name="q" size="15" maxlength="255" value="">
+      <button class="button" type="submit" name="btnG" value=" " title="Search">
+      <input type="hidden" name="domains" value="martinfowler.com">
+      <input type="hidden" name="sitesearch" value=""> 
+      <input type="hidden" name="sitesearch" value="martinfowler.com">
+    
+  </button></form></div>
+
+<span class="close" title="close"></span>
+</li>
+
+<li class="group"><span class="group-label">topics</span>
+<ul class="group-contents">
+<li class="item"><a href="http://martinfowler.com/agile.html">agile</a></li>
+
+<li class="item"><a href="http://refactoring.com/">refactoring</a></li>
+
+<li class="item"><a href="http://martinfowler.com/design.html">design</a></li>
+
+<li class="item"><a href="http://martinfowler.com/nosql.html">noSQL</a></li>
+
+<li class="item"><a href="http://martinfowler.com/dsl.html">DSL</a></li>
+
+<li class="item"><a href="http://martinfowler.com/delivery.html">continuous&nbsp;delivery</a></li>
+
+<li class="item"><a href="http://martinfowler.com/microservices">microservices</a></li>
+</ul>
+</li>
+
+<li class="group"><span class="group-label">media</span>
+<ul class="group-contents">
+<li class="item"><a href="http://martinfowler.com/books">books</a></li>
+
+<li class="item"><a href="http://martinfowler.com/videos.html">video</a></li>
+</ul>
+</li>
+
+<li class="group"><span class="group-label">site</span>
+<ul class="group-contents">
+<li class="item"><a href="http://martinfowler.com/intro.html">site&nbsp;introduction</a></li>
+
+<li class="item"><a href="http://martinfowler.com/aboutMe.html">about&nbsp;me</a></li>
+
+<li class="item"><a href="http://martinfowler.com/faq.html">FAQ</a></li>
+
+<li class="item"><a href="http://martinfowler.com/tags">content&nbsp;index</a></li>
+
+<li class="item"><a href="http://martinfowler.com/photos">photos</a></li>
+</ul>
+</li>
+
+<li class="group"><span class="group-label">catalogs</span>
+<ul class="group-contents">
+<li class="item"><a href="http://refactoring.com/catalog">refactoring</a></li>
+
+<li class="item"><a href="http://martinfowler.com/eaaCatalog">P&nbsp;of&nbsp;EAA</a></li>
+
+<li class="item"><a href="http://martinfowler.com/eaaDev">EAA&nbsp;dev</a></li>
+
+<li class="item"><a href="http://martinfowler.com/dslCatalog">DSL</a></li>
+</ul>
+</li>
+
+<li class="group"><span class="group-label">feeds</span>
+<ul class="group-contents">
+<li class="item"><a href="http://www.twitter.com/martinfowler">twitter</a></li>
+
+<li class="item"><a href="http://martinfowler.com/feed.atom">rss</a></li>
+
+<li class="item"><a href="https://www.facebook.com/martinFowlerThoughtWorks">facebook</a></li>
+</ul>
+</li>
+
+<li class="group"><span class="group-label">popular</span>
+<ul class="group-contents">
+<li class="item"><a href="http://martinfowler.com/articles/microservices.html">microservices</a></li>
+
+<li class="item"><a href="http://martinfowler.com/articles/injection.html">dependency&nbsp;injection</a></li>
+</ul>
+</li>
+
+<li class="group"><span class="group-label">ThoughtWorks</span>
+<ul class="group-contents">
+<li class="item"><a href="http://thoughtworks.com/blogs">blogs</a></li>
+
+<li class="item"><a href="http://thoughtworks.com/careers">careers</a></li>
+
+<li class="item"><a href="https://www.thoughtworks.com/products">products</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="content">
+<div id="main">
+<h1><a href="http://martinfowler.com/bliki/TestPyramid.html">TestPyramid</a></h1>
+
+<div class="author-date">
+<p class="author-photo"><a href="http://martinfowler.com/"><img src="./fowler_2012_files/mf.jpg" title="Photo of Martin Fowler"></a></p>
+
+<p class="author"><a href="http://martinfowler.com/" rel="author">Martin Fowler</a></p>
+
+<p class="date">1 May 2012</p>
+</div>
+
+<p class="tags"><a href="http://martinfowler.com/tags/testing.html">testing</a></p>
+
+<p class="tagLabel">tags:</p>
+
+<div class="clear"></div>
+
+<p>The test pyramid is a concept developed by <a href="http://www.mountaingoatsoftware.com/">Mike Cohn</a>, described
+  in his book <a href="https://www.amazon.com/gp/product/0321579364?ie=UTF8&amp;tag=martinfowlerc-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321579364">Succeeding with
+  Agile</a><img src="https://www.assoc-amazon.com/e/ir?t=martinfowlerc-20&amp;l=as2&amp;o=1&amp;a=0321601912" width="1" height="1" border="0" alt="" style="width: 1px !important; height: 1px !important; border: none !important; margin: 0px !important; display: none !important;">. Its essential point is that you should have many more
+  low-level unit tests than high level end-to-end tests running
+  through a GUI.</p>
+
+<div class="figure" style=""><img src="./fowler_2012_files/test-pyramid.png"></div>
+
+<p>For much of my career test automation meant tests that drove an
+  application through its user-interface. Such tools would often
+  provide the facility to record an interaction with the application
+  and then allow you to play back that interaction, checking that the
+  application returned the same results. Such an approach works well
+  initially. It's easy to record tests, and the tests can be recorded
+  by people with no knowledge of programming.</p>
+
+<p>But this kind of approach quickly runs into trouble, becoming an
+  <a href="http://watirmelon.com/2012/01/31/introducing-the-software-testing-ice-cream-cone/">ice-cream cone</a>. Testing
+  through the UI like this is slow, increasing build times. Often it
+  requires installed licences for the test automation software, which
+  means it can only be done on particular machines. Usually these cannot
+  easily be run in a "headless" mode, monitored by scripts to put in a
+  proper deployment pipeline.</p>
+
+<p>Most importantly such tests are very brittle. An enhancement to
+  the system can easily end up breaking lots of such tests, which then
+  have to be re-recorded. You can reduce this problem by abandoning
+  record-playback tools, but that makes the tests harder to write.
+  <a href="http://martinfowler.com/bliki/TestPyramid.html#footnote-record-playback">[1]</a> Even with good practices on
+  writing them, end-to-end tests are more prone to <a href="http://martinfowler.com/articles/nonDeterminism.html">non-determinism problems</a>,
+  which can undermine trust in them. In short, tests that run end-to-end through the UI are:
+  brittle, expensive to write, and time consuming to run. So the
+  pyramid argues that you should do much more automated testing
+  through unit tests than you should through traditional GUI based
+  testing.</p>
+
+<p>The pyramid also argues for an intermediate layer of tests that
+  act through a service layer of an application, what I refer to as
+  <a href="http://martinfowler.com/bliki/SubcutaneousTest.html">SubcutaneousTests</a>. These can provide many of the
+  advantages of end-to-end tests but avoid many of the complexities of
+  dealing with UI frameworks. In web applications this would correspond
+  to testing through an API layer while the top UI part of the pyramid
+  would correspond to tests using something like <a href="http://seleniumhq.org/">Selenium</a> or Sahi..</p>
+
+<p>The test pyramid comes up a lot in Agile testing circles and
+  while its core message is sound, there is much more to say
+  about building a well-balanced test portfolio. In particular a
+  common problem is that teams conflate the concepts of end-to-end
+  tests, UI tests, and customer facing tests. These are all orthogonal
+  characteristics. For example a rich javascript UI should have most
+  of its UI behavior tested with javascript unit tests using something
+  like <a href="http://jasmine.github.io/">Jasmine</a>. A
+  complex set of business rules could have tests captured in a
+  customer-facing form, but run just on the relevant module much as
+  unit tests are.</p>
+
+<p>In particular I always argue that high-level tests are there as a
+  second line of test defense. If you get a failure in a high level
+  test, not just do you have a bug in your functional code, you also
+  have a missing unit test. Thus whenever you fix a failing end-to-end
+  test, you should be adding unit tests too.</p>
+
+<div class="furtherReading">
+<h2>Further Reading</h2>
+
+<p>The <a href="http://googletesting.blogspot.co.uk/2015/04/just-say-no-to-more-end-to-end-tests.html">Google Testing Blog</a> expands on why you shouldn't rely on
+    end-to-end tests.</p>
+
+<p>Adrian Sutton explains LMAX's experience which shows that <a href="https://www.symphonious.net/2015/04/30/making-end-to-end-tests-work/">end-to-end tests can play a large and valuable
+    role</a>.</p>
+</div>
+
+<div class="acknowledgements">
+<h2>Acknowledgements</h2>
+
+<p>Kevin Dishman gave me the idea of adding the cost and speed arrows to the illustration</p>
+</div>
+
+<div class="appendix">
+<div id="Revisions"><hr class="topSection">
+<h2>Revisions</h2>
+
+<p>7 Aug 2016: changed illustration</p>
+</div>
+</div>
+
+<div class="footnote-list">
+<h2>Notes</h2>
+
+<div class="footnote-list-item" id="footnote-record-playback">
+<p><span class="num">1: </span>
+      Record-playback tools are almost always a bad idea for any kind
+      of automation, since they resist changeability and obstruct
+      useful abstractions. They are only worth having as a tool to
+      generate fragments of scripts which you can then edit as a
+      proper programming language, in the manner of <a href="http://www.thoughtworks-studios.com/twist-agile-testing">Twist</a>
+      or <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Save-Keyboard-Macro.html">Emacs</a>.
+    </p>
+</div>
+</div>
+
+<div class="shares">
+<div class="icons"><span class="label">Share:</span><a href="https://twitter.com/intent/tweet?url=http://martinfowler.com/bliki/TestPyramid.html&amp;text=Bliki:%20TestPyramid%20%E2%9E%99" title="Share on Twitter"><img src="./fowler_2012_files/t_mini-a.png"></a><a href="https://facebook.com/sharer.php?u=http://martinfowler.com/bliki/TestPyramid.html" title="Share on Facebook"><img src="./fowler_2012_files/fb-icon-20.png"></a><a href="https://plus.google.com/share?url=http://martinfowler.com/bliki/TestPyramid.html" title="Share on Google Plus"><img src="./fowler_2012_files/gplus-16.png"></a></div>
+
+<div class="comment">if you found this article useful, please share it. I appreciate the feedback and encouragement</div>
+</div>
+
+<div class="clear"></div>
+</div>
+
+<div class="similar-sidebar">
+<h2>Find similar articles at the tag</h2>
+
+<p class="tags"><a href="http://martinfowler.com/tags/testing.html">testing</a></p>
+</div>
+
+<div class="clear"></div>
+</div>
+
+<div class="div" id="bottom-navmenu" style="display: none;">
+<ul class="navmenu">
+<li class="top-line"><a class="link-home" href="http://martinfowler.com/">home</a>  <div class="search">
+    <!-- SiteSearch Google -->
+    <form method="GET" action="https://www.google.com/search">
+      <input type="hidden" name="ie" value="UTF-8">
+      <input type="hidden" name="oe" value="UTF-8">
+      <input class="field" type="text" name="q" size="15" maxlength="255" value="">
+      <button class="button" type="submit" name="btnG" value=" " title="Search">
+      <input type="hidden" name="domains" value="martinfowler.com">
+      <input type="hidden" name="sitesearch" value=""> 
+      <input type="hidden" name="sitesearch" value="martinfowler.com">
+    
+  </button></form></div>
+
+<span class="close" title="close"></span>
+</li>
+
+<li class="group"><span class="group-label">topics</span>
+<ul class="group-contents">
+<li class="item"><a href="http://martinfowler.com/agile.html">agile</a></li>
+
+<li class="item"><a href="http://refactoring.com/">refactoring</a></li>
+
+<li class="item"><a href="http://martinfowler.com/design.html">design</a></li>
+
+<li class="item"><a href="http://martinfowler.com/nosql.html">noSQL</a></li>
+
+<li class="item"><a href="http://martinfowler.com/dsl.html">DSL</a></li>
+
+<li class="item"><a href="http://martinfowler.com/delivery.html">continuous&nbsp;delivery</a></li>
+
+<li class="item"><a href="http://martinfowler.com/microservices">microservices</a></li>
+</ul>
+</li>
+
+<li class="group"><span class="group-label">media</span>
+<ul class="group-contents">
+<li class="item"><a href="http://martinfowler.com/books">books</a></li>
+
+<li class="item"><a href="http://martinfowler.com/videos.html">video</a></li>
+</ul>
+</li>
+
+<li class="group"><span class="group-label">site</span>
+<ul class="group-contents">
+<li class="item"><a href="http://martinfowler.com/intro.html">site&nbsp;introduction</a></li>
+
+<li class="item"><a href="http://martinfowler.com/aboutMe.html">about&nbsp;me</a></li>
+
+<li class="item"><a href="http://martinfowler.com/faq.html">FAQ</a></li>
+
+<li class="item"><a href="http://martinfowler.com/tags">content&nbsp;index</a></li>
+
+<li class="item"><a href="http://martinfowler.com/photos">photos</a></li>
+</ul>
+</li>
+
+<li class="group"><span class="group-label">catalogs</span>
+<ul class="group-contents">
+<li class="item"><a href="http://refactoring.com/catalog">refactoring</a></li>
+
+<li class="item"><a href="http://martinfowler.com/eaaCatalog">P&nbsp;of&nbsp;EAA</a></li>
+
+<li class="item"><a href="http://martinfowler.com/eaaDev">EAA&nbsp;dev</a></li>
+
+<li class="item"><a href="http://martinfowler.com/dslCatalog">DSL</a></li>
+</ul>
+</li>
+
+<li class="group"><span class="group-label">feeds</span>
+<ul class="group-contents">
+<li class="item"><a href="http://www.twitter.com/martinfowler">twitter</a></li>
+
+<li class="item"><a href="http://martinfowler.com/feed.atom">rss</a></li>
+
+<li class="item"><a href="https://www.facebook.com/martinFowlerThoughtWorks">facebook</a></li>
+</ul>
+</li>
+
+<li class="group"><span class="group-label">popular</span>
+<ul class="group-contents">
+<li class="item"><a href="http://martinfowler.com/articles/microservices.html">microservices</a></li>
+
+<li class="item"><a href="http://martinfowler.com/articles/injection.html">dependency&nbsp;injection</a></li>
+</ul>
+</li>
+
+<li class="group"><span class="group-label">ThoughtWorks</span>
+<ul class="group-contents">
+<li class="item"><a href="http://thoughtworks.com/blogs">blogs</a></li>
+
+<li class="item"><a href="http://thoughtworks.com/careers">careers</a></li>
+
+<li class="item"><a href="https://www.thoughtworks.com/products">products</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="footer">
+  <div class="tw-logo">
+    <a href="http://www.thoughtworks.com/">
+      <img src="./fowler_2012_files/TW_smb.jpg">
+    </a>
+  </div>
+  <div class="menu-button">
+    <div class="icon-bars navmenu-button"></div>
+  </div>
+  <div class="copyright">
+    <p>© Martin Fowler | <a href="http://www.thoughtworks.com/privacy-policy">Privacy Policy</a> | <a href="http://martinfowler.com/aboutMe.html#disclosures">Disclosures</a></p>
+  </div>
+</div>
+<script type="text/javascript" async="" src="./fowler_2012_files/ga.js"></script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17005812-1']);
+  _gaq.push(['_setDomainName', 'martinfowler.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script src="./fowler_2012_files/jquery-1.11.3.min.js" type="text/javascript"></script>
+
+<script src="./fowler_2012_files/mfcom.js" type="text/javascript"></script>
+
+
+<script aria-hidden="true" type="application/x-lastpass" id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{(function() { for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; if (typeof(lastpass_f.lpsubmitorig2)=='object'){ continue;}lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i.toString(); } else { d.textContent=i.toString(); } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }})()}catch(e){}</script></body></html>

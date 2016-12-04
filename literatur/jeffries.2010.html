@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://ronjeffries.com/xprog/articles/quality/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="./jeffries.2010_files/css" rel="stylesheet" type="text/css">
+    
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Quality vs Speed? I Don't Think So!</title>
+    <meta name="description" content="This is RonJeffries.com, the combination of new articles, XProgramming, SameElephant,  and perhaps even some new items never before contemplated.  &lt;br/&gt;Copyright © 1998-forever Ronald E Jeffries
+">
+    <link rel="icon" href="http://ronjeffries.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./jeffries.2010_files/main.css">
+    <link rel="canonical" href="http://ronjeffries.com/xprog/articles/quality/">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://ronjeffries.com/feed.xml">
+    <script async="" src="./jeffries.2010_files/analytics.js"></script><script src="./jeffries.2010_files/jquery-1.11.2.min.js"></script>
+</head>
+
+
+  <body cz-shortcut-listen="true">
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="http://ronjeffries.com/">
+      <img width="250px" height="109px" src="./jeffries.2010_files/ronjeffriescrop.svg"><!--<small>.com</small>--></a>
+
+    <nav class="site-nav"> 
+      <a href="http://ronjeffries.com/xprog/articles/quality/#" class="menu-icon"> <!-- hamburger -->
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"></path>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"></path>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"></path>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+            <a class="page-link-top" href="http://ronjeffries.com/about.html">About</a>
+            <a class="page-link-top" href="http://ronjeffries.com/search.html">Search</a>
+            <a class="page-link-top" href="http://ronjeffries.com/categories.html">Site Categories</a>
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+        <div class="wrapper">
+            
+            <div class="post">
+  
+    
+  
+  <header class="post-header">
+    <h1 class="post-title">Quality vs Speed? I Don't Think So!</h1>
+    <p class="post-meta">Apr 29, 2010  • [<a class="header-categories" href="http://ronjeffries.com/categories/xprogramming/">XProgramming</a>]</p>
+  </header>
+
+  <article class="post-content">
+    
+<blockquote>Cut quality to go faster? It could happen. There's more to the story, however.</blockquote>
+<p>Over the past months, some big-name Agile spokesmodels have spoken out in favor of cutting quality to go faster. This gives me concern. One of the most recent of these articles is also one of the best. Please check out <a title="Joshua on Sufficient Design" href="https://elearning.industriallogic.com/gh/submit?Action=PageAction&amp;album=blog2009&amp;path=blog2009/2010/sufficientDesign&amp;devLanguage=Java" target="_blank">Joshua Kerievsky on Sufficient Design.</a></p>
+
+<p>I’m concerned about these articles, because they are describing risky decisions, made by experts, in terms that may too easily be misunderstood.</p>
+<h3>Time to Market is Important</h3>
+<p>Agile is all about early and continuous shipment of working software. So we cannot accept too much delay. We need to go as fast as we reasonably can.</p>
+<h3>We All Trade Off Quality and Time, Every Day</h3>
+<p>No one ships perfection: we’re not that good. What can we really say, with certainty, about reducing quality and its impact on shipping?</p>
+<h3>When Quality is Too Low -- We'll Never Ship</h3>
+<p>When our code quality gets low enough, we put in more defects. With enough defects, we can never ship the product, even if it is just a prototype for testing.</p>
+
+<p>Therefore code quality needs to be above some unknown lower limit, or we’ll not ship on time.</p>
+<h3>When Quality is Too High -- We'll Never Ship</h3>
+<p>If we spend the next few years trying to decide on a variable name, we cannot ship the product for a few years.&nbsp;If we spend the next few weeks trying to generalize some code that works now, we will defer shipping for a few weeks.</p>
+
+<p>Therefore code quality needs to be below some unknown upper limit, or we’ll not ship on time.</p>
+<h3>Stuck in the Middle With You</h3>
+<p>Between the clowns who can’t code on the left of me, and the jokers who can’t stop polishing on the right, I’m stuck here in the middle with you. What can we say about the middle?</p>
+
+<p>I think of the possibilities being like this picture:</p>
+
+<p><a href="./jeffries.2010_files/Quality1.png"><img class="alignnone size-full wp-image-1623" title="Maybe we can go faster if we cut quality ..." src="./jeffries.2010_files/Quality1.png" alt="" width="640" height="480"></a></p>
+
+<p>If we set quality too low, we never ship. If we set quality too high, we never ship.&nbsp;Somewhere in the middle, we feel, there may be an area where we can dial down the quality just a bit, and go faster.</p>
+
+<p>Most everyone accepts that when we work below some quality optimum, we will slow down over the longer term. It’s also clear that sometimes we can slack a bit, and make it up. If we don’t have that extra hour to refactor a few methods, we can ship today, then refactor tomorrow, and ship again. We believe that we’ll wind up in the same high-quality place, just with an extra ship point before the hour of refactoring. That ship point could mean the difference between making an important deadline and letting someone down hard.</p>
+<h3>The Effect of Capability</h3>
+<p>Here’s another version of the picture, this time suggesting that the better we are, the faster we can go with high quality:</p>
+
+<p><a href="./jeffries.2010_files/speed-with-quality.png"><img class="alignnone size-full wp-image-1627" title="With greater capability, we can go faster at high quality!" src="./jeffries.2010_files/speed-with-quality.png" alt="With greater capability, we can go faster at high quality!" width="640" height="480"></a></p>
+
+<p>The green area shows the results if we can code at high quality, but rapidly. If we could do that, we could go faster than we can by coding at lower quality!</p>
+
+<p>Is it possible that if we keep our focus on longer term sustainability, we can still go just as fast in the short term? I believe that it is possible, and that we already have credible evidence that it is possible.</p>
+
+<p>Most of us believe that over the longer term, speed is maximized by operating at a high, but not stupidly high, level of quality. The question is, what is “longer term”?</p>
+<h3>Longer Term May Be Shorter Than You Think</h3>
+<p>When Chet and I are programming, we often make the decision not to clean something up during our arduous two-hour work day. Sometimes–of course quite rarely–we may actually make a design mistake or not notice an opportunity for improvement.</p>
+
+<p>We always notice within a few days that the code seems to be fighting back. The poor design decisions of today always visit us within a few days: quite often we notice it the very next day.</p>
+
+<p>The better we get, the more we practice, the faster we go with quality. For anything short of a couple of days, for us, slacking below our normal level of quality slows us down immediately. <strong>Slacking slows us down immediately!</strong></p>
+
+<p>It comes down to this:</p>
+
+<p>If slacking on quality makes you go faster, it always comes at the cost of longer term quality.</p>
+
+<p>Turning that around, if we were better than we are, we could go faster without cutting quality. We need to improve. Today may not be the day to make that improvement: Today we may really need speed more than we need quality. But the handwriting is on the wall:</p>
+<blockquote><strong>If slacking on quality makes us go faster, it is clear evidence that there is room to improve our ability to deliver quality rapidly. </strong></blockquote>
+
+
+  </article>
+
+</div>
+
+        </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+    <p><a href="https://groups.google.com/forum/#!forum/ronjeffries" target="_blank">For comments on this or any article, please use our Google Groups Forum!</a></p>
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+
+          <li><a href="http://ronjeffries.com/">ronjeffries.com</a></li>
+          <li><a href="mailto:ronjeffries@acm.org">ronjeffries@acm.org</a></li>
+          <li>
+            <p class="rss-subscribe">subscribe <a href="http://ronjeffries.com/feed.xml">via RSS</a></p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/RonJeffries">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"></path>
+                </svg>
+              </span>
+
+              <span class="username">RonJeffries</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/RonJeffries">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"></path>
+                </svg>
+              </span>
+
+              <span class="username">RonJeffries</span>
+            </a>
+          </li>
+          
+          <li><a href="https://groups.google.com/forum/#!forum/ronjeffries" target="_blank">Comments Forum!</a></li>
+
+
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">This is RonJeffries.com, the combination of new articles, XProgramming, SameElephant,  and perhaps even some new items never before contemplated.  <br>Copyright © 1998-forever Ronald E Jeffries
+</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57210163-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</footer>
+
+
+  
+
+<div id="chrome-gestures-helper-field" style="position: fixed; left: 0px; top: 0px; display: block; z-index: 1000000; text-align: left; width: 2488px; height: 966px; background: transparent; border: none;"><style>#chrome-gestures-helper-field *:after {display:none;}</style><svg style="position: absolute;" width="2488" height="966"><polyline stroke="rgba(18,89,199,0.8)" stroke-width="2" fill="none" points="848 321 853 320 1716 721 1727 724 1732 724 1733 722 1734 722 1734 721 1735 720 1736 720 1737 720 1694 655"></polyline></svg><p style="display:block;background:transparent;position:absolute;top:45%;width:100%;text-align:center;min-height:4em;margin:0px;padding:0px;"><span style="display:inline-block;background:rgba(0,0,0,0.5);margin:10px;padding:10px;"><img src="chrome-extension://jpkfjicglakibpenojifdiepckckakgk/down.png"><img src="chrome-extension://jpkfjicglakibpenojifdiepckckakgk/right.png"><img src="chrome-extension://jpkfjicglakibpenojifdiepckckakgk/up.png"></span><br><span style="font-size: large; font-weight: bold; color: white; display: none; background: rgba(0, 0, 0, 0.498039); margin: 0px; padding: 10px;">close this tab</span></p></div></body></html>

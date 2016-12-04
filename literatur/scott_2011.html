@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/ -->
+<html lang="en" class="js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+		<script async="" src="./scott_2011_files/beacon.js"></script><script type="text/javascript" async="" src="./scott_2011_files/platform.js"></script><script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>Yet another software testing pyramid – WatirMelon.Blog</title>
+<meta name="google-site-verification" content="7FUExV5WWHP-ezQZ8QakuOLnUFuGEa3E1-kLn2HePLI">
+<meta name="msvalidate.01" content="4C5B13F38FDF1428B61A485A606974E4">
+<meta name="yandex-verification" content="715a11ed2472a571">
+		<script src="./scott_2011_files/remote-login.php" type="text/javascript"></script>
+		<script type="text/javascript">
+		/* <![CDATA[ */
+			if ( 'function' === typeof WPRemoteLogin ) {
+				document.cookie = "wordpress_test_cookie=test; path=/";
+				if ( document.cookie.match( /(;|^)\s*wordpress_test_cookie\=/ ) ) {
+					WPRemoteLogin();
+				}
+			}
+		/* ]]> */
+		</script>
+		<link rel="dns-prefetch" href="https://s2.wp.com/">
+<link rel="dns-prefetch" href="https://s1.wp.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://watirmelon.wordpress.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="alternate" type="application/rss+xml" title="WatirMelon.Blog » Feed" href="https://watirmelon.blog/feed/">
+<link rel="alternate" type="application/rss+xml" title="WatirMelon.Blog » Comments Feed" href="https://watirmelon.blog/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="WatirMelon.Blog » Yet another software testing pyramid Comments Feed" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/feed/">
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s1.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1473172720h&ver=4.6.1-RC1-38499"}};
+			!function(a,b,c){function d(a){var c,d,e,f,g,h=b.createElement("canvas"),i=h.getContext&&h.getContext("2d"),j=String.fromCharCode;if(!i||!i.fillText)return!1;switch(i.textBaseline="top",i.font="600 32px Arial",a){case"flag":return i.fillText(j(55356,56806,55356,56826),0,0),!(h.toDataURL().length<3e3)&&(i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,65039,8205,55356,57096),0,0),c=h.toDataURL(),i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,55356,57096),0,0),d=h.toDataURL(),c!==d);case"diversity":return i.fillText(j(55356,57221),0,0),e=i.getImageData(16,16,1,1).data,f=e[0]+","+e[1]+","+e[2]+","+e[3],i.fillText(j(55356,57221,55356,57343),0,0),e=i.getImageData(16,16,1,1).data,g=e[0]+","+e[1]+","+e[2]+","+e[3],f!==g;case"simple":return i.fillText(j(55357,56835),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode8":return i.fillText(j(55356,57135),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode9":return i.fillText(j(55358,56631),0,0),0!==i.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity","unicode9"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./scott_2011_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="all-css-0-1" href="./scott_2011_files/saved_resource" type="text/css" media="all">
+<link rel="stylesheet" id="twentysixteen-fonts-css" href="./scott_2011_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="all-css-2-1" href="./scott_2011_files/saved_resource(1)" type="text/css" media="all">
+<!--[if lt IE 10]>
+<link rel='stylesheet' id='twentysixteen-ie-css'  href='https://s0.wp.com/wp-content/themes/pub/twentysixteen/css/ie.css?m=1448353951h&#038;ver=20151123' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentysixteen-ie8-css'  href='https://s0.wp.com/wp-content/themes/pub/twentysixteen/css/ie8.css?m=1448353951h&#038;ver=20151123' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='twentysixteen-ie7-css'  href='https://s0.wp.com/wp-content/themes/pub/twentysixteen/css/ie7.css?m=1448353951h&#038;ver=20151123' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="all-css-8-1" href="./scott_2011_files/saved_resource(2)" type="text/css" media="all">
+<script type="text/javascript" src="./scott_2011_files/saved_resource(3)"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://watirmelon.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Removing local page references from Cucumber steps" href="https://watirmelon.blog/2011/06/07/removing-local-page-references-from-cucumber-steps/">
+<link rel="next" title="Everything is amazing and nobody is happy" href="https://watirmelon.blog/2011/06/30/everything-is-amazing-and-nobody-is-happy/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/">
+<link rel="shortlink" href="http://wp.me/p98zF-fh">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=https%3A%2F%2Fwatirmelon.blog%2F2011%2F06%2F10%2Fyet-another-software-testing-pyramid%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=https%3A%2F%2Fwatirmelon.blog%2F2011%2F06%2F10%2Fyet-another-software-testing-pyramid%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yet another software testing pyramid">
+<meta property="og:url" content="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/">
+<meta property="og:description" content="A fellow ThoughtWorker James Crisp recently wrote an interesting article about his take on an automated test pyramid. Some of the terminology he used was interesting, which is what I believe led to…">
+<meta property="article:published_time" content="2011-06-10T11:14:57+00:00">
+<meta property="article:modified_time" content="2011-06-10T11:14:57+00:00">
+<meta property="og:site_name" content="WatirMelon.Blog">
+<meta property="og:image" content="https://watirmelon.files.wordpress.com/2011/06/businesstechnologyautomatedtestingpyramid.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@watirmelon">
+<meta name="twitter:image" content="https://watirmelon.files.wordpress.com/2011/06/automatedtestingpyramid.png?w=240">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@watirmelon">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/c9de640b304257bb2361e16d95fec265?s=32" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/c9de640b304257bb2361e16d95fec265?s=32" sizes="16x16">
+<link rel="apple-touch-icon-precomposed" href="https://secure.gravatar.com/blavatar/c9de640b304257bb2361e16d95fec265?s=114">
+<link rel="openid.server" href="https://watirmelon.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://watirmelon.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://watirmelon.blog/osd.xml" title="WatirMelon.Blog">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+<meta name="theme-color" content="#1a1a1a">
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="WatirMelon.Blog"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="A Software Testing Blog by Alister Scott"><meta name="msapplication-task" content="name=Subscribe;action-uri=https://watirmelon.blog/feed/;icon-uri=https://secure.gravatar.com/blavatar/c9de640b304257bb2361e16d95fec265?s=16"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="title" content="Yet another software testing pyramid | WatirMelon.Blog on WordPress.com">
+<meta name="description" content="A fellow ThoughtWorker James Crisp recently wrote an interesting article about his take on an automated test pyramid. Some of the terminology he used was interesting, which is what I believe led to some questioning comments and a follow up article by another fellow ThoughtWorker, Dean Cornish, who stated the pyramid &quot;oversimplifies a complex problem…">
+<link rel="amphtml" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/amp/"><style type="text/css" id="syntaxhighlighteranchor"></style>
+<style type="text/css" id="custom-colors-css">input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="tel"],input[type="number"],textarea{background:#f7f7f7;color:#686868}input[type="text"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="number"]:focus,textarea:focus{background-color:#fff;color:#1a1a1a}body{background-color:#1a1a1a}.site,.main-navigation ul ul li{background-color:#fff}body #infinite-footer .container{background-color:#fff}body #infinite-footer .container{background-color:rgba(255,255,255,.9)}.main-navigation ul ul:after{border-top-color:#fff}.main-navigation ul ul:after{border-bottom-color:#fff}mark,ins,button,button[disabled]:hover,button[disabled]:focus,input[type="button"],input[type="button"][disabled]:hover,input[type="button"][disabled]:focus,input[type="reset"],input[type="reset"][disabled]:hover,input[type="reset"][disabled]:focus,input[type="submit"],input[type="submit"][disabled]:hover,input[type="submit"][disabled]:focus,.menu-toggle.toggled-on,.menu-toggle.toggled-on:hover,.menu-toggle.toggled-on:focus,.pagination .prev,.pagination .next,.pagination .prev:hover,.pagination .prev:focus,.pagination .next:hover,.pagination .next:focus,.pagination .nav-links:before,.pagination .nav-links:after,.widget_calendar tbody a,.widget_calendar tbody a:hover,.widget_calendar tbody a:focus,.page-links a,.page-links a:hover,.page-links a:focus,.site-main #infinite-handle span{color:#fff}.menu-toggle:hover,.menu-toggle:focus,a,.main-navigation a:hover,.main-navigation a:focus,.dropdown-toggle:hover,.dropdown-toggle:focus,.social-navigation a:hover:before,.social-navigation a:focus:before,.post-navigation a:hover .post-title,.post-navigation a:focus .post-title,.tagcloud a:hover,.tagcloud a:focus,.site-branding .site-title a:hover,.site-branding .site-title a:focus,.entry-title a:hover,.entry-title a:focus,.entry-footer a:hover,.entry-footer a:focus,.comment-metadata a:hover,.comment-metadata a:focus,.pingback .comment-edit-link:hover,.pingback .comment-edit-link:focus,.comment-reply-link,.comment-reply-link:hover,.comment-reply-link:focus,.required,.site-info a:hover,.site-info a:focus,.main-navigation li:hover>a,.main-navigation li.focus>a,.comments-area #respond .comment-form-service a,.widget_flickr #flickr_badge_uber_wrapper a,.widget_flickr #flickr_badge_uber_wrapper a:link,.widget_flickr #flickr_badge_uber_wrapper a:active,.widget_flickr #flickr_badge_uber_wrapper a:visited,.wp_widget_tag_cloud a:hover,.wp_widget_tag_cloud a:focus,body #infinite-footer .blog-info a:hover,body #infinite-footer .blog-info a:focus,body #infinite-footer .blog-info a:hover,body #infinite-footer .blog-info a:focus,body #infinite-footer .blog-credits a:hover,body #infinite-footer .blog-credits a:focus{color:#e71d12}mark,ins,button:hover,button:focus,input[type="button"]:hover,input[type="button"]:focus,input[type="reset"]:hover,input[type="reset"]:focus,input[type="submit"]:hover,input[type="submit"]:focus,.pagination .prev:hover,.pagination .prev:focus,.pagination .next:hover,.pagination .next:focus,.widget_calendar tbody a,.page-links a:hover,.page-links a:focus,#infinite-handle span:hover,#infinite-handle span:focus{background-color:#e71d12}input[type="text"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="search"]:focus,textarea:focus,.tagcloud a:hover,.tagcloud a:focus,.menu-toggle:hover,.menu-toggle:focus,.comments-area #respond #comment-form-comment.active,.comments-area #comment-form-share-text-padder.active,.comments-area #respond .comment-form-fields div.comment-form-input.active,.wp_widget_tag_cloud a:hover,.wp_widget_tag_cloud a:focus,.time-machine-navigation a:hover,.time-machine-navigation a:focus{border-color:#e71d12}body,blockquote cite,blockquote small,.main-navigation a,.menu-toggle,.dropdown-toggle,.social-navigation a,.post-navigation a,.widget-title a,.site-branding .site-title a,.entry-title a,.page-links>.page-links-title,.comment-author,.comment-reply-title small a:hover,.comment-reply-title small a:focus{color:#1a1a1a}blockquote,.menu-toggle.toggled-on,.menu-toggle.toggled-on:hover,.menu-toggle.toggled-on:focus,.post-navigation,.post-navigation div+div,.pagination,.widget,.page-header,.page-links a,.comments-title,.comment-reply-title{border-color:#1a1a1a}button,button[disabled]:hover,button[disabled]:focus,input[type="button"],input[type="button"][disabled]:hover,input[type="button"][disabled]:focus,input[type="reset"],input[type="reset"][disabled]:hover,input[type="reset"][disabled]:focus,input[type="submit"],input[type="submit"][disabled]:hover,input[type="submit"][disabled]:focus,.menu-toggle.toggled-on,.menu-toggle.toggled-on:hover,.menu-toggle.toggled-on:focus,.pagination:before,.pagination:after,.pagination .prev,.pagination .next,.page-links a,.site-main #infinite-handle span{background-color:#1a1a1a}fieldset,pre,abbr,acronym,table,th,td,input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],textarea,.main-navigation li,.main-navigation .primary-menu,.menu-toggle,.dropdown-toggle:after,.social-navigation a,.image-navigation,.comment-navigation,.tagcloud a,.entry-content,.entry-summary,.page-links a,.page-links>span,.comment-list article,.comment-list .pingback,.comment-list .trackback,.comment-reply-link,.no-comments,.main-navigation ul ul,.main-navigation ul ul li,.comments-area #respond #comment-form-comment,.comments-area #comment-form-share-text-padder,.comments-area #respond .comment-form-fields div.comment-form-input,.comments-area #respond .comment-form-service,.wp_widget_tag_cloud a,.time-machine-navigation a,body #infinite-footer .container{border-color:#1a1a1a}fieldset,pre,abbr,acronym,table,th,td,input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],textarea,.main-navigation li,.main-navigation .primary-menu,.menu-toggle,.dropdown-toggle:after,.social-navigation a,.image-navigation,.comment-navigation,.tagcloud a,.entry-content,.entry-summary,.page-links a,.page-links>span,.comment-list article,.comment-list .pingback,.comment-list .trackback,.comment-reply-link,.no-comments,.main-navigation ul ul,.main-navigation ul ul li,.comments-area #respond #comment-form-comment,.comments-area #comment-form-share-text-padder,.comments-area #respond .comment-form-fields div.comment-form-input,.comments-area #respond .comment-form-service,.wp_widget_tag_cloud a,.time-machine-navigation a,body #infinite-footer .container{border-color:rgba(26,26,26,.2)}.main-navigation ul ul:before{border-top-color:#1a1a1a}.main-navigation ul ul:before{border-top-color:rgba(26,26,26,.2)}.main-navigation ul ul:before{border-bottom-color:#1a1a1a}.main-navigation ul ul:before{border-bottom-color:rgba(26,26,26,.2)}hr,code{background-color:#1a1a1a}hr,code{background-color:rgba(26,26,26,.2)}blockquote,.post-password-form label,a:hover,a:focus,a:active,.post-navigation .meta-nav,.image-navigation,.comment-navigation,.widget_recent_entries .post-date,.widget_rss .rss-date,.widget_rss cite,.site-description,body:not(.search-results) .entry-summary,.author-bio,.entry-footer,.entry-footer a,.sticky-post,.taxonomy-description,.entry-caption,.comment-metadata,.pingback .edit-link,.comment-metadata a,.pingback .comment-edit-link,.comment-form label,.comment-notes,.comment-awaiting-moderation,.logged-in-as,.form-allowed-tags,.site-info,.site-info a,.wp-caption .wp-caption-text,.gallery-caption,.jp-relatedposts-post-aoverlay:hover .jp-relatedposts-post-title a,.jp-relatedposts-post-aoverlay:focus .jp-relatedposts-post-title a,.comments-area #respond .comment-form-fields label,.comments-area #respond .comment-form-fields label span.required,.comments-area #respond .comment-form-fields label span.nopublish,.comments-area #respond .comment-form-service a:hover,.comments-area #respond .comment-form-service a:focus,.comments-area #respond .comment-form-fields p.comment-form-posting-as,.comments-area #respond .comment-form-fields p.comment-form-log-out,.comments-area #respond #comment-form-identity #comment-form-nascar p,.comments-area #respond #comment-form-subscribe p,.comment-content p.comment-likes span.comment-like-feedback,.widget_flickr #flickr_badge_uber_wrapper a:focus,.widget_flickr #flickr_badge_uber_wrapper a:hover,.top_rated div>p,body #infinite-footer .blog-info a,body #infinite-footer .blog-credits,body #infinite-footer .blog-credits a{color:#686868}.widget_calendar tbody a:hover,.widget_calendar tbody a:focus{background-color:#686868}</style>
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./scott_2011_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./scott_2011_files/services.css"></head>
+
+<body class="single single-post postid-947 single-format-standard mp6 customizer-styles-applied highlander-enabled highlander-light custom-colors" cz-shortcut-listen="true">
+<div id="page" class="site">
+	<div class="site-inner">
+		<a class="skip-link screen-reader-text" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#content">Skip to content</a>
+
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-header-main">
+				<div class="site-branding">
+					
+											<p class="site-title"><a href="https://watirmelon.blog/" rel="home">WatirMelon.Blog</a></p>
+											<p class="site-description">A Software Testing Blog by Alister Scott</p>
+									</div><!-- .site-branding -->
+
+									<button id="menu-toggle" class="menu-toggle">Menu</button>
+
+					<div id="site-header-menu" class="site-header-menu">
+													<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="Primary Menu">
+								<div class="menu-default-container"><ul id="menu-default" class="primary-menu"><li id="menu-item-1372" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1372"><a href="http://watirmelon.com/">Home</a></li>
+<li id="menu-item-1371" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1371"><a href="https://watirmelon.blog/about/">About</a></li>
+<li id="menu-item-4802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4802"><a href="https://watirmelon.blog/ama/">Ask Me Anything</a></li>
+<li id="menu-item-1561" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1561"><a href="https://watirmelon.blog/pride-and-paradev/">Pride and Paradev</a></li>
+<li id="menu-item-1373" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1373"><a target="_blank" href="http://quotes.watirmelon.blog/">Quotes</a></li>
+<li id="menu-item-2069" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2069"><a target="_blank" href="http://links.watirmelon.blog/">Links</a></li>
+</ul></div>							</nav><!-- .main-navigation -->
+						
+													<nav id="social-navigation" class="social-navigation" role="navigation" aria-label="Social Links Menu">
+								<div class="menu-social-container"><ul id="menu-social" class="social-links-menu"><li id="menu-item-2072" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2072"><a href="http://www.linkedin.com/in/alisterscott"><span class="screen-reader-text">LinkedIn</span></a></li>
+<li id="menu-item-2071" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2071"><a href="http://github.com/alisterscott"><span class="screen-reader-text">Github</span></a></li>
+<li id="menu-item-2070" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2070"><a href="http://stackoverflow.com/users/503158/alister-scott"><span class="screen-reader-text">Stack Overflow</span></a></li>
+<li id="menu-item-5853" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5853"><a href="http://twitter.com/watirmelon"><span class="screen-reader-text">Twitter</span></a></li>
+</ul></div>							</nav><!-- .social-navigation -->
+											</div><!-- .site-header-menu -->
+							</div><!-- .site-header-main -->
+
+											<div class="header-image">
+					<a href="https://watirmelon.blog/" rel="home">
+						<img src="./scott_2011_files/cropped-watirmelonoriginal11.png" srcset="" sizes="" width="1200" height="188" alt="WatirMelon.Blog">
+					</a>
+				</div>
+					</header><!-- .site-header -->
+
+		<div id="content" class="site-content">
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
+		
+<article id="post-947" class="post-947 post type-post status-publish format-standard hentry category-automated-testing category-software-testing category-test-automation category-thoughtworks tag-automated-testing-pyramid tag-software-testing tag-testing-pyramid">
+	<header class="entry-header">
+		<h1 class="entry-title">Yet another software testing&nbsp;pyramid</h1>	</header><!-- .entry-header -->
+
+	
+	
+	<div class="entry-content">
+		<p>A fellow ThoughtWorker James Crisp recently wrote <a href="http://jamescrisp.org/2011/05/30/automated-testing-and-the-test-pyramid/">an interesting article</a> about his take on an automated test pyramid.</p>
+<p>Some of the terminology he used was interesting, which is what I believe led to some questioning comments and <a href="http://deancornish.blogspot.com/2011/06/on-testing-pyramid.html">a follow up article</a> by another fellow ThoughtWorker, Dean Cornish, who stated the pyramid “<em>oversimplifies a complex problem of how many tests you need to reach a point of feeling satisfied about your test coverage</em>“.</p>
+<p>I believe that one of the most unclear areas of James’s pyramid is the use of the term <em>Acceptance</em> tests, which James equates to roughly 10% of the automated test suite. One commenter stated these should instead be called <em>functional</em> tests, but as James points out, aren’t all tests functional in nature? I would also argue that <em>all</em> tests are about acceptance (to different people), so I would rephrase the term to express <em>what</em> is being tested, which in his case is the GUI.</p>
+<p>The other fundamental issue I see with James testing pyramid is that it is missing exploratory/session based testing. The only mention of exploratory testing is when James states ‘if defects come to light from exploratory testing, then discover how they slipped through the testing net’, but I feel this could be better represented on the pyramid. Exploratory, or session based testing, ensures confidence in the automated tests that are being developed and run. Without it, an automated testing strategy is fundamentally flawed. That’s why I include it in my automated testing pyramid as the <a href="http://en.wikipedia.org/wiki/Eye_of_Providence">Eye of Providence</a> (I originally got the ‘eye’ idea from another ThoughtWorker <a href="http://www.bunkandrambling.com/">Darren Smith</a>).</p>
+<p><strong>Show me the Pyramid</strong></p>
+<p>Without further ado, here’s my automated test pyramid. It shows <em>what</em> the automated tests use to test: being the GUI, APIs, Integration Points, Components &amp; Units. I’ve put dotted lines between components, integration points and APIs, as these are similar and it might be a case of testing not all of these.</p>
+<p><a href="https://watirmelon.files.wordpress.com/2011/06/automatedtestingpyramid.png"><img class="alignnone size-full wp-image-948 below-entry-meta" title="AutomatedTestingPyramid" src="./scott_2011_files/automatedtestingpyramid.png" alt="" srcset="https://watirmelon.files.wordpress.com/2011/06/automatedtestingpyramid.png?w=840 840w, https://watirmelon.files.wordpress.com/2011/06/automatedtestingpyramid.png?w=150 150w, https://watirmelon.files.wordpress.com/2011/06/automatedtestingpyramid.png?w=300 300w, https://watirmelon.files.wordpress.com/2011/06/automatedtestingpyramid.png?w=768 768w, https://watirmelon.files.wordpress.com/2011/06/automatedtestingpyramid.png?w=1024 1024w, https://watirmelon.files.wordpress.com/2011/06/automatedtestingpyramid.png 1171w" sizes="(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 62vw, 840px"></a></p>
+<p>Another way of looking at this, is looking at the <em>intention</em> of the tests. Manual exploratory tests and automated GUI tests are business facing, in that they strive to answer the question: “are we building the <em>right system</em>?”. Unit, integration and component tests are technology facing, in that they strive to answer the question: “are we building the <em>system right</em>?”. So, another version of the automated testing pyramid could simply plot these two styles of tests on the pyramid, showing that you’ll need more technology facing than business facing automated tests, as the business facing tests are more difficult to maintain.</p>
+<p><a href="https://watirmelon.files.wordpress.com/2011/06/businesstechnologyautomatedtestingpyramid.png"><img class="alignnone size-full wp-image-949 below-entry-meta" title="BusinessTechnologyAutomatedTestingPyramid" src="./scott_2011_files/businesstechnologyautomatedtestingpyramid.png" alt="" srcset="https://watirmelon.files.wordpress.com/2011/06/businesstechnologyautomatedtestingpyramid.png?w=840 840w, https://watirmelon.files.wordpress.com/2011/06/businesstechnologyautomatedtestingpyramid.png?w=150 150w, https://watirmelon.files.wordpress.com/2011/06/businesstechnologyautomatedtestingpyramid.png?w=300 300w, https://watirmelon.files.wordpress.com/2011/06/businesstechnologyautomatedtestingpyramid.png?w=768 768w, https://watirmelon.files.wordpress.com/2011/06/businesstechnologyautomatedtestingpyramid.png?w=1024 1024w, https://watirmelon.files.wordpress.com/2011/06/businesstechnologyautomatedtestingpyramid.png 1171w" sizes="(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 62vw, 840px"></a></p>
+<p><strong>Summary</strong></p>
+<p>By removing the term <em>acceptance</em>, and showing what the automated tests test, I believe the first automated test pyramid shows a solid approach to automated testing. <em>Acceptance</em> tests and <em>functional</em> tests can be anywhere in the pyramid, but you should limit your GUI tests, often by increasing your unit test coverage.</p>
+<p>The second pyramid is another way to view the intention of the tests, but I believe both resolve most of the issues Dean has with James’s pyramid. Additionally they both include manual session based testing, a key ingredient in an automated test strategy that should be shown on the pyramid so it is not forgotton.</p>
+<p>I welcome your feedback.</p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-947" class="share-twitter sd-button share-icon" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?share=twitter&amp;nb=1" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-947" class="share-linkedin sd-button share-icon" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?share=linkedin&amp;nb=1" target="_blank" title="Click to share on LinkedIn"><span>LinkedIn</span></a></li><li class="share-email share-service-visible"><a rel="nofollow" data-shared="" class="share-email sd-button share-icon" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?share=email&amp;nb=1" target="_blank" title="Click to email"><span>Email</span></a></li><li class="share-print"><a rel="nofollow" data-shared="" class="share-print sd-button share-icon" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#print" target="_blank" title="Click to print"><span>Print</span></a></li><li><a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#" class="sharing-anchor sd-button share-more"><span>More</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none;"><ul><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-947" class="share-google-plus-1 sd-button share-icon" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?share=google-plus-1&amp;nb=1" target="_blank" title="Click to share on Google+"><span>Google</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-947" class="share-facebook sd-button share-icon" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?share=facebook&amp;nb=1" target="_blank" title="Share on Facebook"><span>Facebook</span></a></li><li class="share-end"></li><li class="share-pinterest"><a rel="nofollow" data-shared="sharing-pinterest-947" class="share-pinterest sd-button share-icon" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?share=pinterest&amp;nb=1" target="_blank" title="Click to share on Pinterest"><span>Pinterest</span></a></li><li class="share-reddit"><a rel="nofollow" data-shared="" class="share-reddit sd-button share-icon" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?share=reddit&amp;nb=1" target="_blank" title="Click to share on Reddit"><span>Reddit</span></a></li><li class="share-end"></li><li class="share-tumblr"><a rel="nofollow" data-shared="" class="share-tumblr sd-button share-icon" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?share=tumblr&amp;nb=1" target="_blank" title="Click to share on Tumblr"><span>Tumblr</span></a></li><li class="share-end"></li></ul></div></div></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-2177915-947-58448c3acf9eb" data-src="//widgets.wp.com/likes/#blog_id=2177915&amp;post_id=947&amp;origin=watirmelon.wordpress.com&amp;obj_id=2177915-947-58448c3acf9eb" data-name="like-post-frame-2177915-947-58448c3acf9eb"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-2177915-947-58448c3acf9eb" height="55px" width="100%" frameborder="0" src="./scott_2011_files/saved_resource.html"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-visual"><div class="jp-relatedposts-post jp-relatedposts-post0 jp-relatedposts-post-nothumbs" data-post-id="1931" data-post-format="false"><a class="jp-relatedposts-post-a jp-relatedposts-post-aoverlay" href="https://watirmelon.blog/2014/01/17/checking-is-testing/" title="Checking IS testing
+
+The &#39;testing vs checking&#39; topic has been in discussion for many years in the software testing community. Two very vocal participants are James Bach[1] and Michael Bolton[2]. &quot;...we distinguish between aspects of the testing process that machines can do versus those that only skilled humans can do. We have done…" rel="nofollow" data-origin="947" data-position="0"></a><h4 class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://watirmelon.blog/2014/01/17/checking-is-testing/" title="Checking IS testing
+
+The &#39;testing vs checking&#39; topic has been in discussion for many years in the software testing community. Two very vocal participants are James Bach[1] and Michael Bolton[2]. &quot;...we distinguish between aspects of the testing process that machines can do versus those that only skilled humans can do. We have done…" rel="nofollow" data-origin="947" data-position="0">Checking IS testing</a></h4><p class="jp-relatedposts-post-excerpt" style="max-height: 8.07692em;">The 'testing vs checking' topic has been in discussion for many years in the software testing community. Two very vocal participants are James Bach[1] and Michael Bolton[2]. "...we distinguish between aspects of the testing process that machines can do versus those that only skilled humans can do. We have done…</p><p class="jp-relatedposts-post-context">In "Software Testing"</p></div><div class="jp-relatedposts-post jp-relatedposts-post1 jp-relatedposts-post-nothumbs" data-post-id="2048" data-post-format="false"><a class="jp-relatedposts-post-a jp-relatedposts-post-aoverlay" href="https://watirmelon.blog/2014/08/04/deciding-to-have-lots-of-children-and-lots-of-tests-is-still-fun-later-on/" title="Deciding to have lots of children and lots of tests is still fun later on
+
+I recently saw a paraphrased quote by James Bach from a testing meetup in Sydney. Deciding to have lots of (automated) checks [sic: tests] is like deciding to have lots of children. It’s fun at first, but later… I read it a number of times and each time I read…" rel="nofollow" data-origin="947" data-position="1"></a><h4 class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://watirmelon.blog/2014/08/04/deciding-to-have-lots-of-children-and-lots-of-tests-is-still-fun-later-on/" title="Deciding to have lots of children and lots of tests is still fun later on
+
+I recently saw a paraphrased quote by James Bach from a testing meetup in Sydney. Deciding to have lots of (automated) checks [sic: tests] is like deciding to have lots of children. It’s fun at first, but later… I read it a number of times and each time I read…" rel="nofollow" data-origin="947" data-position="1">Deciding to have lots of children and lots of tests is still fun later on</a></h4><p class="jp-relatedposts-post-excerpt" style="max-height: 8.07692em;">I recently saw a paraphrased quote by James Bach from a testing meetup in Sydney. Deciding to have lots of (automated) checks [sic: tests] is like deciding to have lots of children. It’s fun at first, but later… I read it a number of times and each time I read…</p><p class="jp-relatedposts-post-context">In "Software Testing"</p></div><div class="jp-relatedposts-post jp-relatedposts-post2 jp-relatedposts-post-thumbs" data-post-id="5977" data-post-format="false"><a class="jp-relatedposts-post-a" href="https://watirmelon.blog/2016/05/26/ama-gaining-confidence-without-integration-tests/" title="AMA: gaining confidence without integration tests
+
+Lucy asks... How do you gain confidence with the testing pyramid mentioned in this post? Unit testing is under the developers and you have only just enough e2e tests. My response... That is a great question Lucy. There&#39;s a few different ways that we gain confidence from the way we do…" rel="nofollow" data-origin="947" data-position="2"><img class="jp-relatedposts-post-img" src="./scott_2011_files/wordpress-com-test-pyramid2.png" width="350" alt="AMA: gaining confidence without integration tests"></a><h4 class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://watirmelon.blog/2016/05/26/ama-gaining-confidence-without-integration-tests/" title="AMA: gaining confidence without integration tests
+
+Lucy asks... How do you gain confidence with the testing pyramid mentioned in this post? Unit testing is under the developers and you have only just enough e2e tests. My response... That is a great question Lucy. There&#39;s a few different ways that we gain confidence from the way we do…" rel="nofollow" data-origin="947" data-position="2">AMA: gaining confidence without integration tests</a></h4><p class="jp-relatedposts-post-excerpt">Lucy asks... How do you gain confidence with the testing pyramid mentioned in this post? Unit testing is under the developers and you have only just enough e2e tests. My response... That is a great question Lucy. There's a few different&nbsp;ways that we gain confidence from the way we do…</p><p class="jp-relatedposts-post-context">In "Ask Me Anything"</p></div></div></div></div>
+<div class="author-info">
+	<div class="author-avatar">
+		<img alt="" src="./scott_2011_files/eb3b60a65e3f623c31d49dd05b625462" class="avatar avatar-42 grav-hashed grav-hijack" height="42" width="42" id="grav-eb3b60a65e3f623c31d49dd05b625462-0">	</div><!-- .author-avatar -->
+
+	<div class="author-description">
+		<h2 class="author-title"><span class="author-heading">Author:</span> Alister Scott</h2>
+
+		<p class="author-bio">
+			Alister is an Excellence Wrangler for Automattic.			<a class="author-link" href="https://watirmelon.blog/author/alisterscott/" rel="author">
+				View all posts by Alister Scott			</a>
+		</p><!-- .author-bio -->
+	</div><!-- .author-description -->
+</div><!-- .author-info -->
+	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="byline"><span class="author vcard"><img alt="" src="./scott_2011_files/eb3b60a65e3f623c31d49dd05b625462(1)" class="avatar avatar-49 grav-hashed grav-hijack" height="49" width="49" id="grav-eb3b60a65e3f623c31d49dd05b625462-1"><span class="screen-reader-text">Author </span> <a class="url fn n" href="https://watirmelon.blog/author/alisterscott/">Alister Scott</a></span></span><span class="posted-on"><span class="screen-reader-text">Posted on </span><a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/" rel="bookmark"><time class="entry-date published updated" datetime="2011-06-10T21:14:57+00:00">June 10, 2011</time></a></span><span class="cat-links"><span class="screen-reader-text">Categories </span><a href="https://watirmelon.blog/category/automated-testing/" rel="category tag">Automated Testing</a>, <a href="https://watirmelon.blog/category/software-testing/" rel="category tag">Software Testing</a>, <a href="https://watirmelon.blog/category/test-automation/" rel="category tag">Test Automation</a>, <a href="https://watirmelon.blog/category/thoughtworks/" rel="category tag">Thoughtworks</a></span><span class="tags-links"><span class="screen-reader-text">Tags </span><a href="https://watirmelon.blog/tag/automated-testing-pyramid/" rel="tag">automated testing pyramid</a>, <a href="https://watirmelon.blog/tag/software-testing/" rel="tag">Software Testing</a>, <a href="https://watirmelon.blog/tag/testing-pyramid/" rel="tag">testing pyramid</a></span>			</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+<div id="comments" class="comments-area">
+
+			<h2 class="comments-title">
+			11 thoughts on “Yet another software testing&nbsp;pyramid”		</h2>
+
+		
+		<ol class="comment-list">
+					<li id="comment-3088" class="comment even thread-even depth-1 parent highlander-comment">
+			<article id="div-comment-3088" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./scott_2011_files/dcc6d89b69d2d2ac32829f56d19eee22" class="avatar avatar-42 grav-hashed grav-hijack" height="42" width="42" id="grav-dcc6d89b69d2d2ac32829f56d19eee22-0">						<b class="fn">Will Knight</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#comment-3088">
+							<time datetime="2011-06-14T07:32:34+00:00">
+								June 14, 2011 at 7:32 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>My biggest fear with this type of pyramid — however instructive — is that it misrepresents the ‘effort’ required for the different type of tests with the throwaway concept of ‘more tests’ the nearer the base you are.</p>
+<p>While I agree ‘more tests’ can mean a greater number of actual examples, it does not mean more effort is required in the development and implementation of automation. And it does not mean that greater attention should necessarily be directed towards the base of the pyramid. </p>
+<p>In my experience, an hour glass is a better test-effort-shape to represent effort expended on automated testing, regardless of the number of examples. Gui testing is hard to write and maintain, and at the other end, unit tests require effort to extract units from their colloborators and test in isolation. API and integration tests often need less set up and/or specialised code to perform.</p>
+<p>Taking the pyramid as it stands can lead to thin Gui testing as effort is moved toward the base simply to increase the number of tests.</p>
+<p>So the pyramid is useful as a graphic to show the mix of testing a team should aim for, but it is not helpful in showing the time and effort required for each category. It can mislead. And while I have postulated an hour glass as a possible alternative, the effort-shape is probably a function of the type of system under construction.</p>
+<p id="comment-like-3088" data-liked="comment-not-liked" class="comment-likes comment-not-liked"><a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?like_comment=3088&amp;_wpnonce=81a5baa042" class="comment-like-link needs-login" rel="nofollow" data-blog="2177915"><span>Like</span></a><span id="comment-like-count-3088" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-3089" class="comment byuser comment-author-alisterscott bypostauthor odd alt depth-2 highlander-comment">
+			<article id="div-comment-3089" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./scott_2011_files/eb3b60a65e3f623c31d49dd05b625462" class="avatar avatar-42 grav-hashed grav-hijack" height="42" width="42" id="grav-eb3b60a65e3f623c31d49dd05b625462-2">						<b class="fn">Alister Scott</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#comment-3089">
+							<time datetime="2011-06-14T08:46:33+00:00">
+								June 14, 2011 at 8:46 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Great thoughts. I like the idea of effort visually represented.</p>
+<p id="comment-like-3089" data-liked="comment-not-liked" class="comment-likes comment-not-liked"><a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?like_comment=3089&amp;_wpnonce=f171aab7d5" class="comment-like-link needs-login" rel="nofollow" data-blog="2177915"><span>Like</span></a><span id="comment-like-count-3089" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-7928" class="comment even depth-2 highlander-comment">
+			<article id="div-comment-7928" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./scott_2011_files/68156df5b652c1915688f806c61e9454" class="avatar avatar-42 grav-hashed grav-hijack" height="42" width="42" id="grav-68156df5b652c1915688f806c61e9454-0">						<b class="fn"><a href="http://www.getautoma.com/" rel="external nofollow" class="url">Michael Herrmann</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#comment-7928">
+							<time datetime="2013-08-21T23:51:27+00:00">
+								August 21, 2013 at 11:51 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Funny, I also had a test hourglass picture in my mind! However, not regarding the effort, but about the number of tests one should have for testing applications with a non-graphical interface. I recently wrote a blog entry about this: <a href="http://www.getautoma.com/blog/the-test-hourglass" rel="nofollow">http://www.getautoma.com/blog/the-test-hourglass</a> Maybe you’d like to check it out!</p>
+<p id="comment-like-7928" data-liked="comment-not-liked" class="comment-likes comment-not-liked"><a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?like_comment=7928&amp;_wpnonce=e11de0bc78" class="comment-like-link needs-login" rel="nofollow" data-blog="2177915"><span>Like</span></a><span id="comment-like-count-7928" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-3097" class="comment odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-3097" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./scott_2011_files/7f1c37026bc13764ed454653d9eb5841" class="avatar avatar-42 grav-hashed grav-hijack" height="42" width="42" id="grav-7f1c37026bc13764ed454653d9eb5841-0">						<b class="fn"><a href="http://gravatar.com/jcrisp" rel="external nofollow" class="url">James Crisp</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#comment-3097">
+							<time datetime="2011-06-16T15:33:47+00:00">
+								June 16, 2011 at 3:33 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hey Alister, thanks for the post. I agree that GUI tests are a better description than acceptance tests (actually started calling them this – see comments section on my post). In some pyramids people have represented the exploratory testing as  a cloud above the pyramid, but I like your eye!<br>
+James</p>
+<p id="comment-like-3097" data-liked="comment-not-liked" class="comment-likes comment-not-liked"><a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?like_comment=3097&amp;_wpnonce=59f085f57f" class="comment-like-link needs-login" rel="nofollow" data-blog="2177915"><span>Like</span></a><span id="comment-like-count-3097" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-3117" class="comment even thread-even depth-1 parent highlander-comment">
+			<article id="div-comment-3117" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./scott_2011_files/5b68eaf0c771fe9c70a3482897fdf1fb" class="avatar avatar-42 grav-hashed grav-hijack" height="42" width="42" id="grav-5b68eaf0c771fe9c70a3482897fdf1fb-0">						<b class="fn">Vikram Ingleshwar</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#comment-3117">
+							<time datetime="2011-06-29T17:03:19+00:00">
+								June 29, 2011 at 5:03 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi Alister,</p>
+<p>Nice informative article , please find below review comments from my side ( I’m QA Automation engineer ) </p>
+<p>1. Who owns which part of pyramid ?  This has to be finalized. Per me QA should own till Automated GUI Tests and remaining should/can be owned by dev team.<br>
+2. From my exp , I don’t see management is ready ( majority of the time ) to invest in bottom part of pyramid or dev guys don’t have time for Automated unit testing.</p>
+<p>Is bottom portion really needs to be automated at all ? Say I have full fledged regression suite and I could automate 70%-80% of those test cases, I am pretty confident that I can confirm if “Are we building the right System?”</p>
+<p>Frankly I don’t see any benefits doing API/Components/Integration test automation , as we can as well catch bugs in GUI automation level as well.</p>
+<p>The only benefits which I can see is we can certify if code is written in optimized way or not ?</p>
+<p>Thanks,<br>
+Vikram</p>
+<p id="comment-like-3117" data-liked="comment-not-liked" class="comment-likes comment-not-liked"><a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?like_comment=3117&amp;_wpnonce=96a83499d3" class="comment-like-link needs-login" rel="nofollow" data-blog="2177915"><span>Like</span></a><span id="comment-like-count-3117" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-3700" class="comment odd alt depth-2 parent highlander-comment">
+			<article id="div-comment-3700" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./scott_2011_files/ebefd5d718e616df3683c01d9291c3cb" class="avatar avatar-42 grav-hashed grav-hijack" height="42" width="42" id="grav-ebefd5d718e616df3683c01d9291c3cb-0">						<b class="fn"><a href="http://www.twoten.co.nz/" rel="external nofollow" class="url">William Knight</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#comment-3700">
+							<time datetime="2012-01-24T06:48:58+00:00">
+								January 24, 2012 at 6:48 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I believe the point of doing integration/component tests is to provide full coverage of the interface/component interface.</p>
+<p>End to end tests through the gui are difficult to design for full coverage and are best used as a collaboration device; to make sure the team has built the right thing in the first place.</p>
+<p>In certain situations, end-end tests are impossible, in any case e.g. Arianne! You must rely on component/integration tests.</p>
+<p>Not doing any integration tests would be like testing a bridge  by driving lorrys across it. It might work for the first few, but then what…?</p>
+<p id="comment-like-3700" data-liked="comment-not-liked" class="comment-likes comment-not-liked"><a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?like_comment=3700&amp;_wpnonce=12502ddf58" class="comment-like-link needs-login" rel="nofollow" data-blog="2177915"><span>Like</span></a><span id="comment-like-count-3700" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-3708" class="comment byuser comment-author-alisterscott bypostauthor even depth-3 highlander-comment">
+			<article id="div-comment-3708" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./scott_2011_files/eb3b60a65e3f623c31d49dd05b625462" class="avatar avatar-42 grav-hashed grav-hijack" height="42" width="42" id="grav-eb3b60a65e3f623c31d49dd05b625462-3">						<b class="fn">Alister Scott</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#comment-3708">
+							<time datetime="2012-01-26T13:11:40+00:00">
+								January 26, 2012 at 1:11 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>You can modify the click behaviour with keys:</p>
+<pre>b.element.click(:shift, :control)</pre>
+<p>See: <a href="http://watirwebdriver.wordpress.com/sending-special-keys/" rel="nofollow">http://watirwebdriver.wordpress.com/sending-special-keys/</a></p>
+<p id="comment-like-3708" data-liked="comment-not-liked" class="comment-likes comment-not-liked"><a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?like_comment=3708&amp;_wpnonce=96d4173753" class="comment-like-link needs-login" rel="nofollow" data-blog="2177915"><span>Like</span></a><span id="comment-like-count-3708" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-3683" class="comment odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-3683" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./scott_2011_files/1ed1fd1c21faeee42f1396c123b5840a" class="avatar avatar-42 grav-hashed grav-hijack" height="42" width="42" id="grav-1ed1fd1c21faeee42f1396c123b5840a-0">						<b class="fn"><a href="http://3qilabs.com/" rel="external nofollow" class="url">Naman Aggarwal</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#comment-3683">
+							<time datetime="2012-01-17T05:08:06+00:00">
+								January 17, 2012 at 5:08 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Great Article.   The business facing tests are becoming more critical with the switch to agile – the product has to work as designed for the end-user for each release which could happen, in some extreme cases, every week.  If managed correctly, the ‘Business Facing Tests’ will expand over time, taking a greater “share” of the pyramid but the constant compression of dev cycles will require teams (both, Dev &amp; QA) to increasingly rely on the Automated GUI tests to certify a given build.  </p>
+<p>In our experience inside the Enterprise – the Unit Testing is well understood and almost entirely owned by the Development team after which they “throw it over the fence” to QA.   The QA activities focus more on the functional aspect (are we building the right system) and leads to a fair amount of friction in the traditional ‘Waterfall’ process where, invariably, some pieces are left to interpretation.  </p>
+<p>As we see more teams migrate towards some flavor of Agile, we see this being less of a problem (part of the reason to make the switch!) but ownership of the testing function becomes the point of discussion, and, at times, contention. Having a GUI automation test bed in place, and increasing that coverage over time, will makes the switch from Waterfall to Agile more palatable.</p>
+<p id="comment-like-3683" data-liked="comment-not-liked" class="comment-likes comment-not-liked"><a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?like_comment=3683&amp;_wpnonce=19cfa74e1f" class="comment-like-link needs-login" rel="nofollow" data-blog="2177915"><span>Like</span></a><span id="comment-like-count-3683" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-4159" class="pingback even thread-even depth-1 highlander-comment">
+			<div class="comment-body">
+				Pingback: <a href="http://www.duncannisbet.co.uk/test-automation-basics-levels-pyramids-quadrants" rel="external nofollow" class="url">Test Automation Basics – Levels, Pyramids &amp; Quadrants | Duncan Nisbet</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-4365" class="comment odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-4365" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./scott_2011_files/caae9101d0e39c5ed9886a035d6c92ab" class="avatar avatar-42 grav-hashed grav-hijack" height="42" width="42" id="grav-caae9101d0e39c5ed9886a035d6c92ab-0">						<b class="fn"><a href="http://www.slideshare.net/JohanHoberg" rel="external nofollow" class="url">Johan Hoberg</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#comment-4365">
+							<time datetime="2012-08-20T20:56:00+00:00">
+								August 20, 2012 at 8:56 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Great article!</p>
+<p>What about certification tests that must be executed for different reasons, that cannot be efficiently automated?</p>
+<p id="comment-like-4365" data-liked="comment-not-liked" class="comment-likes comment-not-liked"><a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?like_comment=4365&amp;_wpnonce=38a3534e5e" class="comment-like-link needs-login" rel="nofollow" data-blog="2177915"><span>Like</span></a><span id="comment-like-count-4365" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-4375" class="comment byuser comment-author-jlottosen even thread-even depth-1 highlander-comment">
+			<article id="div-comment-4375" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./scott_2011_files/79c612437c741d32f6a30b7172272889" class="avatar avatar-42 grav-hashed grav-hijack" height="42" width="42" id="grav-79c612437c741d32f6a30b7172272889-0">						<b class="fn"><a href="http://jlottosen.wordpress.com/" rel="external nofollow" class="url">jlottosen</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#comment-4375">
+							<time datetime="2012-09-02T07:54:31+00:00">
+								September 2, 2012 at 7:54 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>pingback:<br>
+<a href="http://jlottosen.wordpress.com/2012/09/01/testers-are-developers-too-and-the-other-way-around/" rel="nofollow">http://jlottosen.wordpress.com/2012/09/01/testers-are-developers-too-and-the-other-way-around/</a></p>
+<p id="comment-like-4375" data-liked="comment-not-liked" class="comment-likes comment-not-liked"><a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/?like_comment=4375&amp;_wpnonce=8077b2470f" class="comment-like-link needs-login" rel="nofollow" data-blog="2177915"><span>Like</span></a><span id="comment-like-count-4375" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+			<p class="no-comments">Comments are closed.</p>
+	
+	
+</div><!-- .comments-area -->
+
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://watirmelon.blog/2011/06/07/removing-local-page-references-from-cucumber-steps/" rel="prev"><span class="meta-nav" aria-hidden="true">Previous</span> <span class="screen-reader-text">Previous post:</span> <span class="post-title">Removing local page references from Cucumber&nbsp;steps</span></a></div><div class="nav-next"><a href="https://watirmelon.blog/2011/06/30/everything-is-amazing-and-nobody-is-happy/" rel="next"><span class="meta-nav" aria-hidden="true">Next</span> <span class="screen-reader-text">Next post:</span> <span class="post-title">Everything is amazing and nobody is&nbsp;happy</span></a></div></div>
+	</nav>
+	</main><!-- .site-main -->
+
+	
+</div><!-- .content-area -->
+
+
+	<aside id="secondary" class="sidebar widget-area" role="complementary">
+		<section id="search-7" class="widget widget_search"><h2 class="widget-title">Search This Site</h2>
+<form role="search" method="get" class="search-form" action="https://watirmelon.blog/">
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" class="search-field" placeholder="Search …" value="" name="s" title="Search for:">
+	</label>
+	<button type="submit" class="search-submit"><span class="screen-reader-text">Search</span></button>
+</form>
+</section><section id="text-91151031" class="widget widget_text"><h2 class="widget-title">About</h2>			<div class="textwidget"><p><img class="size-thumbnail wp-image-219" title="alister_scott" src="./scott_2011_files/alisterscott-square-1.jpg" alt="alister_scott" width="95" height="95"></p>
+<p>
+A Software Testing Blog By <a href="https://watirmelon.wordpress.com/about/" rel="”me”">Alister Scott.</a></p></div>
+		</section><section id="blog_subscription-2" class="widget widget_blog_subscription"><h2 class="widget-title"><label for="subscribe-field">Follow This Site via Email</label></h2>
+				<form action="https://subscribe.wordpress.com/" method="post" accept-charset="utf-8" id="subscribe-blog">
+											<p>Enter your email address to follow this blog and receive notifications of new posts by email.</p>
+<p>Join 1,294 other followers</p>
+						<p><input type="text" name="email" style="width: 95%; padding: 1px 2px" placeholder="Enter your email address" value="" id="subscribe-field"></p>
+					
+					<p>
+						<input type="hidden" name="action" value="subscribe">
+						<input type="hidden" name="blog_id" value="2177915">
+						<input type="hidden" name="source" value="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/">
+						<input type="hidden" name="sub-type" value="widget">
+						<input type="hidden" name="redirect_fragment" value="blog_subscription-2">
+						<input type="hidden" id="_wpnonce" name="_wpnonce" value="bfaca9e543">						<input type="submit" value="Follow">
+					</p>
+				</form>
+			
+</section>		<section id="recent-posts-2" class="widget widget_recent_entries">		<h2 class="widget-title">Recent Posts</h2>		<ul>
+					<li>
+				<a href="https://watirmelon.blog/2016/11/16/automattic-excellence-wrangler/">→ Automattic Excellence&nbsp;Wrangler</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/10/17/minesweepers-anonymous/">Minesweepers Anonymous</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/09/30/checking-web-element-styles-using-webdriverjs/">Checking web element styles using&nbsp;WebDriverJs</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/09/07/unit-testing-randomness/">Unit Testing Randomness</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/08/23/welcome-to-watirmelon-blog/">Welcome to WatirMelon.Blog!</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/08/19/watirwebdriver-com-watir-github-io/">watirwebdriver.com =&gt; watir.github.io</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/08/18/100-code-coverage/">100% Code Coverage?</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/08/02/adding-your-own-webdriverjs-helper-methods/">Adding your own WebDriverJs helper&nbsp;methods</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/07/22/how-we-communicate-at-automattic/">How we Communicate at&nbsp;Automattic</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/07/12/prioritising-test-reliability-over-perfection/">Prioritising Test Reliability over&nbsp;Perfection</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/07/12/not-lying-about-writing-code/">(Not) Lying about Writing&nbsp;Code</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/07/05/handling-javascript-alerts-when-leaving-a-page-with-webdriver/">Handling JavaScript alerts when leaving a page with&nbsp;WebDriver</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/06/29/using-webdriver-to-automatically-check-for-javascript-errors-on-every-page-2016-edition/">Using WebDriver to automatically check for JavaScript errors on every page (2016&nbsp;edition)</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/06/24/link-reviewing-a-context-driven-approach-to-automation-in-testing/">Link: Reviewing “A Context Driven Approach to Automation in&nbsp;Testing”</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/06/17/should-you-raise-bugs-you-dont-know-how-to-reproduce/">Should you raise bugs you don’t know how to&nbsp;reproduce?</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/06/02/the-importance-of-doing-customer-support/">The Importance of Doing Customer&nbsp;Support</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/06/01/test-automation-why-record-and-replay-fails/">Test Automation: why ‘record and replay’&nbsp;fails</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/05/30/ask-me-anything-thats-a-wrap/">Ask Me Anything: That’s a&nbsp;Wrap!</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/05/30/ama-embedded-qa-specialists/">AMA: embedded QA&nbsp;specialists?</a>
+						</li>
+					<li>
+				<a href="https://watirmelon.blog/2016/05/27/ama-automation-hooks-bad-practice/">AMA: automation hooks bad&nbsp;practice?</a>
+						</li>
+				</ul>
+		</section>		<section id="text-202631352" class="widget widget_text"><h2 class="widget-title">Pride and Paradev</h2>			<div class="textwidget"><p>
+<a href="https://leanpub.com/pride-and-paradev">
+<img class="size-thumbnail wp-image-219" title="Pride and Paradev: a collection of software testing contradictions" src="./scott_2011_files/title_page.jpg" alt="pride and paradev cover" width="200">
+</a>
+</p></div>
+		</section><section id="text-202631351" class="widget widget_text"><h2 class="widget-title">Quote</h2>			<div class="textwidget"><p>"Share your knowledge. It’s a way to achieve immortality."</p>
+<p>~ The Dalai Lama</p>
+</div>
+		</section><section id="archives-2" class="widget widget_archive"><h2 class="widget-title">Archives</h2>		<label class="screen-reader-text" for="archives-dropdown-2">Archives</label>
+		<select id="archives-dropdown-2" name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
+			
+			<option value="">Select Month</option>
+				<option value="https://watirmelon.blog/2016/11/"> November 2016 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2016/10/"> October 2016 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2016/09/"> September 2016 &nbsp;(2)</option>
+	<option value="https://watirmelon.blog/2016/08/"> August 2016 &nbsp;(4)</option>
+	<option value="https://watirmelon.blog/2016/07/"> July 2016 &nbsp;(4)</option>
+	<option value="https://watirmelon.blog/2016/06/"> June 2016 &nbsp;(5)</option>
+	<option value="https://watirmelon.blog/2016/05/"> May 2016 &nbsp;(26)</option>
+	<option value="https://watirmelon.blog/2016/04/"> April 2016 &nbsp;(25)</option>
+	<option value="https://watirmelon.blog/2016/03/"> March 2016 &nbsp;(16)</option>
+	<option value="https://watirmelon.blog/2016/02/"> February 2016 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2016/01/"> January 2016 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2015/12/"> December 2015 &nbsp;(2)</option>
+	<option value="https://watirmelon.blog/2015/11/"> November 2015 &nbsp;(10)</option>
+	<option value="https://watirmelon.blog/2015/10/"> October 2015 &nbsp;(7)</option>
+	<option value="https://watirmelon.blog/2015/09/"> September 2015 &nbsp;(4)</option>
+	<option value="https://watirmelon.blog/2015/08/"> August 2015 &nbsp;(2)</option>
+	<option value="https://watirmelon.blog/2015/07/"> July 2015 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2015/05/"> May 2015 &nbsp;(5)</option>
+	<option value="https://watirmelon.blog/2015/04/"> April 2015 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2015/02/"> February 2015 &nbsp;(5)</option>
+	<option value="https://watirmelon.blog/2015/01/"> January 2015 &nbsp;(4)</option>
+	<option value="https://watirmelon.blog/2014/12/"> December 2014 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2014/11/"> November 2014 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2014/09/"> September 2014 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2014/08/"> August 2014 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2014/07/"> July 2014 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2014/06/"> June 2014 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2014/05/"> May 2014 &nbsp;(2)</option>
+	<option value="https://watirmelon.blog/2014/03/"> March 2014 &nbsp;(5)</option>
+	<option value="https://watirmelon.blog/2014/02/"> February 2014 &nbsp;(5)</option>
+	<option value="https://watirmelon.blog/2014/01/"> January 2014 &nbsp;(5)</option>
+	<option value="https://watirmelon.blog/2013/12/"> December 2013 &nbsp;(7)</option>
+	<option value="https://watirmelon.blog/2013/11/"> November 2013 &nbsp;(2)</option>
+	<option value="https://watirmelon.blog/2013/10/"> October 2013 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2013/09/"> September 2013 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2013/08/"> August 2013 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2013/07/"> July 2013 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2013/06/"> June 2013 &nbsp;(9)</option>
+	<option value="https://watirmelon.blog/2013/05/"> May 2013 &nbsp;(18)</option>
+	<option value="https://watirmelon.blog/2013/04/"> April 2013 &nbsp;(10)</option>
+	<option value="https://watirmelon.blog/2013/03/"> March 2013 &nbsp;(14)</option>
+	<option value="https://watirmelon.blog/2013/02/"> February 2013 &nbsp;(15)</option>
+	<option value="https://watirmelon.blog/2013/01/"> January 2013 &nbsp;(2)</option>
+	<option value="https://watirmelon.blog/2012/12/"> December 2012 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2012/11/"> November 2012 &nbsp;(5)</option>
+	<option value="https://watirmelon.blog/2012/10/"> October 2012 &nbsp;(5)</option>
+	<option value="https://watirmelon.blog/2012/09/"> September 2012 &nbsp;(2)</option>
+	<option value="https://watirmelon.blog/2012/07/"> July 2012 &nbsp;(8)</option>
+	<option value="https://watirmelon.blog/2012/06/"> June 2012 &nbsp;(10)</option>
+	<option value="https://watirmelon.blog/2012/05/"> May 2012 &nbsp;(4)</option>
+	<option value="https://watirmelon.blog/2012/04/"> April 2012 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2012/03/"> March 2012 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2012/02/"> February 2012 &nbsp;(4)</option>
+	<option value="https://watirmelon.blog/2012/01/"> January 2012 &nbsp;(4)</option>
+	<option value="https://watirmelon.blog/2011/12/"> December 2011 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2011/11/"> November 2011 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2011/10/"> October 2011 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2011/09/"> September 2011 &nbsp;(6)</option>
+	<option value="https://watirmelon.blog/2011/08/"> August 2011 &nbsp;(15)</option>
+	<option value="https://watirmelon.blog/2011/07/"> July 2011 &nbsp;(8)</option>
+	<option value="https://watirmelon.blog/2011/06/"> June 2011 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2011/05/"> May 2011 &nbsp;(5)</option>
+	<option value="https://watirmelon.blog/2011/04/"> April 2011 &nbsp;(4)</option>
+	<option value="https://watirmelon.blog/2011/03/"> March 2011 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2011/02/"> February 2011 &nbsp;(6)</option>
+	<option value="https://watirmelon.blog/2011/01/"> January 2011 &nbsp;(8)</option>
+	<option value="https://watirmelon.blog/2010/12/"> December 2010 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2010/11/"> November 2010 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2010/10/"> October 2010 &nbsp;(2)</option>
+	<option value="https://watirmelon.blog/2010/09/"> September 2010 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2010/08/"> August 2010 &nbsp;(4)</option>
+	<option value="https://watirmelon.blog/2010/07/"> July 2010 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2010/05/"> May 2010 &nbsp;(2)</option>
+	<option value="https://watirmelon.blog/2010/04/"> April 2010 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2010/01/"> January 2010 &nbsp;(2)</option>
+	<option value="https://watirmelon.blog/2009/12/"> December 2009 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2009/11/"> November 2009 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2009/10/"> October 2009 &nbsp;(2)</option>
+	<option value="https://watirmelon.blog/2009/09/"> September 2009 &nbsp;(4)</option>
+	<option value="https://watirmelon.blog/2009/08/"> August 2009 &nbsp;(6)</option>
+	<option value="https://watirmelon.blog/2009/06/"> June 2009 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2009/01/"> January 2009 &nbsp;(4)</option>
+	<option value="https://watirmelon.blog/2008/12/"> December 2008 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2008/11/"> November 2008 &nbsp;(2)</option>
+	<option value="https://watirmelon.blog/2008/10/"> October 2008 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2008/09/"> September 2008 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2008/08/"> August 2008 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2008/07/"> July 2008 &nbsp;(2)</option>
+	<option value="https://watirmelon.blog/2008/06/"> June 2008 &nbsp;(3)</option>
+	<option value="https://watirmelon.blog/2008/05/"> May 2008 &nbsp;(4)</option>
+	<option value="https://watirmelon.blog/2008/04/"> April 2008 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2008/03/"> March 2008 &nbsp;(1)</option>
+	<option value="https://watirmelon.blog/2008/02/"> February 2008 &nbsp;(1)</option>
+
+		</select>
+		</section><section id="categories-2" class="widget widget_categories"><h2 class="widget-title">Categories</h2><label class="screen-reader-text" for="cat">Categories</label><select name="cat" id="cat" class="postform">
+	<option value="-1">Select Category</option>
+	<option class="level-0" value="3471">Accessibility&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="3690">Agile Software Dev&nbsp;&nbsp;(26)</option>
+	<option class="level-0" value="641922">Android&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="137355882">Appium&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="537864">Ask Me Anything&nbsp;&nbsp;(59)</option>
+	<option class="level-0" value="30534574">ATDD&nbsp;&nbsp;(23)</option>
+	<option class="level-0" value="147383823">Automated Acceptance Testing&nbsp;&nbsp;(37)</option>
+	<option class="level-0" value="45453">Automated Testing&nbsp;&nbsp;(144)</option>
+	<option class="level-0" value="55574">Automattic&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="14103850">AWTA&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="91">blogging&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="20909451">Books&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="83350">Brisbane&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="6354">bugs&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="24463">Business Analysis&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="4500845">Business Driven&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="14560">Career&nbsp;&nbsp;(22)</option>
+	<option class="level-0" value="2528">community&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="9204">Conferences&nbsp;&nbsp;(29)</option>
+	<option class="level-0" value="32361710">Continuous Delivery&nbsp;&nbsp;(9)</option>
+	<option class="level-0" value="163615">Continuous Integration&nbsp;&nbsp;(9)</option>
+	<option class="level-0" value="20740">CSharp&nbsp;&nbsp;(8)</option>
+	<option class="level-0" value="169536">Cucumber&nbsp;&nbsp;(37)</option>
+	<option class="level-0" value="606900">Design&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="314429771">ES2015&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="905796">Exploratory Testing&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="907046">FireWatir&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="22">Internet&nbsp;&nbsp;(22)</option>
+	<option class="level-0" value="324281">iOS&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="24158780">iPhone App of the Week&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="457">JavaScript&nbsp;&nbsp;(21)</option>
+	<option class="level-0" value="7885">Leadership&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="124">Life&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="171">Meta&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="13476488">Mobile App Testing&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="352453">Mocha&nbsp;&nbsp;(15)</option>
+	<option class="level-0" value="111949">Monitoring&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="35182001">Open Source&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="1902">OSX&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="1035">Other&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="84765078">Page Objects&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="50830924">Performance Testing&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="1868">Philosophy&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="17903">Presentations&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="141116158">Pride and Paradev&nbsp;&nbsp;(35)</option>
+	<option class="level-0" value="755">quotes&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="30">Random&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="360424">Roo&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="48800160">RSpec&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="4872">ruby&nbsp;&nbsp;(21)</option>
+	<option class="level-0" value="3601">Ruby on Rails&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="111899">Selenium&nbsp;&nbsp;(33)</option>
+	<option class="level-0" value="40459398">Session Based Testing&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="40775664">Soap Opera Testing&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="581">Software&nbsp;&nbsp;(19)</option>
+	<option class="level-0" value="11153">Software Testing&nbsp;&nbsp;(44)</option>
+	<option class="level-0" value="53192695">SpecDriver&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="175597283">Specflow&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="57281922">Specification by Example&nbsp;&nbsp;(7)</option>
+	<option class="level-0" value="955">stories&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="76604">TDD&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="109795">Test Automation&nbsp;&nbsp;(44)</option>
+	<option class="level-0" value="231694">Thoughtworks&nbsp;&nbsp;(7)</option>
+	<option class="level-0" value="255">Ubuntu&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="1">Uncategorized&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="3882">unit testing&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="753">Usability&nbsp;&nbsp;(9)</option>
+	<option class="level-0" value="303624">user stories&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="83657">Watir&nbsp;&nbsp;(50)</option>
+	<option class="level-0" value="54537376">Watir-WebDriver&nbsp;&nbsp;(53)</option>
+	<option class="level-0" value="1883272">Web Design&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="47762807">WebDriver&nbsp;&nbsp;(50)</option>
+	<option class="level-0" value="209069595">WebDriver Extensions&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="1359">Wiki&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="33">Wordpress&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="1177123">WordPress.com&nbsp;&nbsp;(7)</option>
+	<option class="level-0" value="349">Writing&nbsp;&nbsp;(4)</option>
+</select>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			location.href = "https://watirmelon.blog/?cat=" + dropdown.options[ dropdown.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+/* ]]> */
+</script>
+
+</section><section id="wp_tag_cloud-4" class="widget wp_widget_tag_cloud"><h2 class="widget-title">Tags</h2><div style="overflow:hidden"><a href="https://watirmelon.blog/tag/agile-2/" class="tag-link-35000742 tag-link-position-1" title="8 topics" style="font-size: 8pt;">agile</a>
+<a href="https://watirmelon.blog/tag/automated-testing/" class="tag-link-45453 tag-link-position-2" title="20 topics" style="font-size: 16.491803278689pt;">Automated Testing</a>
+<a href="https://watirmelon.blog/tag/cucumber/" class="tag-link-169536 tag-link-position-3" title="18 topics" style="font-size: 15.573770491803pt;">Cucumber</a>
+<a href="https://watirmelon.blog/tag/firefox/" class="tag-link-45 tag-link-position-4" title="12 topics" style="font-size: 11.672131147541pt;">Firefox</a>
+<a href="https://watirmelon.blog/tag/google/" class="tag-link-81 tag-link-position-5" title="12 topics" style="font-size: 11.672131147541pt;">Google</a>
+<a href="https://watirmelon.blog/tag/javascript/" class="tag-link-457 tag-link-position-6" title="9 topics" style="font-size: 9.1475409836066pt;">JavaScript</a>
+<a href="https://watirmelon.blog/tag/linkedin/" class="tag-link-80962 tag-link-position-7" title="35 topics" style="font-size: 22pt;">linkedin</a>
+<a href="https://watirmelon.blog/tag/mocha-2/" class="tag-link-35500883 tag-link-position-8" title="9 topics" style="font-size: 9.1475409836066pt;">mocha</a>
+<a href="https://watirmelon.blog/tag/page-objects/" class="tag-link-43278937 tag-link-position-9" title="8 topics" style="font-size: 8pt;">page objects</a>
+<a href="https://watirmelon.blog/tag/ruby/" class="tag-link-4872 tag-link-position-10" title="22 topics" style="font-size: 17.409836065574pt;">ruby</a>
+<a href="https://watirmelon.blog/tag/selenium/" class="tag-link-111899 tag-link-position-11" title="12 topics" style="font-size: 11.672131147541pt;">Selenium</a>
+<a href="https://watirmelon.blog/tag/software-testing/" class="tag-link-11153 tag-link-position-12" title="14 topics" style="font-size: 13.27868852459pt;">Software Testing</a>
+<a href="https://watirmelon.blog/tag/specflow/" class="tag-link-32957006 tag-link-position-13" title="8 topics" style="font-size: 8pt;">SpecFlow</a>
+<a href="https://watirmelon.blog/tag/test-automation/" class="tag-link-109795 tag-link-position-14" title="12 topics" style="font-size: 11.672131147541pt;">Test Automation</a>
+<a href="https://watirmelon.blog/tag/testing/" class="tag-link-12 tag-link-position-15" title="9 topics" style="font-size: 9.1475409836066pt;">testing</a>
+<a href="https://watirmelon.blog/tag/thoughtworks/" class="tag-link-231694 tag-link-position-16" title="8 topics" style="font-size: 8pt;">Thoughtworks</a>
+<a href="https://watirmelon.blog/tag/watir/" class="tag-link-83657 tag-link-position-17" title="31 topics" style="font-size: 20.852459016393pt;">Watir</a>
+<a href="https://watirmelon.blog/tag/watir-webdriver/" class="tag-link-47762906 tag-link-position-18" title="14 topics" style="font-size: 13.27868852459pt;">watir-webdriver</a>
+<a href="https://watirmelon.blog/tag/webdriver/" class="tag-link-13607966 tag-link-position-19" title="22 topics" style="font-size: 17.409836065574pt;">webdriver</a>
+<a href="https://watirmelon.blog/tag/webdriverjs/" class="tag-link-87476509 tag-link-position-20" title="12 topics" style="font-size: 11.672131147541pt;">webdriverJS</a></div></section><section id="follow_button_widget-3" class="widget widget_follow_button_widget">
+		<iframe src="./scott_2011_files/index.html" width="100%" height="20" frameborder="0" scrolling="no"></iframe>
+		<script type="text/javascript">(function(d){var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');p.type = 'text/javascript';p.async = true;p.src = '//widgets.wp.com/platform.js';f.parentNode.insertBefore(p,f);}(document));</script>
+
+		</section>	</aside><!-- .sidebar .widget-area -->
+
+		</div><!-- .site-content -->
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+							<nav class="main-navigation" role="navigation" aria-label="Footer Primary Menu">
+					<div class="menu-default-container"><ul id="menu-default-1" class="primary-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1372"><a href="http://watirmelon.com/">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1371"><a href="https://watirmelon.blog/about/">About</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4802"><a href="https://watirmelon.blog/ama/">Ask Me Anything</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1561"><a href="https://watirmelon.blog/pride-and-paradev/">Pride and Paradev</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1373"><a target="_blank" href="http://quotes.watirmelon.blog/">Quotes</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2069"><a target="_blank" href="http://links.watirmelon.blog/">Links</a></li>
+</ul></div>				</nav><!-- .main-navigation -->
+			
+							<nav class="social-navigation" role="navigation" aria-label="Footer Social Links Menu">
+					<div class="menu-social-container"><ul id="menu-social-1" class="social-links-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2072"><a href="http://www.linkedin.com/in/alisterscott"><span class="screen-reader-text">LinkedIn</span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2071"><a href="http://github.com/alisterscott"><span class="screen-reader-text">Github</span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2070"><a href="http://stackoverflow.com/users/503158/alister-scott"><span class="screen-reader-text">Stack Overflow</span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5853"><a href="http://twitter.com/watirmelon"><span class="screen-reader-text">Twitter</span></a></li>
+</ul></div>				</nav><!-- .social-navigation -->
+			
+			<div class="site-info">
+								<span class="site-title"><a href="https://watirmelon.blog/" rel="home">WatirMelon.Blog</a></span>
+				<a href="https://wordpress.com/?ref=footer_custom_powered">Powered by WordPress.com</a>.
+			</div><!-- .site-info -->
+		</footer><!-- .site-footer -->
+	</div><!-- .site-inner -->
+</div><!-- .site -->
+
+<!--  -->
+<script type="text/javascript" src="./scott_2011_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./scott_2011_files/wpgroho.js"></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-eb3b60a65e3f623c31d49dd05b625462">
+	</div>
+	<div class="grofile-hash-map-dcc6d89b69d2d2ac32829f56d19eee22">
+	</div>
+	<div class="grofile-hash-map-eb3b60a65e3f623c31d49dd05b625462">
+	</div>
+	<div class="grofile-hash-map-68156df5b652c1915688f806c61e9454">
+	</div>
+	<div class="grofile-hash-map-7f1c37026bc13764ed454653d9eb5841">
+	</div>
+	<div class="grofile-hash-map-5b68eaf0c771fe9c70a3482897fdf1fb">
+	</div>
+	<div class="grofile-hash-map-ebefd5d718e616df3683c01d9291c3cb">
+	</div>
+	<div class="grofile-hash-map-1ed1fd1c21faeee42f1396c123b5840a">
+	</div>
+	<div class="grofile-hash-map-caae9101d0e39c5ed9886a035d6c92ab">
+	</div>
+	<div class="grofile-hash-map-79c612437c741d32f6a30b7172272889">
+	</div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/watirmelon.blog\/2011\/06\/10\/yet-another-software-testing-pyramid\/":947};
+	</script>
+		<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-twitter' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-linkedin' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+		});
+		</script>
+			
+		<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-google-plus-1' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-facebook' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+		});
+		</script>
+							<script type="text/javascript">
+				jQuery(document).on('ready', function(){
+					jQuery('body').on('click', 'a.share-pinterest', function(e){
+						e.preventDefault();
+						// Load Pinterest Bookmarklet code
+						var s = document.createElement("script");
+						s.type = "text/javascript";
+						s.src = window.location.protocol + "//assets.pinterest.com/js/pinmarklet.js?r=" + ( Math.random() * 99999999 );
+						var x = document.getElementsByTagName("script")[0];
+						x.parentNode.insertBefore(s, x);
+						// Trigger Stats
+						var s = document.createElement("script");
+						s.type = "text/javascript";
+						s.src = this + ( this.toString().indexOf( '?' ) ? '&' : '?' ) + 'js_only=1';
+						var x = document.getElementsByTagName("script")[0];
+						x.parentNode.insertBefore(s, x);
+					});
+				});
+			</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-tumblr' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomtumblr', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+		});
+		</script>
+		<script type="text/javascript">
+/* <![CDATA[ */
+var comment_like_text = {"loading":"Loading..."};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var screenReaderText = {"expand":"expand child menu","collapse":"collapse child menu"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var actionbardata = {"siteID":"2177915","siteName":"WatirMelon.Blog","siteURL":"https:\/\/watirmelon.blog","icon":"<img alt='' src='https:\/\/secure.gravatar.com\/blavatar\/c9de640b304257bb2361e16d95fec265?s=36' class='avatar avatar-36' height='36' width='36' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/twentysixteen","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/watirmelon.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fwatirmelon.blog%2F2011%2F06%2F10%2Fyet-another-software-testing-pyramid%2F","themeURL":"https:\/\/wordpress.com\/themes\/twentysixteen\/","xhrURL":"https:\/\/watirmelon.blog\/wp-admin\/admin-ajax.php","nonce":"d55bc79f22","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"bfaca9e543\" \/>","referer":"https:\/\/watirmelon.blog\/2011\/06\/10\/yet-another-software-testing-pyramid\/","canFollow":"1","statusMessage":"","customizeLink":"https:\/\/watirmelon.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fwatirmelon.wordpress.com%2F2011%2F06%2F10%2Fyet-another-software-testing-pyramid%2F","postID":"947","shortlink":"http:\/\/wp.me\/p98zF-fh","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/watirmelon.blog\/947","i18n":{"view":"View Site","follow":"Follow","following":"Following","edit":"Edit","login":"Log In","signup":"Sign Up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Twenty Sixteen","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editFollows":"Manage Sites I Follow","editSubs":"Manage Subscriptions","viewReader":"View Site in the Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"Join 1,294 other followers","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/watirmelon.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fwatirmelon.blog%2F2011%2F06%2F10%2Fyet-another-software-testing-pyramid%2F\">Log in now.<\/a>"}};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./scott_2011_files/saved_resource(4)"></script><div id="actionbar" class="actnbr-pub-twentysixteen actnbr-has-follow"><ul><li class="actnbr-btn actnbr-hidden"> 			    	<a class="actnbr-action actnbr-actn-follow" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a> 			    	<div class="actnbr-popover tip tip-top-left actnbr-notice"> 			    		<div class="tip-arrow"></div> 			    		<div class="tip-inner actnbr-follow-bubble"></div> 			    	</div> 			    </li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename"><a href="https://watirmelon.blog/"><img alt="" src="./scott_2011_files/c9de640b304257bb2361e16d95fec265" class="avatar avatar-36" height="36" width="36"> WatirMelon.Blog</a></li> 				   	<li class="actnbr-folded-customize"><a href="https://watirmelon.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fwatirmelon.wordpress.com%2F2011%2F06%2F10%2Fyet-another-software-testing-pyramid%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li> 				    <li class="actnbr-folded-follow"><a class="actnbr-action actnbr-actn-follow" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a></li> 						<li class="actnbr-signup"><a href="https://wordpress.com/start/">Sign Up</a></li> 				    <li class="actnbr-login"><a href="https://watirmelon.wordpress.com/wp-login.php?redirect_to=https%3A%2F%2Fwatirmelon.blog%2F2011%2F06%2F10%2Fyet-another-software-testing-pyramid%2F">Log In</a></li> 				     				    <li class="actnbr-shortlink"><a href="http://wp.me/p98zF-fh">Copy shortlink</a></li> 				     				     				     				    <li class="actnbr-subs"><a href="https://subscribe.wordpress.com/">Manage Subscriptions</a></li> 				    <li class="actnbr-fold"><a href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/">Collapse this bar</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src="./scott_2011_files/master.html" scrolling="no" id="likes-master" name="likes-master" style="display:none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		<script>
+			var _comscore = _comscore || [];
+			_comscore.push({
+				c1: "2",
+				c2: "7518284"
+			});
+			(function() {
+				var s = document.createElement("script"),
+					el = document.getElementsByTagName("script")[0];
+				s.async = true;
+				s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+				el.parentNode.insertBefore(s, el);
+			})();
+		</script>
+		<noscript>
+			&lt;p class="robots-nocontent"&gt;&lt;img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=7518284&amp;c3=&amp;c4=&amp;c5=&amp;c6=&amp;c15=&amp;cv=2.0&amp;cj=1" alt="" style="display:none;" width="1" height="1" /&gt;&lt;/p&gt;
+		</noscript><script src="./scott_2011_files/w.js" type="text/javascript" async="" defer=""></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'2177915','blog_tz':'10','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'2177915','v':'wpcom','tz':'10','user_id':'0','post':'947','subd':'watirmelon'}]);
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1TaVhzUzFMbjdWNHpwZGhTayxPSUFCMGNrd29+Smw0TDhnZmRTK0hlRi9QSGh6bi9GXVhBJWIlZlR5U1JMLU8/MkNtblkvY1dzK3YrWW0zdnc4U01tSmJHSXwlUC9udls5NFJicTR+QTNbQXNDdng9Z3VpdGJOX3xOTGxpLHMrRE1nUHp5ZXxfLmZHP0hlRDJoQ0dZV2N4VDFbUFFkYmU0fmovSnhMNndZTnhdTUNSSjROMk5kSTYzcndnb1RkRnlYS1M2eU1YJlA/JkJybk5abXZDWWkrL0F4PX5tZFBjWFJZRzZ8TU5XR3FHZzBkZD1LLys1WVlYUWJrMVhSc2xFcHZBbWJqT3VRU1IlbTYyWHNTLy5jZkwyZm4sSXZbVFNlP1VNQy11Vz9BVkdoLlB0RF8vL3l2ZzZHNFAweVQ='}]);
+_stq.push([ 'clickTrackerInit', '2177915', '947' ]);
+	</script>
+<noscript>&lt;img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /&gt;</noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+
+<div class="comment-likes-overlay" style="display: none;"></div><div id="sharing_email" style="display: none;">
+		<form action="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="">
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="">
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="">
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off">
+			<script> document.getElementById('jetpack-source_f_name').value = ''; </script>
+			<div class="recaptcha" id="sharing_recaptcha"></div><input type="hidden" name="recaptcha_public_key" id="recaptcha_public_key" value="6LcYW8MSAAAAADBAuEH9yaPcF7lWh11Iq62ZKtoo">
+			<img style="float: right; display: none" class="loading" src="./scott_2011_files/loading.gif" alt="loading" width="16" height="16">
+			<input type="submit" value="Send Email" class="sharing_send">
+			<a rel="nofollow" href="https://watirmelon.blog/2011/06/10/yet-another-software-testing-pyramid/#cancel" class="sharing_cancel">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div><img src="./scott_2011_files/g.gif" alt=":)" id="wpstats"><script aria-hidden="true" type="application/x-lastpass" id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{(function() { for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; if (typeof(lastpass_f.lpsubmitorig2)=='object'){ continue;}lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i.toString(); } else { d.textContent=i.toString(); } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }})()}catch(e){}</script></body></html>
