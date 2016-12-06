@@ -2,16 +2,89 @@
 \section{Umsetzung von Testautomatisierung}
 
 \subsection{Strukturelle Voraussetzungen}
+Im Gegensatz zu der vorherigen Umsetzung, die den Prinzipien der prozeduralen Programmierung folgte, fand bei der Neuentwicklung der Schnittstelle die beschriebenen und etablierten Best-Practices Anwendung. Dies hat den großen Vorteil, dass die erstellte Klassenstruktur konsequent dem Single Responsiblity Prinzip erfüllen. Die Verzeichnis und zeitgleich verwendete Namespace Struktur der Klassen ist wie folgt aufgebaut:
+
+\begin{itemize}
+	\item Commands
+	\item Config
+	\item Exporter
+	\item Importer
+	\item Mapper
+	\item Reader
+	\item Resource
+	\item Utils
+	\item Writer
+\end{itemize}
+
+In den verschiedenen Verzeichnissen befinden sich einzelne Klassen die für eine bestimmte Aufgabe konzipiert sind. Im Bereich Commands existiert zum Beispiel eine EtosExportOrders und eine EtosImportArticles Klasse.
+
+---- Weitere Beschreibung wie es aussieht. Abhängigkeiten sind via Dipendency Injection und constructor geladen worden.
 
 \subsection{Auswahl der Testwerkzeuge}
 \subsubsection{PHP-Unit}
+Die Auswahl für die Durchführung und Erstellung der benötigten Unit- und Integrationstest viel auf das Framework PHPUnit. Dies ist in der PHP-Entwicklung der defakto Standard für diese Aufgaben geworden.
+
+PHPUnit ist ein Testframework welches besonders für automatisiertes Testen einzelner Einheiten (Units, meist Klassen oder Methoden) geeignet ist. PHPUnit wird ab
+der Version 3.0 unter der Berkeley Software Distribution (BSD)-Lizenz veröffentlicht und kann problemlos als PHP-Archive (phar) Paket heruntergeladen und installiert
+werden.
+
+PHPUnit basiert auf dem xUnit-Konzept, welches auch Anwendung in anderen Programmiersprachen findet (z.B. JUnit für Java).
+
 \subsubsection{Behat/Mink}
+- GUI Testing
+- Gute Abstraktion der zu Testenden Szenarion
+
+
 \subsubsection{Humbug}
+- einziges Tool was für PHP Mutation Testing durchführen kann.
 
 
 \subsection{Technische Umsetzung}
+\subsubsection{Unit-Tests}
+Für die Umsetzung von Unit-Tests ziehen wir exemplarisch die Config und Reader Klassen heran
 
 
-\subsection{Durchführung}
+\subsubsection{Integration}
 
-\subsection{(Automatische Durchführung via continuous integration)}
+Mapper Klasse
+
+\subsubsection{Mutation-Testing}
+
+Durchführung:
+\begin{lstlisting}[caption=Ausführung des Mutation-Testing]{MutationTesting}
+Humbug running test suite to generate logs and code coverage data...
+
+19 [==========================================================] 18 secs
+
+Humbug has completed the initial test run successfully.
+Tests: 19 Line Coverage: 71.16%
+
+Humbug is analysing source files...
+
+Mutation Testing is commencing on 22 files...
+(.: killed, M: escaped, S: uncovered, E: fatal error, T: timed out)
+
+SSSSSSSSSS..S.......S...................MMMMMMMM.....M...... |   60 (15/22)
+.M.SSSSSSSS..M.MMMMMMMM.MSS....MMMMMMMMMMM..MM.M.MMMMMMMM..M |  120 (15/22)
+MMMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS |  180 (15/22)
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS |  240 (15/22)
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS |  300 (15/22)
+SSSSSSSSSSSSSSSSSSSSSSMMMMMMMMSSMMSMMMMMMMMSSSMMMSSMMMMMMM.. |  360 (18/22)
+TM.M..M
+
+367 mutations were generated:
+60 mutants were killed
+229 mutants were not covered by tests
+77 covered mutants were not detected
+0 fatal errors were encountered
+1 time outs were encountered
+
+Metrics:
+Mutation Score Indicator (MSI): 17%
+Mutation Code Coverage: 38%
+Covered Code MSI: 44%
+\end{lstlisting}
+
+
+
+\subsection{Automatische Durchführung der Tests via continuous integration}

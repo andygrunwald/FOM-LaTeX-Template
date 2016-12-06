@@ -57,33 +57,41 @@ bei weitem sprengt.
 Außerdem werden Integrationstests sehr viel seltener ausgeführt als eigentlich empfehlenswert. Somit steigt das Risiko, dass Fehler erst ziemlich auftauchen, enorm.  
 
 \subsection{SWOT-Analyse}
+\subsubsection{Beschreibung}
+Die SWOT-Analyse (engl. Akronym für Strengths (Stärken), Weaknesses (Schwächen), Opportunities (Chancen) und Threats (Bedrohungen)) ist ein häufiger Bestandteil eines Business Plans. Sie ist zusätzlich ein Instrument der strategischen Planung. Sie dient der Positionsbestimmung und der Strategieentwicklung von Unternehmen und anderen Organisationen. ~\footcite[Vgl. Seite 240]{Meffert.2011}
+
+% rewrite
+Chancen sind Möglichkeiten, durch veränderte oder neue Produkte und Dienstleistungen neue Kunden zu gewinnen oder Stammkunden enger an sich zu binden. Diese Möglichkeiten können durch ggf. bessere oder innovativer Angebote von Wettbewerbern oder durch wirtschaftspolitische und technologische Veränderungen gefährdet sein (Risiken). Sollten die entstandenen Risiken aus Sicht der Entscheidungsträger zu groß sein, sind geeignete Gegenmaßnahmen einzuleiten. Die Auswahl der zu treffenden Maßnahmen richtet sich nach der Evaluierung und Einschätzung der eigenen Stärken und Schwächen durch die Verantwortlichen. Diese werden im Vergleich zum Wettbewerb erhoben.
+
+Um ein optimales Konzept für den Kunden zu entwickeln, soll eine SWOT-Analyse durchgeführt und ausgewertet werden. Als Wettbewerber ist die vorherige Agentur des Kunden anzusehen.
+
 \subsubsection{Durchführung}
 Anhand der vorliegenden Ist-Analyse wurde für eine detailliertere Entscheidungsgrundlage eine SWOT-Analyse durchgeführt. In dieser Analyse wird die Thematik der Automatisierung von Tests beleuchtet um eine Entscheidungsgrundlage für das zu erstellende Soll-Konzept zu schaffen.
 
 Zuerst wurden die Stärken und Schwächen der Testautmatisierung analysiert und festgelegt. Anschließend wurden die Chancen und Risiken des Prozesses erhoben. 
 \subsubsection{Stärken}
 \begin{itemize}	
-	\item Verlässlichkeit:
+	\item \textbf{Verlässlichkeit}
 	
 	Einmal erstellte Tests werden bei jeder Änderung wieder durchgeführt und Garantieren das die Software sich so verhält wie es der Test es überprüft. Ist dies nicht der Fall wird der betroffene Entwickler darüber informiert. Dadurch, dass die Tests immer ausgeführt werden, erhält der Entwickler deutlich früher eine Rückmeldung ob seine Veränderung des Quellcodes ggf. Seiteneffekte aufweist.
 	
-	\item Vollständigkeit (Testabdeckung):
+	\item \textbf{Vollständigkeit (Testabdeckung)}
 	
 	Wenn der Quellcode zu 100 \% mit automatischen Tests abgedeckt ist, ermöglicht dies eine Neustrukturierung, sogenanntes Refaktoring, ohne das Funktionen vom Entwickler unbemerkt aus der Software verschwinden oder nicht wie gewohnt weiter funktionieren. Durch eine Vollständige Testabdeckung wird das Vertrauen in die Software beim Endanwender deutlich gesteigert da eine einmal bekannte Funktionalität des Programms sich nicht unbewusst verändert.
 	
-	\item Wiederholbarkeit
+	\item \textbf{Wiederholbarkeit}
 	
 	Durch das automatisiertes Testing können nach jeder Änderung die vorher definierten Tests angestoßen werden. Durch diesen Automatismus sind keine Personal Ressourcen zur Überprüfung der Software notwendig. Zusätzlich sinkt die Fehleranfälligkeit der Tests enorm, da die erstellten Tests - bei jeder Ausführung immer wieder das genau gleiche Testmuster anwenden. Dies ist bei manuellen Tests nicht immer gegeben.
 	
-	\item Reproduzierbarkeit
+	\item \textbf{Reproduzierbarkeit}
 	
 	Einmal definierte Testmuster lassen sich immer wieder ausführen (siehe Wiederholbarkeit). Diese Eigenschaft ermöglicht es, dem Programmierer aufgetretene Fehler, zu reproduzieren. Hier ist kein investigativer Rechercheaufwand des Entwicklers beim Tester notwendig, da er durch den definierten Test, den exakten Systemkontext kennt.
 	
-	\item Reporting
+	\item \textbf{Reporting}
 	
 	Eine zusätzliche Stärke der automatisierten Tests ist die Reportingmöglichkeit. Bevor Änderungen in den Hauptzweig der Versionsverwaltung dürfen, können diese durch automatisierten Tests auf Funktion und Qualität überprüft werden. Bei einem negativen Testergebnis ist die Übernahme der Anpassungen nicht möglich un der betroffene Entwickler erhält ein detaillierte Informationen zu den jeweils fehlgeschlagenen Tests.
 	
-	\item Auswertung
+	\item \textbf{Auswertung}
 	
 	Durch die ständige Ausführung der Tests können auch Statistiken erstellt werden. Wie hoch ist die Code-Coverage (Abdeckung des Quellcodes durch automatisierte Tests) und welche Qualitätsmetriken haben sich über die Zeit wie verändert. Dies sind für das Projektmanagement objektive Kennzahlen, die dem Kunden interessieren und eine Auskunft über den Status und Qualität der zu entwickelnden Software gibt.
 
@@ -129,6 +137,8 @@ Zuerst wurden die Stärken und Schwächen der Testautmatisierung analysiert und 
 	
 	
 \end{itemize}
+
+\subsubsection{Auswertung}\dfrac{num}{den}
 
 \subsection{Soll-Konzept}
 \subsubsection{Automatisierter Testprozess}
