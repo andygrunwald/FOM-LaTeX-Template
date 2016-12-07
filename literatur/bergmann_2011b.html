@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- saved from url=(0101)https://sebastian-bergmann.de/archives/913-Towards-Better-Code-Coverage-Metrics-in-the-PHP-World.html -->
+<html lang="en" class="csstransforms csstransforms3d csstransitions js cssanimations csstransitions js inlinesvg"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Towards Better Code Coverage Metrics in the PHP World</title>
+  
+  <meta name="description" content="Sebastian Bergmann is the creator of PHPUnit, a de-facto standard in the field of quality assurance in PHP projects. He is a Co-Founder and Principal Consultant with thePHP.cc and offers consulting, training, and coaching services to help enterprises improve the quality assurance process for their PHP-based software projects.">
+  <meta name="author" content="Sebastian Bergmann">
+  <meta property="og:email" content="sb@sebastian-bergmann.de">
+  <meta property="og:site_name" content="Sebastian Bergmann">
+  <meta property="og:title" content="Sebastian Bergmann">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sebastian-bergmann.de/">
+  <meta property="twitter:site" content="@s_bergmann">
+  <meta property="twitter:creator" content="@s_bergmann">
+  <link rel="canonical" href="https://sebastian-bergmann.de/about.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" type="text/css" href="./bergmann_2011b_files/css">
+  <link rel="stylesheet" type="text/css" href="./bergmann_2011b_files/css(1)">
+  <link rel="stylesheet" type="text/css" href="./bergmann_2011b_files/css(2)">
+  <link rel="stylesheet" type="text/css" href="./bergmann_2011b_files/css(3)">
+  <link href="./bergmann_2011b_files/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="./bergmann_2011b_files/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+  <link href="./bergmann_2011b_files/style.css" rel="stylesheet" type="text/css">
+  <link href="./bergmann_2011b_files/layerslider.css" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9 ]><link href="../css/styleIE.css" rel="stylesheet"><![endif]-->
+  <!--[if IE 9 ]><link href="../css/styleIE9.css" rel="stylesheet"><![endif]-->
+  <!--[if lt IE 9]><script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+ </head>
+ <body cz-shortcut-listen="true">
+  <header>
+   <div class="container">
+    <div class="navbar navbar-inverse">
+     <div class="navbar-inner">
+      <a class="brand" href="https://sebastian-bergmann.de/index.html">sebastian bergmann</a>
+      <div class="nav-collapse collapse">
+       <ul class="nav">
+        <li><a href="https://sebastian-bergmann.de/index.html">Home</a></li>
+        <li><a href="https://sebastian-bergmann.de/about.html">About</a></li>
+        <li><a href="http://thephp.cc/">Consulting &amp; Training</a></li>
+        <li><a href="https://sebastian-bergmann.de/publications.html">Publications</a></li>
+        <li><a href="http://amiga.sebastian-bergmann.de/">Amiga Retrocomputing</a></li>
+        <li><a href="https://sebastian-bergmann.de/imprint.html">Imprint</a></li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div id="wrapper">
+    <div class="row-fluid">
+     <div class="posts span9">
+      <div class="post first last">
+       <div class="info">
+        <span class="post-date">
+         <span class="day">17</span>
+         <span class="month-year">June, 2011</span>
+        </span>
+       </div>
+       <div class="post-content">
+        <div class="post-title">
+         <h2>Towards Better Code Coverage Metrics in the PHP World</h2>
+        </div>
+        <div class="post-description">
+         <p></p><p>Remember that I <a href="http://sebastian-bergmann.de/archives/909-On-Sponsored-Open-Source-Development.html">promised to blog</a> about the requirements planning for more sophisticated support of code coverage metrics in PHP tools that I did with <a href="http://derickrethans.nl/">Derick</a> earlier this year? While we met in London in February and Montreal in March to discuss this, both of us were too busy to communicate what we want to do yet.</p><p>This blog posting will hopefully shine a light on what it is we are planning.</p>
+<h3>Current Situation</h3>
+<p><a href="https://secure.wikimedia.org/wikipedia/en/wiki/Code_coverage">Code Coverage</a> is a common metric used in software testing. <a href="http://phpunit.de/">PHPUnit</a> supports this valuable software metric by leveraging the <a href="https://github.com/sebastianbergmann/php-code-coverage">PHP_CodeCoverage</a> component which in turn makes use of <a href="http://xdebug.org/">Xdebug</a>, an extension to the PHP interpreter. The support for code coverage could, however, be improved even further.</p>
+<p>Xdebug currently only supports what is usually referred to as <strong>Line Coverage</strong>. This software metric measures whether each executable line was executed.</p>
+<p>Based on the line coverage information provided by Xdebug, PHP_CodeCoverage also calculates the <strong>Function / Method Coverage</strong> software metric that measures whether each function or method has been invoked. This software metric is actually implemented in a much stricter way in PHP_CodeCoverage because it only considers a function or method as covered when all of its executable lines are executed at least once during test execution.</p>
+<h3>The Future</h3>
+<p>In the future it would be nice to make available more sophisticated code coverage metrics such as Statement Coverage, Branch Coverage, Call Coverage, and Path Coverage to the users of PHPUnit, PHP_CodeCoverage, and Xdebug.</p>
+<p><strong>Statement Coverage</strong> measures whether each statement is executed (a line of code can contain more than one statement). A mapping from statement to the start and end column in the corresponding line of code is desirable but would require changing PHP's compiler. It is, however, possible to extend Xdebug to report the number executable and executed statements for a line of code.</p>
+<p><strong>Branch Coverage</strong> measures whether the boolean expression of each control structure evaluated to both TRUE and FALSE during the execution of the test suite. This should be relatively easy to implement based on the information provided by Statement Coverage.</p>
+<p><strong>Call Coverage</strong> measures whether each function or method call is executed and should be possible to implement in userland (in PHP_CodeCoverage) based on static code analysis and statement coverage.</p>
+<p><strong>Path Coverage</strong> measures whether each of the possible paths in each function or method has been followed. A path is a unique sequence of branches from the entry of the function or methods to its exit. It should be possible to implement this in userland (in PHP_CodeCoverage) based on static code analysis and branch coverage.</p>
+<p>As an alternative to Path Coverage it might make sense to implement <strong>Linear Code Sequence and Jump (LCSAJ) Coverage</strong> instead. This variation of Path Coverage does not require a flow graph and also avoids its exponential difficulty. It should be possible to implement in userland (in PHP_CodeCoverage) based on static code analysis and branch coverage.</p><p>The development of these features will take a lot of effort. It will be a challenge to find time in our schedules to work to tackle these features. But I felt like sharing what we are thinking about with you, the users of our tools, as soon as possible.</p><p></p>
+        </div>
+       </div>
+      </div>
+     </div>	
+     <div class="span3 sidebar hidden-phone">
+      <div class="widget first">
+       <p><strong>You followed a link to an archived post.</strong></p>
+       <p><strong>You can find new blog posts <a href="https://thephp.cc/news">here</a>.</strong></p>
+      </div>
+      <div class="widget last">
+       <div align="center">
+        <p><a href="https://thephp.cc/"><img alt="thePHP.cc - The PHP Consulting Company" src="./bergmann_2011b_files/thephpcc.png"></a></p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div id="under-footer">
+   <div class="container">
+    <div class="row-fluid">
+     <div class="span3">
+      <div id="under-footer-logo">
+       <a class="brand" href="https://sebastian-bergmann.de/index.html">sebastian bergmann</a>
+      </div>
+     </div>
+     <div class="span8">
+      <div id="under-footer-copyright">
+       © 2016 Sebastian Bergmann. All rights reserved.
+      </div>
+     </div>
+     <div class="span1">
+      <div id="under-footer-back-to-top">
+       <a href="https://sebastian-bergmann.de/archives/913-Towards-Better-Code-Coverage-Metrics-in-the-PHP-World.html#"></a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script src="./bergmann_2011b_files/jquery-1.8.2.js"></script>
+  <script src="./bergmann_2011b_files/isotope.js"></script>
+  <script src="./bergmann_2011b_files/jquery.imagesloaded.js"></script>
+  <script src="./bergmann_2011b_files/bootstrap.min.js"></script>
+  <script src="./bergmann_2011b_files/flexslider.js"></script>
+  <script src="./bergmann_2011b_files/carousel.js"></script>
+  <script src="./bergmann_2011b_files/jquery.cslider.js"></script>
+  <script src="./bergmann_2011b_files/slider.js"></script>
+  <script src="./bergmann_2011b_files/fancybox.js"></script>
+  <script src="./bergmann_2011b_files/jquery.placeholder.min.js"></script>
+  <script src="./bergmann_2011b_files/jquery-easing-1.3.js"></script>
+  <script src="./bergmann_2011b_files/layerslider.kreaturamedia.jquery.js"></script>
+  <script src="./bergmann_2011b_files/excanvas.js"></script>
+  <script defer="defer" src="./bergmann_2011b_files/modernizr.js"></script>
+  <script defer="defer" src="./bergmann_2011b_files/retina.js"></script>
+  <script defer="defer" src="./bergmann_2011b_files/custom.js"></script>
+ 
+
+</body></html>

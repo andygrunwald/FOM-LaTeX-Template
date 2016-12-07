@@ -1,0 +1,101 @@
+\newpage
+\section{Umsetzung von Testautomatisierung}
+
+\subsection{Strukturelle Voraussetzungen}
+Die Neuentwicklung soll die beschriebenen und etablierten Best-Practices berücksichtigen und umsetzen. Eine Konsequente Einhaltung zum Beispiel des Single Responsibility Principles führt zu einer einfachen und intuitiven Klassenstruktur da die jeweils erstellten Klassen einen eindeutigen Namen besitzen und nur eine Aufgabe erfüllen. Eine exemplarische Verzeichnisstruktur und sogleich auch Namespacestruktur könnte somit wie folgt aussehen: 
+
+\begin{itemize}
+	\item Commands
+	\item Config
+	\item Exporter
+	\item Importer
+	\item Mapper
+	\item Reader
+	\item Writer
+\end{itemize}
+
+Im Namespace Writer befinden sich alle Klassen die gewisse Datenströme in einem beliebigen Format abspeichern. Für jedes Datenformat gibt es jeweils eine eigenständige Klasse um dem Single Responsibility Principles gerecht zu werden. Zusätzlich müssen die ggf. vorhandenen Abhängigkeiten über einem geeigneten Verfahren auflösbar sein. Hier bietet sich an Abhängigkeiten via Dipendency Injection zu benennen und diese via dem constructor der jeweiligen Klasse zu übergeben, sogenannten constructor injection.
+
+\subsection{Auswahl der Testwerkzeuge}
+\subsubsection{PHPUnit}
+Die Auswahl für die Durchführung und Erstellung der benötigten Unit- und Integrationstest viel auf das Framework PHPUnit. Dies ist in der PHP-Entwicklung der defakto Standard für diese Aufgaben geworden und wird Hauptsächlich von Sebastian Bergmann entwickelt. PHPUnit wird ab der Version 3.0 unter der Berkeley Software Distribution (BSD)-Lizenz veröffentlicht und kann problemlos als PHP-Archive (phar) Paket heruntergeladen und installiert werden.
+
+PHPUnit basiert auf dem xUnit-Konzept, welches auch Anwendung in anderen Programmiersprachen findet (z.B. JUnit für Java).
+
+\subsubsection{Behat/Mink}
+- GUI Testing
+- Gute Abstraktion der zu Testenden Szenarion
+
+
+\subsubsection{Humbug}
+Humbug ist das einzige Mutationtestingframework für die Anwendung in PHP-Projekten. Glücklicherweise unterstützt es Vorzugsweise PHPUnit und baut auf dessen Testergebnisse auf.
+
+
+\subsection{Technische Umsetzung}
+\subsubsection{Softwarearchitektur}
+Im Gegensatz zu der vorherigen Umsetzung, die den Prinzipien der prozeduralen Programmierung folgte, fand bei der Neuentwicklung der Schnittstelle die beschriebenen und etablierten Best-Practices Anwendung. Die daraus resultierende Softwarearchitektur gliederte sich wie folgt:
+
+\begin{itemize}
+	\item Commands
+	\item Config
+	\item Exporter
+	\item Importer
+	\item Mapper
+	\item Reader
+	\item Resource
+	\item Utils
+	\item Writer
+\end{itemize}
+
+In den verschiedenen Verzeichnissen befinden sich einzelne Klassen die für jeweils eine bestimmte Aufgabe konzipiert sind. Im Bereich Commands existiert zum Beispiel eine EtosExportOrders und eine EtosImportArticles Klasse. Die erste Klasse führt den Befehl aus, das die Bestellungen Exportiert und für die Warenwirtschaft bereitgestellt werden. Diese Klasse erfüllt ansonsten keine weitere Aufgabe außer der beschrieben.
+
+\subsubsection{Unit-Tests}
+Für die Umsetzung von Unit-Tests ziehen wir exemplarisch die Config und Reader Klassen heran
+
+
+\subsubsection{Integration}
+
+Mapper Klasse
+
+\subsubsection{GUI-Testing}
+
+\subsubsection{Mutation-Testing}
+
+Durchführung:
+\begin{lstlisting}[caption=Ausführung des Mutation-Testing]{MutationTesting}
+Humbug running test suite to generate logs and code coverage data...
+
+19 [==========================================================] 18 secs
+
+Humbug has completed the initial test run successfully.
+Tests: 19 Line Coverage: 71.16%
+
+Humbug is analysing source files...
+
+Mutation Testing is commencing on 22 files...
+(.: killed, M: escaped, S: uncovered, E: fatal error, T: timed out)
+
+SSSSSSSSSS..S.......S...................MMMMMMMM.....M...... |   60 (15/22)
+.M.SSSSSSSS..M.MMMMMMMM.MSS....MMMMMMMMMMM..MM.M.MMMMMMMM..M |  120 (15/22)
+MMMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS |  180 (15/22)
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS |  240 (15/22)
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS |  300 (15/22)
+SSSSSSSSSSSSSSSSSSSSSSMMMMMMMMSSMMSMMMMMMMMSSSMMMSSMMMMMMM.. |  360 (18/22)
+TM.M..M
+
+367 mutations were generated:
+60 mutants were killed
+229 mutants were not covered by tests
+77 covered mutants were not detected
+0 fatal errors were encountered
+1 time outs were encountered
+
+Metrics:
+Mutation Score Indicator (MSI): 17%
+Mutation Code Coverage: 38%
+Covered Code MSI: 44%
+\end{lstlisting}
+
+
+
+% \subsection{Automatische Durchführung der Tests via continuous integration}

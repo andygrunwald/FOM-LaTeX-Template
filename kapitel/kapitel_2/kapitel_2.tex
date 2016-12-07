@@ -1,125 +1,219 @@
 \newpage
-\section{Latex-Details}
+\section{Analyse}
 
-\subsection{Verwendete Software, Editor und Zusatzpakete}
-\subsubsection{Windows 8+}
-\begin{itemize}
-\item MikTex: 2.9, 32-bit
-\item Biblatex: 3.5, Zusatz: Biber.exe
-\item Editor: TexStudio (kann ich empfehlen), Notepad++
+\subsection{Ist-Analyse}
+Es gibt eine Vielzahl von verschiedenen Prozessmodellen die dazu beitragen, eine strukturierte und steuerbare Softwareentwicklung durchzuführen. Je nachdem welches Prozessmodell verwendet wird,
+sollte man die entsprechenden Testprozesse dem Vorgehensmodell zuordnen. Aus diesem Grund soll hier als erstes der bisherige Entwicklungsprozess der \nomenclature{ERP}{Enterprise-Resource-Planing} Shopware ERP-Schnittstelle Etos des vorherigen Agentur-Dienstleisters vorgestellt werden. Diese Schnittstelle greift auf die \dq{}Import- und Exportschnittstelle Internetshop\dq{} der Warenwirtschaft Apollon zu. 
+
+Diese Schnittstelle bietet für den Import in das ERP-System, dass \nomenclature{ECSV}{Encapsulated Comma Separated Value}ECSV-Format an. Zum Export Richtung Shopsystem wird ein \nomenclature{CSV}{Comma Separated Value}CSV-Format offeriert. Beide Austauschformate basieren auf der \nomenclature{ASCII}{American Standard Code for Information Interchange}ASCII Zeichenkodierung. 
+
+Auf Basis dieser Spezifikationen hat die vorherige Agentur eine Import- und Export Schnittstelle für das Shopsystem Shopware in der Version 5.0 entwickelt. Dies beinhaltete das Einspielen der vorhandenen Artikel inkl. Lagerbestände, Preise und Kategorien. Des Weiteren ermöglicht dies eine Übermittlung der Kunden und Bestellungen zum Warenwirtschaftssystem. Der Dienstleister ist hierbei nach einem klassischen Wasserfallmodel ohne Testautomatisierung vorgegangen. 
+
+Dabei ist die umsetzende Firma in 5 verschiedenen Phasen vorgegangen. In dem ersten Abschnitt, der Anforderungsanalyse und -spezifikation, wurden vom Projektleiter die Erwartungen und notwendigen Eigenschaften einer Schnittstelle vom Kunden aufgenommen, verarbeitet und in ein Pflichtenheft niedergeschrieben.
+
+In der anschließenden Phase, Systemdesign und -spezifikation, wurde von den Softwareentwicklern die zu erstellende Softwarearchitektur konzipiert und niedergeschrieben. Dabei tauschten sich die Entwickler oft mit dem Projektleiter aus um zu überprüfen, dass alle Punkte aus dem Pflichtenheft berücksichtigt sind. Parallel dazu tauschte sich der Projektleiter mit dem Kunden aus um auf mögliche Änderungswünsche zu reagieren.
+
+Im Anschluss dieses Abschnittest wurde die Programmierung von den Softwareentwicklern durchgeführt. Die umgesetzten Module wurden auf Basis des Quellcodes überprüft, sogenannte Reviews. Erste manuelle Tests der Schnittstelle fanden hier bereits statt. Als Resultat dieser Phase entstand die eigentliche Software für den Kunden. 
+
+Darauf folgend wurde die Software in einer Testumgebung eingespielt und in Betrieb genommen. Hierbei fanden dann die manuellen Integrations- und Systemtest statt. Dies bedeutet das der Kunde in dem ERP-System verschiedene Artikel verändert hat, und diese Änderungen den Entwicklern mitteilte. Diese wiederum prüften, ob die Schnittstelle die gewünschten Veränderungen auch umgesetzt hat. Sobald bei dieser Testsituation ein Fehler aufgetreten ist, sind die Entwickler wieder in die vorherige Phase zurück gekehrt und haben diesen Fehler Analysiert, behoben und getestet. Anschließend haben die Entwickler die angepasste Version wieder in die Testumgebung eingespielt und die Phase erneut angestoßen.
+
+Erst nach Vollendung der Integrations- und Systemtests, hat die Schnittstelle eine Freigabe vom Kunden für das Live-System erhalten. Das Einspielen der neuen Softwareversion ins Produktiv-System übernahmen die Softwareentwickler. Darauf hin führte der Kunde und die Softwareentwickler weitere System- und Integrationstests durch.
+
+Diese Prozesse werden bei jeglichen Veränderungen des Warenwirtschafts- oder Shopsystems erneut angestoßen. 
+
+\subsection{Schwachstellen-Analyse}
+\subsubsection{Allgemein}
+Wir haben einen kurzen Entwicklungszyklus dem ein Planungszyklus voran geht. Nach der Entwicklung folgt eine zwei stufige Testphase. Dies sollte eigentlich ausreichend sein um eine annähernd fehlerfreie Software entwickeln zu können, oder? Bevor man diese Frage beantwortet, zeigen ein paar typische Szenen, was während der manuellen Testphasen im vorherigen Entwicklungsprozess passiert ist.
+
+
+\subsubsection{Schlechte Ressourcennutzung}
+Die meisten Testfälle von der ERP-Schnittstelle wie im Kapital Y!!§!§!§!§!§ geschildert, benötigen mindestens 1 Softwareentwickler und einen Sachbearbeiter auf Seiten des Kunden. Des Weiteren ist manuelles Testen eine sehr aufwendige, monotone und fehlerbehaftete
+Tätigkeit. Zum Beispiel: Um Features von der ERP-Schnittstelle zu testen, muss jemand in der Warenwirtschaft Änderungen vornehmen, diese übermitteln und dann anschließend prüfen ob diese auch korrekt übermittelt sind. Beim testen des Kunden- und Bestellexportes muss der Softwareentwickler einen Kunden anlegen, Artikel in den Warenkorb legen, Rechnungs- und Lieferadresse auswählen und schlussendlich die Bestellung mit einer Zahlungsart abschließen. Anschließend müssen die Importierten Daten in der Warenwirtschaft 	 
+
+\subsubsection{Ineffizient}
+Bevor der Integrationstest starten kann, muss die Testumgebung vom Online-Shop und Warenwirtschaftssystem aktualisiert und mit dem jeweils letzten Stand der Software bestückt werden. Dies erfordert auf Dienstleister, wie auch Kundenseite einen größeren 
+Vorbereitungsaufwand um mit dem eigentlichen testen anfangen zu können. Des Weiteren wird die Vorbereitung durch das Tagesgeschäft des Dienstleisters und Kunden beeinträchtigt. Z.B. kommt ein Notfall-Support für den Dienstleister rein weil der Kunde keine Bestellungen mehr ins ERP-System einspielen kann, oder beim Kunden funktionieren andere Elementare Anwendungen nicht, die vom Ansprechpartner des Kunden gelöst werden müssen. Man spricht in diesem Zusammenhang auch vom sogenannten „Sägeblatt-Effekt”
+
+
+\subsubsection{Sehr fehleranfällig}
+Durch die große Anzahl von einzelnen manuellen Testschritten ist der Prozess sehr anfällig. Es genügt das nur ein einzelner Abschnitt falsch oder nicht vollständig ausgeführt wird, dass der ganze Testprozess fehl schlägt und dieser somit von vorne starten muss. Des Weiteren erfordertet diese Art von Testprozess eine exakte und perfekte Zusammenarbeit zwischen dem Dienstleister und dem Kunden. Es ist ausgeschlossen, dass die beteiligten Personen über einen so langen Zeitraum fehlerfrei arbeiten können.
+
+\subsubsection{Gesunkenes Vertrauen}
+Wegen mangelhafter Testabdeckung und fehlenden Integrationstests tauchten immer wieder nach der Veröffentlichung einer neuen Schnittstellenversion unangenehme Überraschungen auf. Z.B. fanden beim Import in das Shop-System nur noch Artikel ohne Varianten Berücksichtigung. Nach dem darauffolgenden Release und Fix des beschriebenen Problems, ließen sich zwar Artikel mit Varianten importieren, aber Artikel ohne Varianten fehlten gänzlich.
+
+Die Anhaltenden Probleme das z.B. Funktion A defekt ist und die Reparatur dadurch Funktion B beeinträchtigt hat das Vertrauen des Kunden in die ERP-Schnittstelle nachhaltig beeinflusst und jedes Release für den Kunden zu einer Zerreißprobe werden lassen. 
+
+\subsubsection{Review}
+Bei Reviews sollten Kollegen konkrete Rückmeldungen geben und fehlerhafte Stellen im Quellcode aufdecken, die gegen die definierten Richtlinien verstoßen. Dies sollte verhindern, dass unnötigen Fehler in den Quellcode der Software einfließen. Die Umsetzung sogenannten Code-Reviews fand bei den Entwicklern nur halbherzig statt. Die Entwickler empfanden diese als eine Art lästige Pflicht. Zusätzlich hatte der vorherige Dienstleister mit einer starken Entwickler Fluktuation zu kämpfen. 
+
+\subsubsection{Keine Regressionstests}
+Bereits umgesetzte und verwendete Funktionen veränderten plötzlich das Verhalten. Sogenannte Regressionen wurden durch keine Test, weder automatisiert noch manuell, festgehalten. Dies hatte zur Folge, dass jede Änderung an der Software beliebige Seiteneffekte aufweisen konnte. Eine Zuverlässige Entwicklung von neuen Funktionen war nur schwer möglich.
+
+\subsubsection{Schlussfolgerung}
+Die Fehlerquellen wie menschliches Versagen, Schwankungen und mangelnde Konsistenz lassen keinen Zweifel daran aufkommen, dass manuelle Prozesse nur eine geringe Chance haben, die
+schnellen und reproduzierbaren Ergebnisse zu liefern. Ganz zu schweigen davon, dass bei einer großen Code-Basis das manuelle Testen in aller Regel den für diese Iteration bemessenen Zeitrahmen
+bei weitem sprengt.
+
+Außerdem werden Integrationstests sehr viel seltener ausgeführt als eigentlich empfehlenswert. Somit steigt das Risiko, dass Fehler erst ziemlich auftauchen, enorm.  
+
+\subsection{SWOT-Analyse}
+\subsubsection{Beschreibung}
+Die SWOT-Analyse (engl. Akronym für Strengths (Stärken), Weaknesses (Schwächen), Opportunities (Chancen) und Threats (Bedrohungen)) ist ein häufiger Bestandteil eines Business Plans. Sie ist zusätzlich ein Instrument der strategischen Planung. Sie dient der Positionsbestimmung und der Strategieentwicklung von Unternehmen und anderen Organisationen. ~\footcite[Vgl. Seite 240]{Meffert.2012}
+
+% rewrite
+Chancen sind Möglichkeiten, durch veränderte oder neue Produkte und Dienstleistungen neue Kunden zu gewinnen oder Stammkunden enger an sich zu binden. Diese Möglichkeiten können durch ggf. bessere oder innovativer Angebote von Wettbewerbern oder durch wirtschaftspolitische und technologische Veränderungen gefährdet sein (Risiken). Sollten die entstandenen Risiken aus Sicht der Entscheidungsträger zu groß sein, sind geeignete Gegenmaßnahmen einzuleiten. Die Auswahl der zu treffenden Maßnahmen richtet sich nach der Evaluierung und Einschätzung der eigenen Stärken und Schwächen durch die Verantwortlichen. Diese werden im Vergleich zum Wettbewerb erhoben.
+
+Um ein optimales Konzept für den Kunden zu entwickeln, soll eine SWOT-Analyse durchgeführt und ausgewertet werden. Als Wettbewerber ist die vorherige Agentur des Kunden anzusehen.
+
+\subsubsection{Durchführung}
+Anhand der vorliegenden Ist-Analyse wird eine SWOT-Analyse durchgeführt um eine detailliertere Entscheidungsgrundlage zu ermöglichen. In dieser Analyse wird die Thematik der Automatisierung von Tests beleuchtet im Vergleich zu dem vorherigen Dienstleister um eine Entscheidungsgrundlage für das zu erstellende Soll-Konzept zu schaffen.
+
+Zuerst wurden die Stärken und Schwächen der Testautmatisierung analysiert und festgelegt. Anschließend wurden die Chancen und Risiken des Prozesses erhoben. 
+\subsubsection{Stärken}
+\begin{itemize}	
+	\item \textbf{Verlässlichkeit}
+	
+	Einmal erstellte Tests werden bei jeder Änderung wieder durchgeführt und Garantieren das die Software sich so verhält wie es der Test es überprüft. Ist dies nicht der Fall wird der betroffene Entwickler darüber informiert. Dadurch, dass die Tests immer ausgeführt werden, erhält der Entwickler deutlich früher eine Rückmeldung ob seine Veränderung des Quellcodes ggf. Seiteneffekte aufweist.
+	
+	\item \textbf{Vollständigkeit (Testabdeckung)}
+	
+	Wenn der Quellcode zu 100 \% mit automatischen Tests abgedeckt ist, ermöglicht dies eine Neustrukturierung, sogenanntes Refaktoring, ohne das Funktionen vom Entwickler unbemerkt aus der Software verschwinden oder nicht wie gewohnt weiter funktionieren. Durch eine Vollständige Testabdeckung wird das Vertrauen in die Software beim Endanwender deutlich gesteigert da eine einmal bekannte Funktionalität des Programms sich nicht unbewusst verändert.
+	
+	\item \textbf{Wiederholbarkeit}
+	
+	Durch das automatisiertes Testing können nach jeder Änderung die vorher definierten Tests angestoßen werden. Durch diesen Automatismus sind keine Personal Ressourcen zur Überprüfung der Software notwendig. Zusätzlich sinkt die Fehleranfälligkeit der Tests enorm, da die erstellten Tests - bei jeder Ausführung immer wieder das genau gleiche Testmuster anwenden. Dies ist bei manuellen Tests nicht immer gegeben.
+	
+	\item \textbf{Reproduzierbarkeit}
+	
+	Einmal definierte Testmuster lassen sich immer wieder ausführen (siehe Wiederholbarkeit). Diese Eigenschaft ermöglicht es, dem Programmierer aufgetretene Fehler, zu reproduzieren. Hier ist kein investigativer Rechercheaufwand des Entwicklers beim Tester notwendig, da er durch den definierten Test, den exakten Systemkontext kennt.
+	
+	\item \textbf{Reporting}
+	
+	Eine zusätzliche Stärke der automatisierten Tests ist die Reportingmöglichkeit. Bevor Änderungen in den Hauptzweig der Versionsverwaltung dürfen, können diese durch automatisierten Tests auf Funktion und Qualität überprüft werden. Bei einem negativen Testergebnis ist die Übernahme der Anpassungen nicht möglich un der betroffene Entwickler erhält ein detaillierte Informationen zu den jeweils fehlgeschlagenen Tests.
+	
+	\item \textbf{Auswertung}
+	
+	Durch die ständige Ausführung der Tests können auch Statistiken erstellt werden. Wie hoch ist die Code-Coverage (Abdeckung des Quellcodes durch automatisierte Tests) und welche Qualitätsmetriken haben sich über die Zeit wie verändert. Dies sind für das Projektmanagement objektive Kennzahlen, die dem Kunden interessieren und eine Auskunft über den Status und Qualität der zu entwickelnden Software gibt.
+
 \end{itemize}
 
-\subsubsection{Mac OSX und iOS}
-\begin{itemize}
-\item MacTeX: \url{https://tug.org/mactex}
-\item Editor: TexPad \url{https://www.texpadapp.com}
+\subsubsection{Schwächen}
+\begin{itemize}	
+	\item \textbf{Hohe Einstiegshürde}
+	
+	Aller Anfang ist schwer. Der initiale Aufwand um Automatisierte Tests, sogenannte Unit-Tests zu schreiben, ist sehr hoch HIER MICH SELBST ZITIEREN :D. Die Aufwände für die Einarbeitung amortisieren sich erst Mittel- und Langfristig.
+	
+	\item \textbf{Hoher Planungsaufwand}
+	
+	Um bei einem initialen neuem Software-Projekt automatisierte Tests zu verwenden ist ein hoher Planungsaufwand notwendig. Wo sollen die Tests ausgeführt werden? Benötigen wir eine Systemlandschaft für die automatisierten Tests? Können wir in diesem Projekt überhaupt alles Testen?
+	
+	\item \textbf{Aufdecken unerwarteter Fehler}
+	
+	Manuelle Tests decken deutlich mehr Fehler als das Automated Testing auf, weil Tester immer auch intuitiv agieren und von den geplanten Wegen durch die Anwendung abweichen können. Dazu kommt: Je erfahrener der Tester, desto besser ist meist auch seine persönliche „Testheuristik“ und damit die Erfolgsquote beim Auffinden von Fehlern.
+	
+	Durch die festgelegten Testszenarien ist kein destruktives Testen, wie es Menschliche Tester können, möglich. Dies bedeutet das Fehler die nicht durch Tests abgedeckt sind, beim Entwickler auch nicht erscheinen. Zum Beisiel wäre ein Warenkorbprozess innerhalb eines Shopsystem der zu 100 \% mit Tests abgedeckt und somit von den Metriken her ideal umgesetzt ist aber Wertlos wenn die Tests immer nur mit 19 \% Mehrwertsteuer durchgeführt werden. Sobald in dem Shop Bücher mit 7 \% zum verkauf stehen, besteht hier ein großes Fehlerpotenzial, dass die Artikel ggf. mit den falschen Mehrwertsteuern berechnet oder Mischwarenkörbe (Artikel mit 7 \% und 19 \% MwSt im Warenkorb) vollständig falsch kalkuliert sind. 
+	
+\end{itemize}
+\subsubsection{Chancen}
+\begin{itemize}	
+	\item \textbf{gesteigertes Vertrauen in die Software bei den Kunden}
+	
+	Durch die Zuverlässigkeit der einzelnen Funktionen innerhalb der Software wird das Vertrauen vom Kunden in ihr gestärkt. Eventuelle Ängste, dass nach jedem Update alles anders funktioniert als vorher, können damit entkräftet werden.
+	
+	\item \textbf{Bessere Ressourcennutzung}
+	
+	Die automatisierten Tests ermöglichen dem Entwicklungsteam die freigewordenen Ressourcen, die vorher bei den manuellen Tests gebunden waren, für die Pflege und Weiterentwicklung der Software zu verwenden. Dies ermöglicht dem Kunden, dass vorhandenen Budget effektiver einzusetzen.
+	
+\end{itemize}
+	\subsubsection{Gefahren}
+\begin{itemize}	
+	\item \textbf{Skepsis der Kunden bezüglich der Wirtschaftlichkeit}
+	
+	Durch den am Anfang spürbaren Mehraufwand für Automatisierte Tests, besteht die Möglichkeit das der Kunde an der Wirtschaftlichkeit dieses Prozesses zweifelt. Der Messbare Erfolg ist erst Mittel- und Langfristig beweisbar.
+	
+	\item \textbf{Integration Testprozess}
+	
+	Eine halbherzige Integration des Automatisierungs-Prozesses von den Software-Entwicklern stellt eine Gefahr da. Ohne Korrektur dessen, kann dem Kunden dann auch Mittel- und Langfristig kein Vorteil der Testautomatisierung bescheinigt werden und er verliert das Vertrauen in die Software und dem beauftragtem Unternehmen.
+	
+	\item \textbf{Mangelnde Testpflege}
+	
+	Wenn die vorhandenen Unit-Tests nicht gewartet werden, verlieren sie sehr schnell an Effektivität. Nur durch eine vollständige Abdeckung des Quellcodes bleibt die Effektivität des automatisierten Testings erhalten.
+	
+	
 \end{itemize}
 
-\subsubsection{Online}
-Overleaf ist eine Online-Anwendung mit der Ihr direkt im Browser an eurer Thesis schreiben könnt. Bis 1GB Größe und maximal 60 Einzeldateien könnt ihr Overleaf kostenlos nutzen: \url{https://www.overleaf.com/}
+\subsubsection{Auswertung}
+% SO Stärke-Chancen-Kombination: Welche Stärken passen zu welchen Chancen? Wie können Stärken genutzt werden, so dass sich die Chancenrealisierung erhöht?
+Durch die hohe Anzahl der Stärken von Testautomatisierung (Verlässlichkeit, Vollständigkeit (Testabdeckung), Wiederholbarkeit, Reproduzierbarkeit, Reporting und Auswertung) ist es ein leichtes die gegebenen Chancen gesteigertes Vertrauen bei den Anwendern der Software und eine bessere Ressourcennutzung zu realisieren. 
 
+%ST Stärke-Gefahren-Kombination: Welchen Gefahren können wir mit welchen Stärken begegnen? Wie können vorhandene Stärken eingesetzt werden, um den Eintritt bestimmter Gefahren abzuwenden?
+Des Weiteren lässt sich die Gefahr der Skepsis durch den Auftraggeber einfach entkräften, da die freiwerdenden Ressourcen dem Kunden direkt wieder zur Verfügung stehen. Durch die Möglichkeit des Reportings und der automatischen Auswertung der Testergebnisse, wird das Vertrauen des Kunden weiter gestärkt. Der Auftraggeber bekommt die kontinuierliche Verbesserung der Software und dem dazugehörigen Testen dessen regelmäßig und ohne Aufforderung übermittelt. Eine halbherzige Integration des Prozesses und der Testabdeckung wird durch das Reporting frühzeitig erkennbar. Dies ermöglicht ein rechtzeitiges Gegensteuern vom Kunden und dem Dienstleister.
 
-\subsection{Dokumentenklasse}
-Eigentlich hatte Prof. Finke empfohlen die Dokumentklassen \enquote{Book} oder \enquote{Report} für die Erstellung der Bachelor-Thesis zu verwenden, da diese über weitere Gliederungsebenen verfügen. Ich verwende dennoch eine leicht modifizierte Komaskript-Klasse \enquote{scrartcl}, mit der Erweiterung um eine Ebene. Siehe (skripte/weitereEbene.tex). Das Skript stammt irgendwo aus den Netz und übersteigt meine \LaTeX{}-Fähigkeiten. Dadurch kann ich über eine weitere Ebene in der Arbeit verfügen, ohne mich mit der Modifikation von Kapitel-Seiten rumschlagen~\footcite[Vgl. ][Seite 5]{Tanenbaum.2003} zu müssen. Diese Quelle ist nur zur Demonstration und hat keinen inhaltlichen Bezug hierzu. Es werden übrigens nur die Quellen im Literaturverzeichnis angezeigt, die auch referenziert sind.
+% WO Schwäche-Chancen-Kombination: Wo können aus Schwächen Chancen entstehen? Wie können Schwächen zu Stärken entwickelt werden?
+Zusätzlich besteht die Chance, die frei werdenden Ressourcen für destruktives Testing einzusetzen. Somit sind auch vom Software-Entwickler nicht bedachte Testszenarien überprüft und kontrollierbar. Ggf. auftretende Probleme können rechtzeitig behoben werden und fallen dem Endanwender nicht unangenehm auf.
 
+% WT Schwäche-Gefahren-Kombination: Wo befinden sich unsere Schwächen, und wie können wir uns vor Schaden schützen?
+Die gravierendste Schwäche der Testautomatisierung ist, für ungeübte Software-Entwickler, die Einstiegshürde. Hier müssen Freiräume für eventuelle Fehlschläge den Entwicklern eingeräumt und Mittel für notwendige Fortbildungen gestattet werden um mögliche Schäden abzuwenden. Außerdem benötigen die Entwickler anfänglich Konzeptionelle Unterstützung von qualifizierten Experten um den Planungsaufwand nicht ins unermessliche steigen zu lassen.
 
-\subsection{Grafiken}
-Das Paket \textbackslash usepackage\{float\} ermöglicht es die Grafiken und Tabellen an der Stelle im Text zu positionieren, wo diese im Quelltext stehen (Option H). Ansonsten würde \LaTeX{} diese dort unterbringen, wo es typographisch sinnvoll wäre - das wollen wir ja nicht ;-).
+\subsection{Soll-Konzept}
+\subsubsection{Automatisierter Testprozess}
+Durch die Schwachstellen-Analyse können wir feststellen, dass es vom entscheidender Wichtigkeit ist, einen automatisierten Testprozess in dem Entwicklungsprozess von der Etos Schnittstelle einzubinden. Die dadurch eingebrachten Vorteile sind erheblich. Fast alle zuvor erwähnten Probleme können durch die Automatisierung des Testprozesses einfach gelöst werden. Automatisiertes Testen bringt mehr Flexibilität und Reproduzierbarkeit in den Entwicklungsprozess, ermöglicht Regressionstest in jeder Iteration und erleichtert Testern maßgeblich die Arbeit. Somit ist eine Steigerung der Effizienz und der Qualität in der Softwareentwicklung gewährleistet. Zusätzlich werden Mitarbeiterressourcen ertragreicher eingesetzt
 
-Die Breite der Grafiken am Besten relativ zum Text angeben.
+Basierend auf der im vorherigen Kapitel erstellten Schwachstellen- und SWOT-Analyse ist eine Umsetzungsstrategie entwickelt worden, die nachhaltig die Probleme des Kunden löst.
 
-\subsection{Quellcode}
-Quellcode kann auf unterschiedliche Arten eingebaut werden.
-Zum einen kann es hier durch direktives Einbinden in der Kapitel-Datei geschehen.
-\begin{lstlisting}
-% Hier wird aufgezeigt, wie man eine Grafik einbindet, es wird also in der PDF angezeigt,
-% da es in einem Quellcode-Listing steht.
-% Auch wenn es hier faelschlicherweise als LaTeX-Befehl angezeigt wird.
-\includegraphics[width=0.9\textwidth]{sup}
-\end{lstlisting}
+\subsubsection{Umsetzungsstrategien}
+Die Strategie zur Umsetzung der benötigten Testroutinen sollen anhand der geschilderten Testpyramide umgesetzt werden. Dabei finden die Testarten, die im Kapitel \ref{arten-von-tests} beschrieben sind, Anwendung. Zielsetzung ist, dass es mindestens einen Test, egal auf welcher Ebene in der Pyramide, existiert der die entwickelte Erweiterung der Software überprüft. Damit ist eine Gewährleistung über die korrekte Funktionsweise der Software möglich und es treten keine unerwarteten Seiteneffekte auf.
 
-Bei längeren Quellcode-Listings empfiehlt es sich jedoch auf eine externe Datei im Ordner Quellcode zu verlinken und diese einzubauen:
-\lstinputlisting[language=HTML]{./Quellcode/Beispiel.html}
+Das Fundament der Pyramide bilden die Unit-Tests. Sie sind die Grundlage jeder soliden Vorgehensweise zur Testautmatisierung. Die Ausführung der jeweiligen Tests benötigen in der Regel nur ein paar Millisekunden und verwenden daher extrem wenig Computer-Ressourcen. Durch diese Art von Tests wird gewährleistet, dass einzelne Module Ihre getestete Funktionalität immer beibehält, ansonsten schlägt der Test fehl. Zusätzlicher Vorteil dieser Testart ist die mögliche parallele Ausführung der Tests, da diese isoliert von den anderen Komponenten überprüfbar sind.
 
-Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur noch der Name des Bildes ohne Dateiendung stehen (sup).
+Dies alleine garantiert noch keine Fehlerfreie Software. Die Komponenten können einzelnen einwandfrei funktionieren aber durch die Kompositionsart der jeweiligen Module nicht die gewünschten Eigenschaften aufweisen. Z.B. können die einzelnen Komponenten einwandfrei funktionieren (Schiebeschloss und Schiebetür). Wenn man diese aber falsch miteinander verbindet, ist es trotz verriegeltem Schloss möglich die Tür zu öffnen. Um so ein Verhalten in der Softwareentwicklung zu verhindern sind die Integrationstests verantwortlich. 
 
+Die Integration-Tests-Ebene der Testautomatisierungspyramide ist dafür verantwortlich, dass das
+Systemverhalten zu prüfen ist, unabhängig von der Benutzeroberfläche. Wenn Testfälle auf dieser
+Ebene erledigt werden können, sollte dies nicht in der Oberfläche der Anwendung durchgeführt
+werden, weil GUI-Test aufwändig zu schreiben, aufwendig durchzuführen und labil sind. 
 
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.9\textwidth]{sup}
-\caption{Titel der Abbildung hier}
-\end{center}
-\end{figure}
+Durch alle Tests der Testpyramide soll der Quellcode eine möglichst 100 \% Code Coverage erhalten um ungewollte Veränderungen an der Software direkt zu bemerken. 
 
-\subsection{Tabellen}
-\begin{table}[H]
-\centering
-\begin{tabular}[ht]{|l|l|l|}
-  \hline
-  \textbf{Abkürzung} & \textbf{Beschreibung} & \textbf{Berechnung}\\
-  \hline\hline
-    MEK & Materialeinzelkosten & \\
-  	MGK & Materialgemeinkosten & $+ \uparrow$~*\\
-    FEK & Fertigungseinzelkosten & \\
-  	FGK & Fertigungsgemeinkosten & $+ \uparrow$~*\\
-	SEKF & Sondereinzelkosten der Fertigung & \\
-	\hline\hline
-	\multicolumn{3}{|l|}{\textbf{= Herstellungskosten}} \\
-	\hline\hline
-  	VwGK & Verwaltungsgemeinkosten & $+ \uparrow$~*\\
-  	VtGK & Vertriebsgemeinkosten & $+ \uparrow$~*\\
-  	SEKVt & Sondereinzelkosten des Vertriebes & \\
-	\hline\hline
-	\multicolumn{3}{|l|}{\textbf{= Selbstkosten}} \\
-	\hline\hline
-	\multicolumn{3}{|l|}{+ Gewinnaufschlag} \\
-	\multicolumn{3}{|l|}{+ Rabatte} \\
-	\hline\hline
-	\multicolumn{3}{|l|}{\textbf{= Nettoverkaufspreis (NVP)}} \\
-	\hline
-	\multicolumn{3}{|l|}{+ Umsatzsteuer} \\
-	\hline\hline
-	\multicolumn{3}{|l|}{\textbf{= Bruttoverkaufspreis (BVP)}} \\
-	\hline
-\end{tabular} \\
-		\caption{Beispieltabelle 1}
-		\label{tbl:beispieltabelle2}
-\end{table}
+Zusätzlich zu den automatisierten Softwaretests, soll der entwickelte Quelltext auch an den in Kapitel \ref{software-metriken} vorgestellten Metriken gemessen werden. Ziel ist es hiermit eine Art Frühwarnsystem zu haben um einen negativen Trend rechtzeitig entgegenwirken zu können.
 
-%\clearpage % hiermit werden alle Bilder Tabellen ausgeworfen
+Trotz aller automatisierten Tests besteht die Möglichkeit, dass es Fehler in die veröffentlichte Software schaffen. Diese Fehler können z.B. aufgrund der Pflege, Erweiterung und Wartung der Software entstehen. Diese Fehler werden dann in Testfällen spezifiziert und mit einem Soll-Ergebnis versehen schriftlich festgehalten. Das Soll- wird mit dem Ist-Ergebnis eines Testfalles automatisch überprüft. Ein direkter Bezug auf die Ergebnisse eines vorherigen Testdurchlaufs findet nicht statt.
 
-\subsection{Biblatex}
-Von den vielen verfügbaren Literatur-Paketen habe ich mich für Biblatex entschieden. Die Anforderungen der FOM sollten hiermit erfüllt sein. Ich habe bisher nur Einträge \enquote{@book} getestet. Wie immer steckt der Teufel hier im Detail und es wird sich später herausstellen, ob Biblatex eine gute Wahl war. Die Anpassungen hierfür liegen unter skripte/modsBiblatex. Ich verwende das Backend Biber, welches bib-Dateien in UTF-8 verarbeiten kann.
+Ergänzend zu alle den geschrieben Tests soll ein Mutation Testing Szenario Verwendung finden. Wie in Kapitel \ref{mutation-testing} beschrieben, dient dies zur Überprüfung der erstellten Tests ob diese auch wirklich relevante Funktionen der Software abdecken.
 
-\subsection{Listen und Aufzählungen}
-\subsubsection{Listen}
-\begin{itemize}
-\item ein wichtiger Punkt
-\item noch ein wichtiger Punkt
-\item und so weiter
-\end{itemize}
-\subsubsection{Aufzählungen}
+Um all diese Testarten auch automatisch auszuführen, zu validieren und bei erfolgreichen Ausführung aller Test diese zu verteilen, ist in Anlehnung an Simon Wiest folgende Ziele für die Kontinuierliche Integration festgelegt worden.
+
+% Für die Einführung der Kontinuierlichen Integration haben sich 10 Voraussetzungen als Standard etabliert damit dieser Prozess funktionieren kann. \footnote{Vgl. Simon Wiest (2010), S. 13 ff}
 \begin{enumerate}
-\item Reihenfolge ist hier wichtig
-\item Dieser Punkt kommt nach dem ersten
-\item Da sollte jetzt eine 3 vorne stehen
+	
+	\item \textbf{Gemeinsame Quellcodebasis} \newline
+	Der Quellcode des Projektes wird an einem Ort verwaltet, typischerweise in einem Versionskontrollsystem.
+	
+	\item \textbf{Automatisierter Build} \newline
+	Das Programm muss vollautomatisch aus seinen einzelnen Modulen übersetzt und zusammengebaut werden können.
+	
+	\item \textbf{Selbsttestender Build} \newline
+	Erstellte Programme werden während des Buildprozesses automatisch auf dessen Funktionalität geprüft. Alle Tests, die in Kapitel XXX beschrieben sind, sind in dem Prozess berücksichtigt.
+	
+	\item \textbf{Builds (und Tests) nach jeder Änderung} \newline
+	Nach jeder Änderung (commit) wird das Produkt vollautomatisch neu gebaut und getestet. Durch kleine Änderungsschritte lassen sich eventuell auftretende Fehler schnell beheben.
+	
+	\item \textbf{Schnelle Build Zyklen} \newline
+	Zwischen der Integration eines Entwicklers und der Rückmeldung durch das Kontinuierliche Integrationssystem sollte nicht viel Zeit verstreichen, idealerweise liegt diese Dauer im Minutenbereich.
+	
+	\item \textbf{Tests in gespiegelter Produktionsumgebung} \newline
+	Die Tests sollten in einer möglichst realitätsnahen Umgebung stattfinden.
+	
+	\item \textbf{Einfacher Zugriff auf Build-Ergebnisse} \newline
+	Der letzte Stand einer Entwicklung sollte für alle Produkt- und Projektverantwortlichen einfach zugänglich seien.
+	
+	\item \textbf{Automatisierte Berichte} \newline
+	Die Resultate aus dem Builds müssen so aufbereitet sein, dass ein Entwickler damit direkt arbeiten kann. Es Logdateien mit mehreren hundert oder gar tausenden Einträgen ist nicht das geeignete Format dafür.
+	
+	\item \textbf{Automatisierte Verteilung} \newline
+	Ein Kontinuierliches Integrationssystem sollte nicht nur den Softwareerstellungsprozess automatisieren, sondern auch die Verteilung zu den jeweiligen Anwendern bzw. das Ausbringen auf Test-, Demonstrations- und Produktionsservern. 
 \end{enumerate}
 
-\paragraph{Tiefste Ebene 1}
-Dies ist die tiefste Gliederungsebene. Sollten doch mehr Ebenen benötigt werden, muss eine andere Dokumentenklasse verwendet werden.
+Dieses entwickelte Soll-Konzept geht speziell auf die in der Vergangenheit vorhandenen Probleme ein. Der Kunde beklagte sich über die Unzuverlässigkeit der Schnittstelle und die andauernden Veränderungen der eigentlichen Funktionalität. Diese Missstände, werden hervorragend durch die Stärken der Testautomatisierung wie z.B. Verlässlichkeit, Vollständigkeit und Reporting entkräftet um wieder ein gesteigertes Vertrauen des Kunden in eine neue Schnittstelle zu erhalten. 
 
-\paragraph{Tiefste Ebene 2}
-Der zweite Punkt in dieser Ebene ist zur Erinnerung daran, dass es nie nie niemals nur einen Unterpunkt geben darf.
-
-\subsection{Skript zum Kompilieren}
-Latex will ja bekanntlich in einer bestimmten Reihenfolge aufgerufen werden:
-\begin{lstlisting}
-pdflatex thesis_main.tex
-makeindex thesis_main.nlo -s nomencl.ist -o thesis_main.nls
-biber thesis_main
-pdflatex thesis_main.tex
-pdflatex thesis_main.tex
-thesis_main.pdf
-\end{lstlisting}
-
-Dies ist der Inhalt der Batchdatei \enquote{compile.bat}.
+Die Verringerung von gegebenenfalls auftretender Skepsis des Kunden über die Wirtschaftlichkeit der Testautomatisierung ist durch die nun freiwerdenden Ressourcen möglich. Zusätzlich werden die Gefahren der halbherzigen Integration und mangelnde Testpflege durch die automatisierte Überprüfung der Quellcode Metriken und der Verifizierung der Test Suite durch Mutation Testing entgegen gewirkt.

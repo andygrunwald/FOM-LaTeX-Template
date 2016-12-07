@@ -1,0 +1,666 @@
+@charset "UTF-8";
+/* derived from */
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,300,400,700,800);
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+/* remember to define focus styles! */
+:focus {
+  outline: 0; }
+
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+div.clear {
+  clear: both; }
+
+@font-face {
+  font-family: 'Marydale';
+  src: url("/fonts/marydale/marydale-webfont.eot");
+  src: url("/fonts/marydale/marydale-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/marydale/marydale-webfont.woff") format("woff"), url("/fonts/marydale/marydale-webfont.ttf") format("truetype"), url("/fonts/marydale/marydale-webfont.svg#marydaleregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+/*
+tw-grey is hsl(145, 5%, 52%)
+*/
+@font-face {
+  font-family: 'FontAwesome';
+  src: url("https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.eot");
+  src: url("https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), url("https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.woff") format("woff"), url("https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.ttf") format("truetype"), url("https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.svgfontawesomeregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url("https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.eot");
+  src: url("https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), url("https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.woff") format("woff"), url("https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.ttf") format("truetype"), url("https://netdna.bootstrapcdn.com/font-awesome/4.0.0/fonts/fontawesome-webfont.svgfontawesomeregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+.icon-twitter:before {
+  content: "";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  *margin-right: .3em; }
+
+.icon-rss:before {
+  content: "";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  *margin-right: .3em; }
+
+.icon-bars:before {
+  content: "";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  *margin-right: .3em; }
+
+.icon-close:before, .navmenu .close:before {
+  content: "";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  *margin-right: .3em; }
+
+.help-icon:before {
+  content: "";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  *margin-right: .3em; }
+
+.icon-close:before, .navmenu .close:before {
+  content: "";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  *margin-right: .3em; }
+
+/* ==== banner ================ */
+div#banner {
+  background-color: black;
+  height: 100px;
+  font-family: OpenSans, sans-serif;
+  color: white;
+  position: relative; }
+  div#banner img.name-logo, div#banner img.ie6-name-logo {
+    position: absolute;
+    top: 0;
+    left: 10px; }
+  div#banner img.photo {
+    position: absolute; }
+  div#banner ul {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+  div#banner ul li {
+    float: left;
+    padding-right: 10px;
+    font-family: OpenSans, sans-serif;
+    font-size: 14px; }
+  div#banner img {
+    border: 0; }
+  div#banner a {
+    color: white;
+    text-decoration: none; }
+  div#banner .menu-button {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    font-size: 200%; }
+  div#banner div.main-navigation, div#banner div.search {
+    display: none; }
+  @media screen and (min-width: 950px) {
+    div#banner div.main-navigation {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      display: block; }
+      div#banner div.main-navigation p {
+        margin: 0;
+        padding: 0; }
+      div#banner div.main-navigation a:hover {
+        color: #ef5ba1;
+        text-decoration: underline; }
+      div#banner div.main-navigation a.tw {
+        color: #b5b935; } }
+  @media screen and (min-width: 450px) {
+    div#banner div.search {
+      display: block;
+      position: absolute;
+      right: 80px;
+      top: 5px;
+      background-color: transparent;
+      height: 40px;
+      width: 173px; }
+    div#banner div.search input, div#banner div.search button {
+      margin: 10px 0 0 0;
+      padding: 0;
+      border: 0; }
+    div#banner div.search input.field {
+      margin: 3px 3px 3px 4px;
+      width: 142px; }
+    div#banner div.search .button {
+      cursor: pointer;
+      color: white;
+      width: 18px;
+      background-color: transparent;
+      font-size: 100%; }
+      div#banner div.search .button:before {
+        content: "";
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        text-decoration: inherit;
+        -webkit-font-smoothing: antialiased;
+        *margin-right: .3em; } }
+
+/* ................................................................ */
+/* ==== footer ================ */
+#footer {
+  position: relative;
+  background-color: black;
+  color: white;
+  min-height: 80px; }
+  #footer a {
+    color: white;
+    text-decoration: none; }
+  #footer div.copyright {
+    display: block;
+    font-size: 80%;
+    position: absolute;
+    bottom: 5px;
+    left: 5px; }
+    #footer div.copyright a:hover {
+      padding-top: 5px;
+      color: #ef5ba1;
+      text-decoration: underline; }
+  @media screen and (min-width: 600px) {
+    #footer {
+      min-height: 40px; }
+      #footer div.copyright {
+        left: auto;
+        right: 60px; } }
+  #footer .tw-logo {
+    position: absolute;
+    left: 5px;
+    top: 5px; }
+    #footer .tw-logo img {
+      width: 200px; }
+  #footer .menu-button {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 200%; }
+
+/* ................................................................ */
+.navmenu {
+  line-height: 2.5em; }
+  .navmenu .group {
+    display: block;
+    background-color: #f0ba95;
+    border-top: thin solid white; }
+    .navmenu .group::after {
+      clear: both;
+      content: "";
+      display: table; }
+  .navmenu .group-label {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 14.70196%;
+    padding-left: 5px;
+    font-weight: bold; }
+    .navmenu .group-label:last-child {
+      margin-right: 0; }
+  .navmenu .group-contents {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 82.94039%;
+    background-color: #fee0c9; }
+    .navmenu .group-contents:last-child {
+      margin-right: 0; }
+  .navmenu .top-line {
+    background-color: #fee0c9;
+    display: block; }
+    .navmenu .top-line::after {
+      clear: both;
+      content: "";
+      display: table; }
+  .navmenu .link-home {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 6.17215%;
+    display: block;
+    padding-left: 5px; }
+    .navmenu .link-home:last-child {
+      margin-right: 0; }
+  .navmenu .search {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 82.94039%;
+    display: block; }
+    .navmenu .search:last-child {
+      margin-right: 0; }
+    .navmenu .search .button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer; }
+    .navmenu .search .button:before {
+      content: "";
+      font-family: FontAwesome;
+      font-weight: normal;
+      font-style: normal;
+      text-decoration: inherit;
+      -webkit-font-smoothing: antialiased;
+      *margin-right: .3em;
+      font-size: 150%;
+      color: white; }
+  @media screen and (max-width: 750px) {
+    .navmenu .link-home {
+      float: left;
+      display: block;
+      margin-right: 7.42297%;
+      width: 19.43277%; }
+      .navmenu .link-home:last-child {
+        margin-right: 0; }
+    .navmenu .search {
+      float: left;
+      display: block;
+      margin-right: 7.42297%;
+      width: 46.28851%; }
+      .navmenu .search:last-child {
+        margin-right: 0; } }
+  .navmenu .close {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 6.17215%;
+    color: white;
+    cursor: pointer;
+    padding-right: 0.5em; }
+    .navmenu .close:last-child {
+      margin-right: 0; }
+  .navmenu .icon-close, .navmenu .close {
+    font-size: 200%; }
+  @media screen and (max-width: 750px) {
+    .navmenu .group-label, .navmenu .group-contents {
+      width: 100%; } }
+  .navmenu .item {
+    display: inline;
+    padding: 0 1em 0 1em; }
+  .navmenu a {
+    color: black;
+    text-decoration: none; }
+  .navmenu a:hover {
+    text-decoration: underline; }
+
+/* ==== framing ================ */
+body {
+  font-size: 16px; }
+
+#content, #banner, #footer, .navmenu {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-left: 5px;
+  margin-right: 0; }
+  #content::after, #banner::after, #footer::after, .navmenu::after {
+    clear: both;
+    content: "";
+    display: table; }
+  @media screen and (min-width: 750px) {
+    #content, #banner, #footer, .navmenu {
+      margin-left: 20px; } }
+
+#top-navmenu {
+  display: none; }
+
+#bottom-navmenu {
+  display: block; }
+
+.navmenu-button {
+  cursor: pointer; }
+
+/* ................................................................ */
+/* 
+
+==== global ================
+
+  need to refactor this as global is really just for articles etc 
+  in particular refactor this so the guide pages can use a useful common
+  subset of styles
+*/
+body {
+  font-size: 16px;
+  font-family: OpenSans, sans-serif;
+  line-height: 1.2;
+  color: #303633; }
+
+#content {
+  background-color: white;
+  min-height: 500px;
+  margin-left: 5px;
+  margin-right: 0; }
+  #content h1, #content h2, #content h3, #content h4, #content h5 {
+    color: #5b2858;
+    font-weight: bold; }
+    #content h1 a:link, #content h1 a:visited, #content h2 a:link, #content h2 a:visited, #content h3 a:link, #content h3 a:visited, #content h4 a:link, #content h4 a:visited, #content h5 a:link, #content h5 a:visited {
+      color: #5b2858; }
+  #content h1 {
+    font-size: 200%; }
+  #content h2 {
+    font-size: 150%; }
+  #content h3 {
+    font-size: 120%; }
+  #content p, #content h1, #content h2, #content h3, #content h4, #content h5 ul {
+    margin: 1em 0; }
+  #content dd {
+    margin-left: 2em; }
+  #content a:link, #content a:visited {
+    color: #94388e;
+    text-decoration: none; }
+  #content a:hover {
+    text-decoration: underline; }
+  #content ul {
+    list-style: square;
+    margin-left: 1.5em; }
+  #content ol {
+    list-style: decimal;
+    margin-left: 1.5em; }
+  #content pre {
+    font-size: 90%;
+    font-family: Inconsolata, monospace; }
+  #content code {
+    font-family: Inconsolata, monospace; }
+  #content span.credit {
+    color: #808080;
+    font-size: 80%; }
+  #content hr {
+    border-style: dotted none none none;
+    border-top-width: thin;
+    margin: 10px 15px; }
+  #content blockquote {
+    /* margin-left: 3em; */
+    border-left: 2px solid grey;
+    padding-left: 1em;
+    font-style: italic;
+    color: #5b2858; }
+  #content .shares .label {
+    margin-right: 1em;
+    color: #11aa58; }
+  #content .shares .icons {
+    float: left;
+    width: 40%; }
+  #content .shares .comment {
+    font-size: 80%;
+    color: #11aa58;
+    float: left;
+    width: 60%;
+    margin-top: 0; }
+  #content .shares img {
+    height: 16px;
+    margin-right: 10px; }
+  @media screen and (min-width: 750px) {
+    #content {
+      margin-left: 20px; } }
+
+.error {
+  background-color: rgba(253, 147, 151, 0.34); }
+
+.todo {
+  background-color: rgba(255, 255, 0, 0.3); }
+
+.draft-notice {
+  border: thin solid red;
+  font-family: sans-serif;
+  margin: 1em 10%;
+  padding: 0.5em;
+  text-align: center; }
+  .draft-notice h1 {
+    font-size: 120%;
+    color: black; }
+  .draft-notice p {
+    color: red; }
+
+.clickable {
+  text-decoration: underline;
+  cursor: pointer; }
+
+/* ................................................................ */
+#content {
+  /* todo rename this to somethign like tags-sidebar */ }
+  #content div#main {
+    width: 540px;
+    padding: 10px;
+    float: left;
+    line-height: 1.4; }
+    #content div#main h1 {
+      margin: 0;
+      padding: 20px 0 10px 0;
+      font-size: 150%; }
+      #content div#main h1 a:link, #content div#main h1 a:visited {
+        color: #5b2858; }
+    #content div#main h2 {
+      font-size: 120%; }
+    #content div#main h3 {
+      font-size: 100%; }
+    #content div#main hr {
+      /* HACKTAG remove code in transformer that creates hr */
+      border: none; }
+    #content div#main img {
+      max-width: 100%; }
+    #content div#main pre {
+      font-size: 90%; }
+    #content div#main hr.entry-sep {
+      border: thick solid #5b2858;
+      margin: 50px; }
+    #content div#main p.tags, #content div#main p.tagLabel {
+      display: none; }
+    #content div#main p.tags, #content div#main p.tagLabel, #content div#main .author-date {
+      font-size: 80%;
+      font-style: italic;
+      margin-top: 0; }
+    #content div#main .soundbite {
+      width: 20em;
+      float: right;
+      margin: 1em -15em 1em 2em;
+      background-color: #eceeed;
+      padding: 1em;
+      font-style: italic;
+      color: #94388e;
+      font-size: 110%; }
+    #content div#main .tweet-sidebar {
+      width: 20em;
+      float: right;
+      margin: 1em -15em 1em 2em; }
+    #content div#main p.code-label {
+      margin-bottom: 0;
+      font-style: italic;
+      font-size: 90%; }
+  #content #main.list p.tags, #content #main.list p.tagLabel {
+    display: block; }
+  #content .author-date {
+    width: 200px;
+    float: left;
+    margin-right: 30px; }
+    #content .author-date p {
+      margin: 0; }
+  #content p.author-photo {
+    float: left;
+    margin-right: 10px;
+    width: 60px; }
+  #content p.tagLabel {
+    width: 40px;
+    float: right; }
+  #content p.tags {
+    width: 170px;
+    float: right; }
+  #content div.photo {
+    padding: 0 0 0 2em;
+    font-size: 80%;
+    font-style: italic; }
+  #content .photo.right {
+    float: right;
+    margin-right: -250px; }
+  #content div.quote {
+    font-style: italic;
+    font-size: 90%; }
+    #content div.quote p {
+      margin: 0.5em 3em; }
+    #content div.quote p.quote-attribution {
+      margin-left: 4em; }
+  #content table {
+    border-collapse: collapse;
+    font-family: sans-serif;
+    border: thin solid grey;
+    font-size: 80%; }
+    #content table th, #content table td {
+      border: thin solid grey;
+      padding: 0 5px; }
+    #content table th {
+      background-color: black;
+      color: white; }
+    #content table tr:nth-child(2n) td {
+      background-color: #eee; }
+  #content .similar-sidebar {
+    background-color: rgba(254, 224, 201, 0.5);
+    float: right;
+    margin: 7em 2em 0 0;
+    padding: 10px 40px 10px 20px;
+    width: 250px; }
+    #content .similar-sidebar h2 {
+      font-style: italic;
+      font-weight: normal;
+      color: #11aa58; }
+    #content .similar-sidebar p.tags {
+      float: none;
+      width: auto;
+      line-height: 2.5; }
+      #content .similar-sidebar p.tags a {
+        background: #11aa58;
+        color: white;
+        font-family: OpenSans, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 5px;
+        border-radius: 5px;
+        margin: 2px;
+        white-space: nowrap; }
+        #content .similar-sidebar p.tags a:hover {
+          background: #89b77f; }
+  #content div.sidebar {
+    width: 20em;
+    float: right;
+    margin: 1em -15em 1em 2em;
+    font-size: 80%;
+    font-family: OpenSans, sans-serif;
+    background-color: rgba(254, 224, 201, 0.5);
+    line-height: 1.2;
+    padding: 1em; }
+    #content div.sidebar h2, #content div.sidebar h3 {
+      font-size: 120%; }
+  #content .book-sidebar {
+    float: right;
+    width: 220px;
+    background-color: rgba(254, 224, 201, 0.5);
+    margin-right: -300px;
+    font-size: 80%;
+    padding: 10px;
+    border: thin solid #fee0c9; }
+    #content .book-sidebar img.cover {
+      width: 130px;
+      margin-left: 35px; }
+  #content div.footnote-list {
+    font-size: 80%;
+    margin-top: 3em; }
+    #content div.footnote-list span.num {
+      color: #5b2858;
+      font-weight: bold; }
+  #content .appendix, #content .furtherReading, #content .revisions {
+    font-size: 80%; }
+  #content div.acknowledgements {
+    font-size: 80%; }
+  #content p.repost {
+    font-size: 90%; }
+  #content .callout {
+    width: 40%;
+    background-color: #eceeed;
+    padding: 10px;
+    float: right;
+    margin: 1em -5em 1em 5em; }
+  #content .shares {
+    padding: 1em;
+    background-color: #fee0c9;
+    margin-top: 3em;
+    overflow: auto; }
