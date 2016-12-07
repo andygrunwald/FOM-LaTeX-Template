@@ -3,9 +3,9 @@
 
 \subsection{Ist-Analyse}
 Es gibt eine Vielzahl von verschiedenen Prozessmodellen die dazu beitragen, eine strukturierte und steuerbare Softwareentwicklung durchzuführen. Je nachdem welches Prozessmodell verwendet wird,
-sollte man die entsprechenden Testprozesse dem Vorgehensmodell zuordnen. Aus diesem Grund soll hier als erstes der bisherige Entwicklungsprozess der \nomenclature{ERP}{Enterprise-Resource-Planing} Shopware ERP-Schnittstelle Etos des vorherigen Agentur-Dienstleisters vorgestellt werden. Diese Schnittstelle greift auf die "Import- und Exportschnittstelle Internetshop" der Warenwirtschaft Apollon zu. 
+sollte man die entsprechenden Testprozesse dem Vorgehensmodell zuordnen. Aus diesem Grund soll hier als erstes der bisherige Entwicklungsprozess der \nomenclature{ERP}{Enterprise-Resource-Planing} Shopware ERP-Schnittstelle Etos des vorherigen Agentur-Dienstleisters vorgestellt werden. Diese Schnittstelle greift auf die \dq{}Import- und Exportschnittstelle Internetshop\dq{} der Warenwirtschaft Apollon zu. 
 
-Diese Schnittstelle bittet für den Import in das ERP-System, dass \nomenclature{ECSV}{Encapsulated Comma Separated Value}ECSV-Format an. Zum Export Richtung Shopsystem wird ein \nomenclature{CSV}{Comma Separated Value}CSV-Format offeriert. Beide Austauschformate nutzen als Zeichenkodierung das \nomenclature{ASCII}{American Standard Code for Information Interchange}ASCII Format.
+Diese Schnittstelle bietet für den Import in das ERP-System, dass \nomenclature{ECSV}{Encapsulated Comma Separated Value}ECSV-Format an. Zum Export Richtung Shopsystem wird ein \nomenclature{CSV}{Comma Separated Value}CSV-Format offeriert. Beide Austauschformate basieren auf der \nomenclature{ASCII}{American Standard Code for Information Interchange}ASCII Zeichenkodierung. 
 
 Auf Basis dieser Spezifikationen hat die vorherige Agentur eine Import- und Export Schnittstelle für das Shopsystem Shopware in der Version 5.0 entwickelt. Dies beinhaltete das Einspielen der vorhandenen Artikel inkl. Lagerbestände, Preise und Kategorien. Des Weiteren ermöglicht dies eine Übermittlung der Kunden und Bestellungen zum Warenwirtschaftssystem. Der Dienstleister ist hierbei nach einem klassischen Wasserfallmodel ohne Testautomatisierung vorgegangen. 
 
@@ -58,7 +58,7 @@ Außerdem werden Integrationstests sehr viel seltener ausgeführt als eigentlich
 
 \subsection{SWOT-Analyse}
 \subsubsection{Beschreibung}
-Die SWOT-Analyse (engl. Akronym für Strengths (Stärken), Weaknesses (Schwächen), Opportunities (Chancen) und Threats (Bedrohungen)) ist ein häufiger Bestandteil eines Business Plans. Sie ist zusätzlich ein Instrument der strategischen Planung. Sie dient der Positionsbestimmung und der Strategieentwicklung von Unternehmen und anderen Organisationen. ~\footcite[Vgl. Seite 240]{Meffert.2011}
+Die SWOT-Analyse (engl. Akronym für Strengths (Stärken), Weaknesses (Schwächen), Opportunities (Chancen) und Threats (Bedrohungen)) ist ein häufiger Bestandteil eines Business Plans. Sie ist zusätzlich ein Instrument der strategischen Planung. Sie dient der Positionsbestimmung und der Strategieentwicklung von Unternehmen und anderen Organisationen. ~\footcite[Vgl. Seite 240]{Meffert.2012}
 
 % rewrite
 Chancen sind Möglichkeiten, durch veränderte oder neue Produkte und Dienstleistungen neue Kunden zu gewinnen oder Stammkunden enger an sich zu binden. Diese Möglichkeiten können durch ggf. bessere oder innovativer Angebote von Wettbewerbern oder durch wirtschaftspolitische und technologische Veränderungen gefährdet sein (Risiken). Sollten die entstandenen Risiken aus Sicht der Entscheidungsträger zu groß sein, sind geeignete Gegenmaßnahmen einzuleiten. Die Auswahl der zu treffenden Maßnahmen richtet sich nach der Evaluierung und Einschätzung der eigenen Stärken und Schwächen durch die Verantwortlichen. Diese werden im Vergleich zum Wettbewerb erhoben.
@@ -66,7 +66,7 @@ Chancen sind Möglichkeiten, durch veränderte oder neue Produkte und Dienstleis
 Um ein optimales Konzept für den Kunden zu entwickeln, soll eine SWOT-Analyse durchgeführt und ausgewertet werden. Als Wettbewerber ist die vorherige Agentur des Kunden anzusehen.
 
 \subsubsection{Durchführung}
-Anhand der vorliegenden Ist-Analyse wurde für eine detailliertere Entscheidungsgrundlage eine SWOT-Analyse durchgeführt. In dieser Analyse wird die Thematik der Automatisierung von Tests beleuchtet um eine Entscheidungsgrundlage für das zu erstellende Soll-Konzept zu schaffen.
+Anhand der vorliegenden Ist-Analyse wird eine SWOT-Analyse durchgeführt um eine detailliertere Entscheidungsgrundlage zu ermöglichen. In dieser Analyse wird die Thematik der Automatisierung von Tests beleuchtet im Vergleich zu dem vorherigen Dienstleister um eine Entscheidungsgrundlage für das zu erstellende Soll-Konzept zu schaffen.
 
 Zuerst wurden die Stärken und Schwächen der Testautmatisierung analysiert und festgelegt. Anschließend wurden die Chancen und Risiken des Prozesses erhoben. 
 \subsubsection{Stärken}
@@ -121,24 +121,39 @@ Zuerst wurden die Stärken und Schwächen der Testautmatisierung analysiert und 
 	Durch die Zuverlässigkeit der einzelnen Funktionen innerhalb der Software wird das Vertrauen vom Kunden in ihr gestärkt. Eventuelle Ängste, dass nach jedem Update alles anders funktioniert als vorher, können damit entkräftet werden.
 	
 	\item \textbf{Bessere Ressourcennutzung}
+	
 	Die automatisierten Tests ermöglichen dem Entwicklungsteam die freigewordenen Ressourcen, die vorher bei den manuellen Tests gebunden waren, für die Pflege und Weiterentwicklung der Software zu verwenden. Dies ermöglicht dem Kunden, dass vorhandenen Budget effektiver einzusetzen.
 	
 \end{itemize}
 	\subsubsection{Gefahren}
 \begin{itemize}	
-	\item \textbf{Skepsis der Kunden auf Wirtschaftlichkeit}
+	\item \textbf{Skepsis der Kunden bezüglich der Wirtschaftlichkeit}
+	
 	Durch den am Anfang spürbaren Mehraufwand für Automatisierte Tests, besteht die Möglichkeit das der Kunde an der Wirtschaftlichkeit dieses Prozesses zweifelt. Der Messbare Erfolg ist erst Mittel- und Langfristig beweisbar.
 	
 	\item \textbf{Integration Testprozess}
+	
 	Eine halbherzige Integration des Automatisierungs-Prozesses von den Software-Entwicklern stellt eine Gefahr da. Ohne Korrektur dessen, kann dem Kunden dann auch Mittel- und Langfristig kein Vorteil der Testautomatisierung bescheinigt werden und er verliert das Vertrauen in die Software und dem beauftragtem Unternehmen.
 	
 	\item \textbf{Mangelnde Testpflege}
-	Wenn die vorhandenen Unit-Tests nicht gewartet werden, verlieren sie sehr schnell an Effektivität. Nur durch eine vollständige Abdeckung des Quellcodes 
+	
+	Wenn die vorhandenen Unit-Tests nicht gewartet werden, verlieren sie sehr schnell an Effektivität. Nur durch eine vollständige Abdeckung des Quellcodes bleibt die Effektivität des automatisierten Testings erhalten.
 	
 	
 \end{itemize}
 
-\subsubsection{Auswertung}\dfrac{num}{den}
+\subsubsection{Auswertung}
+% SO Stärke-Chancen-Kombination: Welche Stärken passen zu welchen Chancen? Wie können Stärken genutzt werden, so dass sich die Chancenrealisierung erhöht?
+Durch die hohe Anzahl der Stärken von Testautomatisierung (Verlässlichkeit, Vollständigkeit (Testabdeckung), Wiederholbarkeit, Reproduzierbarkeit, Reporting und Auswertung) ist es ein leichtes die gegebenen Chancen gesteigertes Vertrauen bei den Anwendern der Software und eine bessere Ressourcennutzung zu realisieren. 
+
+%ST Stärke-Gefahren-Kombination: Welchen Gefahren können wir mit welchen Stärken begegnen? Wie können vorhandene Stärken eingesetzt werden, um den Eintritt bestimmter Gefahren abzuwenden?
+Des Weiteren lässt sich die Gefahr der Skepsis durch den Auftraggeber einfach entkräften, da die freiwerdenden Ressourcen dem Kunden direkt wieder zur Verfügung stehen. Durch die Möglichkeit des Reportings und der automatischen Auswertung der Testergebnisse, wird das Vertrauen des Kunden weiter gestärkt. Der Auftraggeber bekommt die kontinuierliche Verbesserung der Software und dem dazugehörigen Testen dessen regelmäßig und ohne Aufforderung übermittelt. Eine halbherzige Integration des Prozesses und der Testabdeckung wird durch das Reporting frühzeitig erkennbar. Dies ermöglicht ein rechtzeitiges Gegensteuern vom Kunden und dem Dienstleister.
+
+% WO Schwäche-Chancen-Kombination: Wo können aus Schwächen Chancen entstehen? Wie können Schwächen zu Stärken entwickelt werden?
+Zusätzlich besteht die Chance, die frei werdenden Ressourcen für destruktives Testing einzusetzen. Somit sind auch vom Software-Entwickler nicht bedachte Testszenarien überprüft und kontrollierbar. Ggf. auftretende Probleme können rechtzeitig behoben werden und fallen dem Endanwender nicht unangenehm auf.
+
+% WT Schwäche-Gefahren-Kombination: Wo befinden sich unsere Schwächen, und wie können wir uns vor Schaden schützen?
+Die gravierendste Schwäche der Testautomatisierung ist, für ungeübte Software-Entwickler, die Einstiegshürde. Hier müssen Freiräume für eventuelle Fehlschläge den Entwicklern eingeräumt und Mittel für notwendige Fortbildungen gestattet werden um mögliche Schäden abzuwenden. Außerdem benötigen die Entwickler anfänglich Konzeptionelle Unterstützung von qualifizierten Experten um den Planungsaufwand nicht ins unermessliche steigen zu lassen.
 
 \subsection{Soll-Konzept}
 \subsubsection{Automatisierter Testprozess}
@@ -160,11 +175,11 @@ werden, weil GUI-Test aufwändig zu schreiben, aufwendig durchzuführen und labi
 
 Durch alle Tests der Testpyramide soll der Quellcode eine möglichst 100 \% Code Coverage erhalten um ungewollte Veränderungen an der Software direkt zu bemerken. 
 
-Zusätzlich zu den automatisierten Softwaretests, soll der entwickelte Quelltext auch an den in Kapitel XX vorgestellten Metriken gemessen werden. Ziel ist es hiermit eine Art Frühwarnsystem zu haben um einen negativen Trend rechtzeitig entgegenwirken zu können.
+Zusätzlich zu den automatisierten Softwaretests, soll der entwickelte Quelltext auch an den in Kapitel \ref{software-metriken} vorgestellten Metriken gemessen werden. Ziel ist es hiermit eine Art Frühwarnsystem zu haben um einen negativen Trend rechtzeitig entgegenwirken zu können.
 
 Trotz aller automatisierten Tests besteht die Möglichkeit, dass es Fehler in die veröffentlichte Software schaffen. Diese Fehler können z.B. aufgrund der Pflege, Erweiterung und Wartung der Software entstehen. Diese Fehler werden dann in Testfällen spezifiziert und mit einem Soll-Ergebnis versehen schriftlich festgehalten. Das Soll- wird mit dem Ist-Ergebnis eines Testfalles automatisch überprüft. Ein direkter Bezug auf die Ergebnisse eines vorherigen Testdurchlaufs findet nicht statt.
 
-Ergänzend zu alle den geschrieben Tests soll ein Mutation Testing Szenario Verwendung finden. Wie in Kapitel XX beschrieben, dient dies zur Überprüfung der erstellten Tests ob diese auch wirklich relevante Funktionen der Software abdecken.
+Ergänzend zu alle den geschrieben Tests soll ein Mutation Testing Szenario Verwendung finden. Wie in Kapitel \ref{mutation-testing} beschrieben, dient dies zur Überprüfung der erstellten Tests ob diese auch wirklich relevante Funktionen der Software abdecken.
 
 Um all diese Testarten auch automatisch auszuführen, zu validieren und bei erfolgreichen Ausführung aller Test diese zu verteilen, ist in Anlehnung an Simon Wiest folgende Ziele für die Kontinuierliche Integration festgelegt worden.
 

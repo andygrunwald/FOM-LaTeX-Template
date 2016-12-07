@@ -1,7 +1,5 @@
 \newpage
 \section{Theoretische Grundlagen}
-% Siehe auch Wissenschaftliches Arbeiten~\footcite[Vgl. ][Seite 1]{Balzert.2008}. Damit sollten alle wichtigen Informationen abgedeckt sein ;-)
-
 \subsection{Softwarequalität}
 \subsubsection{Was ist Softwarequalität?} % Zitat tüv pdf 
 Wichtige Einflussfaktoren für spätere Wartungsaufwände werden bei einem großen Softwaresystem bereits zur Entwicklungszeit festgelegt. Neben einer wartungsfreundlichen und durchdachten Architektur
@@ -32,7 +30,7 @@ Die interne Qualität von Software ist für die Auftraggeber und Endbenutzer zun
 
 Mangelnde oder sogar gänzlich fehlende interne Qualität wird erst auf längere Sicht spürbar. Mit der Zeit stellt man fest, dass die Bearbeitungszeit, bis scheinbar einfache bis triviale Fehler behoben sind, lang wenn nicht sogar sehr lange Zeit dauern. Erweiterungen an der Software oder Änderungen sind nur mit äußerst großem Aufwand realisierbar. In den meisten Fällen bitten die Entwickler kurz oder lang oft darum Ressourcen zu erhalten, um den Code aufzuräumen, sogenanntes refaktorieren zu betreiben. Refaktorierung wird von Fowler wie folgt beschrieben: 
 
-"Eine Refaktorierung ist eine Änderung an der internen Struktur einer Software ohne ihr beobachtbares Verhalten zu ändern." ~\footcite[Seite xviii]{Fowler.2000}
+\dq{}Eine Refaktorierung ist eine Änderung an der internen Struktur einer Software ohne ihr beobachtbares Verhalten zu ändern.\dq{} ~\footcite[Seite xviii]{Fowler.2000}
 
 Oftmals wird eine solche Refaktorierung des Codes allerdings nicht (regelmäßig) durchgeführt, weil Auftraggeber oder Management den Entwicklern nicht die notwendigen Spielräume einräumen.
 
@@ -81,8 +79,7 @@ under the debt load of an unconsolidated implementation, object-oriented or othe
 Cunningham vergleicht schlechten Quellcode mit einer Art von Hypothek, für das natürlich auch Zinsen fällig werden. Es kann durchaus sinnvoll oder gar notwendig sein, eine Hypothek aufzunehmen, wenn dadurch
 das Produkt schneller vermarktungsfähig ist. Findet aber keine Tilgung der Hypothek statt, durch die Refaktorierung der Codebasis und somit eine Steigerung der interne Qualität, dann entstehen
 langfristig erhebliche Kosten für die anfallenden Zinszahlungen. Wenn sich mit der Zeit die Schulden anhäufen, dann nehmen die dafür Notwendigen Zinszahlungen einem mehr und mehr den Spielraum, bis
-man schließlich Konkurs anmelden muss. Auf die Software-Entwicklung übertragen bedeutet dies,
-dass man eine Anwendung als unwartbar bezeichnet. Die Kosten für jede noch so kleine Änderung sind so hoch gestiegen, dass es unwirtschaftlich ist, den Code weiter zu warten geschweige weiterzuentwickeln.
+man schließlich Konkurs anmelden muss. Auf die Software-Entwicklung übertragen bedeutet dies, dass man eine Anwendung als unwartbar bezeichnet. Die Kosten für jede noch so kleine Änderung sind so hoch gestiegen, dass es unwirtschaftlich ist, den Code weiter zu warten geschweige weiterzuentwickeln.
 
 Mangelnde interne Qualität von Software wird besonders of dann zu einem Problem, wenn die zu entwickelnde Software an externe Agenturen/Dienstleister ausgelagert wird und der Auftraggeber primär an niedrigen Kosten und einer kurzen Time-to-Market gelegen ist. Da die Qualitätssicherung und insbesondere das Schreiben von Unit-Tests die Kosten im Projekt zunächst erhöhen, ohne dass den Kosten einen unmittelbaren und messbaren Nutzen gegenübersteht. Dadurch hat der beauftragte Dienstleister in den meisten Fällen kaum Freiräume, geschweige denn eine Motivation, um qualitativ hochwertigen Quellcode zu produzieren. Mittel- und Langfristig macht sich der Schaden für dem Auftraggeber in Form von deutlich höheren Wartungskosten bemerkbar.
 
@@ -99,8 +96,8 @@ Andere Anwendungen die zum Beispiel für Großrechner im Finanzsektor oder hochv
 Ron Jeffries ermahnt Softwareentwickler, nicht an der internen Qualität zu sparen, um die Entwicklung schneller voran zu bringen:
 „If slacking on quality makes us go faster, it is clear evidence that there is room to improve our ability to deliver quality rapidly.“ ~\footcite[Vgl.]{website:jeffries.2010}
 
-Es liegt auf der Hand, dass der Wert von interner Qualität mit zunehmender Änderungshäufigkeit von Anwendungen deutlich zunimmt. Im Artikel "The ROI of Systems Engineering: Some Quantitative Results for
-Software-Intensive Systems" beschreiben die Autoren, dass die Kosten für das Beheben eines Fehlers in der Code-Phase zehnmal, in der Operations-Phase sogar mehr als hundertmal höher sind als in der Requirements-Phase. 
+Es liegt auf der Hand, dass der Wert von interner Qualität mit zunehmender Änderungshäufigkeit von Anwendungen deutlich zunimmt. Im Artikel \dq{}The ROI of Systems Engineering: Some Quantitative Results for
+Software-Intensive Systems\dq{} beschreiben die Autoren, dass die Kosten für das Beheben eines Fehlers in der Code-Phase zehnmal, in der Operations-Phase sogar mehr als hundertmal höher sind als in der Requirements-Phase. 
 Dies zeigt eindeutig das es aus rein betriebswirtschaftlichen Gründen absolut widersprüchlich ist, die Kosten in einem Software-Projekt in die Zukunft zu verlagern, da die Notwendigkeit von einer guten internen Qualität 
 mit Dauer des Projektes exponentiell steigt. In der Abbildung \ref{relative_kosten_von_fehlerbehebungen} ist die Kostenstruktur noch einmal visualisiert.
 
@@ -144,7 +141,7 @@ Development) führt im Idealfall dazu, dass . . .
 	\item die „Schmerzen“, die bestehender schlechter Code verursacht, verstärkt werden, da dieser nicht oder nur mit unverhältnismäßig hohem Aufwand getestet werden kann. Dies motiviert dazu, bestehenden schlechten Code durch Refaktorierung konsequent zu verbessern.
 \end{itemize}
 
-Studien wie z.B. "Software Architecture Improvement through Test-Driven Development" zeigen, dass die testgetriebene 
+Studien wie z.B. \dq{}Software Architecture Improvement through Test-Driven Development\dq{} zeigen, dass die testgetriebene 
 Entwicklung zu signifikanten Verbesserungen der Produktivität der Entwickler sowie der Softwarequalität führen kann. 
 Die Anpassung zwischen konstruktiver Qualitätssicherung und normaler Softwareentwicklung ist fließend. Beispielsweise wird die Anpassbarkeit 
 der Software durch den Einsatz von objektorientierter Programmierung und die Verwendung von 
@@ -199,13 +196,12 @@ Eine Methode ist umso schwerer zu verstehen, je länger sie ist. Eine kurze Meth
 sich nicht nur einfacher verstehen und wiederverwenden, sondern ist auch einfacher zu
 testen. Je weniger Ausführungspfade eine Methode hat, desto weniger Tests werden benötigt. ~\footcite[Vgl. Seite 9]{Bergmann.2013}
 
-\subsection{Software-Metriken}
-Für das Messen der internen Qualität gibt es verschiedene Software-Metriken. Sie sind eine
-Grundlage für das Quantifizieren der Kosten, die durch schlechte interne Qualität langfristig entstehen.
+\subsection{Software-Metriken}\label{software-metriken}
+Für das Messen der internen Qualität gibt es verschiedene Software-Metriken. Sie sind eine Grundlage für das Quantifizieren der Kosten, die durch schlechte interne Qualität langfristig entstehen.
 
 Testbarkeit ist ein wichtiges Kriterium für die Wartbarkeit im Softwarequalitätsmodell von ISO/IEC 9126-1~\footcite{ISOIEC91261}[Vgl.]. Es in der Literatur mehrere Beispiele für Ansätze zur Quantifizierung von Testbarkeit basierend auf objektorientierten Software-Metriken. ~\footcite[Vgl. Seite 136-145]{Bruntink.2004} ~\footcite[Vgl. Seite 1 - 6]{Khan.2009}
 
-Einen weiteren guten Überblick über objektorientierte Software-Metriken ist im Buch von gibt beispielsweise im Buch "Object-Oriented Metrics in Practice: Using Software Metrics to Characterize, Evaluate, and Improve the Design of Object-Oriented Systems" von Michele Lanza und Radu Marinescu. ~\footcite[Vgl.]{Lanza.2006}
+Einen weiteren guten Überblick über objektorientierte Software-Metriken ist im Buch von gibt beispielsweise im Buch \dq{}Object-Oriented Metrics in Practice: Using Software Metrics to Characterize, Evaluate, and Improve the Design of Object-Oriented Systems\dq{} von Michele Lanza und Radu Marinescu. ~\footcite[Vgl.]{Lanza.2006}
 
 Man darf jedoch niemals vergessen, dass Metriken lediglich Indikatoren für Qualitätsprobleme sind. Metriken sollten immer als Hinweise auf bestimmte Stellen im Code verstanden werden,
 die man sich als Mensch ansehen sollte, um jeweils selbst zu beurteilen, ob und im welchem Maße der Code tatsächlich problematisch ist.
@@ -660,9 +656,9 @@ man sich diese Arbeit sparen. Mit Jenkins würde es dann möglich sein, die Regr
 auszuführen, etwas nach jeder Codeänderung oder einmal pro Nacht (Nightly Build). Falls Probleme auftreten sollten,
 würde das Team per Email, HipChat oder ähnlichen Kommunikationswege informiert.
 
-\subsubsection{Mutation-Testing}
+\subsubsection{Mutation-Testing}\label{mutation-testing}
 
-Mutation-Testing (auch Mutation Analyse oder Programm Mutation genannt) wird verwendet um neue Software-Tests zu erstellen und die Qualität der vorhandenen Tests zu evaluieren. Die Durchführung von Mutation-Testing ist in der Theorie ziemlich einfach, das vorhandene, zu testende, Programm wird an wenigen Stellen verändert. Jede so neu entstandene Version dieses Programms nennt man Mutant. Jeder erstellte Mutant wird mit den vorhandenen Tests überprüft um zu verifizieren, dass sich die Test-Suite anders verhält und somit die Änderung an dem Programm bemerkt. Tritt dieser Fall ein, spricht man vom "killing the mutant". Die existierende Test-Suite wird anhand der prozentualen entdecken von Mutanten bewertet. Desto höher dieser Wert ist, umso genauer sind die automatisierten Tests in der Überprüfung und Validierung der Software. 
+Mutation-Testing (auch Mutation Analyse oder Programm Mutation genannt) wird verwendet um neue Software-Tests zu erstellen und die Qualität der vorhandenen Tests zu evaluieren. Die Durchführung von Mutation-Testing ist in der Theorie ziemlich einfach, das vorhandene, zu testende, Programm wird an wenigen Stellen verändert. Jede so neu entstandene Version dieses Programms nennt man Mutant. Jeder erstellte Mutant wird mit den vorhandenen Tests überprüft um zu verifizieren, dass sich die Test-Suite anders verhält und somit die Änderung an dem Programm bemerkt. Tritt dieser Fall ein, spricht man vom \dq{}killing the mutant\dq{}. Die existierende Test-Suite wird anhand der prozentualen entdecken von Mutanten bewertet. Desto höher dieser Wert ist, umso genauer sind die automatisierten Tests in der Überprüfung und Validierung der Software. 
 
 Um diesen Richtwert zu erhöhen, können neue Tests erstellt werden die genau so eine auftretende Mutation überprüfen. Mutationen basieren auf wohldefinierten Veränderungen wie zum Beispiel typische Programmierfehler (Verwendung des falschen Operator oder Variablennamen). Zweck dieser ganzen Veränderungen ist es dem Softwareentwickler zu unterstützen, bessere und effektivere Tests zu schreiben. Ein weiterer Aspekt ist die Identifizierung von schwächen in den verwendeten Testdaten oder selten genutzten Funktionen. Dies sind alles unterstützende Faktoren die dem Softwareentwickler helfen können, um bessere Software-Tests zu entwickeln.
 
