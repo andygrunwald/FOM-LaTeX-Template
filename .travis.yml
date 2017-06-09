@@ -4,10 +4,7 @@ before_install:
   - sudo apt-get update
 
 install:
-  - sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra
-  - wget https://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/2.4/binaries/Linux/biber-linux_x86_64.tar.gz/download --output-document biber-linux_x86_64.tar.gz
-  - tar -xvzf biber-linux_x86_64.tar.gz
-  - sudo mv biber /usr/bin/
+  - sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber --no-install-recommends
 
 script:
   - pdflatex --version
