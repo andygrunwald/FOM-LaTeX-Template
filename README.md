@@ -35,7 +35,7 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 
 ## Für die eigene Arbeit nutzen
 
-Aufgrund der gewählten [Lizenz](./LICENSE) [MIT Lizenz](https://en.wikipedia.org/wiki/MIT_License), darfst du diese Vorlage für den persönlichen oder kommerzielen Gebrauch nutzen und abändern.
+Aufgrund der gewählten [Lizenz](./LICENSE) [MIT Lizenz](https://en.wikipedia.org/wiki/MIT_License), darfst du diese Vorlage für den persönlichen oder kommerziellen Gebrauch nutzen und abändern.
 Um dies zu tun gibt es mehrere Möglichkeiten, die wir nachfolgend kurz vorstellen.
 
 **Generell gilt**:
@@ -199,8 +199,8 @@ Dies hat folgende Vorteile:
 
 ## Ich möchte mithelfen, diese Vorlage zu verbessern
 
-Verbesserungen an dieser Vorlage sind stehts erwünscht und Willkommen.
-Github (diese Plattform) selbst ist dafür gemacht um zusammen an Open Source Projekten zu arbeiten.
+Verbesserungen an dieser Vorlage sind stets erwünscht und willkommen.
+Github (diese Plattform) selbst ist dafür gemacht, um zusammen an Open Source Projekten zu arbeiten.
 Deswegen werden Änderungen über [Pull Requests](https://github.com/andygrunwald/FOM-LaTeX-Template/pulls) sehr gerne entgegen genommen.
 
 Wenn du das erste mal mit [Git](https://git-scm.com/), [Github](https://github.com/) und Pull Requests arbeitest, können dir folgende zwei Artikel weiter helfen:
@@ -217,7 +217,7 @@ Ab und zu weichen einzelne Professoren davon ab.
 
 Mein Studium habe ich inzwischen abgeschlossen und deswegen nutze ich diese Vorlage nicht mehr aktiv.
 Jedoch wird sie von mehreren Personen genutzt, weiter gepflegt und angepasst.
-Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, wenn eine Antowrt nicht innerhalb einer Stunde vorliegt.
+Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, wenn eine Antwort nicht innerhalb einer Stunde vorliegt.
 
 ## Lizenz
 
