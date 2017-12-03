@@ -152,7 +152,7 @@ Voraussetzung ist eine installierte [Docker engine](https://docs.docker.com/engi
 Um die **PDF ohne die Installation der LaTeX-Pakete zu kompilieren muss folgender Befehl in eurem Projekt-Ordner** ( da wo die compile.sh bzw compile.bat liegt) ausgeführt werden:
 
 ```
-docker run -it --rm -v ${PWD}:/data andygrunwald/fom-latex-template
+docker run -it --rm -v "${PWD}:/data" andygrunwald/fom-latex-template
 ```
 Den Befehl lasst ihr einfach über eure Kommandozeile bzw. PowerShell laufen (in Windows cmd.exe bzw. powershell.exe, beim Mac ist es das Terminal). Zum Projektordner könnt ihr kommen, indem ihr über den cd Befehl dorthin navigiert oder im Windows-Explorer in diesen Ordner wechselt und dann bei gedrückter Shift-Taste die rechte Maus-Taste klickt. Dort müsst ihr dann im Menü den Eintrag : "Öffne Kommandozeile hier" auswählen.
 
