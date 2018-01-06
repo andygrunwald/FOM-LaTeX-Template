@@ -102,6 +102,21 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
   \printfield{year}\newunit{)}%
   \finentry}  
 
+%% Definiert @InProceedings Eintrag
+\DeclareBibliographyDriver{inproceedings}{%
+	\printnames{author}%
+	\setunit*{,\space (}%
+	\printfield{year}\newunit{)}%
+	\newunit\newblockpunct
+	\printfield{title}%
+	\setunit*{\space}%	
+	\usebibmacro{booktitle}%
+	\setunit*{,\space}%
+	\printfield{isbn}%
+	\setunit*{,\space}% 
+	\printfield{doi}%
+	\finentry}
+
 %Doppelpunkt nach dem letzten Autor
 \renewcommand*{\labelnamepunct}{\addcolon\addspace }
 

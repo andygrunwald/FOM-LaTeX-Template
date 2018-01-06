@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/andygrunwald/FOM-LaTeX-Template.svg?branch=master)](https://travis-ci.org/andygrunwald/FOM-LaTeX-Template)
 
-Eine [LaTeX](https://de.wikipedia.org/wiki/LaTeX)-Vorlage für den persönlichen Gebrauch für Haus-, Seminar-,Bachelor und Master-Arbeiten an der [FOM Hochschule für Oekonomie & Management](https://www.fom.de/).
+Eine [LaTeX](https://de.wikipedia.org/wiki/LaTeX)-Vorlage für den persönlichen Gebrauch für Haus-, Seminar-, Bachelor und Master-Arbeiten an der [FOM Hochschule für Oekonomie & Management](https://www.fom.de/).
 
 Wie das **Ergebnis** aussieht, könnt ihr euch in der Datei [*thesis_main.pdf*](./thesis_main.pdf) ansehen.
 
@@ -24,7 +24,7 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 7. [Vorraussetzungen](#vorraussetzungen)
   1. [LaTeX-Pakete](#latex-pakete)
 8. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
-	1. [Docker unter Linux / Mac / Windows](#docker-unter-linux--mac--windows)
+	1. [Docker unter Linux / macOS / Windows](#docker-unter-linux--macos--windows)
 	  1. [Image selbst bauen](#image-selbst-bauen)
 9. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
   1. [Texpad](#texpad)
@@ -136,13 +136,13 @@ Weiterhin wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Ve
 ## LaTeX zu PDF kompilieren
 
 Um die LaTeX-Dateien in eine PDF zu kompilieren müsst ihr unter **Windows** einfach die beiliegende `compile.bat` ausführen.
-Benutzer von **Mac OSX** und **Linux** verwenden bitte die ```compile.sh```.
+Benutzer von **macOS** und **Linux** verwenden bitte die ```compile.sh```.
 Zum Kompilieren müssen die oben beschriebenen Vorraussetzungen erfüllt sein.
 
 Wenn das kompilieren nicht ohne Fehler möglich ist, kontrolliert bitte ganz genau eure LaTeX-versionen.
 Alternativ empfehlen wir das Dokument mit Docker (siehe unten) zu kompilieren.
 
-### Docker unter Linux / Mac / Windows
+### Docker unter Linux / macOS / Windows
 
 Mit Docker wird das Dokument direkt in einem isolierten Container kompiliert.
 In diesem Container sind alle Vorraussetzungen mit der richtigen Software und den richtigen Versionen gegeben.
@@ -152,7 +152,7 @@ Voraussetzung ist eine installierte [Docker engine](https://docs.docker.com/engi
 Um die **PDF ohne die Installation der LaTeX-Pakete zu kompilieren muss folgender Befehl in eurem Projekt-Ordner** ( da wo die compile.sh bzw compile.bat liegt) ausgeführt werden:
 
 ```
-docker run -it --rm -v ${PWD}:/data andygrunwald/fom-latex-template
+docker run -it --rm -v "${PWD}:/data" andygrunwald/fom-latex-template
 ```
 Den Befehl lasst ihr einfach über eure Kommandozeile bzw. PowerShell laufen (in Windows cmd.exe bzw. powershell.exe, beim Mac ist es das Terminal). Zum Projektordner könnt ihr kommen, indem ihr über den cd Befehl dorthin navigiert oder im Windows-Explorer in diesen Ordner wechselt und dann bei gedrückter Shift-Taste die rechte Maus-Taste klickt. Dort müsst ihr dann im Menü den Eintrag : "Öffne Kommandozeile hier" auswählen.
 
@@ -177,12 +177,12 @@ Prinzipiell reicht ein normaler Text-Editor zur Bearbeitung aus.
 Jedoch kannst du zum schreiben der Arbeit auch ein IDE verwenden.
 Hierzu gibt es nachfolgend einige Software:
 
-- [TeXstudio](http://texstudio.sourceforge.net/) (Windows, Mac OSX, Linux)
-- [Texpad](https://www.texpadapp.com/) (Mac OSX, iPad, iPhone)
+- [TeXstudio](http://texstudio.sourceforge.net/) (Windows, macOS, Linux)
+- [Texpad](https://www.texpadapp.com/) (macOS, iOS)
 
 ### Texpad
 
-Für die Nutzung von Texpad unter Mac OSX müssen einige Einstellungen beachtet werden.
+Für die Nutzung von Texpad unter macOS müssen einige Einstellungen beachtet werden.
 Standardmäßig ist _biber_ nicht aktiviert.
 Dies führt dazu, dass das Literaturverzeichnis einfach "verschwindet", wenn man mit Texpad kompliliert.
 Daher musst Du unter _Preferences_ > _Typesettings_ > _Bibliography Compilation_ als Engine _biber_ auswählen.
