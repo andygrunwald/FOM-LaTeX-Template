@@ -25,6 +25,7 @@
 \definecolor{darkblack}{rgb}{0,0,0}
 \hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
 \fontfamily{ptm}\selectfont
+\usepackage{ragged2e}
 
 % Mehrere Fussnoten nacheinander mit Komma separiert
 \usepackage[hang, multiple]{footmisc}
@@ -261,7 +262,9 @@ sortlocale=de]{biblatex}
 \pagenumbering{Roman} %Zähler wieder römisch ausgeben
 \setcounter{page}{4}  %Zähler manuell hochsetzen
 
+\begin{RaggedRight}
 \printbibliography
+\end{RaggedRight}
 
 % Alternative Darstellung:
 % Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
