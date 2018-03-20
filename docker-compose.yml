@@ -1,0 +1,6 @@
+version: "3"
+services:
+  hausarbeit:
+      build: .
+      volumes:
+        - ./:/data
