@@ -65,19 +65,10 @@
 }
 
 % Biblatex
-\usepackage[
-backend=biber,
-style=numeric,
-citestyle=authoryear,
-url=false,
-isbn=false,
-notetype=footonly,
-hyperref=false,
-sortlocale=de]{biblatex}
+\usepackage[backend=biber, style=ext-authoryear, maxcitenames=2, maxbibnames=999, mergedate=false, innamebeforetitle, dashed=false, autocite=footnote]{biblatex} 
 
 %weitere Anpassungen für BibLaTex
-\input{skripte/modsBiblatex}
-
+\input{zitationsstil/zitationsstil}
 
 %Bib-Datei einbinden
 \addbibresource{literatur/literatur.bib}
