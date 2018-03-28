@@ -44,6 +44,7 @@ rm *.bcf > /dev/null
 rm *.ilg > /dev/null
 rm *.lof > /dev/null
 rm *.log > /dev/null
+rm *.lot > /dev/null
 rm *.nlo > /dev/null
 rm *.nls* > /dev/null
 rm *.out > /dev/null
@@ -53,4 +54,3 @@ rm *.run.xml > /dev/null
 echo "PDF Compile: Success"
 
 exit 0
-
