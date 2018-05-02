@@ -14,21 +14,22 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 ## Inhaltsverzeichnis
 
 1. [Für die eigene Arbeit nutzen](#für-die-eigene-arbeit-nutzen)
-  1. [Klassischer Download](#klassischer-download)
-  2. [Fork auf Github](#fork-auf-github)
+    1. [Klassischer Download](#klassischer-download)
+    2. [Fork auf Github](#fork-auf-github)
 2. [Vorlage personalisieren](#vorlage-personalisieren)
 3. [Fußnoten](#fußnoten)
 4. [Literaturverzeichnis](#literaturverzeichnis)
 5. [Sperrvermerk](#sperrvermerk)
 6. [Quellcode einbinden](#quellcode-einbinden)
-7. [Vorraussetzungen](#vorraussetzungen)
-  1. [LaTeX-Pakete](#latex-pakete)
-8. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
-	1. [Docker unter Linux / macOS / Windows](#docker-unter-linux--macos--windows)
-	  1. [Image selbst bauen](#image-selbst-bauen)
-9. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
-  1. [Texpad](#texpad)
-10. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
+7. [Einheitliche Schriftarten erzwingen](#einheitliche-schriftarten-erzwingen)
+8. [Vorraussetzungen](#vorraussetzungen)
+    1. [LaTeX-Pakete](#latex-pakete)
+9. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
+    1. [Docker unter Linux / macOS / Windows](#docker-unter-linux--macos--windows)
+    1. [Image selbst bauen](#image-selbst-bauen)
+10. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
+    1. [Texpad](#texpad)
+11. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
 12. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
 13. [Disclaimer](#disclaimer)
 14. [Lizenz](#lizenz)
@@ -123,6 +124,16 @@ Folgendermaßen könnt ihr Quellcode einbauen:
 
 Für [Javascript](https://de.wikipedia.org/wiki/JavaScript) gibt es noch keine eigene Sprache, daher benutzt am besten [Java](https://de.wikipedia.org/wiki/Java_(Programmiersprache)).
 Für eine genauere Beschreibung empfehlen wir folgenden Artikel: [LaTeX/Source Code Listings @ Wikibooks](http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings).
+
+## Einheitliche Schriftarten erzwingen
+
+Durch die Kompilierung mit pdflatex kann es in der PDF zu unterschiedlichen Schriftarten kommen, da die voreingestellte Schriftart Serifen enthält. Mit den folgenden Zeilen kann in der Datei [*thesis_main.tex*](./thesis_main.tex) die Nutzung der Schfriftart Helvet erzwungen werden.
+
+```latex
+% Überschreibe die pdflatex default Schriftart mit helvet
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault}
+```
 
 ## Vorraussetzungen
 
