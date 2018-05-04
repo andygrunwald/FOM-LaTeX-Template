@@ -192,6 +192,7 @@ Hierzu gibt es nachfolgend einige Software:
 
 - [TeXstudio](http://texstudio.sourceforge.net/) (Windows, macOS, Linux)
 - [Texpad](https://www.texpadapp.com/) (macOS, iOS)
+- [Visual Studio Code](https://code.visualstudio.com/) (macOS, iOS, Linux)
 
 ### Texpad
 
@@ -199,6 +200,14 @@ Für die Nutzung von Texpad unter macOS müssen einige Einstellungen beachtet we
 Standardmäßig ist _biber_ nicht aktiviert.
 Dies führt dazu, dass das Literaturverzeichnis einfach "verschwindet", wenn man mit Texpad kompliliert.
 Daher musst Du unter _Preferences_ > _Typesettings_ > _Bibliography Compilation_ als Engine _biber_ auswählen.
+
+### Visual Studio Code
+
+Wer eine etwas moderne IDE benutzen möchte, kann auch Visual Studio Code verwenden. Folgende Extension ist notwendig:
+
+[Latex Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
+
+Mit Hilfe der Extension kann das Projekt kompiliert und als Vorschau angesehen werden. In der ```settings.json``` sind die Einstellungen der ```compile.sh``` für Latex Workshop hinterlegt.
 
 ## Ich habe eine Frage oder ein Problem
 
