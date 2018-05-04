@@ -26,6 +26,12 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
          \printfield{labelyear}% 
          \printfield{extrayear}}}}}
 
+\renewbibmacro*{cite:title}{%
+  \printtext[bibhyperref]{%
+    \printfield[citetitle]{labeltitle}%
+    \setunit{\addcomma\space}%
+    \printdate}}
+
 \DeclareNameFormat{last-first}{%
   \iffirstinits
     {\usebibmacro{name:family-given}
