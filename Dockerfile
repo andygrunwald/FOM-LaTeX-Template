@@ -13,7 +13,16 @@ RUN echo 'deb http://ppa.launchpad.net/jonathonf/texlive-staging/ubuntu xenial m
 	&& echo 'deb-src http://ppa.launchpad.net/jonathonf/texlive-staging/ubuntu xenial main' >> /etc/apt/sources.list.d/texlive.list \
 	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-key F06FC659 \
 	&& apt-get update \
-	&& apt-get install -y
+	&& apt-get install -y \
+		wget \
+		texlive-latex-recommended \
+		texlive-latex-extra \
+		texlive-fonts-recommended \
+		texlive-bibtex-extra \
+		texlive-lang-german \
+		texlive-generic-extra \
+		biber \
+		--no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
 # This can get removed at some point due to docker-compose
