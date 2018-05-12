@@ -1,6 +1,6 @@
 dist: trusty
 before_install:
-  - sudo add-apt-repository ppa:jonathonf/texlive-2016 -y
+  - sudo add-apt-repository ppa:jonathonf/texlive-staging -y
   - sudo apt-get update
 
 install:

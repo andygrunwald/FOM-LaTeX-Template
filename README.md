@@ -69,17 +69,17 @@ Ersetze die Muster-Werte durch deine persönlichen Angaben und diese werden auto
 ## Fußnoten
 
 Einige Professoren bevorzugen ein anderes Fußnoten-Format.
-Das Standard-Format kann mit `\footcite[Vgl. ][Seite 1]{Balzert.2008}` genutzt werden und gibt folgendes aus:
+Das Standard-Format kann mit `\footcite[Vgl. ][Seite 1]{seiter2017business}` genutzt werden und gibt folgendes aus:
 
 ```
-Vgl. Balzert et al. (2008), Seite 1.
+Vgl. Seiter et al. (2017), Seite 1.
 ```
 
 Es besteht auch die Möglichkeit, den Vornamen des Autors mit auszugeben.
-Dazu kann der Custom-Befehl `\fullfootcite[Vgl. ][Seite 1]{Balzert.2008}` genutzt werden, der folgendes Resultat liefert:
+Dazu kann der Custom-Befehl `\fullfootcite[Vgl. ][Seite 1]{seiter2017business}` genutzt werden, der folgendes Resultat liefert:
 
 ```
-Vgl. Balzert, Helmut et al. (2008), Seite 1.
+Vgl. Seiter, Mischa et al. (2017), Seite 1.
 ```
 
 ## Literaturverzeichnis
