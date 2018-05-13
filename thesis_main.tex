@@ -1,281 +1,190 @@
-%-----------------------------------
-% Define document and include general packages
-%-----------------------------------
+%====================================
+% build with arara:
+%====================================
+%
+%
+%
+% !TEX TS-program = arara
+% arara: clean: {files: [thesis_main.bbl, thesis_main.aux, thesis_main.pdf]}
+% arara: xelatex
+% arara: nomencl
+% arara: biber
+% arara: xelatex
+% arara: xelatex
+% arara: clean: {files: [thesis_main.out, thesis_main.toc, thesis_main.lot, thesis_main.lof, thesis_main.bbl, thesis_main.nls, thesis_main.nlo, thesis_main.aux, thesis_main.idx, thesis_main.ilg, thesis_main.ind, thesis_main.bbl, thesis_main.bcf, thesis_main.ist, thesis_main.blg, thesis_main.run.xml]}
+%
+%
+%
+%====================================
+% compile with XeLaTeX
+% LuaLaTeX not tested
+% pdflatex won't compile
+%          for good reason
+%====================================
+% Präambel
+%====================================
+% Definition des Dokuments
+% inkl. Kopfzeile
+%====================================
 \documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
-\usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
-\usepackage[babel,german=quotes]{csquotes}
-\usepackage[T1]{fontenc}
-\usepackage{fancyhdr}
-\usepackage{fancybox}
-\usepackage[a4paper, left=4cm, right=2cm, top=2.8cm, bottom=2.3cm]{geometry}
-\usepackage{graphicx}
-\usepackage{colortbl}
-\usepackage{array}
-\usepackage{float}      %Positionierung von Abb. und Tabellen mit [H] erzwingen
-\usepackage{footnote}
-\usepackage{caption}
-\usepackage{enumitem}
-\usepackage{amssymb}
-\usepackage{mathptmx}
-\usepackage[scaled=0.9]{helvet} % Behebt, zusammen mit Package courier, pixelige Überschriften. Ist, zusammen mit mathptx, dem times-Package vorzuziehen. Details: https://latex-kurs.de/fragen/schriftarten/Times_New_Roman.html
-\usepackage{courier}
-\usepackage{amsmath}
-\usepackage[table]{xcolor}
-\usepackage{marvosym}			% Verwendung von Symbolen, z.B. perfektes Eurozeichen
-\usepackage[colorlinks=true,linkcolor=black]{hyperref}
-\definecolor{darkblack}{rgb}{0,0,0}
-\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
-\fontfamily{ptm}\selectfont
-\usepackage{ragged2e}
-
-% Mehrere Fussnoten nacheinander mit Komma separiert
-\usepackage[hang, multiple]{footmisc}
-\setlength{\footnotemargin}{1em}
-
-% todo Aufgaben als Kommentare verfassen für verschiedene Editoren
-\usepackage{todonotes}
-
-%Pakete für Tabellen
-\usepackage{epstopdf}
-\usepackage{nicefrac} % Brüche
-\usepackage{multirow}
-\usepackage{rotating} % vertikal schreiben
-\usepackage{mdwlist}
-
-\definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
-\definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
-% Colors for listings
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-
-% sauber formatierter Quelltext
-\usepackage{listings}
-\lstset{numbers=left,
-	numberstyle=\tiny,
-	numbersep=5pt,
-	breaklines=true,
-	showstringspaces=false,
-	frame=l ,
-	xleftmargin=5pt,
-	xrightmargin=5pt,
-	basicstyle=\ttfamily\scriptsize,
-	stepnumber=1,
-	keywordstyle=\color{blue},          % keyword style
-  	commentstyle=\color{dkgreen},       % comment style
-  	stringstyle=\color{mauve}         % string literal style
-}
-
-% Biblatex
 \usepackage[
-backend=biber,
-style=numeric,
-citestyle=authoryear,
-url=false,
-isbn=false,
-notetype=footonly,
-hyperref=false,
-sortlocale=de]{biblatex}
-
-%weitere Anpassungen für BibLaTex
-\input{skripte/modsBiblatex}
-
-
-%Bib-Datei einbinden
-\addbibresource{literatur/literatur.bib}
-
-% Pfad fuer Abbildungen
-\graphicspath{{./}{./abbildungen/}}
-
-%-----------------------------------
-% Weitere Ebene einfügen
-\input{skripte/weitereEbene}
-
-%-----------------------------------
-% Zeilenabstand 1,5-zeilig
-%-----------------------------------
-\usepackage{setspace}
-\onehalfspacing
-
-%-----------------------------------
-% Absätze durch eine neue Zeile
-%-----------------------------------
-\setlength{\parindent}{0mm}
-\setlength{\parskip}{0.8em plus 0.5em minus 0.3em}
-
-\sloppy					%Abstände variieren
-\pagestyle{headings}
-
-%-----------------------------------
+	a4paper,
+	top=4cm,
+	bottom=2cm,
+	left=4cm,
+	right=2cm,
+	headheight=2cm, %head height
+	footskip=2cm, %Abstand footer zu Text
+	headheight=2cm,
+	heightrounded, %Runden der Höhe
+]{geometry} %https://mirror.hmc.edu/ctan/macros/latex/contrib/geometry-de/geometry-de.pdf
+%====================================
+% Pakete
+%====================================
+\usepackage{thesis_main_style}
+%====================================
+% Sprachsupport Pakete
+%====================================
+%\usepackage{polyglossia} %required for compiling - http://ctan.math.illinois.edu/macros/latex/contrib/polyglossia/polyglossia.pdf
+%\setdefaultlanguage[spelling=new]{german} %required for compiling, muiltilanguage support possible - https://latexkurs.github.io/lecture/08_bibliografien_mehrsprachigkeit.pdf
+%\usepackage[german=quotes]{csquotes} %required for compiling
+%====================================
+% Skriptdateien Einbinden
+%====================================
+\addbibresource{Deine_Inhalte/Literatur/Literatur.bib} %Bib-Datei einbinden
+\graphicspath{{./}{./Deine_Inhalte/}{./Deine_Inhalte/Abbildungen/}{./Deine_Inhalte/Kapitel}} % Pfad fuer Abbildungen %{{./}{./abbildungen/}}
+\input{Skripte/weitereEbene} % Weitere Ebene einfügen
+%====================================
 % Abkürzungsverzeichnis
-%-----------------------------------
+%====================================
 \usepackage[intoc]{nomencl}
 \renewcommand{\nomname}{Abkürzungsverzeichnis}
-\setlength{\nomlabelwidth}{.20\textwidth}
+\setlength{\nomlabelwidth}{.50\textwidth}
 \renewcommand{\nomlabel}[1]{#1 \dotfill}
 \setlength{\nomitemsep}{-\parsep}
 \makenomenclature
-
-%-----------------------------------
-% Meta informationen
-%-----------------------------------
-\input{skripte/meta}
-
-%-----------------------------------
-% PDF Meta Daten setzen
-%-----------------------------------
-\hypersetup{
-    pdfinfo={
-        Title={\myTitel},
-        Subject={\myStudiengang},
-        Author={\myAutor},
-        Build=1.1
-    }
-}
-
-%-----------------------------------
-% Umlaute in Code korrekt darstellen
-% siehe auch: https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
-%-----------------------------------
-\lstset{literate=
-	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
-	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-	{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
-	{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
-	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
-	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
-	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
-	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
-	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
-	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
-	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-	{€}{{\EUR}}1 {£}{{\pounds}}1
-}
-
-%-----------------------------------
-% Kopfbereich / Header definieren
-%-----------------------------------
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[C]{-\ \thepage\ -}						% Seitenzahl oben, mittg
-%\fancyhead[L]{\leftmark}							% kein Footer vorhanden
-\renewcommand{\headrulewidth}{0.4pt}
-
-
-%-----------------------------------
-% Start the document here:
-%-----------------------------------
+%========================================================================
+% Meta Informationen
+% Hier gibts du deine Daten ein!!!
+%========================================================================
+\input{Deine_Inhalte/Metainformationen}
+%====================================
+% Kopfzeile / Header definieren
+% Fußzeile / Footer definieren
+% Seitenzahlen definieren
+%====================================
+\fancypagestyle{plain}{%
+	\fancyhf{} %clear header and footer fields
+	\fancyhead[C]{\thepage}
+	\fancyfoot{}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+} %redefine plain style
+\pagestyle{fancy} %define site style
+	\fancyhf{} %clear header and footer fields
+	\fancyhead[C]{\thepage}
+	\fancyfoot{}
+	%\chead{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+%====================================
+% Ab hier startet dein Dokument!!!
+%====================================
 \begin{document}
-
-\pagenumbering{Roman}								% Seitennumerierung auf römisch umstellen
-\renewcommand{\refname}{Literaturverzeichnis}		% "Literatur" in
-%"Literaturverzeichnis" umbenennen
-\newcolumntype{C}{>{\centering\arraybackslash}X}	% Neuer Tabellen-Spalten-Typ:
-%Zentriert und umbrechbar
-
-%-----------------------------------
-% Titlepage
-%-----------------------------------
-\begin{titlepage}
-	\newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
-	\begin{center}
-		\textbf{\myHochschulName}\\
-		\textbf{\myHochschulStandort}\\
-		\vspace{1.5cm}
-			\includegraphics[width=3cm]{abbildungen/fomLogo.jpg} \\
-		\vspace{1.5cm}
-		Berufsbegleitender Studiengang\\
-		\myStudiengang, \mySemesterZahl. Semester\\
-		\vspace{2cm}
-		\textbf{\myThesisArt}\\
-		\textbf{zur Erlangung des Grades eines}\\
-		\textbf{\myAkademischerGrad}\\
-		% Oder für Hausarbeiten:
-		%\textbf{im Rahmen der Lehrveranstaltung}\\
-		%\textbf{\myLehrveranstaltung}\\
-		\vspace{2cm}
-		über das Thema\\
-		\Huge{\myTitel}\\
-		\vspace{0.2cm}
-	\end{center}
-	\normalsize
-	\vfill
-	\begin{tabbing}
-		Links \= Mitte \= Rechts\kill
-		Betreuer: \> \> \myBetreuer\\
-		\> \> \\
-
-		Autor: \> \> \myAutor\\
-		\> \>  Matrikelnr.: \myMatrikelNr\\
-		\> \> \myAdresse\\
-		\> \> \\
-		Abgabe: \> \> \myAbgabeDatum
-	\end{tabbing}
-\end{titlepage}
-
-%-------Ende Titelseite-------------
-
-%-----------------------------------
-% Sperrvermerk
-%-----------------------------------
-%\input{kapitel/anhang/sperrvermerk}
-
-%-----------------------------------
+	\renewcommand{\figurename}{Abbildung} 			%Bildunterschrift
+	\pagenumbering{Roman}							% Seitennumerierung auf römisch umstellen
+\renewcommand{\refname}{Literaturverzeichnis}		% "Literaturverzeichnis" benennen
+\newcolumntype{C}{>{\centering\arraybackslash}X}	% Neuer Tabellen-Spalten-Typ: Zentriert und umbrechbar
+%========================================================================
+% Titlelseite Stand: Dezember 2016
+%========================================================================
+ \input{Deine_Inhalte/Titelseite}
+ \newpage
+%====================================
+% Definition des Dokuments
+% (nach Titelseite)
+%====================================
+\restoregeometry %Wiederherstellen der Einstellungen der Geometrie aus der Präambel
+%========================================================================
+% Dokumentseiten ab hier bindest du die folgenden Seiten ein!!!
+% Kommentier sie mit - % - um die Seiten auszuschliessen
+%========================================================================
+% Sperrvermerk Seite
+%====================================
+% \input{Deine_Inhalte/Kapitelanhang/Sperrvermerk}
+%====================================
 % Inhaltsverzeichnis
-%-----------------------------------
-\setcounter{page}{2}
+%====================================
+\setcounter{page}{2} %Zähler manuell hochsetzen
 \tableofcontents
 \newpage
-
-%-----------------------------------
+%====================================
 % Abkürzungsverzeichnis
-%-----------------------------------
+%====================================
 \printnomenclature
 \newpage
-%-----------------------------------
+%====================================
 % Abbildungsverzeichnis
-%-----------------------------------
+%====================================
 \listoffigures
 \newpage
-%-----------------------------------
+%====================================
 % Tabellenverzeichnis
-%-----------------------------------
+%====================================
 \listoftables
 \newpage
-%-----------------------------------
-% Seitennummerierung auf arabisch und ab 1 beginnend umstellen
-%-----------------------------------
+%====================================
+% Seitennummerierung auf arabisch und
+% ab 1 beginnend umstellen
+%====================================
 \pagenumbering{arabic}
 \setcounter{page}{1}
-%-----------------------------------
-% Kapitel / Inhalte
-%-----------------------------------
-\input{kapitel/einleitung/einleitung}
-\input{kapitel/kapitel_1/kapitel_1}
-\input{kapitel/kapitel_2/kapitel_2}
-\input{kapitel/fazit/fazit}
+%====================================
+% Deine Kapitel einbinden!!!
+% Deine Inhalte einbinden!!!
+%====================================
 
-%-----------------------------------
+	\input{Deine_Inhalte/Kapitel/1_Kapitel}
+	\input{Deine_Inhalte/Kapitel/2_Kapitel}
+	\input{Deine_Inhalte/Kapitel/3_Kapitel}
+	\input{Deine_Inhalte/Kapitel/4_Kapitel}
+
+%====================================
 % Literaturverzeichnis
-%-----------------------------------
+%====================================
 \newpage
-%\addcontentsline{toc}{section}{Literatur}
-
+\addcontentsline{toc}{section}{Literaturverzeichnis}
 \pagenumbering{Roman} %Zähler wieder römisch ausgeben
 \setcounter{page}{4}  %Zähler manuell hochsetzen
 
-\begin{RaggedRight}
-\printbibliography
-\end{RaggedRight}
+% Darstellung 1:
+%\printbibliography %einfach alles
 
-% Alternative Darstellung:
-% Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
+% Darstellung 2:
+% Literaturverzeichnis nach Typ (@book, @arcticle, keine anderen Typen, gehe sicher das nichts fehlt!) sortiert.
 % Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
-
 %\printbibheading
 %\printbibliography[type=article,heading=subbibliography,title={Artikel}]
 %\printbibliography[type=book,heading=subbibliography,title={Bücher}]
 %\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
 
-\input{kapitel/anhang/erklaerung}
+% Darstellung 3:
+% Literaturverzeichnis nach Typ (@book, @arcticle (zusammen) und @online getrennt. Keine anderen Typen,
+% gehe sicher das nichts fehlt!) sortiert.
+% Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
+%\printbibliography[type=book,heading=subbibliography,title={Literaturverechnis}]
+%\printbibliography[type=article,heading=none]
+%\printbibliography[type=online,heading=subbibliography,title={Internetquellen}]
+
+	% Darstellung 4:
+	\defbibfilter{noonline}{ \not{type=online} }
+	\printbibliography[filter=noonline,heading=subbibliography,title={Literaturverzeichnis}] %alles anzeigen ausser '@online'
+	\printbibliography[type=online,heading=subbibliography,title={Internetquellen}] %nur '@online' anzeigen
+
+%====================================
+% Eidesstattliche Erklärung
+%====================================
+	\input{Deine_Inhalte/Kapitelanhang/Erklaerung} %BiblaTex Deine_Inhalte/Literatur/litratur.bib
+%====================================
+
 \end{document}

@@ -1,11 +1,7 @@
 # LaTeX-Vorlage für die FOM Hochschule für Oekonomie & Management
-
 [![Build Status](https://travis-ci.org/andygrunwald/FOM-LaTeX-Template.svg?branch=master)](https://travis-ci.org/andygrunwald/FOM-LaTeX-Template)
-
-Eine [LaTeX](https://de.wikipedia.org/wiki/LaTeX)-Vorlage für den persönlichen Gebrauch für Haus-, Seminar-, Bachelor und Master-Arbeiten an der [FOM Hochschule für Oekonomie & Management](https://www.fom.de/).
-
+Eine [LaTeX](https://de.wikipedia.org/wiki/LaTeX)-Vorlage für den persönlichen Gebrauch für Haus-, Seminar-,Bachelor und Master-Arbeiten an der [FOM Hochschule für Oekonomie & Management](https://www.fom.de/).
 Wie das **Ergebnis** aussieht, könnt ihr euch in der Datei [*thesis_main.pdf*](./thesis_main.pdf) ansehen.
-
 Diese Vorlage hat weder einen Anspruch auf Richtigkeit, noch auf Vollständigkeit.
 Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)).
 
@@ -14,29 +10,75 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 ## Inhaltsverzeichnis
 
 1. [Für die eigene Arbeit nutzen](#für-die-eigene-arbeit-nutzen)
-    1. [Klassischer Download](#klassischer-download)
-    2. [Fork auf Github](#fork-auf-github)
+  1. [Klassischer Download](#klassischer-download)
+  2. [Fork auf Github](#fork-auf-github)
 2. [Vorlage personalisieren](#vorlage-personalisieren)
 3. [Fußnoten](#fußnoten)
 4. [Literaturverzeichnis](#literaturverzeichnis)
 5. [Sperrvermerk](#sperrvermerk)
 6. [Quellcode einbinden](#quellcode-einbinden)
-7. [Einheitliche Schriftarten erzwingen](#einheitliche-schriftarten-erzwingen)
-8. [Vorraussetzungen](#vorraussetzungen)
-    1. [LaTeX-Pakete](#latex-pakete)
-9. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
-    1. [Docker unter Linux / macOS / Windows](#docker-unter-linux--macos--windows)
-    1. [Image selbst bauen](#image-selbst-bauen)
-10. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
-    1. [Texpad](#texpad)
-11. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
+7. [Vorraussetzungen](#vorraussetzungen)
+  1. [LaTeX-Pakete](#latex-pakete)
+8. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
+	1. [Docker unter Linux / Mac / Windows](#docker-unter-linux--mac--windows)
+	  1. [Image selbst bauen](#image-selbst-bauen)
+9. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
+  1. [Texpad](#texpad)
+10. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
 12. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
 13. [Disclaimer](#disclaimer)
 14. [Lizenz](#lizenz)
 
+
+## Vorwort
+
+Danke an Andy Grüwald für die erstellen des orginal Templates, auf welchem dieses LaTeX-Template basiert.
+
+## Thesis- und/oder Hausarbeit-Modus
+
+Das Template kann als Hausarbeit oder Thesis verwendet werden, dazu prüfe bitte das Template. Die Informationen sind im Qellcode (größtenteil aber nicht ausschliesslich in thesis_main.tex und Deine_Inhalte/Metainformationen.tex) kommentiert.
+Die aktuelle Standarteinstellung ist HAUSARBEIT.
+
+## Achtung
+
+Dies soll eine LaTeX -Vorlage für den persönlichen Gebrauch werden. Sie hat weder einen Anspruch auf Richtigkeit, noch auf Vollständigkeit. 
+Kontrolle und ggf. klärung mit deinem betreuenden Dozenten vor Abgabe sind notwendig.
+
+## Änderungen zum Original
+
+### Build Tool arara
+
+arara - The cool TeX automation Tool, ist auf [GitHub](https://github.com/cereda/arara) verfügbar. Mit arara wird in der Präambel des thesis_main.tex Dokuments ein kleines Skript implemntiert um dir die Arbeit zu erleichtern, in Sachen compiling and cleaning. 
+
+### FOM Leitafaden - Standort München
+
+Das Template ist nach besten wissen und gewissen nach dem FOM Leitfaden 20.12.2016 Standort München erstellt. Solltest du Fehler entdecken, erstelle ein "new Issue" wie [hier](#ich-habe-eine-frage-oder-ein-problem) von Andy beschrieben.
+
+### Dateistruktur
+
+Es wurde das Verzeichnis "Deine_Inhalte" (In möglichst auffälliger schreibweise ;o) erstellt.
+Hier liegt alles was die Inhalte deiner Hausarbeit oder Thesis angeht.
+
+### Alles mögiche im Quelltext
+
+Um nur ein Paar zu nennen.
+
+1. Engine von PDF-LaTex auf XeLaTex gestellt
+2. Seiten Geomtetrie
+3. Überschriften
+4. Schrift
+5. Schriftgröße
+6. Leitfaden Anpassungen
+...
+
+### To Do
+
+1. Readme verbessern
+2. Beispiel PDF verbessern
+
 ## Für die eigene Arbeit nutzen
 
-Aufgrund der gewählten [Lizenz](./LICENSE) [MIT Lizenz](https://en.wikipedia.org/wiki/MIT_License), darfst du diese Vorlage für den persönlichen oder kommerziellen Gebrauch nutzen und abändern.
+Aufgrund der gewählten [Lizenz](./LICENSE) [MIT Lizenz](https://en.wikipedia.org/wiki/MIT_License), darfst du diese Vorlage für den persönlichen oder kommerzielen Gebrauch nutzen und abändern.
 Um dies zu tun gibt es mehrere Möglichkeiten, die wir nachfolgend kurz vorstellen.
 
 **Generell gilt**:
@@ -125,16 +167,6 @@ Folgendermaßen könnt ihr Quellcode einbauen:
 Für [Javascript](https://de.wikipedia.org/wiki/JavaScript) gibt es noch keine eigene Sprache, daher benutzt am besten [Java](https://de.wikipedia.org/wiki/Java_(Programmiersprache)).
 Für eine genauere Beschreibung empfehlen wir folgenden Artikel: [LaTeX/Source Code Listings @ Wikibooks](http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings).
 
-## Einheitliche Schriftarten erzwingen
-
-Durch die Kompilierung mit pdflatex kann es in der PDF zu unterschiedlichen Schriftarten kommen, da die voreingestellte Schriftart Serifen enthält. Mit den folgenden Zeilen kann in der Datei [*thesis_main.tex*](./thesis_main.tex) die Nutzung der Schfriftart Helvet erzwungen werden.
-
-```latex
-% Überschreibe die pdflatex default Schriftart mit helvet
-\usepackage[scaled]{helvet}
-\renewcommand\familydefault{\sfdefault}
-```
-
 ## Vorraussetzungen
 
 ### LaTeX-Pakete
@@ -147,13 +179,13 @@ Weiterhin wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Ve
 ## LaTeX zu PDF kompilieren
 
 Um die LaTeX-Dateien in eine PDF zu kompilieren müsst ihr unter **Windows** einfach die beiliegende `compile.bat` ausführen.
-Benutzer von **macOS** und **Linux** verwenden bitte die ```compile.sh```.
+Benutzer von **Mac OSX** und **Linux** verwenden bitte die ```compile.sh```.
 Zum Kompilieren müssen die oben beschriebenen Vorraussetzungen erfüllt sein.
 
 Wenn das kompilieren nicht ohne Fehler möglich ist, kontrolliert bitte ganz genau eure LaTeX-versionen.
 Alternativ empfehlen wir das Dokument mit Docker (siehe unten) zu kompilieren.
 
-### Docker unter Linux / macOS / Windows
+### Docker unter Linux / Mac / Windows
 
 Mit Docker wird das Dokument direkt in einem isolierten Container kompiliert.
 In diesem Container sind alle Vorraussetzungen mit der richtigen Software und den richtigen Versionen gegeben.
@@ -163,10 +195,8 @@ Voraussetzung ist eine installierte [Docker engine](https://docs.docker.com/engi
 Um die **PDF ohne die Installation der LaTeX-Pakete zu kompilieren muss folgender Befehl in eurem Projekt-Ordner** ( da wo die compile.sh bzw compile.bat liegt) ausgeführt werden:
 
 ```
-docker-compose up
+docker run -it --rm -v ${PWD}:/data andygrunwald/fom-latex-template
 ```
-
-
 Den Befehl lasst ihr einfach über eure Kommandozeile bzw. PowerShell laufen (in Windows cmd.exe bzw. powershell.exe, beim Mac ist es das Terminal). Zum Projektordner könnt ihr kommen, indem ihr über den cd Befehl dorthin navigiert oder im Windows-Explorer in diesen Ordner wechselt und dann bei gedrückter Shift-Taste die rechte Maus-Taste klickt. Dort müsst ihr dann im Menü den Eintrag : "Öffne Kommandozeile hier" auswählen.
 
 Wird Docker unter Windows 10 verwendet, muss der Daemon wie folgt konfiguriert werden:
@@ -190,24 +220,46 @@ Prinzipiell reicht ein normaler Text-Editor zur Bearbeitung aus.
 Jedoch kannst du zum schreiben der Arbeit auch ein IDE verwenden.
 Hierzu gibt es nachfolgend einige Software:
 
-- [TeXstudio](http://texstudio.sourceforge.net/) (Windows, macOS, Linux)
-- [Texpad](https://www.texpadapp.com/) (macOS, iOS)
-- [Visual Studio Code](https://code.visualstudio.com/) (macOS, iOS, Linux)
+- [TeXstudio](http://texstudio.sourceforge.net/) (Windows, Mac OSX, Linux)
+- [Texpad](https://www.texpadapp.com/) (Mac OSX, iPad, iPhone)
 
 ### Texpad
 
-Für die Nutzung von Texpad unter macOS müssen einige Einstellungen beachtet werden.
+Für die Nutzung von Texpad unter Mac OSX müssen einige Einstellungen beachtet werden.
 Standardmäßig ist _biber_ nicht aktiviert.
 Dies führt dazu, dass das Literaturverzeichnis einfach "verschwindet", wenn man mit Texpad kompliliert.
 Daher musst Du unter _Preferences_ > _Typesettings_ > _Bibliography Compilation_ als Engine _biber_ auswählen.
 
-### Visual Studio Code
+### Jetbrains' IntelliJ IDEA
 
-Wer eine etwas moderne IDE benutzen möchte, kann auch Visual Studio Code verwenden. Folgende Extension ist notwendig:
+Meine empfehlung, IntelliJ IDEA von Jetbrains. Als Student kannst du eine [Studentenlizens](https://www.jetbrains.com/student/) bei Jetbrains beantragen
+oder die kostenlose [Community-Version](https://www.jetbrains.com/idea/download/) nutzen. Wie schon von Andy beschrieben, könnt ihr unter einer Menge IDEs und Texteditoren wählen, aber dieses "How to" soll sich hier auf ein dediziertes Setup beschränken. 
 
-[Latex Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
+#### Freshman's how to Jetbrains' IntelliJ IDEA
 
-Mit Hilfe der Extension kann das Projekt kompiliert und als Vorschau angesehen werden. In der ```settings.json``` sind die Einstellungen der ```compile.sh``` für Latex Workshop hinterlegt.
+1. Wie von Andy unter [Fork auf Github](#fork-auf-github) beschrieben, empfehle ich dir das Template zu forken
+2. Nun starte InelliJ IDEA und klicke auf "Check out from VCS" > "Github" 
+3. Es öffnet sich ein neues Fenster, wähle hier Titel und Ort für dein Projekt, danach klicke auf "Clonen" 
+4. In der Menüleiste wähle "IntelliJ IDEA" > "Preferences..." (Benamung kann unter Windows abweichen)
+5. Links gehe auf "Tools" > "External Tools"
+6. Nun siehst du in der rechten Hälfte des Fensters, ein Plus + (links unten), klicke dort drauf
+7. Nun musst du nur drei Felder ausfüllen
+    1. Feld 1: "Name" bspw. "Create PDF from LaTeX Template"
+    2. Feld 2: "Program" setze den Pfad auf "compiletool.sh" bspw. "~/IdeaProjects/FOM-LaTeX-Template/compiletool.sh"
+    3. Feld 3: "Working Directory", dass ist der Pfad unter dem deine PDF erscheint, setze ihn einfach auf das gleiche Verzeichniss in dem auch compiletool.sh liegt
+11. Bestätige deine Eingaben zweimal mit "OK"
+12. Fertig! Ab jetzt kannst du deine PDF kompilieren in dem du in der Menüleiste auf "Tools" > "External Tools" > "Create PDF from LaTeX Template" (bzw. der Name welchen du bei "Feld 1" eingeben hast) klickst
+13. Nun Probier es selbst!
+
+## Bibliography Reference Manager
+
+Ich habe nicht alle Programme eingehend getestet, aber um dir einen Anhaltspunkt in deiner Wahl zu geben, ein paar Links in alphabetischer Reihenfolge:
+1. [Citavi](https://citavi.com/de)
+2. [JabRef](http://www.jabref.org)
+3. [Zotero](https://www.zotero.org/) 
+    1. [Zotero Artikel](https://tex.stackexchange.com/questions/402554/quick-citation-insert-from-zotero-5)
+    2. [Zotero Plug-in](https://github.com/retorquere/zotero-better-bibtex)
+
 
 ## Ich habe eine Frage oder ein Problem
 
@@ -219,10 +271,15 @@ Dies hat folgende Vorteile:
 * wir haben eine Dokumentation an vorhandenen und gelösten Fehlern / Fragen
 * gelöste / wiederkehrende Probleme müssen nicht erneut beantwortet werden
 
+### Bekannte Fehler
+
+In der thesis_main.log Datei steht: "! File ended while scanning use of \@writefile." => Lösung: "thesis_main.aux" Datei löschen.
+In der thesis_main.log Datei steht: "Underfull \hbox" => Lösung: Lies diesen [Artikel von texwelt.de](http://texwelt.de/wissen/fragen/20/was-bedeutet-underfulloverfull-hbox)
+
 ## Ich möchte mithelfen, diese Vorlage zu verbessern
 
-Verbesserungen an dieser Vorlage sind stets erwünscht und willkommen.
-Github (diese Plattform) selbst ist dafür gemacht, um zusammen an Open Source Projekten zu arbeiten.
+Verbesserungen an dieser Vorlage sind stehts erwünscht und Willkommen.
+Github (diese Plattform) selbst ist dafür gemacht um zusammen an Open Source Projekten zu arbeiten.
 Deswegen werden Änderungen über [Pull Requests](https://github.com/andygrunwald/FOM-LaTeX-Template/pulls) sehr gerne entgegen genommen.
 
 Wenn du das erste mal mit [Git](https://git-scm.com/), [Github](https://github.com/) und Pull Requests arbeitest, können dir folgende zwei Artikel weiter helfen:
@@ -230,7 +287,7 @@ Wenn du das erste mal mit [Git](https://git-scm.com/), [Github](https://github.c
 * [Using pull requests](https://help.github.com/articles/using-pull-requests/)
 * [Creating a pull request](https://help.github.com/articles/creating-a-pull-request/)
 
-## Disclaimer
+## Disclaimer Andy (Original)
 
 Diese Vorlage wurde zu meiner Studiumszeit erstellt und genutzt.
 Die Grundlage waren die damaligen Formatierungsregeln für Abschlussarbeiten der FOM (Standort Düsseldorf).
@@ -239,7 +296,16 @@ Ab und zu weichen einzelne Professoren davon ab.
 
 Mein Studium habe ich inzwischen abgeschlossen und deswegen nutze ich diese Vorlage nicht mehr aktiv.
 Jedoch wird sie von mehreren Personen genutzt, weiter gepflegt und angepasst.
-Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, wenn eine Antwort nicht innerhalb einer Stunde vorliegt.
+Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, wenn eine Antowrt nicht innerhalb einer Stunde vorliegt.
+
+## Disclaimer Dennis (Update)
+
+Diese Vorlage wurde zu meiner Studiumszeit erstellt und genutzt.
+Die Grundlage waren die damaligen Formatierungsregeln für Abschlussarbeiten der FOM (Standort München).
+I.d.R. sind diese jedoch für jeden Standort gültig.
+Ab und zu weichen einzelne Professoren davon ab.
+Kontrolle und eventuelle absprache mit dem betreuenden Dozenten sind notwendig und ratsam.
+Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, wenn eine Antowrt nicht innerhalb einer Stunde vorliegt.
 
 ## Lizenz
 
