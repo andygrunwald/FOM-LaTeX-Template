@@ -34,7 +34,7 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 1. Readme verbessern
 2. Beispiel PDF verbessern
 3. Readme IDEA Plugins
-4. Default Ziate und Literaturverz. umbauen
+4. Default Zitate und Literaturverzeichnis umbauen
 
 ## Vorwort
 

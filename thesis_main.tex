@@ -41,7 +41,7 @@
 %====================================
 % Pakete
 %====================================
-\usepackage{thesis_main_style}		%hier kannst du das Style File anpssen (Bolder ist Default)
+\usepackage{Style/thesis_main_style}	%hier kannst du das Style File anpassen (Bolder ist Default)
 %====================================
 % Skriptdateien Einbinden
 %====================================
@@ -151,10 +151,10 @@
 \pagenumbering{Roman} %Zähler wieder römisch ausgeben
 \setcounter{page}{4}  %Zähler manuell hochsetzen
 
-% Darstellung 1:
+%%%%%%%%%%%%%%% Darstellung 1:
 %\printbibliography %einfach alles
 
-% Darstellung 2:
+%%%%%%%%%%%%%%% Darstellung 2:
 % Literaturverzeichnis nach Typ (@book, @arcticle, keine anderen Typen, gehe sicher das nichts fehlt!) sortiert.
 % Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
 %\printbibheading
@@ -162,7 +162,7 @@
 %\printbibliography[type=book,heading=subbibliography,title={Bücher}]
 %\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
 
-% Darstellung 3:
+%%%%%%%%%%%%%%% Darstellung 3:
 % Literaturverzeichnis nach Typ (@book, @arcticle (zusammen) und @online getrennt. Keine anderen Typen,
 % gehe sicher das nichts fehlt!) sortiert.
 % Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
@@ -170,7 +170,7 @@
 %\printbibliography[type=article,heading=none]
 %\printbibliography[type=online,heading=subbibliography,title={Internetquellen}]
 
-	% Darstellung 4:
+	%%%%%%%%%%%%%%% Darstellung 4:
 	\defbibfilter{noonline}{ \not{type=online} }
 	\printbibliography[filter=noonline,heading=subbibliography,title={Literaturverzeichnis}] %alles anzeigen ausser '@online'
 	\printbibliography[type=online,heading=subbibliography,title={Internetquellen}] %nur '@online' anzeigen
@@ -178,7 +178,7 @@
 %====================================
 % Eidesstattliche Erklärung
 %====================================
-	\input{Deine_Inhalte/Kapitelanhang/Erklaerung} %BiblaTex Deine_Inhalte/Literatur/litratur.bib
+\input{Deine_Inhalte/Kapitelanhang/Erklaerung}
 %====================================
 
 \end{document}
