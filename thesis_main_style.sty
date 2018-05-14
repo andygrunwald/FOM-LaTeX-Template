@@ -1,89 +1,83 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{thesis_main_style}[2016/12/20 package thesis_main_style]
 %====================================
-% Allgemeine Pakete
+% XeLaTeX Pakete
 %====================================
-\usepackage[dvipdfmx,xetex]{graphicx} %driver: dvipdfmx dvips pdftex ,xetex
-%https://tex.stackexchange.com/questions/17734/cannot-determine-size-of-graphic/17737#17737
-\usepackage{float} %Positionierung von Abbildungen und Tabellen mit [H] erzwingen
-%====================================
-% Pakete Layout
-%====================================
-\pagestyle{headings}
-\usepackage{verbatim} %only multiline comments
-\usepackage{fancyhdr} %einfachere Manipulation von Kopf- und Fußzeile. https://de.wikibooks.org/wiki/LaTeX-Wörterbuch:_fancyhdr
-\usepackage{fancybox} %bessere Rahmen
-\usepackage{colortbl}
-\usepackage[colorlinks=false]{hyperref} %Linkfarbe [colorlinks=false],linkcolor=cyan
-\usepackage{setspace}
-%====================================
-% Pakete zur Demonstration
-%====================================
-\usepackage{blindtext}
 \usepackage{xltxtra}
 %====================================
-% XeLaTeX Pakete [utf8] Pakete
+% Layout Pakete
 %====================================
-\usepackage{xunicode}
+\usepackage{float}
+\pagestyle{headings}
+\usepackage{verbatim} % only multiline comments
+\usepackage{fancyhdr} % einfachere Manipulation von Kopf- und Fußzeile. https://de.wikibooks.org/wiki/LaTeX-Wörterbuch:_fancyhdr
+\usepackage{fancybox} % bessere Rahmen
+\usepackage{setspace}
+%====================================
+% Sprachsupport Pakete
+%====================================
+\usepackage{polyglossia}
+\setdefaultlanguage[spelling=new]{german}
+\usepackage[german=quotes,autostyle]{csquotes}
 %====================================
 % Systemschriftarten Pakete
 %====================================
-\usepackage{fontspec} %muss vor den Schriften ausgeführt werden
-\setmainfont[Ligatures=TeX,Scale,Mapping=tex-text]{Times New Roman}
-%\setsansfont[Ligatures=TeX,Scale]{Times New Roman}
-%\setromanfont[Ligatures=TeX]{Times New Roman}
-%\setsansfont[Ligatures=TeX]{Times New Roman}
-%\setmonofont[Ligatures=TeX]{Times New Roman}
-\setkomafont{sectioning}{\mdseries} %Überschriften mit Serifenschrift
-\addtokomafont{sectionentry}{\mdseries} %keine Fettschriften im Inhaltsverzeichnis
+% eine Times new Roman Version
+%====================================
+\usepackage{fontspec}                   % muss vor den Schriften ausgeführt werden
+\setmainfont{Times New Roman}
+\defaultfontfeatures[\rmfamily,\sffamily]{Ligatures=TeX}
+\addtokomafont{sectionentry}{\mdseries} % keine Fettschriften im Inhaltsverzeichnis
+\setkomafont{sectioning}{\bfseries}     % Überschriften mit Serifenschrift
 \usepackage{ragged2e}
-
 %====================================
 % Unter- und Überschriften Pakete
 %====================================
-\usepackage{caption}
+\usepackage{caption}[2008/08/24]
 \captionsetup[figure]{%
     labelfont={bf,rm},
     textfont={bf,rm},
     justification=raggedright,
     singlelinecheck=off
+    %skip=1.5em,
+    %margin=10pt,
+    %parskip=5pt
 }
 \captionsetup[table]{%
 labelfont={bf,rm},
 textfont={bf,rm},
 justification=raggedright,
 singlelinecheck=off
-}
-% https://tex.stackexchange.com/questions/213820/text-align-inside-caption
+%skip=1.5em,
+%margin=10pt,
+%parskip=5pt
+} % https://tex.stackexchange.com/questions/213820/text-align-inside-caption
 \newcommand{\capquelle}[1]{%
     \par\parbox{\captionwidth}{\raggedright\bigskip Quelle: #1}%
 }
 \usepackage{hvfloat}
 %====================================
-% Sprachsupport Pakete
-%====================================
-\usepackage{polyglossia} %required for compiling - http://ctan.math.illinois.edu/macros/latex/contrib/polyglossia/polyglossia.pdf
-\setdefaultlanguage[variant=german,spelling=new]{german} %required for compiling, muiltilanguage support possible - https://latexkurs.github.io/lecture/08_bibliografien_mehrsprachigkeit.pdf
-\usepackage[german=quotes,autostyle]{csquotes} %required for compiling
-%====================================
 % Literaturverzeichnis Art
 %====================================
-\usepackage[
-backend=biber,
-bibencoding=utf8
-]{biblatex-chicago} %Literaturverzeichnis Chicago Style
+\usepackage[backend=biber,language=german,bibencoding=utf8]{biblatex-chicago}
+\renewcommand{\footcite}[1]{\autocite{#1}}
 %====================================
 % Fußnoten Pakete
 %====================================
 \usepackage{footnote}
-\usepackage[hang,multiple,bottom,stable]{footmisc}
+\usepackage[hang,multiple,bottom,stable]{footmisc}  % Mehrere Fußnoten nacheinander mit Komma separiert
 \setlength{\footnotesep}{2pt}
-\setlength{\footheight}{2cm} %foot height
-\interfootnotelinepenalty=9999 %kein Zeilenumbruch der Fußnote !!!!
+\setlength{\footheight}{2cm}                        % foot height
+\interfootnotelinepenalty=9999                      % kein Zeilenumbruch der Fußnote !!!!
+%\setlength{\footnotesep}{0pt}                      % kein Abstand zwischen Sätzen
 %====================================
 % Aufzählungen Pakete
 %====================================
 \usepackage{enumitem}
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\bullet$}
+\renewcommand{\labelitemiii}{$\bullet$}
+\renewcommand{\labelitemiv}{$\bullet$}
 %====================================
 % Tabellen Pakete
 %====================================
@@ -95,19 +89,27 @@ bibencoding=utf8
 \usepackage{colortbl}
 \usepackage[table]{xcolor}
 \usepackage{mdwlist}
+%\captionsetup[table]{position=above}
+%====================================
+% Pakete zur Hyperkinks
+%====================================
+\usepackage[colorlinks=false]{hyperref}
+\urlstyle{rm}
+%====================================
+% Pakete zur Demonstration
+%====================================
+\usepackage{blindtext}
 %====================================
 % Mathe Formeln etc.
 %====================================
-    \usepackage{amssymb}
-    \usepackage{amsmath}
-    \usepackage{mathptmx}               %Times New Roman mit Formelunterstützung
+\usepackage{newtxmath}
 %====================================
 % Farben
 %====================================
 \definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
 \definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
-\definecolor{mauve}{rgb}{0.58,0,0.82}   % Colors for listings
-\definecolor{dkgreen}{rgb}{0,0.6,0}     % Colors for listings
+\definecolor{mauve}{rgb}{0.58,0,0.82}       % Colors for listings
+\definecolor{dkgreen}{rgb}{0,0.6,0}         % Colors for listings
 %====================================
 % sauber formatierter Quelltext
 %====================================
@@ -115,8 +117,8 @@ bibencoding=utf8
 \lstset{
     numbers=left,
     numberstyle=\tiny,
-    numbersep=5pt,
-    breaklines=true,
+    numbersep=1pt,
+    breaklines=false,
     showstringspaces=false,
     frame=l,
     xleftmargin=5pt,
@@ -130,28 +132,16 @@ bibencoding=utf8
 %====================================
 % Zeilenabstand 1,5-zeilig
 %====================================
-\renewcommand{\baselinestretch}{1.5}
+\linespread{1.5}
 %====================================
+% Absatzeinzug und -abstand
 % Absätze durch eine neue Zeile
 %====================================
 \setlength{\parindent}{0mm}
-\setlength{\parskip}{0.8em plus 0.5em minus 0.3em}
-\sloppy                    %Abstände variieren
+\setlength{\parskip}{0.3em plus 0.5em minus 0.6em}
 %====================================
-% Umlaute in Code korrekt darstellen
-% siehe auch: https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+% Physikalischen Einheiten - ungetestet
 %====================================
-\lstset{literate=
-    {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
-    {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-    {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
-    {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
-    {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
-    {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
-    {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
-    {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
-    {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
-    {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
-    {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-    {€}{{\EUR}}1 {£}{{\pounds}}1
-}
+%\usepackage{siunitx}
+%\SI{1}{\metre}
+%====================================

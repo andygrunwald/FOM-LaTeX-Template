@@ -1,8 +1,4 @@
-
 \newpage
-
-
-
 
 \section{Latex-Details}
 
@@ -33,7 +29,7 @@ Bachelor-Thesis zu verwenden, da diese über weitere Gliederungsebenen verfügen
 modifizierte Komaskript-Klasse \enquote{scrartcl}, mit der Erweiterung um eine Ebene. Siehe (skripte/weitereEbene.tex).
 Das Skript stammt irgendwo aus den Netz und übersteigt meine \LaTeX{}-Fähigkeiten. Dadurch kann ich über eine weitere
 Ebene in der Arbeit verfügen, ohne mich mit der Modifikation von Kapitel-Seiten rumschlagen~
-\footcite[Vgl. ][Seite 5]{Tanenbaum.2003} zu müssen. Diese Quelle ist nur zur Demonstration und hat keinen inhaltlichen
+\footcite{Tanenbaum.2003} zu müssen. Diese Quelle ist nur zur Demonstration und hat keinen inhaltlichen
 Bezug hierzu. Es werden übrigens nur die Quellen im Literaturverzeichnis angezeigt, die auch referenziert sind.
 
 
@@ -132,12 +128,13 @@ Dies ist die tiefste Gliederungsebene. Sollten doch mehr Ebenen benötigt werden
 
 \paragraph{Tiefste Ebene 2}
 Der zweite Punkt in dieser Ebene ist zur Erinnerung daran, dass es nie nie niemals nur einen Unterpunkt geben darf.
+\footcite[Vgl. ]{website:andyGitHub:andysTemplate}
 
 
 \subsection{Skript zum Kompilieren}
 \subsubsection{Linux Unix Mac}
 Latex will ja bekanntlich in einer bestimmten Reihenfolge aufgerufen werden:
-\paragraph{Ohne arara Buildtool}
+\paragraph{Ohne arara Build Tool}
 \begin{lstlisting}
 #!/usr/bin/env bash
 #Run the Script from the folder you are in...
@@ -196,7 +193,7 @@ echo "PDF Compile: Success"
 exit 0
 \end{lstlisting}
 Dies ist der Inhalt des Skripts \enquote{Tools/compile.sh}.
-\paragraph{Mit arara Buildtool}
+\paragraph{Mit arara Build Tool}
 \begin{lstlisting}
 #!/usr/bin/env bash
 #Run the Script from the folder you are in...
@@ -212,7 +209,7 @@ fi
 echo "Successfully compiled LaTeX PDF with arara"
 exit 0
 \end{lstlisting}
-Dies ist der Inhalt des Skripts \enquote{compilearara.sh}.
+Dies ist der Inhalt des Skripts \enquote{compiletool.sh}.
 
 \subsubsection{Windows}
 Latex will ja bekanntlich in einer bestimmten Reihenfolge aufgerufen werden:

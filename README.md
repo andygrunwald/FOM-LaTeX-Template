@@ -29,6 +29,12 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 13. [Disclaimer](#disclaimer)
 14. [Lizenz](#lizenz)
 
+### To Do
+
+1. Readme verbessern
+2. Beispiel PDF verbessern
+3. Readme IDEA Plugins
+4. Default Ziate und Literaturverz. umbauen
 
 ## Vorwort
 
@@ -64,17 +70,12 @@ Hier liegt alles was die Inhalte deiner Hausarbeit oder Thesis angeht.
 Um nur ein Paar zu nennen.
 
 1. Engine von PDF-LaTex auf XeLaTex gestellt
-2. Seiten Geomtetrie
+2. Seitengeomtetrie
 3. Überschriften
 4. Schrift
 5. Schriftgröße
 6. Leitfaden Anpassungen
 ...
-
-### To Do
-
-1. Readme verbessern
-2. Beispiel PDF verbessern
 
 ## Für die eigene Arbeit nutzen
 
@@ -103,7 +104,7 @@ Das ganze hat primär zwei Vorteile:
 
 ## Vorlage personalisieren
 
-Wenn du diese Vorlage nutzt ist der erste Einstiegspunkt die Datei [`skripte/meta.tex`](./skripte/meta.tex).
+Wenn du diese Vorlage nutzt ist der erste Einstiegspunkt die Datei [`Deine_Inhalte/Metainformationen.tex`](./Deine_Inhalte/Metainformationen.tex).
 In der Datei haben wir einige Variablen hinterlegt, die im Dokument (u.a. auf dem Deckblatt) genutzt werden.
 
 Ersetze die Muster-Werte durch deine persönlichen Angaben und diese werden automatisch im Dokument verwendet.

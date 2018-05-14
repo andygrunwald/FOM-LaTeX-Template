@@ -33,27 +33,21 @@
 	bottom=2cm,
 	left=4cm,
 	right=2cm,
-	headheight=2cm, %head height
-	footskip=2cm, %Abstand footer zu Text
+	headheight=2cm, 	% head height
+	footskip=2cm, 		% Abstand footer zu Text
 	headheight=2cm,
-	heightrounded, %Runden der Höhe
+	heightrounded, 		% Runden der Höhe
 ]{geometry} %https://mirror.hmc.edu/ctan/macros/latex/contrib/geometry-de/geometry-de.pdf
 %====================================
 % Pakete
 %====================================
-\usepackage{thesis_main_style}
-%====================================
-% Sprachsupport Pakete
-%====================================
-%\usepackage{polyglossia} %required for compiling - http://ctan.math.illinois.edu/macros/latex/contrib/polyglossia/polyglossia.pdf
-%\setdefaultlanguage[spelling=new]{german} %required for compiling, muiltilanguage support possible - https://latexkurs.github.io/lecture/08_bibliografien_mehrsprachigkeit.pdf
-%\usepackage[german=quotes]{csquotes} %required for compiling
+\usepackage{thesis_main_style}		%hier kannst du das Style File anpssen (Bolder ist Default)
 %====================================
 % Skriptdateien Einbinden
 %====================================
 \addbibresource{Deine_Inhalte/Literatur/Literatur.bib} %Bib-Datei einbinden
-\graphicspath{{./}{./Deine_Inhalte/}{./Deine_Inhalte/Abbildungen/}{./Deine_Inhalte/Kapitel}} % Pfad fuer Abbildungen %{{./}{./abbildungen/}}
-\input{Skripte/weitereEbene} % Weitere Ebene einfügen
+\graphicspath{{./}{./Deine_Inhalte/}{./Deine_Inhalte/Abbildungen/}{./Deine_Inhalte/Kapitel}}
+\input{Skripte/weitereEbene}
 %====================================
 % Abkürzungsverzeichnis
 %====================================
@@ -91,10 +85,10 @@
 % Ab hier startet dein Dokument!!!
 %====================================
 \begin{document}
-	\renewcommand{\figurename}{Abbildung} 			%Bildunterschrift
+	\renewcommand{\figurename}{Abbildung} 			% Bildunterschrift
 	\pagenumbering{Roman}							% Seitennumerierung auf römisch umstellen
 \renewcommand{\refname}{Literaturverzeichnis}		% "Literaturverzeichnis" benennen
-\newcolumntype{C}{>{\centering\arraybackslash}X}	% Neuer Tabellen-Spalten-Typ: Zentriert und umbrechbar
+\newcolumntype{C}{>{\arraybackslash}X}				% Neuer Tabellen-Spalten-Typ: Zentriert und umbrechbar
 %========================================================================
 % Titlelseite Stand: Dezember 2016
 %========================================================================
