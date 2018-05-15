@@ -15,38 +15,44 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 
 ---
 
+### Tutorial
+
+Ein kurzes [Tutorial](#tutorial:-jetbrains-intellij-idea) zu einem Setup, findest du [hier](#tutorial:-jetbrains-intellij-idea).
+
+---
+
 ## Inhaltsverzeichnis
 
 1. [Für die eigene Arbeit nutzen](#für-die-eigene-arbeit-nutzen)
-  1. [Klassischer Download](#klassischer-download)
-  2. [Fork auf Github](#fork-auf-github)
+    1. [Klassischer Download](#klassischer-download)
+    2. [Fork auf Github](#fork-auf-github)
 2. [Vorlage personalisieren](#vorlage-personalisieren)
 3. [Fußnoten](#fußnoten)
 4. [Literaturverzeichnis](#literaturverzeichnis)
 5. [Sperrvermerk](#sperrvermerk)
 6. [Quellcode einbinden](#quellcode-einbinden)
 7. [Vorraussetzungen](#vorraussetzungen)
-  1. [LaTeX-Pakete](#latex-pakete)
+    1. [LaTeX-Pakete](#latex-pakete)
 8. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
-	1. [Docker unter Linux / Mac / Windows](#docker-unter-linux--mac--windows)
+    1. [Docker unter Linux / Mac / Windows](#docker-unter-linux--mac--windows)
 	  1. [Image selbst bauen](#image-selbst-bauen)
 9. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
-  1. [Texpad](#texpad)
-  2. [Jetbrains IntelliJ IDEA](#jetbrains-intellij-idea)
-    1. [Tutorial: Jetbrains IntelliJ IDEA](#tutorial-jetbrains-intellij-idea)
-  3. [IntelliJ IDEA Plug-Ins](#intellij-idea-plug-ins)
-  4. [Bibliography Reference Manager](#bibliography-reference-manager) 
-10. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
+    1. [Texpad](#texpad)
+    2. [Jetbrains IntelliJ IDEA](#jetbrains-intellij-idea)
+        1. [Tutorial: Jetbrains IntelliJ IDEA](#tutorial:-jetbrains-intellij-idea)
+        2. [IntelliJ IDEA Plug-Ins](#intellij-idea-plug-ins)
+    3. [Bibliography Reference Manager](#bibliography-reference-manager) 
+11. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
 10. [Bekannte Fehler](#bekannte-fehler) 
-    1. [LaTeX / Fehler und Warnungen](#latex-fehler-und-warnungen) 
+    1. [LaTeX / Fehler und Warnungen](#latex-/-fehler-und-warnungen) 
 12. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
 13. [Disclaimer](#disclaimer-andy-original)
-13. [Disclaimer 2](#disclaimer-2-dennis-update)
-14. [Lizenz](#lizenz)
+14. [Disclaimer 2](#disclaimer-2-dennis-update)
+15. [Lizenz](#lizenz)
 
 ## Vorwort
 
-Danke an Andy Grünwald für die erstellen des orginal Templates, auf welchem dieses LaTeX-Template basiert.
+Danke an Andy Grünwald für die Erstelleung des orginal Templates, auf welchem dieses LaTeX-Template basiert.
 
 ## Thesis- und/oder Hausarbeit-Modus
 
@@ -58,11 +64,11 @@ Die aktuelle Standarteinstellung ist HAUSARBEIT.
 Dies soll eine LaTeX -Vorlage für den persönlichen Gebrauch werden. Sie hat weder einen Anspruch auf Richtigkeit, noch auf Vollständigkeit. 
 Kontrolle und ggf. klärung mit deinem betreuenden Dozenten vor Abgabe sind notwendig.
 
-## Änderungen zum Original
+## Änderungen am Original
 
 ### Build Tool arara
 
-arara - The cool TeX automation Tool, ist auf [GitHub](https://github.com/cereda/arara) verfügbar. Mit arara wird in der Präambel des thesis_main.tex Dokuments ein kleines Skript implemntiert um dir die Arbeit zu erleichtern, in Sachen compiling and cleaning. 
+arara - The cool TeX automation Tool, ist auf [GitHub](https://github.com/cereda/arara) verfügbar. Mit arara wird in der Präambel des thesis_main.tex Dokuments ein kleines Skript implementiert um dir die Arbeit zu erleichtern, in Sachen compiling and cleaning. 
 
 ### FOM Leitafaden - Standort München
 
@@ -73,7 +79,7 @@ Das Template ist nach besten wissen und gewissen nach dem FOM Leitfaden 20.12.20
 Es wurde das Verzeichnis "Deine_Inhalte" (In möglichst auffälliger schreibweise ;o) erstellt.
 Hier liegt alles was die Inhalte deiner Hausarbeit oder Thesis angeht.
 
-### Alles mögiche im Quelltext
+### Alles mögliche im Quelltext
 
 Um nur ein Paar zu nennen.
 
@@ -260,7 +266,7 @@ oder die kostenlose [Community-Version](https://www.jetbrains.com/idea/download/
 12. Fertig! Ab jetzt kannst du deine PDF kompilieren in dem du in der Menüleiste auf "Tools" > "External Tools" > "Create PDF from LaTeX Template" (bzw. der Name welchen du bei "Feld 1" eingeben hast) klickst
 13. Nun Probier es selbst!
 
-### IntelliJ IDEA Plug-Ins
+#### IntelliJ IDEA Plug-Ins
  
 Syntax highlighting, unterstützung von LaTeX-Dateien etc.
 - [TeXiFy](IDEAhttps://plugins.jetbrains.com/plugin/9473-texify-idea)
@@ -288,8 +294,8 @@ Dies hat folgende Vorteile:
 
 ### Bekannte Fehler
 
-In der thesis_main.log Datei steht: "! File ended while scanning use of \@writefile." => Lösung: "thesis_main.aux" Datei löschen.
-In der thesis_main.log Datei steht: "Underfull \hbox" => Lösung: Lies diesen [Artikel von texwelt.de](http://texwelt.de/wissen/fragen/20/was-bedeutet-underfulloverfull-hbox)
+- In der thesis_main.log Datei steht: "! File ended while scanning use of \@writefile." => Lösung: "thesis_main.aux" Datei löschen.
+- In der thesis_main.log Datei steht: "Underfull \hbox" => Lösung: Lies diesen [Artikel von texwelt.de](http://texwelt.de/wissen/fragen/20/was-bedeutet-underfulloverfull-hbox)
 
 ### LaTeX / Fehler und Warnungen
 
