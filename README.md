@@ -7,6 +7,14 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 
 ---
 
+### To Do
+
+1. Readme verbessern
+2. Beispiel PDF verbessern
+4. Default Zitate und Literaturverzeichnis umbauen - in Arbeit
+
+---
+
 ## Inhaltsverzeichnis
 
 1. [Für die eigene Arbeit nutzen](#für-die-eigene-arbeit-nutzen)
@@ -24,21 +32,21 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 	  1. [Image selbst bauen](#image-selbst-bauen)
 9. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
   1. [Texpad](#texpad)
+  2. [Jetbrains IntelliJ IDEA](#jetbrains-intellij-idea)
+    1. [Tutorial: Jetbrains IntelliJ IDEA](#tutorial-jetbrains-intellij-idea)
+  3. [IntelliJ IDEA Plug-Ins](#intellij-idea-plug-ins)
+  4. [Bibliography Reference Manager](#bibliography-reference-manager) 
 10. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
+10. [Bekannte Fehler](#bekannte-fehler) 
+    1. [LaTeX / Fehler und Warnungen](#latex-fehler-und-warnungen) 
 12. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
-13. [Disclaimer](#disclaimer)
+13. [Disclaimer](#disclaimer-andy-original)
+13. [Disclaimer 2](#disclaimer-2-dennis-update)
 14. [Lizenz](#lizenz)
-
-### To Do
-
-1. Readme verbessern
-2. Beispiel PDF verbessern
-3. Readme IDEA Plugins
-4. Default Zitate und Literaturverzeichnis umbauen
 
 ## Vorwort
 
-Danke an Andy Grüwald für die erstellen des orginal Templates, auf welchem dieses LaTeX-Template basiert.
+Danke an Andy Grünwald für die erstellen des orginal Templates, auf welchem dieses LaTeX-Template basiert.
 
 ## Thesis- und/oder Hausarbeit-Modus
 
@@ -231,12 +239,12 @@ Standardmäßig ist _biber_ nicht aktiviert.
 Dies führt dazu, dass das Literaturverzeichnis einfach "verschwindet", wenn man mit Texpad kompliliert.
 Daher musst Du unter _Preferences_ > _Typesettings_ > _Bibliography Compilation_ als Engine _biber_ auswählen.
 
-### Jetbrains' IntelliJ IDEA
+### Jetbrains IntelliJ IDEA
 
 Meine empfehlung, IntelliJ IDEA von Jetbrains. Als Student kannst du eine [Studentenlizens](https://www.jetbrains.com/student/) bei Jetbrains beantragen
 oder die kostenlose [Community-Version](https://www.jetbrains.com/idea/download/) nutzen. Wie schon von Andy beschrieben, könnt ihr unter einer Menge IDEs und Texteditoren wählen, aber dieses "How to" soll sich hier auf ein dediziertes Setup beschränken. 
 
-#### Freshman's how to Jetbrains' IntelliJ IDEA
+#### Tutorial: Jetbrains IntelliJ IDEA
 
 1. Wie von Andy unter [Fork auf Github](#fork-auf-github) beschrieben, empfehle ich dir das Template zu forken
 2. Nun starte InelliJ IDEA und klicke auf "Check out from VCS" > "Github" 
@@ -252,7 +260,13 @@ oder die kostenlose [Community-Version](https://www.jetbrains.com/idea/download/
 12. Fertig! Ab jetzt kannst du deine PDF kompilieren in dem du in der Menüleiste auf "Tools" > "External Tools" > "Create PDF from LaTeX Template" (bzw. der Name welchen du bei "Feld 1" eingeben hast) klickst
 13. Nun Probier es selbst!
 
-## Bibliography Reference Manager
+### IntelliJ IDEA Plug-Ins
+ 
+Syntax highlighting, unterstützung von LaTeX-Dateien etc.
+- [TeXiFy](IDEAhttps://plugins.jetbrains.com/plugin/9473-texify-idea)
+- [LaTeX](https://plugins.jetbrains.com/plugin/7660-latex)
+
+### Bibliography Reference Manager
 
 Ich habe nicht alle Programme eingehend getestet, aber um dir einen Anhaltspunkt in deiner Wahl zu geben, ein paar Links in alphabetischer Reihenfolge:
 1. [Citavi](https://citavi.com/de)
@@ -260,7 +274,6 @@ Ich habe nicht alle Programme eingehend getestet, aber um dir einen Anhaltspunkt
 3. [Zotero](https://www.zotero.org/) 
     1. [Zotero Artikel](https://tex.stackexchange.com/questions/402554/quick-citation-insert-from-zotero-5)
     2. [Zotero Plug-in](https://github.com/retorquere/zotero-better-bibtex)
-
 
 ## Ich habe eine Frage oder ein Problem
 
@@ -272,10 +285,16 @@ Dies hat folgende Vorteile:
 * wir haben eine Dokumentation an vorhandenen und gelösten Fehlern / Fragen
 * gelöste / wiederkehrende Probleme müssen nicht erneut beantwortet werden
 
+
 ### Bekannte Fehler
 
 In der thesis_main.log Datei steht: "! File ended while scanning use of \@writefile." => Lösung: "thesis_main.aux" Datei löschen.
 In der thesis_main.log Datei steht: "Underfull \hbox" => Lösung: Lies diesen [Artikel von texwelt.de](http://texwelt.de/wissen/fragen/20/was-bedeutet-underfulloverfull-hbox)
+
+### LaTeX / Fehler und Warnungen
+
+hier eine Liste von [LaTeX / Fehler und Warnungen](https://de.wikibooks.org/wiki/LaTeX/_Fehler_und_Warnungen#Undefined_control_sequence)
+aus [de.wikibooks.org](https://de.wikibooks.org/wiki/LaTeX/)
 
 ## Ich möchte mithelfen, diese Vorlage zu verbessern
 
@@ -288,7 +307,7 @@ Wenn du das erste mal mit [Git](https://git-scm.com/), [Github](https://github.c
 * [Using pull requests](https://help.github.com/articles/using-pull-requests/)
 * [Creating a pull request](https://help.github.com/articles/creating-a-pull-request/)
 
-## Disclaimer Andy (Original)
+## Disclaimer Andy Original
 
 Diese Vorlage wurde zu meiner Studiumszeit erstellt und genutzt.
 Die Grundlage waren die damaligen Formatierungsregeln für Abschlussarbeiten der FOM (Standort Düsseldorf).
@@ -297,16 +316,18 @@ Ab und zu weichen einzelne Professoren davon ab.
 
 Mein Studium habe ich inzwischen abgeschlossen und deswegen nutze ich diese Vorlage nicht mehr aktiv.
 Jedoch wird sie von mehreren Personen genutzt, weiter gepflegt und angepasst.
-Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, wenn eine Antowrt nicht innerhalb einer Stunde vorliegt.
+Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, 
+wenn eine Antowrt nicht innerhalb einer Stunde vorliegt.
 
-## Disclaimer Dennis (Update)
+## Disclaimer 2 Dennis Update
 
 Diese Vorlage wurde zu meiner Studiumszeit erstellt und genutzt.
 Die Grundlage waren die damaligen Formatierungsregeln für Abschlussarbeiten der FOM (Standort München).
 I.d.R. sind diese jedoch für jeden Standort gültig.
 Ab und zu weichen einzelne Professoren davon ab.
 Kontrolle und eventuelle absprache mit dem betreuenden Dozenten sind notwendig und ratsam.
-Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, wenn eine Antowrt nicht innerhalb einer Stunde vorliegt.
+Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, 
+wenn eine Antowrt nicht innerhalb einer Stunde vorliegt.
 
 ## Lizenz
 
