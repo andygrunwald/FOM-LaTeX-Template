@@ -269,7 +269,7 @@ oder die kostenlose [Community-Version](https://www.jetbrains.com/idea/download/
 #### IntelliJ IDEA Plug-Ins
  
 Syntax highlighting, unterstützung von LaTeX-Dateien etc.
-- [TeXiFy](IDEAhttps://plugins.jetbrains.com/plugin/9473-texify-idea)
+- [TeXiFy](https://plugins.jetbrains.com/plugin/9473-texify-idea)
 - [LaTeX](https://plugins.jetbrains.com/plugin/7660-latex)
 
 ### Bibliography Reference Manager
