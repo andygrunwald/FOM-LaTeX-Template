@@ -1,0 +1,19 @@
+%====================================
+% Literaturverzeichnis Art
+%====================================
+%\usepackage[backend=biber,url=false,isbn=false,notetype=footonly,hyperref=false,sortlocale=de,language=german,bibencoding=utf8]{biblatex-chicago}
+\usepackage[
+    backend=biber,
+    citestyle=verbose,      % Style Zitate%
+    style=authoryear,       % Style Literaturverzeichnis
+    url=false,
+    isbn=false,
+    notetype=footonly,
+    hyperref=false,
+    %ibidpage=true,         % nicht aktivieren
+    sortlocale=de
+]{biblatex}
+%weitere Anpassungen für BibLaTex
+\input{Skripte/modsBiblatex}
+%\renewcommand{\footcite}[1]{\autocite{#1}} % nicht aktivieren!
+%\renewcommand{\footcite}[1]{\fullfootcite{#1}}
