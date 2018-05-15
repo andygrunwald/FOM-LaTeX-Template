@@ -17,7 +17,7 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 
 ### Tutorial
 
-Ein kurzes [Tutorial](#tutorial:-jetbrains-intellij-idea) zu einem Setup, findest du [hier](#tutorial:-jetbrains-intellij-idea).
+Ein kurzes [Tutorial](#tutorial-jetbrains-intellij-idea) zu einem Setup, findest du [hier](#tutorial-jetbrains-intellij-idea).
 
 ---
 
@@ -39,7 +39,7 @@ Ein kurzes [Tutorial](#tutorial:-jetbrains-intellij-idea) zu einem Setup, findes
 9. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
     1. [Texpad](#texpad)
     2. [Jetbrains IntelliJ IDEA](#jetbrains-intellij-idea)
-        1. [Tutorial: Jetbrains IntelliJ IDEA](#tutorial:-jetbrains-intellij-idea)
+        1. [Tutorial Jetbrains IntelliJ IDEA](#tutorial-jetbrains-intellij-idea)
         2. [IntelliJ IDEA Plug-Ins](#intellij-idea-plug-ins)
     3. [Bibliography Reference Manager](#bibliography-reference-manager) 
 11. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
@@ -250,7 +250,7 @@ Daher musst Du unter _Preferences_ > _Typesettings_ > _Bibliography Compilation_
 Meine empfehlung, IntelliJ IDEA von Jetbrains. Als Student kannst du eine [Studentenlizens](https://www.jetbrains.com/student/) bei Jetbrains beantragen
 oder die kostenlose [Community-Version](https://www.jetbrains.com/idea/download/) nutzen. Wie schon von Andy beschrieben, könnt ihr unter einer Menge IDEs und Texteditoren wählen, aber dieses "How to" soll sich hier auf ein dediziertes Setup beschränken. 
 
-#### Tutorial: Jetbrains IntelliJ IDEA
+#### Tutorial Jetbrains IntelliJ IDEA
 
 1. Wie von Andy unter [Fork auf Github](#fork-auf-github) beschrieben, empfehle ich dir das Template zu forken
 2. Nun starte InelliJ IDEA und klicke auf "Check out from VCS" > "Github" 
