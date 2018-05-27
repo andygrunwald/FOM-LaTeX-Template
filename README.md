@@ -132,11 +132,11 @@ Das Standard-Format kann mit `\footcite[Vgl. ][Seite 1]{Balzert.2008}` genutzt w
 Vgl. Balzert et al. (2008), Seite 1.
 ```
 
-Es besteht auch die Möglichkeit, den Vornamen des Autors mit auszugeben.
-Dazu kann der Custom-Befehl `\fullfootcite[Vgl. ][Seite 1]{Balzert.2008}` genutzt werden, der folgendes Resultat liefert:
+Es besteht auch die Möglichkeit, den Vornamen des Autors mit auszugeben, Seiten aus dem Literaturverzeichnis zu beziehen und 'Vgl.' automatisch einzubinden.
+Dazu kann der Custom-Befehl `\fullfootcite{Balzert.2008}` genutzt werden, der folgendes Resultat liefert:
 
 ```
-Vgl. Balzert, Helmut et al. (2008), Seite 1.
+Vgl. Balzert, Helmut u. a., Wissenschaftliches Arbeiten, 2008, S. 69. // TODO u. a. zu et al.
 ```
 
 ## Literaturverzeichnis
@@ -275,11 +275,11 @@ Syntax highlighting, unterstützung von LaTeX-Dateien etc.
 ### Bibliography Reference Manager
 
 Ich habe nicht alle Programme eingehend getestet, aber um dir einen Anhaltspunkt in deiner Wahl zu geben, ein paar Links in alphabetischer Reihenfolge:
-1. [Citavi](https://citavi.com/de)
-2. [JabRef](http://www.jabref.org)
-3. [Zotero](https://www.zotero.org/) 
-    1. [Zotero Artikel](https://tex.stackexchange.com/questions/402554/quick-citation-insert-from-zotero-5)
-    2. [Zotero Plug-in](https://github.com/retorquere/zotero-better-bibtex)
+- [Citavi](https://citavi.com/de)
+- [JabRef](http://www.jabref.org)
+- [Zotero](https://www.zotero.org/) 
+    - [Zotero Artikel](https://tex.stackexchange.com/questions/402554/quick-citation-insert-from-zotero-5)
+    - [Zotero Plug-in](https://github.com/retorquere/zotero-better-bibtex)
 
 ## Ich habe eine Frage oder ein Problem
 
