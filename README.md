@@ -46,8 +46,9 @@ Ein kurzes [Tutorial](#tutorial-jetbrains-intellij-idea) zu einem Setup, findest
 10. [Bekannte Fehler](#bekannte-fehler) 
     1. [LaTeX / Fehler und Warnungen](#latex-/-fehler-und-warnungen) 
 12. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
-13. [Disclaimer](#disclaimer-andy-original)
-14. [Disclaimer 2](#disclaimer-2-dennis-update)
+13. [Disclaimer](#disclaimer)
+    1. [Andy](#Andy-disclaimer-template)
+    1. [Dennis](#dennis-template-overhaul)
 15. [Lizenz](#lizenz)
 
 ## Vorwort
@@ -68,7 +69,7 @@ Kontrolle und ggf. klärung mit deinem betreuenden Dozenten vor Abgabe sind notw
 
 ### Build Tool arara
 
-arara - The cool TeX automation Tool, ist auf [GitHub](https://github.com/cereda/arara) verfügbar. Mit arara wird in der Präambel des thesis_main.tex Dokuments ein kleines Skript implementiert um dir die Arbeit zu erleichtern, in Sachen compiling and cleaning. 
+arara - The cool TeX automation Tool, ist auf [GitHub](https://github.com/cereda/arara) verfügbar. Via arara wird in der Präambel des thesis_main.tex Dokuments ein kleines Skript implementiert um dir die Arbeit zu erleichtern, in Sachen engine, compiling and cleaning. 
 
 ### FOM Leitafaden - Standort München
 
@@ -126,11 +127,12 @@ Ersetze die Muster-Werte durch deine persönlichen Angaben und diese werden auto
 ## Fußnoten
 
 Einige Professoren bevorzugen ein anderes Fußnoten-Format.
-Das Standard-Format kann mit `\footcite[Vgl. ][Seite 1]{Balzert.2008}` genutzt werden und gibt folgendes aus:
+Das Standard-Format kann mit `\footcite[Vgl. ][Seite 5]{Tanenbaum.2003}` genutzt werden und gibt folgendes aus:
 
 ```
-Vgl. Balzert et al. (2008), Seite 1.
+Vgl. Tanenbaum, Andrew, Netzwerke, 2003, S. 69–98.
 ```
+(Autor wird Kursiv angezeigt)
 
 Es besteht auch die Möglichkeit, den Vornamen des Autors mit auszugeben, Seiten aus dem Literaturverzeichnis zu beziehen und 'Vgl.' automatisch einzubinden.
 Dazu kann der Custom-Befehl `\fullfootcite{Balzert.2008}` genutzt werden, der folgendes Resultat liefert:
@@ -138,6 +140,7 @@ Dazu kann der Custom-Befehl `\fullfootcite{Balzert.2008}` genutzt werden, der fo
 ```
 Vgl. Balzert, Helmut u. a., Wissenschaftliches Arbeiten, 2008, S. 69. // TODO u. a. zu et al.
 ```
+(Autor wird Kursiv angezeigt)
 
 ## Literaturverzeichnis
 
@@ -176,7 +179,7 @@ Dieses wird dort auch mit den Farben für Kommentare, Strings, etc konfiguriert.
 Folgendermaßen könnt ihr Quellcode einbauen:
 
 ```latex
-\lstinputlisting[language=Java]{./Quellcode/Dateiname.js}
+\lstinputlisting[language=Java]{./Deine_Inhalte/Quellcode/Dateiname.js}
 ```
 
 Für [Javascript](https://de.wikipedia.org/wiki/JavaScript) gibt es noch keine eigene Sprache, daher benutzt am besten [Java](https://de.wikipedia.org/wiki/Java_(Programmiersprache)).
@@ -194,7 +197,7 @@ Weiterhin wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Ve
 ## LaTeX zu PDF kompilieren
 
 Um die LaTeX-Dateien in eine PDF zu kompilieren müsst ihr unter **Windows** einfach die beiliegende `compile.bat` ausführen.
-Benutzer von **Mac OSX** und **Linux** verwenden bitte die ```compile.sh```.
+Benutzer von **macOS** und **Linux** verwenden bitte die ```compile.sh```.
 Zum Kompilieren müssen die oben beschriebenen Vorraussetzungen erfüllt sein.
 
 Wenn das kompilieren nicht ohne Fehler möglich ist, kontrolliert bitte ganz genau eure LaTeX-versionen.
@@ -235,36 +238,37 @@ Prinzipiell reicht ein normaler Text-Editor zur Bearbeitung aus.
 Jedoch kannst du zum schreiben der Arbeit auch ein IDE verwenden.
 Hierzu gibt es nachfolgend einige Software:
 
-- [TeXstudio](http://texstudio.sourceforge.net/) (Windows, Mac OSX, Linux)
-- [Texpad](https://www.texpadapp.com/) (Mac OSX, iPad, iPhone)
+- [TeXstudio](http://texstudio.sourceforge.net/) (Windows, macOS, Linux)
+- [Texpad](https://www.texpadapp.com/) (macOS, iPad, iPhone)
+- [Jetbrains IntelliJ IDEA](https://www.jetbrains.com/idea/) (macOS, Windows, Linux)
 
 ### Texpad
 
-Für die Nutzung von Texpad unter Mac OSX müssen einige Einstellungen beachtet werden.
+Für die Nutzung von Texpad unter macOS müssen einige Einstellungen beachtet werden.
 Standardmäßig ist _biber_ nicht aktiviert.
 Dies führt dazu, dass das Literaturverzeichnis einfach "verschwindet", wenn man mit Texpad kompliliert.
 Daher musst Du unter _Preferences_ > _Typesettings_ > _Bibliography Compilation_ als Engine _biber_ auswählen.
 
 ### Jetbrains IntelliJ IDEA
 
-Meine empfehlung, IntelliJ IDEA von Jetbrains. Als Student kannst du eine [Studentenlizens](https://www.jetbrains.com/student/) bei Jetbrains beantragen
+Meine Empfehlung, IntelliJ IDEA von Jetbrains. Als Student kannst du eine [Studentenlizens](https://www.jetbrains.com/student/) bei Jetbrains beantragen
 oder die kostenlose [Community-Version](https://www.jetbrains.com/idea/download/) nutzen. Wie schon von Andy beschrieben, könnt ihr unter einer Menge IDEs und Texteditoren wählen, aber dieses "How to" soll sich hier auf ein dediziertes Setup beschränken. 
 
 #### Tutorial Jetbrains IntelliJ IDEA
 
-1. Wie von Andy unter [Fork auf Github](#fork-auf-github) beschrieben, empfehle ich dir das Template zu forken
-2. Nun starte InelliJ IDEA und klicke auf "Check out from VCS" > "Github" 
-3. Es öffnet sich ein neues Fenster, wähle hier Titel und Ort für dein Projekt, danach klicke auf "Clonen" 
-4. In der Menüleiste wähle "IntelliJ IDEA" > "Preferences..." (Benamung kann unter Windows abweichen)
-5. Links gehe auf "Tools" > "External Tools"
-6. Nun siehst du in der rechten Hälfte des Fensters, ein Plus + (links unten), klicke dort drauf
-7. Nun musst du nur drei Felder ausfüllen
+1. Installiere LaTeX-Pakete in dem du [MikTex](http://miktex.org/) oder [MacTex](http://tug.org/mactex/) installierst
+2. Wie von Andy unter [Fork auf Github](#fork-auf-github) beschrieben, empfehle ich dir das Template zu forken
+3. Nun starte InelliJ IDEA und klicke auf "Check out from VCS" > "Github" 
+4. Es öffnet sich ein neues Fenster, wähle hier Titel und Ort für dein Projekt, danach klicke auf "Clonen" 
+5. In der Menüleiste wähle "IntelliJ IDEA" > "Preferences..." (Benamung kann unter Windows abweichen)
+6. Links gehe auf "Tools" > "External Tools"
+7. Nun siehst du in der rechten Hälfte des Fensters ein Plus + (links unten), klicke dort drauf
+8. Hier musst du drei Felder ausfüllen
     1. Feld 1: "Name" bspw. "Create PDF from LaTeX Template"
     2. Feld 2: "Program" setze den Pfad auf "compiletool.sh" bspw. "~/IdeaProjects/FOM-LaTeX-Template/compiletool.sh"
-    3. Feld 3: "Working Directory", dass ist der Pfad unter dem deine PDF erscheint, setze ihn einfach auf das gleiche Verzeichniss in dem auch compiletool.sh liegt
-11. Bestätige deine Eingaben zweimal mit "OK"
-12. Fertig! Ab jetzt kannst du deine PDF kompilieren in dem du in der Menüleiste auf "Tools" > "External Tools" > "Create PDF from LaTeX Template" (bzw. der Name welchen du bei "Feld 1" eingeben hast) klickst
-13. Nun Probier es selbst!
+    3. Feld 3: "Working Directory", dies ist der Pfad unter welchem deine PDF erscheint, setze den Pfad einfach auf das gleiche Verzeichniss in dem auch compiletool.sh liegt
+9. Bestätige deine Eingaben zweimal mit "OK"
+10. Ab jetzt kannst du deine PDF kompilieren in dem du in der Menüleiste auf "Tools" > "External Tools" > "Create PDF from LaTeX Template" (bzw. der Name welchen du bei "Feld 1" eingeben hast) klickst - Fertig!
 
 #### IntelliJ IDEA Plug-Ins
  
@@ -292,7 +296,7 @@ Dies hat folgende Vorteile:
 * gelöste / wiederkehrende Probleme müssen nicht erneut beantwortet werden
 
 
-### Bekannte Fehler
+## Bekannte Fehler
 
 - In der thesis_main.log Datei steht: "! File ended while scanning use of \@writefile." => Lösung: "thesis_main.aux" Datei löschen.
 - In der thesis_main.log Datei steht: "Underfull \hbox" => Lösung: Lies diesen [Artikel von texwelt.de](http://texwelt.de/wissen/fragen/20/was-bedeutet-underfulloverfull-hbox)
@@ -300,7 +304,7 @@ Dies hat folgende Vorteile:
 ### LaTeX / Fehler und Warnungen
 
 hier eine Liste von [LaTeX / Fehler und Warnungen](https://de.wikibooks.org/wiki/LaTeX/_Fehler_und_Warnungen#Undefined_control_sequence)
-aus [de.wikibooks.org](https://de.wikibooks.org/wiki/LaTeX/)
+von [de.wikibooks.org](https://de.wikibooks.org/wiki/LaTeX/)
 
 ## Ich möchte mithelfen, diese Vorlage zu verbessern
 
@@ -313,7 +317,9 @@ Wenn du das erste mal mit [Git](https://git-scm.com/), [Github](https://github.c
 * [Using pull requests](https://help.github.com/articles/using-pull-requests/)
 * [Creating a pull request](https://help.github.com/articles/creating-a-pull-request/)
 
-## Disclaimer Andy Original
+## Disclaimer 
+
+#### Andy (Original Template)
 
 Diese Vorlage wurde zu meiner Studiumszeit erstellt und genutzt.
 Die Grundlage waren die damaligen Formatierungsregeln für Abschlussarbeiten der FOM (Standort Düsseldorf).
@@ -325,13 +331,14 @@ Jedoch wird sie von mehreren Personen genutzt, weiter gepflegt und angepasst.
 Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, 
 wenn eine Antowrt nicht innerhalb einer Stunde vorliegt.
 
-## Disclaimer 2 Dennis Update
+#### Dennis (Template Overhaul)
 
 Diese Vorlage wurde zu meiner Studiumszeit erstellt und genutzt.
 Die Grundlage waren die damaligen Formatierungsregeln für Abschlussarbeiten der FOM (Standort München).
-I.d.R. sind diese jedoch für jeden Standort gültig.
-Ab und zu weichen einzelne Professoren davon ab.
-Kontrolle und eventuelle absprache mit dem betreuenden Dozenten sind notwendig und ratsam.
+
+Falls du nicht am Standort München studierst, prüfe ob dein Standort andere Layout Standarfs präferriert.
+
+Kontrolle und eventuelle Absprachen mit dem betreuenden Dozenten sind notwendig und ratsam.
 Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, 
 wenn eine Antowrt nicht innerhalb einer Stunde vorliegt.
 
