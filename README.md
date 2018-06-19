@@ -42,12 +42,13 @@ Ein kurzes [Tutorial](#tutorial-jetbrains-intellij-idea) zu einem Setup, findest
         1. [Tutorial Jetbrains IntelliJ IDEA](#tutorial-jetbrains-intellij-idea)
         2. [IntelliJ IDEA Plug-Ins](#intellij-idea-plug-ins)
     3. [Bibliography Reference Manager](#bibliography-reference-manager) 
+10. [Wörter Zählen](#wörter-zählen)
 11. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
-10. [Bekannte Fehler](#bekannte-fehler) 
+12. [Bekannte Fehler](#bekannte-fehler) 
     1. [LaTeX / Fehler und Warnungen](#latex-/-fehler-und-warnungen) 
-12. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
-13. [Disclaimer](#disclaimer)
-    1. [Andy](#Andy-disclaimer-template)
+13. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
+14. [Disclaimer](#disclaimer)
+    1. [Andy](#Andy-original-template)
     1. [Dennis](#dennis-template-overhaul)
 15. [Lizenz](#lizenz)
 
@@ -124,15 +125,27 @@ In der Datei haben wir einige Variablen hinterlegt, die im Dokument (u.a. auf de
 
 Ersetze die Muster-Werte durch deine persönlichen Angaben und diese werden automatisch im Dokument verwendet.
 
-## Fußnoten
+## Fußnoten --- BAUSTELLE - IN ARBEIT #
 
 Einige Professoren bevorzugen ein anderes Fußnoten-Format.
-Das Standard-Format kann mit `\footcite[Vgl. ][Seite 5]{Tanenbaum.2003}` genutzt werden und gibt folgendes aus:
+Aufbau der Fußnoten nach Variablennamen im Literaturverzeichnis:
+```
+Vgl.    Tanenbaum, Andrew,      Netzwerke,                      2003,   S. 69–98.
+        [author]                [shorttitle]                    [year]  [pages]
+```
+Hinweis: Parameter sollten ohne Leerzeichen, vor der schließenden Eckigenklammer eingegeben werden.
+Auch prüft das Skript selbständig nach "pages" in deinem Literaturverzeichnis oder nach einem ersten bzw. zweiten "Parameter"
+in \footcite, in welchem du deine Seite manuell angegen haben könntest. Somit musst du nicht deklarieren ob deine Seiten
+im Literaturverzeichnis stehen oder du sie manuell angeben möchtest. Übrigens Parameter befinden sich in ```[...]```.
+Willst du den Wert "pages" aus dem Literaturverzeichnis überschreiben, musst du zwei Eckigeklammern schreiben
+wie bei \footcite zu sehen. Aber auch bei \fulfootcite, die erste Klammer kann hier leer bleiben.
+
+Fußnoten können mit u.a. `\footcite[Vgl.][S. 69-98]{Tanenbaum.2003}` genutzt werden und gibt folgendes aus:
 
 ```
 Vgl. Tanenbaum, Andrew, Netzwerke, 2003, S. 69–98.
 ```
-(Autor wird Kursiv angezeigt)
+(Autor wird kursiv angezeigt)
 
 Es besteht auch die Möglichkeit, den Vornamen des Autors mit auszugeben, Seiten aus dem Literaturverzeichnis zu beziehen und 'Vgl.' automatisch einzubinden.
 Dazu kann der Custom-Befehl `\fullfootcite{Balzert.2008}` genutzt werden, der folgendes Resultat liefert:
@@ -140,7 +153,9 @@ Dazu kann der Custom-Befehl `\fullfootcite{Balzert.2008}` genutzt werden, der fo
 ```
 Vgl. Balzert, Helmut u. a., Wissenschaftliches Arbeiten, 2008, S. 69. // TODO u. a. zu et al.
 ```
-(Autor wird Kursiv angezeigt)
+(Autor wird kursiv angezeigt)
+
+--- BAUSTELLE - IN ARBEIT - ENDE
 
 ## Literaturverzeichnis
 
@@ -284,6 +299,13 @@ Ich habe nicht alle Programme eingehend getestet, aber um dir einen Anhaltspunkt
 - [Zotero](https://www.zotero.org/) 
     - [Zotero Artikel](https://tex.stackexchange.com/questions/402554/quick-citation-insert-from-zotero-5)
     - [Zotero Plug-in](https://github.com/retorquere/zotero-better-bibtex)
+
+## Wörter Zählen
+
+1. Um Wörter zu zählen downloade das Perl-Skript [TeXcount](http://app.uio.no/ifi/texcount/index.html)
+von Einar Andreas Rødland.
+2. Lege die Datei "texcount.pl" in das Verzeichnis in welchem auch "compiletool.sh" liegt. 
+3. Fertig... das nächste mal wenn du deine PDF kompilierst werden auch die Worte gezählt.
 
 ## Ich habe eine Frage oder ein Problem
 
