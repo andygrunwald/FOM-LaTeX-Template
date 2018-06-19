@@ -302,10 +302,14 @@ Ich habe nicht alle Programme eingehend getestet, aber um dir einen Anhaltspunkt
 
 ## Wörter Zählen
 
-1. Um Wörter zu zählen downloade das Perl-Skript [TeXcount](http://app.uio.no/ifi/texcount/index.html)
+1. Um Wörter zu zählen, downloade das Perl-Skript [TeXcount](http://app.uio.no/ifi/texcount/index.html)
 von Einar Andreas Rødland.
-2. Lege die Datei "texcount.pl" in das Verzeichnis in welchem auch "compiletool.sh" liegt. 
-3. Fertig... das nächste mal wenn du deine PDF kompilierst werden auch die Worte gezählt.
+2. Lege die Datei "texcount.pl" in das Verzeichnis in welchem auch "compiletool.sh" liegt.
+ 
+Fertig... das nächste mal wenn du deine PDF kompilierst, werden auch die Worte gezählt. 
+Danach findest du die Aufzählung im selben Verzeichnis, und zwar in der Datei "word_counter.log".
+
+Dies ist nur ein Richtwert, für genauere Angaben prüfe die [TeXcount Dokumentation](http://app.uio.no/ifi/texcount/documentation.html).
 
 ## Ich habe eine Frage oder ein Problem
 
@@ -320,8 +324,13 @@ Dies hat folgende Vorteile:
 
 ## Bekannte Fehler
 
-- In der thesis_main.log Datei steht: "! File ended while scanning use of \@writefile." => Lösung: "thesis_main.aux" Datei löschen.
-- In der thesis_main.log Datei steht: "Underfull \hbox" => Lösung: Lies diesen [Artikel von texwelt.de](http://texwelt.de/wissen/fragen/20/was-bedeutet-underfulloverfull-hbox)
+- In der thesis_main.log Datei steht: "! File ended while scanning use of \@writefile."
+    - Lösung: "thesis_main.aux" Datei löschen.
+- In der thesis_main.log Datei steht: "Underfull \hbox"
+    - Lösung: Lies diesen [Artikel von texwelt.de](http://texwelt.de/wissen/fragen/20/was-bedeutet-underfulloverfull-hbox)
+- ...bad interpreter: No such file or directory
+    - Lösung: prüfe ob in der ersten Zeile in "texcount.pl" ob ``` #! /usr/bin/env perl ```
+    der Pfad ist, in welchem dein Perl-Kompiler liegt bzw. ob du einen Perl-Kompiler installiert hast.
 
 ### LaTeX / Fehler und Warnungen
 

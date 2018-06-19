@@ -37,16 +37,17 @@
 	footskip=2cm, 		% Abstand footer zu Text
 	headheight=2cm,
 	heightrounded, 		% Runden der Höhe
-]{geometry} %https://mirror.hmc.edu/ctan/macros/latex/contrib/geometry-de/geometry-de.pdf
+]{geometry} % https://mirror.hmc.edu/ctan/macros/latex/contrib/geometry-de/geometry-de.pdf
 %====================================
 % Pakete
 %====================================
-\usepackage{Styles/thesis_main_style}	%hier kannst du das Style File anpassen (Bolder ist Default)
+\usepackage{Styles/thesis_main_style}
 %====================================
 % Skriptdateien Einbinden
 %====================================
-\addbibresource{Deine_Inhalte/Literatur/Literatur.bib} %Bib-Datei einbinden
-\graphicspath{{./}{./Deine_Inhalte/}{./Deine_Inhalte/Abbildungen/}{./Deine_Inhalte/Kapitel}}
+\addbibresource{Deine_Inhalte/Literatur/Literatur.bib} % Bib-Datei einbinden
+%\renewcommand{\input}{\input@path{{./}{Skripte/}{Deine_Inhalte/Kapitel/}{Deine_Inhalte/Kapitelanhang/}{Deine_Inhalte/Quellcode/}}}
+\graphicspath{{.}{Deine_Inhalte/}{Deine_Inhalte/Abbildungen/}{Deine_Inhalte/Kapitel/}}
 \input{Skripte/weitereEbene}
 %====================================
 % Abkürzungsverzeichnis

@@ -14,21 +14,30 @@ echo " "
 # counting words if .pl exists
 if [ -e texcount.pl ]
 then
-    WCL="word_counter.log"
+    WCL='word_counter.log'
+
 	if [ -e $WCL ]
 	then
 	    rm $CURRENT_DIR/$WCL
 	fi
-        PATH=Deine_Inhalte/Kapitel/*
-        for FILE in $PATH
-        do
-            echo "Counting your words in chapter: $FILE..."
-            $CURRENT_DIR/texcount.pl $FILE -nosub >> $WCL
-            # -inc all included files seperate
-        done
-        echo "Counting your words in general: thesis_main.tex... WARNUNG: Hier müssen Wörter, wie aus dem Dokument Erklaerung.tex abgezogen werden"
-        $CURRENT_DIR/texcount.pl thesis_main.tex -merge -nosub >> $WCL
-        echo "Have a look into $WCL"
+
+	PATH=$CURRENT_DIR/Deine_Inhalte/*
+	KPATH=${PATH}Kapitel/*
+
+    for KFILE in $KPATH
+    do
+        echo "Counting your words in chapter: ${KFILE##*/}..."
+        $CURRENT_DIR/texcount.pl -nosub ${KPATH}${KFILE##*/} >> $WCL
+        echo "==============================" >> $WCL
+        echo " " >> $WCL
+    done
+
+    echo "Counting your words in general: thesis_main.tex... WARNUNG: Hier müssen Wörter, wie u.a. aus dem Dokument Erklaerung.tex abgezogen werden"
+    echo "Sum up" >> $WCL
+    echo "==============================" >> $WCL
+    echo " "
+    $CURRENT_DIR/texcount.pl -merge -dir=. -auxdir=. thesis_main.tex >> $WCL
+    echo "Have a look into $WCL"
 fi
 
 echo " "
