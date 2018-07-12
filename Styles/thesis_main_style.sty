@@ -35,13 +35,13 @@
 %====================================
 \usepackage{caption}[2008/08/24]
 \captionsetup[figure]{%
-    labelfont={bf,rm},
-    textfont={bf,rm},
-    justification=raggedright,
-    singlelinecheck=off
-    %skip=1.5em,
-    %margin=10pt,
-    %parskip=5pt
+labelfont={bf,rm},
+textfont={bf,rm},
+justification=raggedright,
+singlelinecheck=off
+%skip=1.5em,
+%margin=10pt,
+%parskip=5pt
 }
 \captionsetup[table]{%
 labelfont={bf,rm},
@@ -53,7 +53,7 @@ singlelinecheck=off
 %parskip=5pt
 } % https://tex.stackexchange.com/questions/213820/text-align-inside-caption
 \newcommand{\capquelle}[1]{%
-    \par\parbox{\captionwidth}{\raggedright\bigskip Quelle: #1}%
+\par\parbox{\captionwidth}{\raggedright\bigskip Quelle: #1}%
 }
 \usepackage{hvfloat}
 %====================================
@@ -114,19 +114,19 @@ singlelinecheck=off
 %====================================
 \usepackage{listings}
 \lstset{
-    basicstyle=\small\ttfamily,             % font style
-    numberstyle=\small,
-    numbers=left,
-    numbersep=8pt,                          % distance number text
-    stepnumber=1,
-    breaklines=true,
-    showstringspaces=false,
-    frame=l,
-    framexleftmargin=1pt,
-    framexrightmargin=5pt,
-    keywordstyle=\color{blue},              % keyword style
-    commentstyle=\color{dkgreen},           % comment style
-    stringstyle=\color{mauve}               % string literal style
+basicstyle=\small\ttfamily,             % font style
+numberstyle=\small,
+numbers=left,
+numbersep=8pt,                          % distance number text
+stepnumber=1,
+breaklines=true,
+showstringspaces=false,
+frame=l,
+framexleftmargin=1pt,
+framexrightmargin=5pt,
+keywordstyle=\color{blue},              % keyword style
+commentstyle=\color{dkgreen},           % comment style
+stringstyle=\color{mauve}               % string literal style
 } % use \lstset{language=Java}
 %====================================
 % Zeilenabstand 1,5-zeilig
