@@ -7,14 +7,6 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 
 ---
 
-### To Do
-
-1. Readme verbessern
-2. Beispiel PDF verbessern
-4. Default Zitate und Literaturverzeichnis umbauen - in Arbeit
-
----
-
 ### Tutorial
 
 Ein kurzes [Tutorial](#tutorial-jetbrains-intellij-idea) zu einem Setup, findest du [hier](#tutorial-jetbrains-intellij-idea).
@@ -41,6 +33,7 @@ Ein kurzes [Tutorial](#tutorial-jetbrains-intellij-idea) zu einem Setup, findest
     2. [Jetbrains IntelliJ IDEA](#jetbrains-intellij-idea)
         1. [Tutorial Jetbrains IntelliJ IDEA](#tutorial-jetbrains-intellij-idea)
         2. [IntelliJ IDEA Plug-Ins](#intellij-idea-plug-ins)
+        2. [PDF Reader](#PDF-Reader)
     3. [Bibliography Reference Manager](#bibliography-reference-manager) 
 10. [Wörter Zählen](#wörter-zählen)
 11. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
@@ -72,7 +65,7 @@ Kontrolle und ggf. klärung mit deinem betreuenden Dozenten vor Abgabe sind notw
 
 arara - The cool TeX automation Tool, ist auf [GitHub](https://github.com/cereda/arara) verfügbar. Via arara wird in der Präambel des thesis_main.tex Dokuments ein kleines Skript implementiert um dir die Arbeit zu erleichtern, in Sachen engine, compiling and cleaning. 
 
-### FOM Leitafaden - Standort München
+### FOM Leitfaden - Standort München
 
 Das Template ist nach besten wissen und gewissen nach dem FOM Leitfaden 20.12.2016 Standort München erstellt. Solltest du Fehler entdecken, erstelle ein "new Issue" wie [hier](#ich-habe-eine-frage-oder-ein-problem) von Andy beschrieben.
 
@@ -125,14 +118,21 @@ In der Datei haben wir einige Variablen hinterlegt, die im Dokument (u.a. auf de
 
 Ersetze die Muster-Werte durch deine persönlichen Angaben und diese werden automatisch im Dokument verwendet.
 
-## Fußnoten --- BAUSTELLE - IN ARBEIT #
+## Fußnoten
 
 Einige Professoren bevorzugen ein anderes Fußnoten-Format.
 Aufbau der Fußnoten nach Variablennamen im Literaturverzeichnis:
 ```
-Vgl.    Tanenbaum, Andrew,      Netzwerke,                      2003,   S. 69–98.
-        [author]                [shorttitle]                    [year]  [pages]
+Befehl \bookcite bzw. \articlecite:
+Vgl.    Tanenbaum, Andrew,      Netzwerke,     2003,   S. 69–98.
+        [author]                [shorttitle]   [year]  [pages]
+
+Befehl \onlinecite:
+Vgl.    https://...,  Zugriff am ...2015...;   Grünwald,...,   Template,    2015,    S. 1.
+        [url]         [note]                   [author]        [shorttitle] [year]   [pages]
 ```
+bookcite` und `articlecite` sind synonym. `onlinecite` soll für Onlinequellen benutzt werden. Alle drei sind Furßnotenzitate.
+
 Hinweis: Parameter sollten ohne Leerzeichen, vor der schließenden Eckigenklammer eingegeben werden.
 Auch prüft das Skript selbständig nach "pages" in deinem Literaturverzeichnis oder nach einem ersten bzw. zweiten "Parameter"
 in \footcite, in welchem du deine Seite manuell angegen haben könntest. Somit musst du nicht deklarieren ob deine Seiten
@@ -151,11 +151,9 @@ Es besteht auch die Möglichkeit, den Vornamen des Autors mit auszugeben, Seiten
 Dazu kann der Custom-Befehl `\fullfootcite{Balzert.2008}` genutzt werden, der folgendes Resultat liefert:
 
 ```
-Vgl. Balzert, Helmut u. a., Wissenschaftliches Arbeiten, 2008, S. 69. // TODO u. a. zu et al.
+Vgl. Balzert, Helmut et al., Wissenschaftliches Arbeiten, 2008, S. 69.
 ```
 (Autor wird kursiv angezeigt)
-
---- BAUSTELLE - IN ARBEIT - ENDE
 
 ## Literaturverzeichnis
 
@@ -287,9 +285,18 @@ oder die kostenlose [Community-Version](https://www.jetbrains.com/idea/download/
 
 #### IntelliJ IDEA Plug-Ins
  
-Syntax highlighting, unterstützung von LaTeX-Dateien etc.
+Plusg-Ins zum weck des Syntax highlighting, unterstützung von LaTeX-Dateien etc. wären u.a.:
 - [TeXiFy](https://plugins.jetbrains.com/plugin/9473-texify-idea)
 - [LaTeX](https://plugins.jetbrains.com/plugin/7660-latex)
+
+Ich persönlich nutze TeXiFy.
+
+#### PDF Reader
+
+Damit Du die PDF nicht jedesmal erneut öffnen musst, kann ich dir diese PDF Reader empfehlen:
+- [Skim](https://skim-app.sourceforge.io) (macOS)
+- [Okular](https://okular.kde.org) (Linux)
+- [Sumatra PDF Reader](https://www.sumatrapdfreader.org/free-pdf-reader.html) (Windows)
 
 ### Bibliography Reference Manager
 
@@ -304,12 +311,12 @@ Ich habe nicht alle Programme eingehend getestet, aber um dir einen Anhaltspunkt
 
 1. Um Wörter zu zählen, downloade das Perl-Skript [TeXcount](http://app.uio.no/ifi/texcount/index.html)
 von Einar Andreas Rødland.
-2. Lege die Datei "texcount.pl" in das Verzeichnis in welchem auch "compiletool.sh" liegt.
+2. Kopiere die Datei "texcount.pl" in das Verzeichnis in welchem auch "compiletool.sh" liegt.
  
 Fertig... das nächste mal wenn du deine PDF kompilierst, werden auch die Worte gezählt. 
 Danach findest du die Aufzählung im selben Verzeichnis, und zwar in der Datei "word_counter.log".
 
-Dies ist nur ein Richtwert, für genauere Angaben prüfe die [TeXcount Dokumentation](http://app.uio.no/ifi/texcount/documentation.html).
+Die Zahlen stellen nur Richtwerte dar, für genauere Angaben prüfe die [TeXcount Dokumentation](http://app.uio.no/ifi/texcount/documentation.html).
 
 ## Ich habe eine Frage oder ein Problem
 
@@ -321,14 +328,13 @@ Dies hat folgende Vorteile:
 * wir haben eine Dokumentation an vorhandenen und gelösten Fehlern / Fragen
 * gelöste / wiederkehrende Probleme müssen nicht erneut beantwortet werden
 
-
 ## Bekannte Fehler
 
 - In der thesis_main.log Datei steht: "! File ended while scanning use of \@writefile."
     - Lösung: "thesis_main.aux" Datei löschen.
 - In der thesis_main.log Datei steht: "Underfull \hbox"
     - Lösung: Lies diesen [Artikel von texwelt.de](http://texwelt.de/wissen/fragen/20/was-bedeutet-underfulloverfull-hbox)
-- ...bad interpreter: No such file or directory
+- env: perl: No such file or directory or ...bad interpreter: No such file or directory
     - Lösung: prüfe ob in der ersten Zeile in "texcount.pl" ob ``` #! /usr/bin/env perl ```
     der Pfad ist, in welchem dein Perl-Kompiler liegt bzw. ob du einen Perl-Kompiler installiert hast.
 
@@ -360,18 +366,18 @@ Ab und zu weichen einzelne Professoren davon ab.
 Mein Studium habe ich inzwischen abgeschlossen und deswegen nutze ich diese Vorlage nicht mehr aktiv.
 Jedoch wird sie von mehreren Personen genutzt, weiter gepflegt und angepasst.
 Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, 
-wenn eine Antowrt nicht innerhalb einer Stunde vorliegt.
+wenn eine Antwort nicht innerhalb einer Stunde vorliegt.
 
 #### Dennis (Template Overhaul)
 
 Diese Vorlage wurde zu meiner Studiumszeit erstellt und genutzt.
 Die Grundlage waren die damaligen Formatierungsregeln für Abschlussarbeiten der FOM (Standort München).
 
-Falls du nicht am Standort München studierst, prüfe ob dein Standort andere Layout Standarfs präferriert.
+Falls du nicht am Standort München studierst, prüfe ob dein Standort andere Layout Standards präferriert.
 
 Kontrolle und eventuelle Absprachen mit dem betreuenden Dozenten sind notwendig und ratsam.
 Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, 
-wenn eine Antowrt nicht innerhalb einer Stunde vorliegt.
+wenn eine Antwort nicht innerhalb einer Stunde vorliegt.
 
 ## Lizenz
 

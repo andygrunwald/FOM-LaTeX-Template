@@ -14,12 +14,6 @@
   bibwarn=true        % Warnung bei fehlerhafter bib-Datei
 }%
 
-% Literaturverzeichnis
-% et al. an Stelle von u.a.
-\DefineBibliographyStrings{ngerman}{
-andothers = {{et\,al\adddot}},                      % TODO et al. prüfen
-}
-
 \renewbibmacro*{cite:labelyear+extrayear}{%
   \iffieldundef{labelyear}
     {}
@@ -27,10 +21,10 @@ andothers = {{et\,al\adddot}},                      % TODO et al. prüfen
        \mkbibparens{%
          \printfield{labelyear}%
          \printfield{extrayear}}}}}
-%%%%%%%%%%
+
 \DeclareNameFormat{last-first}{%
   \iffirstinits
-    {\usebibmacro{name:family-given}                % TODO alle Autoren im Format Nachname, Vorname
+    {\usebibmacro{name:family-given}
         {\namepartfamily}
         {\namepartgiveni}
         {\namepartprefix}
@@ -52,10 +46,10 @@ andothers = {{et\,al\adddot}},                      % TODO et al. prüfen
   {\printtext{Vgl.\isdot}}                            % TODO Bsp.-PDF anpassen
   {\usebibmacro{citeindex}%                           % TODO Zahlen [] raus
   \addspace\textit{\printnames[sortname][1-1]{author}}%
-  \addcomma\addspace\printfield{shorttitle}\addcomma\space
-  \addspace\printfield{year}\addcomma\space
+  \addcomma\addspace\printfield{shorttitle}\addcomma\addspace
+  \addspace\printfield{year}\addcomma\addspace
   }
-  {\printtext{S.\isdot}\space}
+  {\printtext{S.}\addspace}
   {\printfield{pages}}
 
 % Zeigt sowohl den Nachnamen als auch den Vornamen an
@@ -64,10 +58,33 @@ andothers = {{et\,al\adddot}},                      % TODO et al. prüfen
   {\printtext{Vgl.\isdot}}                            % TODO Bsp.-PDF anpassen
   {\usebibmacro{citeindex}%                           % TODO Zahlen [] raus
     \addspace\textit{\printnames[sortname][1-1]{author}}%
-    \addcomma\addspace\printfield{shorttitle}\addcomma\space
-    \addspace\printfield{year}\addcomma\space
+    \addcomma\addspace\printfield{shorttitle}\addcomma\addspace
+    \addspace\printfield{year}\addcomma\addspace
   }
-  {\printtext{S.\isdot}\space}
+  {\printtext{S.}\addspace}
+  {\printfield{pages}}
+
+\DeclareCiteCommand{\bookcite}[\mkbibfootnote]        % TODO Autor nur Inital als Vornamen!
+  {\printtext{Vgl.\isdot}}                            % TODO Bsp.-PDF anpassen
+  {\usebibmacro{citeindex}%                           % TODO Zahlen [] raus
+    \addspace\textit{\printnames[sortname][1-1]{author}}%
+    \addcomma\addspace\printfield{shorttitle}\addcomma\addspace
+    \addspace\printfield{year}\addcomma\addspace
+  }
+  {\printtext{S.}\addspace}
+  {\printfield{pages}}
+
+\DeclareCiteCommand{\onlinecite}[\mkbibfootnote]            % TODO Autor nur Inital als Vornamen!
+  {\printtext{Vgl.\isdot}}                                  % TODO Bsp.-PDF anpassen
+  {\usebibmacro{citeindex}%                                 % TODO Zahlen [] raus
+    \addspace\textit{\printfield{url}}\addcomma\addspace
+    \addcomma\addspace\printtext{Zugriff\addspace}\printtext{am}
+    \addspace\printfield{note}\addsemicolon
+    \addspace\textit{\printnames[sortname][1-1]{author}}%
+    \addcomma\addspace\printfield{shorttitle}%
+    \addcomma\addspace\printfield{year}\addcomma\addspace
+  }
+  {\printtext{S.}\addspace}
   {\printfield{pages}}
 
 %Autoren (Nachname, Vorname)
@@ -77,56 +94,73 @@ andothers = {{et\,al\adddot}},                      % TODO et al. prüfen
 %Reihenfolge von publisher, year, address verändern
 % Achtung, bisher nur für den Typ @book definiert
 
-%% Definiert @Book Eintrag         % TODO pages f. ff.
+% Literaturverzeichnis
+%% Definiert @Book Eintrag         % TODO pages f. ff. (optional)
 \DeclareBibliographyDriver{book}{%
   \textit{\printnames{author}}%
-  \newunit\space
+  \newunit\addspace
   \printtext{$($}%
-  \printfield{shorttitle}%         % TODO durch Stichwort ersetzen
-  \setunit*{\addcomma\space}%
+  \printfield{shorttitle}%
+  \setunit*{\addcomma\addspace}%
   \printfield{year}%
   \printtext{$)$}%
-  \setunit*{\addcolon\space}%
+  \setunit*{\addcolon\addspace}%
   \printfield{title}%
-  \setunit*{\addcomma\space}%
+  \setunit*{\addcomma\addspace}%
   \printfield{edition}%
-  \setunit*{\addcomma\space}%
+  \setunit*{\addcomma\addspace}%
   \printlist{location}%           % TODO falls mehr als drei Orte u.a.
-  \setunit*{\addcolon\space}%
+  \setunit*{\addcolon\addspace}%
   \printlist{publisher}%
-  \setunit*{\space}%
+  \setunit*{\addspace}%
   \printfield{year}%
-  %\newunit\newblockpunct
 }
 
-%% Definiert @Online Eintrag    % TODO Overhaule needed
-\DeclareBibliographyDriver{online}{%
-  \printnames{author}%
-  \newunit\newblockpunct
-  \printfield{title}%
-  \setunit*{,\space}%
-  %\newunit\newblock
-  \printfield{url}%
-  \setunit*{,\space Erscheinungsjahr:\space}%
-  \printfield{year}%
-  \setunit*{,\space Aufruf am:\space}%
-  \printfield{note}%
-}
-  
 %% Definiert @Article Eintrag
 \DeclareBibliographyDriver{article}{%
-  \printnames{author}%
-  \newunit\newblockpunct
+  \textit{\printnames{author}}%
+  \newunit\addspace
+  \printtext{$($}%
+  \printfield{shorttitle}%
+  \setunit*{\addcomma\addspace}%
+  \printfield{year}%
+  \printtext{$)$}%
+  \setunit*{\addcolon\addspace}%
   \printfield{title}%
-  \setunit*{.\space In:\space}%
-  %\newunit\newblock
-  \usebibmacro{journal}%
-  \setunit*{\space (}%
-  \printfield{year}\newunit{)}%
+  \setunit*{\addcomma\addspace}%
+  \printfield{edition}%
+  \setunit*{\addcomma\addspace}%
+  \printlist{location}%           % TODO falls mehr als drei Orte u.a.
+  \setunit*{\addcolon\addspace}%
+  \printlist{publisher}%
+  \setunit*{\addspace}%
+  \printfield{year}%
+}
+
+%% Definiert @Online Eintrag
+\DeclareBibliographyDriver{online}{%
+\textit{\printnames{author}}%
+\newunit\addspace
+\printtext{$($}%
+\printfield{shorttitle}%
+\setunit*{\addcomma\addspace}%
+\printfield{year}%
+\printtext{$)$}%
+\setunit*{\addcolon\addspace}%
+\printfield{title}%
+\setunit*{\addcomma\addspace}%
+\printtext{$($}%
+\printfield{year}%
+\printtext{$)$}%
+\setunit*{\addcomma\addspace}%
+\textit{\printfield{url}}%
+\setunit*{,\addspace (Zugriff\addspace}%
+\printfield{note}%
+\printtext{$)$}%
 }
 
 %Leerzeichen an Stelle des Punktes, nach Autor
-\renewcommand*{\newunitpunct}{\space}
+\renewcommand*{\newunitpunct}{\addspace}
 
 %Titel nicht kursiv anzeigen
 \DeclareFieldFormat{title}{#1\isdot}

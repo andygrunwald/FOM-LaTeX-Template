@@ -21,7 +21,7 @@ then
 	    rm $CURRENT_DIR/$WCL
 	fi
 
-	PATH=$CURRENT_DIR/Deine_Inhalte/*
+	PATH=${CURRENT_DIR}/Deine_Inhalte/*
 	KPATH=${PATH}Kapitel/*
 
     for KFILE in $KPATH
@@ -32,11 +32,11 @@ then
         echo " " >> $WCL
     done
 
-    echo "Counting your words in general: thesis_main.tex... WARNUNG: Hier müssen Wörter, wie u.a. aus dem Dokument Erklaerung.tex abgezogen werden"
+    echo "Counting your words in general: thesis_main.tex..."
     echo "Sum up" >> $WCL
     echo "==============================" >> $WCL
     echo " "
-    $CURRENT_DIR/texcount.pl -merge -dir=. -auxdir=. thesis_main.tex >> $WCL
+    $CURRENT_DIR/texcount.pl -brief ${CURRENT_DIR}/thesis_main.tex ${KPATH}1_Kapitel.tex ${KPATH}2_Kapitel.tex ${KPATH}3_Kapitel.tex ${KPATH}4_Kapitel.tex >> $WCL
     echo "Have a look into $WCL"
 fi
 

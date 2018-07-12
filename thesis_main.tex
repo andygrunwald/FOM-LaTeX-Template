@@ -5,13 +5,13 @@
 %
 %
 % !TEX TS-program = arara
-% arara: clean: {files: [thesis_main.bbl, thesis_main.aux, thesis_main.pdf]}
+% arara: clean: {files: [thesis_main.pdfsync, thesis_main.bbl, thesis_main.aux, thesis_main.pdf]}
 % arara: xelatex
 % arara: nomencl
 % arara: biber
 % arara: xelatex
 % arara: xelatex
-% arara: clean: {files: [thesis_main.out, thesis_main.toc, thesis_main.lot, thesis_main.lof, thesis_main.bbl, thesis_main.nls, thesis_main.nlo, thesis_main.aux, thesis_main.idx, thesis_main.ilg, thesis_main.ind, thesis_main.bbl, thesis_main.bcf, thesis_main.ist, thesis_main.blg, thesis_main.run.xml]}
+% arara: clean: {files: [thesis_main.pdfsync, thesis_main.out, thesis_main.toc, thesis_main.lot, thesis_main.lof, thesis_main.bbl, thesis_main.nls, thesis_main.nlo, thesis_main.aux, thesis_main.idx, thesis_main.ilg, thesis_main.ind, thesis_main.bbl, thesis_main.bcf, thesis_main.ist, thesis_main.blg, thesis_main.run.xml]}
 %
 %
 %
@@ -27,6 +27,8 @@
 % inkl. Kopfzeile
 %====================================
 \documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+%\usepackage{pdfsync} % SyncTeX
+%\synctex=1
 \usepackage[
 	a4paper,
 	top=4cm,
