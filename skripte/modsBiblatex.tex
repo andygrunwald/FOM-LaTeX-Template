@@ -1,12 +1,12 @@
 % Opptionen für Biblatex
 \ExecuteBibliographyOptions{%
-firstinits=false,
+giveninits=false,
 isbn=true, 
 url=true, 
 doi=false, 
 eprint=false,
 maxbibnames=7, % Alle Autoren (kein et al.)
-maxcitenames=1, % Kürzel nur aus 1. Autor
+maxcitenames=2, % et al. ab dem 3. Autor
 backref=false, % Rückverweise auf Zitatseiten
 bibencoding=utf8, % wenn .bib in utf8, sonst ascii
 bibwarn=true, % Warnung bei fehlerhafter bib-Datei
@@ -28,12 +28,33 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 
 \DeclareNameFormat{last-first}{%
   \iffirstinits
-    {\usebibmacro{name:last-first}{#1}{#4}{#5}{#7}}
-    {\usebibmacro{name:last-first}{#1}{#3}{#5}{#7}}%
+    {\usebibmacro{name:family-given}
+        {\namepartfamily}
+        {\namepartgiveni}
+        {\namepartprefix}
+        {\namepartsuffix}
+    }
+    {\usebibmacro{name:family-given}
+        {\namepartfamily}
+        {\namepartgiven}
+        {\namepartprefix}
+        {\namepartsuffix}
+    }%
   \usebibmacro{name:andothers}}
 
+% Alternative Notation der Fußnoten 
+% Zeigt sowohl den Nachnamen als auch den Vornamen an
+% Beispiel: \fullfootcite[Vgl. ][Seite 5]{Tanenbaum.2003} 
+\DeclareCiteCommand{\fullfootcite}[\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \printnames[sortname][1-1]{author}%
+    \addspace (\printfield{year})}
+  {\addsemicolon\space}
+  {\usebibmacro{postnote}}
+
 %Autoren (Nachname, Vorname)
-\DeclareNameAlias{default}{last-first}
+\DeclareNameAlias{default}{family-given}
 
 %Reihenfolge von publisher, year, address verändern
 % Achtung, bisher nur für den Typ @book definiert
@@ -60,10 +81,12 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
   \printnames{author}%
   \newunit\newblockpunct
   \printfield{title}%
-  \setunit*{.\space}%
+  \setunit*{,\space}%
   %\newunit\newblock
   \printfield{url}%
-  \setunit*{.\space}%
+  \setunit*{,\space Erscheinungsjahr:\space}%
+  \printfield{year}%
+  \setunit*{,\space Aufruf am:\space}%
   \printfield{note}%
   \finentry}
   
@@ -78,6 +101,21 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
   \setunit*{\space (}%
   \printfield{year}\newunit{)}%
   \finentry}  
+
+%% Definiert @InProceedings Eintrag
+\DeclareBibliographyDriver{inproceedings}{%
+	\printnames{author}%
+	\setunit*{,\space (}%
+	\printfield{year}\newunit{)}%
+	\newunit\newblockpunct
+	\printfield{title}%
+	\setunit*{\space}%	
+	\usebibmacro{booktitle}%
+	\setunit*{,\space}%
+	\printfield{isbn}%
+	\setunit*{,\space}% 
+	\printfield{doi}%
+	\finentry}
 
 %Doppelpunkt nach dem letzten Autor
 \renewcommand*{\labelnamepunct}{\addcolon\addspace }

@@ -14,29 +14,40 @@
 \usepackage{array}
 \usepackage{float}      %Positionierung von Abb. und Tabellen mit [H] erzwingen
 \usepackage{footnote}
-\usepackage{caption} 
-\usepackage{mdwlist}
+\usepackage{caption}
+\usepackage{enumitem}
 \usepackage{amssymb}
 \usepackage{mathptmx}
+\usepackage[scaled=0.9]{helvet} % Behebt, zusammen mit Package courier, pixelige Überschriften. Ist, zusammen mit mathptx, dem times-Package vorzuziehen. Details: https://latex-kurs.de/fragen/schriftarten/Times_New_Roman.html
+\usepackage{courier}
 \usepackage{amsmath}
 \usepackage[table]{xcolor}
 \usepackage{marvosym}			% Verwendung von Symbolen, z.B. perfektes Eurozeichen
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \definecolor{darkblack}{rgb}{0,0,0}
-\hypersetup{pdftex=true, colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, pagecolor=darkblack, urlcolor=darkblack}
-\usepackage{times}
+\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
 \fontfamily{ptm}\selectfont
+\usepackage{ragged2e}
+
+% Mehrere Fussnoten nacheinander mit Komma separiert
+\usepackage[hang, multiple]{footmisc}
+\setlength{\footnotemargin}{1em}
+
+% todo Aufgaben als Kommentare verfassen für verschiedene Editoren
+\usepackage{todonotes}
 
 %Pakete für Tabellen
 \usepackage{epstopdf}
 \usepackage{nicefrac} % Brüche
-\usepackage{multirow} 
+\usepackage{multirow}
 \usepackage{rotating} % vertikal schreiben
-\usepackage{colortbl}
 \usepackage{mdwlist}
 
 \definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
 \definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
+% Colors for listings
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
 
 % sauber formatierter Quelltext
 \usepackage{listings}
@@ -70,8 +81,8 @@ sortlocale=de]{biblatex}
 \input{skripte/modsBiblatex}
 
 
-%Bib-Datei einbinden 
-\addbibresource{literatur/literatur.bib} 
+%Bib-Datei einbinden
+\addbibresource{literatur/literatur.bib}
 
 % Pfad fuer Abbildungen
 \graphicspath{{./}{./abbildungen/}}
@@ -81,7 +92,7 @@ sortlocale=de]{biblatex}
 \input{skripte/weitereEbene}
 
 %-----------------------------------
-% Zeilenabstand 1,5-zeilig							
+% Zeilenabstand 1,5-zeilig
 %-----------------------------------
 \usepackage{setspace}
 \onehalfspacing
@@ -100,7 +111,7 @@ sortlocale=de]{biblatex}
 %-----------------------------------
 \usepackage[intoc]{nomencl}
 \renewcommand{\nomname}{Abkürzungsverzeichnis}
-\setlength{\nomlabelwidth}{.20\hsize}
+\setlength{\nomlabelwidth}{.20\textwidth}
 \renewcommand{\nomlabel}[1]{#1 \dotfill}
 \setlength{\nomitemsep}{-\parsep}
 \makenomenclature
@@ -111,11 +122,42 @@ sortlocale=de]{biblatex}
 \input{skripte/meta}
 
 %-----------------------------------
+% PDF Meta Daten setzen
+%-----------------------------------
+\hypersetup{
+    pdfinfo={
+        Title={\myTitel},
+        Subject={\myStudiengang},
+        Author={\myAutor},
+        Build=1.1
+    }
+}
+
+%-----------------------------------
+% Umlaute in Code korrekt darstellen
+% siehe auch: https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+%-----------------------------------
+\lstset{literate=
+	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+	{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+	{€}{{\EUR}}1 {£}{{\pounds}}1
+}
+
+%-----------------------------------
 % Kopfbereich / Header definieren
 %-----------------------------------
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[R]{\thepage}								% Seitenzahl oben, rechts
+\fancyhead[C]{-\ \thepage\ -}						% Seitenzahl oben, mittg
 %\fancyhead[L]{\leftmark}							% kein Footer vorhanden
 \renewcommand{\headrulewidth}{0.4pt}
 
@@ -138,16 +180,20 @@ sortlocale=de]{biblatex}
 	\newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
 	\begin{center}
 		\textbf{\myHochschulName}\\
-		\vspace{1cm}
+		\textbf{\myHochschulStandort}\\
+		\vspace{1.5cm}
 			\includegraphics[width=3cm]{abbildungen/fomLogo.jpg} \\
-		\vspace{1cm}
+		\vspace{1.5cm}
 		Berufsbegleitender Studiengang\\
 		\myStudiengang, \mySemesterZahl. Semester\\
-		\vspace{1.5cm}
+		\vspace{2cm}
 		\textbf{\myThesisArt}\\
 		\textbf{zur Erlangung des Grades eines}\\
 		\textbf{\myAkademischerGrad}\\
-		\vspace{1.5cm}
+		% Oder für Hausarbeiten:
+		%\textbf{im Rahmen der Lehrveranstaltung}\\
+		%\textbf{\myLehrveranstaltung}\\
+		\vspace{2cm}
 		über das Thema\\
 		\Huge{\myTitel}\\
 		\vspace{0.2cm}
@@ -158,18 +204,26 @@ sortlocale=de]{biblatex}
 		Links \= Mitte \= Rechts\kill
 		Betreuer: \> \> \myBetreuer\\
 		\> \> \\
+
 		Autor: \> \> \myAutor\\
-		\> \> Matrikelnr.: \myMatrikelNr\\
+		\> \>  Matrikelnr.: \myMatrikelNr\\
+		\> \> \myAdresse\\
+		\> \> \\
 		Abgabe: \> \> \myAbgabeDatum
 	\end{tabbing}
 \end{titlepage}
 
 %-------Ende Titelseite-------------
 
+%-----------------------------------
+% Sperrvermerk
+%-----------------------------------
+%\input{kapitel/anhang/sperrvermerk}
 
 %-----------------------------------
 % Inhaltsverzeichnis
 %-----------------------------------
+\setcounter{page}{2}
 \tableofcontents
 \newpage
 
@@ -208,9 +262,20 @@ sortlocale=de]{biblatex}
 %\addcontentsline{toc}{section}{Literatur}
 
 \pagenumbering{Roman} %Zähler wieder römisch ausgeben
-\setcounter{page}{6}  %Zähler manuell hochsetzen
+\setcounter{page}{4}  %Zähler manuell hochsetzen
 
+\begin{RaggedRight}
 \printbibliography
+\end{RaggedRight}
+
+% Alternative Darstellung:
+% Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
+% Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
+
+%\printbibheading
+%\printbibliography[type=article,heading=subbibliography,title={Artikel}]
+%\printbibliography[type=book,heading=subbibliography,title={Bücher}]
+%\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
 
 \input{kapitel/anhang/erklaerung}
 \end{document}
