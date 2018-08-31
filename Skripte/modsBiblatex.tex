@@ -43,55 +43,59 @@
 % Alternative Notation der Fußnoten
 %% footcite überschreiben
 \DeclareCiteCommand{\footcite}[\mkbibfootnote]        % TODO Autor nur Inital als Vornamen!
-  {\printtext{Vgl.\isdot}}                            % TODO Bsp.-PDF anpassen
+  {\printtext{Vgl.}}                                  % TODO Bsp.-PDF anpassen
   {\usebibmacro{citeindex}%                           % TODO Zahlen [] raus
   \addspace\textit{\printnames[sortname][1-1]{author}}%
-  \addcomma\addspace\printfield{shorttitle}\addcomma\addspace
+  \addcomma\addspace\printfield{title}\addcomma\addspace
   \addspace\printfield{year}\addcomma\addspace
   }
-  {\printtext{S.}\addspace}
-  {\printfield{pages}}
+  {\usebibmacro{prenote}
+  }
 
 % Zeigt sowohl den Nachnamen als auch den Vornamen an
 %% Beispiel: \fullfootcite[Vgl. ][Seite 5]{Tanenbaum.2003}
-\DeclareCiteCommand{\fullfootcite}[\mkbibfootnote]    % TODO Autor nur Inital als Vornamen!
-  {\printtext{Vgl.\isdot}}                            % TODO Bsp.-PDF anpassen
-  {\usebibmacro{citeindex}%                           % TODO Zahlen [] raus
-    \addspace\textit{\printnames[sortname][1-1]{author}}%
-    \addcomma\addspace\printfield{shorttitle}\addcomma\addspace
-    \addspace\printfield{year}\addcomma\addspace
-  }
-  {\printtext{S.}\addspace}
-  {\printfield{pages}}
+\DeclareCiteCommand{\fullfootcite}[\mkbibfootnote]
+    {\usebibmacro{prenote}
+    }
+    {\usebibmacro{citeindex}%
+        \printnames[sortname][1-1]{author}%
+        \addspace\printfield{year}
+    }
+    {\addsemicolon\space}
+    {\usebibmacro{postnote}
+    }
 
-\DeclareCiteCommand{\bookcite}[\mkbibfootnote]        % TODO Autor nur Inital als Vornamen!
-  {\printtext{Vgl.\isdot}}                            % TODO Bsp.-PDF anpassen
-  {\usebibmacro{citeindex}%                           % TODO Zahlen [] raus
-    \addspace\textit{\printnames[sortname][1-1]{author}}%
-    \addcomma\addspace\printfield{shorttitle}\addcomma\addspace
-    \addspace\printfield{year}\addcomma\addspace
-  }
-  {\printtext{S.}\addspace}
-  {\printfield{pages}}
+% Advanced Styles %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareCiteCommand{\bookcite}[\mkbibfootnote]              % TODO Autor nur Inital als Vornamen!
+    {\printtext{Vgl.}\addspace
+    }
+    {\usebibmacro{citeindex}%
+        \addspace\textit{\printnames[sortname][1-1]{author}}%
+        \addcomma\addspace\printfield{title}
+        \addcomma\addspace\printfield{year}
+    }
+    {\addcomma\addspace\printtext{S.}\addspace}
+    {\usebibmacro{postnote}
+    }
 
-\DeclareCiteCommand{\onlinecite}[\mkbibfootnote]            % TODO Autor nur Inital als Vornamen!
-  {\printtext{Vgl.\isdot}}                                  % TODO Bsp.-PDF anpassen
-  {\usebibmacro{citeindex}%                                 % TODO Zahlen [] raus
-    \addspace\textit{\printfield{url}}\addcomma\addspace
-    \addcomma\addspace\printtext{Zugriff\addspace}\printtext{am}
-    \addspace\printfield{note}\addsemicolon
-    \addspace\textit{\printnames[sortname][1-1]{author}}%
-    \addcomma\addspace\printfield{shorttitle}%
-    \addcomma\addspace\printfield{year}\addcomma\addspace
-  }
-  {\printtext{S.}\addspace}
-  {\printfield{pages}}
+\DeclareCiteCommand{\onlinecite}[\mkbibfootnote]              % TODO Autor nur Inital als Vornamen!
+    {\printtext{Vgl.}}                                        % TODO Bsp.-PDF anpassen
+    {\usebibmacro{citeindex}%                                 % TODO Zahlen [] raus
+        \addspace\textit{\printfield{url}}
+        \addcomma\addspace
+        \addcomma\addspace\printtext{Zugriff am}
+        \addspace\printfield{note}
+    }
+    {}
+    {\usebibmacro{postnote}
+    }
 
-%Autoren (Nachname, Vorname)
+
+% Autoren (Nachname, Vorname)
 \DeclareNameAlias{default}{family-given}
-%\DeclareNameAlias{sortname}{family-given}%
+% \DeclareNameAlias{sortname}{family-given}%
 
-%Reihenfolge von publisher, year, address verändern
+% Reihenfolge von publisher, year, address verändern
 % Achtung, bisher nur für den Typ @book definiert
 
 % Literaturverzeichnis
@@ -100,16 +104,16 @@
   \textit{\printnames{author}}%
   \newunit\addspace
   \printtext{$($}%
-  \printfield{shorttitle}%
+  \printfield{title}%
   \setunit*{\addcomma\addspace}%
   \printfield{year}%
   \printtext{$)$}%
   \setunit*{\addcolon\addspace}%
-  \printfield{title}%
+  \printfield{booktitle}%
   \setunit*{\addcomma\addspace}%
   \printfield{edition}%
   \setunit*{\addcomma\addspace}%
-  \printlist{location}%           % TODO falls mehr als drei Orte u.a.
+  \printlist{address}%           % TODO falls mehr als drei Orte u.a.
   \setunit*{\addcolon\addspace}%
   \printlist{publisher}%
   \setunit*{\addspace}%
@@ -121,16 +125,16 @@
   \textit{\printnames{author}}%
   \newunit\addspace
   \printtext{$($}%
-  \printfield{shorttitle}%
+  \printfield{title}%
   \setunit*{\addcomma\addspace}%
   \printfield{year}%
   \printtext{$)$}%
   \setunit*{\addcolon\addspace}%
-  \printfield{title}%
+  \printfield{booktitle}%
   \setunit*{\addcomma\addspace}%
   \printfield{edition}%
   \setunit*{\addcomma\addspace}%
-  \printlist{location}%           % TODO falls mehr als drei Orte u.a.
+  \printlist{address}%           % TODO falls mehr als drei Orte u.a.
   \setunit*{\addcolon\addspace}%
   \printlist{publisher}%
   \setunit*{\addspace}%
@@ -142,12 +146,12 @@
 \textit{\printnames{author}}%
 \newunit\addspace
 \printtext{$($}%
-\printfield{shorttitle}%
+\printfield{title}%
 \setunit*{\addcomma\addspace}%
 \printfield{year}%
 \printtext{$)$}%
 \setunit*{\addcolon\addspace}%
-\printfield{title}%
+\printfield{booktitle}%
 \setunit*{\addcomma\addspace}%
 \printtext{$($}%
 \printfield{year}%

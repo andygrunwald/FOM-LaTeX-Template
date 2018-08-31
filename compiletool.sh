@@ -36,10 +36,12 @@ then
     echo "Sum up" >> $WCL
     echo "==============================" >> $WCL
     echo " "
+    echo "Word Counter: "
+    $CURRENT_DIR/texcount.pl -brief ${CURRENT_DIR}/thesis_main.tex ${KPATH}1_Kapitel.tex ${KPATH}2_Kapitel.tex ${KPATH}3_Kapitel.tex ${KPATH}4_Kapitel.tex
     $CURRENT_DIR/texcount.pl -brief ${CURRENT_DIR}/thesis_main.tex ${KPATH}1_Kapitel.tex ${KPATH}2_Kapitel.tex ${KPATH}3_Kapitel.tex ${KPATH}4_Kapitel.tex >> $WCL
     echo "Have a look into $WCL"
 fi
-
+# TODO legend for sum up section
 echo " "
 echo "Successfully compiled LaTeX PDF with arara"
 exit 0
