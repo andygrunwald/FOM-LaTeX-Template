@@ -41,6 +41,19 @@ Zum einen kann es hier durch direktives Einbinden in der Kapitel-Datei geschehen
 Bei längeren Quellcode-Listings empfiehlt es sich jedoch auf eine externe Datei im Ordner Quellcode zu verlinken und diese einzubauen:
 \lstinputlisting[language=HTML]{./Quellcode/Beispiel.html}
 
+Statt dem Package lstlisting, welches direkt auf Tex basiert, kann auch das Package minted verwendet werden.
+Dieses Package basiert auf python-pygments und unterstützt weit mehr Sprachkonstrukte als lstlisting.
+Um das Paket zu verwenden muss es eingebunden werden und zusätzlich python-pygments installiert sein.
+(Dies ist mit im Dockerfile vorhanden)
+Minted lässt sich ganz ähnlich zu lstlisting verwenden:
+
+\begin{minted}{c}
+	int main() {
+		printf("hello, world");
+		return 0;
+	}
+\end{minted}
+
 Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur noch der Name des Bildes ohne Dateiendung stehen (sup).
 
 
