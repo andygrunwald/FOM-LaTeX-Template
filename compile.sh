@@ -2,7 +2,7 @@
 #Run the Script from the folder you are in...
 CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-pdflatex "$CURRENT_DIR/thesis_main.tex"
+pdflatex --shell-escape "$CURRENT_DIR/thesis_main.tex"
 RETVAL="$?"
 if [[ "${RETVAL}" -ne 0 ]] ; then
     echo "First pdflatex run failed"
@@ -23,14 +23,14 @@ if [[ "${RETVAL}" -ne 0 ]] ; then
     exit ${RETVAL}
 fi
 
-pdflatex "$CURRENT_DIR/thesis_main.tex"
+pdflatex --shell-escape "$CURRENT_DIR/thesis_main.tex"
 RETVAL="$?"
 if [[ "${RETVAL}" -ne 0 ]] ; then
     echo "Second pdflatex run failed"
     exit ${RETVAL}
 fi
 
-pdflatex "$CURRENT_DIR/thesis_main.tex"
+pdflatex --shell-escape "$CURRENT_DIR/thesis_main.tex"
 RETVAL="$?"
 if [[ "${RETVAL}" -ne 0 ]] ; then
     echo "Third pdflatex run failed"

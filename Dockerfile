@@ -22,6 +22,8 @@ RUN echo 'deb http://ppa.launchpad.net/jonathonf/texlive-2016/ubuntu trusty main
 		texlive-lang-german \
 		texlive-generic-extra \
 		biber \
+		python \
+		python-pygments \
 		--no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
