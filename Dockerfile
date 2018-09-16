@@ -8,8 +8,8 @@ FROM ubuntu:14.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo 'deb http://ppa.launchpad.net/jonathonf/texlive-2016/ubuntu trusty main' > /etc/apt/sources.list.d/texlive.list \
-	&& echo 'deb-src http://ppa.launchpad.net/jonathonf/texlive-2016/ubuntu trusty main' >> /etc/apt/sources.list.d/texlive.list \
+RUN echo 'deb http://ppa.launchpad.net/jonathonf/texlive-2018/ubuntu trusty main' > /etc/apt/sources.list.d/texlive.list \
+	&& echo 'deb-src http://ppa.launchpad.net/jonathonf/texlive-2018/ubuntu trusty main' >> /etc/apt/sources.list.d/texlive.list \
 	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-key F06FC659 \
 	&& apt-get update \
 	&& apt-get install -y \
@@ -23,6 +23,9 @@ RUN echo 'deb http://ppa.launchpad.net/jonathonf/texlive-2016/ubuntu trusty main
 		biber \
 		--no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
+
+RUN echo 'sudo tlmgr update -all'
+RUN echo 'sudo tlmgr arara'
 
 VOLUME ["/data"]
 

@@ -27,7 +27,7 @@ then
     for KFILE in $KPATH
     do
         echo "Counting your words in chapter: ${KFILE##*/}..."
-        $CURRENT_DIR/texcount.pl -nosub ${KPATH}${KFILE##*/} >> $WCL
+        $CURRENT_DIR/texcount.pl -quiet -nosub ${KPATH}${KFILE##*/} >> $WCL
         echo "==============================" >> $WCL
         echo " " >> $WCL
     done
@@ -37,8 +37,8 @@ then
     echo "==============================" >> $WCL
     echo " "
     echo "Word Counter: "
-    $CURRENT_DIR/texcount.pl -brief ${CURRENT_DIR}/thesis_main.tex ${KPATH}1_Kapitel.tex ${KPATH}2_Kapitel.tex ${KPATH}3_Kapitel.tex ${KPATH}4_Kapitel.tex
-    $CURRENT_DIR/texcount.pl -brief ${CURRENT_DIR}/thesis_main.tex ${KPATH}1_Kapitel.tex ${KPATH}2_Kapitel.tex ${KPATH}3_Kapitel.tex ${KPATH}4_Kapitel.tex >> $WCL
+    $CURRENT_DIR/texcount.pl -quiet ${CURRENT_DIR}/thesis_main.tex ${KPATH}1_Kapitel.tex ${KPATH}2_Kapitel.tex ${KPATH}3_Kapitel.tex ${KPATH}4_Kapitel.tex
+    $CURRENT_DIR/texcount.pl -quiet ${CURRENT_DIR}/thesis_main.tex ${KPATH}1_Kapitel.tex ${KPATH}2_Kapitel.tex ${KPATH}3_Kapitel.tex ${KPATH}4_Kapitel.tex >> $WCL
     echo "Have a look into $WCL"
 fi
 # TODO legend for sum up section
