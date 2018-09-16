@@ -278,8 +278,8 @@ oder die kostenlose [Community-Version](https://www.jetbrains.com/idea/download/
 7. Nun siehst du in der rechten Hälfte des Fensters ein Plus + (links unten), klicke dort drauf
 8. Hier musst du drei Felder ausfüllen
     1. Feld 1: "Name" bspw. "Create PDF from LaTeX Template"
-    2. Feld 2: "Program" setze den Pfad auf "compiletool.sh" bspw. "~/IdeaProjects/FOM-LaTeX-Template/compiletool.sh"
-    3. Feld 3: "Working Directory", dies ist der Pfad unter welchem deine PDF erscheint, setze den Pfad einfach auf das gleiche Verzeichniss in dem auch compiletool.sh liegt
+    2. Feld 2: "Program" setze den Pfad auf "compile.sh" bspw. "~/IdeaProjects/FOM-LaTeX-Template/compile.sh"
+    3. Feld 3: "Working Directory", dies ist der Pfad unter welchem deine PDF erscheint, setze den Pfad einfach auf das gleiche Verzeichniss in dem auch compile.sh liegt
 9. Bestätige deine Eingaben zweimal mit "OK"
 10. Ab jetzt kannst du deine PDF kompilieren in dem du in der Menüleiste auf "Tools" > "External Tools" > "Create PDF from LaTeX Template" (bzw. der Name welchen du bei "Feld 1" eingeben hast) klickst - Fertig!
 
@@ -311,7 +311,7 @@ Ich habe nicht alle Programme eingehend getestet, aber um dir einen Anhaltspunkt
 
 1. Um Wörter zu zählen, downloade das Perl-Skript [TeXcount](http://app.uio.no/ifi/texcount/index.html)
 von Einar Andreas Rødland.
-2. Kopiere die Datei "texcount.pl" in das Verzeichnis in welchem auch "compiletool.sh" liegt.
+2. Kopiere die Datei "texcount.pl" in das Verzeichnis in welchem auch "compile.sh" liegt.
  
 Fertig... das nächste mal wenn du deine PDF kompilierst, werden auch die Worte gezählt. 
 Danach findest du die Aufzählung im selben Verzeichnis, und zwar in der Datei "word_counter.log".
