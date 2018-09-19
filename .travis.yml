@@ -1,12 +1,16 @@
 #n idea and script from https://tex.stackexchange.com/questions/398830/how-to-build-my-latex-automatically-using-travis-ci
-
+before_install:
+  - sudo apt-get install debconf-utils
+  - echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+  - sudo apt install ttf-mscorefonts-installer
+  - sudo fc-cache -f -v
 install:
- - source ./texlive_install.sh
+  - source ./texlive_install.sh
 cache:
   directories:
     - /tmp/texlive
     - $HOME/.texlive
 script:
-- mkdir _build
-# Prefix command with travis_wait x so it times out after 3 mins
-- travis_wait 3 xetex -output-directory _build ./thesis_main.tex
+  - mkdir _build
+  # Prefix command with travis_wait x so it times out after 3 mins
+  - travis_wait 3 xelatex -output-directory _build ./thesis_main.tex

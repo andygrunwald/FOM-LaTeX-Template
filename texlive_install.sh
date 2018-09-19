@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
+# Idea And slightly changed script from https://tex.stackexchange.com/questions/398830/how-to-build-my-latex-automatically-using-travis-ci
+
 # Originally from https://github.com/latex3/latex3
-# Idea nd slightly changed script from https://tex.stackexchange.com/questions/398830/how-to-build-my-latex-automatically-using-travis-ci
 # I've made some changes to the original script
 
 # This script is used for testing using Travis
@@ -10,16 +11,15 @@
 # required
 
 # See if there is a cached version of TL available
-export PATH=/tmp/Texlive/bin/x86_64-linux:$PATH
+export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 if ! command -v texlua > /dev/null; then
   # Obtain TeX Live
-  # wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
   wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
   tar -xzf install-tl-unx.tar.gz
   cd install-tl-20*
 
   # Install a minimal system
-  ./install-tl --profile=../Texlive/Texlive.profile
+  ./install-tl --profile=../Texlive/texlive.profile
 
   cd ..
 fi
@@ -30,6 +30,7 @@ tlmgr install luatex
 
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # texlive-latex-base is needed to run pdflatex
+# scheme-full in profile is activated, so most packages below could be deleted
 tlmgr install   \
   xetex         \
   arara         \
@@ -38,12 +39,38 @@ tlmgr install   \
   fancybox      \
   float         \
   setspace      \
+  biblatex      \
   polyglossia   \
   csquotes      \
-  ragged2e      \
-  lm                #latin modern fonts
+  nomencl       \
+  xltxtra       \
+  latex         \
+  tools         \
+  fancyhdr      \
+  fancybox      \
+  setspace      \
+  polyglossia   \
+  csquotes      \
+  fontspec      \
+  caption       \
+  hvfloat       \
+  mdwtools      \
+  footmisc      \
+  enumitem      \
+  units         \
+  multirow      \
+  graphics      \
+  colortbl      \
+  xcolor        \
+  hyperref      \
+  blindtext     \
+  newtx         \
+  listings      \
+  oberdiek      \
+  ms            \
+  lm
 
-tlmgr install --reinstall --repository https://www.komascript.de/repository/Texlive/2018 koma-script
+tlmgr install --reinstall --repository https://www.komascript.de/repository/texlive/2018 koma-script
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
@@ -51,3 +78,12 @@ tlmgr option -- autobackup 0
 # Update the TL install but add nothing new
 tlmgr update --self --all --no-auto-install
 
+  # Package Info
+  # tools          # verbatim
+  # mdwtools       # footnote
+  # units          # nicefrac
+  # graphics       # rotating
+  # newtx          # newtxmath mdwlist
+  # oberdiek       # etexcmds  pdftexcmds
+  # ms             # ragged2e
+  # lm             # latin modern fonts
