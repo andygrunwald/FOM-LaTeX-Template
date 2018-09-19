@@ -1,0 +1,12 @@
+#n idea and script from https://tex.stackexchange.com/questions/398830/how-to-build-my-latex-automatically-using-travis-ci
+
+install:
+ - source ./texlive_install.sh
+cache:
+  directories:
+    - /tmp/texlive
+    - $HOME/.texlive
+script:
+- mkdir _build
+# Prefix command with travis_wait x so it times out after 3 mins
+- travis_wait 3 xetex -output-directory _build ./thesis_main.tex

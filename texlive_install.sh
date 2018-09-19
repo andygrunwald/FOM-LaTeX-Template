@@ -10,16 +10,16 @@
 # required
 
 # See if there is a cached version of TL available
-export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
+export PATH=/tmp/Texlive/bin/x86_64-linux:$PATH
 if ! command -v texlua > /dev/null; then
   # Obtain TeX Live
-  # wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-  wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+  # wget http://mirror.ctan.org/systems/Texlive/tlnet/install-tl-unx.tar.gz
+  wget http://mirror.ctan.org/systems/Texlive/tlnet/install-tl-unx.tar.gz
   tar -xzf install-tl-unx.tar.gz
   cd install-tl-20*
 
   # Install a minimal system
-  ./install-tl --profile=../texlive/texlive.profile
+  ./install-tl --profile=../Texlive/Texlive.profile
 
   cd ..
 fi
@@ -43,7 +43,7 @@ tlmgr install   \
   ragged2e      \
   lm                #latin modern fonts
 
-tlmgr install --reinstall --repository https://www.komascript.de/repository/texlive/2018 koma-script
+tlmgr install --reinstall --repository https://www.komascript.de/repository/Texlive/2018 koma-script
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0

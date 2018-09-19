@@ -21,7 +21,7 @@ then
 	    rm $CURRENT_DIR/$WCL
 	fi
 
-	PATH=${CURRENT_DIR}/Deine_Inhalte/*
+	PATH=${CURRENT_DIR}/DeineInhalte/*
 	KPATH=${PATH}Kapitel/*
 
     for KFILE in $KPATH

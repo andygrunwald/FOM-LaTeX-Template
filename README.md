@@ -51,7 +51,7 @@ Danke an Andy Grünwald für die Erstelleung des orginal Templates, auf welchem 
 
 ## Thesis- und/oder Hausarbeit-Modus
 
-Das Template kann als Hausarbeit oder Thesis verwendet werden, dazu prüfe bitte das Template. Die Informationen sind im Qellcode (größtenteil aber nicht ausschliesslich in thesis_main.tex und Deine_Inhalte/Metainformationen.tex) kommentiert.
+Das Template kann als Hausarbeit oder Thesis verwendet werden, dazu prüfe bitte das Template. Die Informationen sind im Qellcode (größtenteil aber nicht ausschliesslich in thesis_main.tex und DeineInhalte/Metainformationen.tex) kommentiert.
 Die aktuelle Standarteinstellung ist HAUSARBEIT.
 
 ## Achtung
@@ -71,7 +71,7 @@ Das Template ist nach besten wissen und gewissen nach dem FOM Leitfaden 20.12.20
 
 ### Dateistruktur
 
-Es wurde das Verzeichnis "Deine_Inhalte" (In möglichst auffälliger schreibweise ;o) erstellt.
+Es wurde das Verzeichnis "DeineInhalte" (In möglichst auffälliger schreibweise ;o) erstellt.
 Hier liegt alles was die Inhalte deiner Hausarbeit oder Thesis angeht.
 
 ### Alles mögliche im Quelltext
@@ -113,7 +113,7 @@ Das ganze hat primär zwei Vorteile:
 
 ## Vorlage personalisieren
 
-Wenn du diese Vorlage nutzt ist der erste Einstiegspunkt die Datei [`Deine_Inhalte/Metainformationen.tex`](./Deine_Inhalte/Metainformationen.tex).
+Wenn du diese Vorlage nutzt ist der erste Einstiegspunkt die Datei [`DeineInhalte/Metainformationen.tex`](DeineInhalte/Metainformationen.tex).
 In der Datei haben wir einige Variablen hinterlegt, die im Dokument (u.a. auf dem Deckblatt) genutzt werden.
 
 Ersetze die Muster-Werte durch deine persönlichen Angaben und diese werden automatisch im Dokument verwendet.
@@ -192,7 +192,7 @@ Dieses wird dort auch mit den Farben für Kommentare, Strings, etc konfiguriert.
 Folgendermaßen könnt ihr Quellcode einbauen:
 
 ```latex
-\lstinputlisting[language=Java]{./Deine_Inhalte/Quellcode/Dateiname.js}
+\lstinputlisting[language=Java]{./DeineInhalte/Quellcode/Dateiname.js}
 ```
 
 Für [Javascript](https://de.wikipedia.org/wiki/JavaScript) gibt es noch keine eigene Sprache, daher benutzt am besten [Java](https://de.wikipedia.org/wiki/Java_(Programmiersprache)).
