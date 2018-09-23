@@ -1,4 +1,5 @@
-#n idea and script from https://tex.stackexchange.com/questions/398830/how-to-build-my-latex-automatically-using-travis-ci
+# Idea and script from https://tex.stackexchange.com/questions/398830/how-to-build-my-latex-automatically-using-travis-ci
+# script was slightly changed
 before_install:
   - sudo apt-get install debconf-utils
   - echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections

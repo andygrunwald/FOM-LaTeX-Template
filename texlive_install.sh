@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-# Idea And slightly changed script from https://tex.stackexchange.com/questions/398830/how-to-build-my-latex-automatically-using-travis-ci
+# Idea and script from https://tex.stackexchange.com/questions/398830/how-to-build-my-latex-automatically-using-travis-ci
+# script was slightly changed
 
 # Originally from https://github.com/latex3/latex3
 # I've made some changes to the original script
