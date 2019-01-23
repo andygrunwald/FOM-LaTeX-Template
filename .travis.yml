@@ -1,6 +1,6 @@
 dist: trusty
 before_install:
-  - sudo add-apt-repository ppa:jonathonf/texlive -y
+  - sudo add-apt-repository ppa:jonathonf/texlive -y 
   - sudo apt-get update
 
 install:
