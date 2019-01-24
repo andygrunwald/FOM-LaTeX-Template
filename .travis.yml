@@ -1,4 +1,4 @@
-dist: trusty
+dist: bionic
 before_install:
   - sudo add-apt-repository ppa:jonathonf/texlive-2018 -y 
   - sudo apt-get update
