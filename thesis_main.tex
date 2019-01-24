@@ -69,13 +69,17 @@
 % Biblatex
 \usepackage[
 backend=biber,
-style=numeric,
-citestyle=authoryear,
-url=false,
-isbn=false,
-notetype=footonly,
-hyperref=false,
-sortlocale=de]{biblatex}
+style=ext-authoryear,
+maxcitenames=2,
+maxbibnames=999,
+mergedate=false,
+date=iso,
+urldate=iso,
+innamebeforetitle,
+dashed=false,
+autocite=footnote,
+doi=false
+]{biblatex}%iso dateformat für YYYY-MM-DD
 
 %weitere Anpassungen für BibLaTex
 \input{skripte/modsBiblatex}
