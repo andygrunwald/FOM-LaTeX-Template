@@ -1,0 +1,20 @@
+%-----------------------------------------------
+% JavaScript als Programmiersprache unterstützen
+%-----------------------------------------------
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, class, const, continue, debugger, default, delete, do, else, extends, false, finally, for, function, if, in, instanceof, new, null, return, super, switch, this, true, try, typeof, var, void, while, with, yield, let, static, await, },
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  ndkeywords={class, enum, export, boolean, throw, implements, import, this, interface, public, private, protected, package, static, abstract},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  sensitive=true
+}
