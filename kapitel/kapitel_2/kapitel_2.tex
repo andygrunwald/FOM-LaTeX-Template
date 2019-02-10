@@ -28,32 +28,63 @@ Das Paket \textbackslash usepackage\{float\} ermöglicht es die Grafiken und Tab
 
 Die Breite der Grafiken am Besten relativ zum Text angeben.
 
+Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur noch der Name des Bildes ohne Dateiendung stehen (sup).
+
+% Um Latex die beste Position fuer das Bild bestimmen zu lassen, folgende Parameter verwenden: [htbp]
+\begin{figure}[H]
+%\begin{center}
+\caption{Titel der Abbildung hier}
+\includegraphics[width=\textwidth]{sup}
+\label{fig:sup}
+%\end{center}
+\end{figure}
+
+
 \subsection{Quellcode}
-Quellcode kann auf unterschiedliche Arten eingebaut werden.
+Quellcode kann auf unterschiedliche Arten eingebaut werden (vgl. \autoref{code:imgInclude}).
 Zum einen kann es hier durch direktives Einbinden in der Kapitel-Datei geschehen.
-\begin{lstlisting}
+\begin{lstlisting}[caption={Bilder und Grafiken einbinden}\label{code:imgInclude}]
 % Hier wird aufgezeigt, wie man eine Grafik einbindet, es wird also in der PDF angezeigt,
 % da es in einem Quellcode-Listing steht.
 % Auch wenn es hier faelschlicherweise als LaTeX-Befehl angezeigt wird.
 \includegraphics[width=0.9\textwidth]{sup}
 \end{lstlisting}
 
-Bei längeren Quellcode-Listings empfiehlt es sich jedoch auf eine externe Datei im Ordner Quellcode zu verlinken und diese einzubauen:
-\lstinputlisting[language=HTML]{./Quellcode/Beispiel.html}
 
-Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur noch der Name des Bildes ohne Dateiendung stehen (sup).
+% JavaScript und TypeScript Showcase:
+\begin{minipage}{.49\textwidth}
+	\begin{lstlisting}[caption={Hello World in JavaScript}\label{code:JsVsTs},language=JavaScript,numbers=none] 
+	   function say(message) {
+		  alert(message);	
+	   }
+	   
+	   const words = ['Hello', 'World'];	
+	   
+	   
+	   // say 'Hello World!'
+	   say(words.join(' ') + '!'); 
+	\end{lstlisting}
+	\end{minipage}\hfill
+   \begin{minipage}{.49\textwidth}
+	\begin{lstlisting}[caption={Hello World in TypeScript}\label{code:TsVsJs},language=TypeScript,numbers=none] 
+	   function say(message: string): void {
+		  alert(message);	
+	   }
+	   
+	   const words: string[] = 
+		   ['Hello', 'World'];
+	   
+	   // say 'Hello World!'
+	   say(words.join(' ') + '!'); 
+	\end{lstlisting}
+	\end{minipage}
 
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.9\textwidth]{sup}
-\caption{Titel der Abbildung hier}
-\end{center}
-\end{figure}
+	
 
 \subsection{Tabellen}
 \begin{table}[H]
-\centering
+%\centering
+\caption{Beispieltabelle 1}
 \begin{tabular}[ht]{|l|l|l|}
   \hline
   \textbf{Abkürzung} & \textbf{Beschreibung} & \textbf{Berechnung}\\
@@ -82,11 +113,23 @@ Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur n
 	\multicolumn{3}{|l|}{\textbf{= Bruttoverkaufspreis (BVP)}} \\
 	\hline
 \end{tabular} \\
-		\caption{Beispieltabelle 1}
 		\label{tbl:beispieltabelle2}
 \end{table}
 
 %\clearpage % hiermit werden alle Bilder Tabellen ausgeworfen
+
+Bei längeren Quellcode-Listings empfiehlt es sich jedoch auf eine externe Datei im Ordner Quellcode zu verlinken und diese einzubauen:
+\lstinputlisting[language=HTML,caption={HTML als Datei einbinden}]{./Quellcode/Beispiel.html}
+
+
+\subsection{Todos}
+Das Paket todo \todo{schreibt Notizen an die Seite \ldots} ermöglicht es Notizen am Rand der Arbeit zu erzeugen. 
+
+\missingfigure{Fehlende Abbildung.}
+
+Mit dem Befehl missingfigure können Platzhalter Bilder im Text definiert werden.
+
+
 
 \subsection{Biblatex}
 Von den vielen verfügbaren Literatur-Paketen habe ich mich für Biblatex entschieden. Die Anforderungen der FOM sollten hiermit erfüllt sein. Ich habe bisher nur Einträge \enquote{@book} getestet. Wie immer steckt der Teufel hier im Detail und es wird sich später herausstellen, ob Biblatex eine gute Wahl war. Die Anpassungen hierfür liegen unter skripte/modsBiblatex. Ich verwende das Backend Biber, welches bib-Dateien in UTF-8 verarbeiten kann.

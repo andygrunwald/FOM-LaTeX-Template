@@ -14,11 +14,12 @@
 \usepackage{array}
 \usepackage{float}      %Positionierung von Abb. und Tabellen mit [H] erzwingen
 \usepackage{footnote}
-\usepackage{caption}
+\usepackage[singlelinecheck=false, justification=RaggedRight, labelfont=bf]{caption}
 \usepackage{enumitem}
 \usepackage{amssymb}
 \usepackage{mathptmx}
-\usepackage[scaled=0.9]{helvet} % Behebt, zusammen mit Package courier, pixelige Überschriften. Ist, zusammen mit mathptx, dem times-Package vorzuziehen. Details: https://latex-kurs.de/fragen/schriftarten/Times_New_Roman.html
+% Behebt, zusammen mit Package courier, pixelige Überschriften. Ist, zusammen mit mathptx, dem times-Package vorzuziehen. Details: https://latex-kurs.de/fragen/schriftarten/Times_New_Roman.html
+\usepackage{helvet}\renewcommand{\familydefault}{\sfdefault}\fontfamily{phv}\selectfont   % Custom: Helvetica
 \usepackage{courier}
 \usepackage{amsmath}
 \usepackage[table]{xcolor}
@@ -26,7 +27,10 @@
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \definecolor{darkblack}{rgb}{0,0,0}
 \hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
-\fontfamily{ptm}\selectfont
+
+% original:
+% \fontfamily{ptm}\selectfont
+
 \usepackage{ragged2e}
 
 % Mehrere Fussnoten nacheinander mit Komma separiert
@@ -35,6 +39,7 @@
 
 % todo Aufgaben als Kommentare verfassen für verschiedene Editoren
 \usepackage{todonotes}
+\reversemarginpar % damit Todos links im freien Raum angezeigt werden und nicht rechts
 
 %Pakete für Tabellen
 \usepackage{epstopdf}
@@ -51,7 +56,10 @@
 
 % sauber formatierter Quelltext
 \usepackage{listings}
-\lstset{numbers=left,
+\lstset{
+	captionpos=t,
+	extendedchars=true,
+	numbers=left,
 	numberstyle=\tiny,
 	numbersep=5pt,
 	breaklines=true,
@@ -65,6 +73,17 @@
   	commentstyle=\color{dkgreen},       % comment style
   	stringstyle=\color{mauve}         % string literal style
 }
+
+%-----------------------------------------------
+% Quelltextverzeichnis und Referenzen darauf
+%-----------------------------------------------
+\renewcommand\lstlistingname{Quelltext} % changes the caption name for listings.
+\renewcommand\lstlistlistingname{Quelltextverzeichnis} % changes the header name for the list of listings
+\def\lstlistingautorefname{Quelltext} % changes the autoref reference text
+
+% Einigermaßen sauber formatierter JavaScript und TypeScript Quelltext
+\input{skripte/modsJavaScript}
+\input{skripte/modsTypeScript}
 
 % Biblatex
 \usepackage[
@@ -157,7 +176,7 @@ sortlocale=de]{biblatex}
 %-----------------------------------
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[C]{-\ \thepage\ -}						% Seitenzahl oben, mittg
+\fancyhead[C]{-\ \thepage\ -}						% Seitenzahl oben, mittig
 %\fancyhead[L]{\leftmark}							% kein Footer vorhanden
 \renewcommand{\headrulewidth}{0.4pt}
 
@@ -167,7 +186,7 @@ sortlocale=de]{biblatex}
 %-----------------------------------
 \begin{document}
 
-\pagenumbering{Roman}								% Seitennumerierung auf römisch umstellen
+\pagenumbering{Roman}								% Seitennummerierung auf römisch umstellen
 \renewcommand{\refname}{Literaturverzeichnis}		% "Literatur" in
 %"Literaturverzeichnis" umbenennen
 \newcolumntype{C}{>{\centering\arraybackslash}X}	% Neuer Tabellen-Spalten-Typ:
@@ -238,6 +257,11 @@ sortlocale=de]{biblatex}
 \listoffigures
 \newpage
 %-----------------------------------
+% Quellcodeverzeichnis
+%-----------------------------------
+\lstlistoflistings
+\newpage
+%-----------------------------------
 % Tabellenverzeichnis
 %-----------------------------------
 \listoftables
@@ -264,9 +288,9 @@ sortlocale=de]{biblatex}
 \pagenumbering{Roman} %Zähler wieder römisch ausgeben
 \setcounter{page}{4}  %Zähler manuell hochsetzen
 
-\begin{RaggedRight}
+%\begin{RaggedRight}
 \printbibliography
-\end{RaggedRight}
+%\end{RaggedRight}
 
 % Alternative Darstellung:
 % Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
