@@ -1,4 +1,5 @@
 {
+    "editor.wordWrap": "on",
     "latex-workshop.latex.recipes": [
         {
             "name": "build",
