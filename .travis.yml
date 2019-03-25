@@ -5,7 +5,10 @@ before_install:
   
 install:
   - sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber --no-install-recommends
-
+  - sudo tlmgr update --self
+  - sudo tlmgr update --all
+  - sudo tlmgr install biblatex-ext --no-install-recommends
+  
 script:
   - pdflatex --version
   - biber --version
