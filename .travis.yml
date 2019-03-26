@@ -8,7 +8,7 @@ install:
   - sudo tlmgr init-usertree
   - sudo tlmgr update --self
   - sudo tlmgr update --all
-  - sudo tlmgr install biblatex-ext --no-install-recommends
+  - sudo tlmgr install biblatex-ext
   
 script:
   - pdflatex --version
