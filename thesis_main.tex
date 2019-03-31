@@ -67,19 +67,40 @@
 }
 
 % Biblatex
+
+%%%% Neuer Leitfaden (2018)
 \usepackage[
 backend=biber,
-style=numeric,
-citestyle=authoryear,
-url=false,
-isbn=false,
-notetype=footonly,
-hyperref=false,
-sortlocale=de]{biblatex}
+style=ext-authoryear,
+maxcitenames=2,
+maxbibnames=999,
+mergedate=false,
+date=iso,
+urldate=iso,
+innamebeforetitle,
+dashed=false,
+autocite=footnote,
+doi=false
+]{biblatex}%iso dateformat für YYYY-MM-DD
 
 %weitere Anpassungen für BibLaTex
-\input{skripte/modsBiblatex}
+\input{skripte/modsBiblatex2018}
 
+%%%%% Alter Leitfaden. Ggf. Einkommentieren und Bereich hierüber auskommentieren
+%\usepackage[
+%backend=biber,
+%style=numeric,
+%citestyle=authoryear,
+%url=false,
+%isbn=false,
+%notetype=footonly,
+%hyperref=false,
+%sortlocale=de]{biblatex}
+
+%weitere Anpassungen für BibLaTex
+%\input{skripte/modsBiblatex}
+
+%%%% Ende Alter Leitfaden
 
 %Bib-Datei einbinden
 \addbibresource{literatur/literatur.bib}
@@ -149,7 +170,7 @@ sortlocale=de]{biblatex}
 	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
 	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
 	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-	{€}{{\EUR}}1 {£}{{\pounds}}1
+	{€}{{\EUR}}1 {£}{{\pounds}}1 {„}{{\glqq{}}}1
 }
 
 %-----------------------------------
@@ -226,6 +247,7 @@ sortlocale=de]{biblatex}
 \setcounter{page}{2}
 \tableofcontents
 \newpage
+\setcounter{tocdepth}{2} %wurde vorher in zusaetzlichesMaterial.tex auf 0 gesetzt um Inhalt des Anhangs zu verbergen. Dadurch gehen allerdings Abbildungs und Tabellenverzeichnis kaputt.
 
 %-----------------------------------
 % Abkürzungsverzeichnis
@@ -277,5 +299,6 @@ sortlocale=de]{biblatex}
 %\printbibliography[type=book,heading=subbibliography,title={Bücher}]
 %\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
 
+\fancyhead[C]{\thepage} %weil die Ehrenwörtliche Erklärung keine Seitenzahl hat müssen die Striche entfernt werden
 \input{kapitel/anhang/erklaerung}
 \end{document}

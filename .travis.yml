@@ -1,11 +1,15 @@
-dist: trusty
+dist: bionic
 before_install:
-  - sudo add-apt-repository ppa:jonathonf/texlive-2016 -y
+  - sudo add-apt-repository ppa:jonathonf/texlive-2018 -y 
   - sudo apt-get update
-
+  
 install:
-  - sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber --no-install-recommends
-
+  - sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber xzdec --no-install-recommends
+  - sudo tlmgr init-usertree
+  - sudo tlmgr update --self
+  - sudo tlmgr update --all
+  - sudo tlmgr install biblatex-ext
+  
 script:
   - pdflatex --version
   - biber --version
