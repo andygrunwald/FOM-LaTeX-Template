@@ -66,6 +66,17 @@ In der Datei haben wir einige Variablen hinterlegt, die im Dokument (u.a. auf de
 
 Ersetze die Muster-Werte durch deine persönlichen Angaben und diese werden automatisch im Dokument verwendet.
 
+## Dokumentensprache
+
+Die Vorlage ist sowohl auf Deutsch, als auch auf Englisch umgesetzt. Um die Sprache auf Englisch umzustellen müssen in der Datei [`skripte/meta.tex`](./skripte/meta.tex) die beiden oberen Zeilen mit % auskommentiert werden. Stattdessen muss das % vor den unteren beiden Zeilen entfernt werden. Dadurch wird das Titelblatt, Verzeichnisüberschriften und auch der Inhalt des Literaturverzeichnis auf die englische Sprache umgestellt.
+```
+\detrue
+\usepackage[ngerman]{babel}
+
+%\entrue
+%\usepackage[english]{babel}
+```
+
 ## Fußnoten
 
 Einige Professoren bevorzugen ein anderes Fußnoten-Format.
@@ -81,6 +92,8 @@ Dazu kann der Custom-Befehl `\fullfootcite[Vgl. ][Seite 1]{Balzert.2008}` genutz
 ```
 Vgl. Balzert, Helmut et al. (2008), Seite 1.
 ```
+
+Wird die englische Version genutzt muss "Vgl." durch "compare" und "S." durch "p." ersetzt werden.
 
 ## Literaturverzeichnis
 

@@ -48,7 +48,7 @@
 \renewcommand*{\mkbibnamesuffix}{\mkbibemph} 
 \renewcommand*{\mkbibnameprefix}{\mkbibemph} 
 %Delimiter für mehrere und letzten Namen gleich setzen
-\DeclareDelimFormat{multinamedelim}{\addsemicolon\addspace}%hinzugefügt. Ansonsten werden mehrere namen mit komma getrennt
+\DeclareDelimFormat{multinamedelim}{\addcomma\addspace}%hinzugefügt. Ansonsten werden mehrere namen mit komma getrennt
 \DeclareDelimAlias{finalnamedelim}{multinamedelim} 
 
 \DeclareNameAlias{default}{family-given} 
@@ -72,9 +72,9 @@
   {}{} 
 
 \DeclareFieldFormat[online]{date}{\mkbibparens{#1}} 
-\DeclareFieldFormat{urltime}{#1\addspace Uhr}
+\DeclareFieldFormat{urltime}{#1\addspace \langde{Uhr}\langen{MEZ}}
 \DeclareFieldFormat{urldate}{%urltime zu urldate hinzufügen
-  [Zugriff\addcolon\addspace
+  [\langde{Zugriff}\langen{Access}\addcolon\addspace
   #1
   \printfield{urltime}]
 }
@@ -84,7 +84,7 @@
   \ifentrytype{online} 
     {\setunit*{\addspace}% 
      \iffieldundef{year}
-       {\printtext[date]{keine Datumsangabe}} 
+       {\printtext[date]{\langde{keine Datumsangabe}\langen{no Date} }} 
        {\usebibmacro{date}}}% 
     {}% 
   \setunit*{\addspace}% 
@@ -102,17 +102,20 @@
   nodate    = {{}o.\adddot J\adddot}, 
   andothers = {et\addabbrvspace al\adddot} 
 } 
-
+\DefineBibliographyStrings{english}{ 
+  nodate    = {{}n.\adddot d\adddot}, 
+  andothers = {et\addabbrvspace al\adddot} 
+} 
 \DeclareSourcemap{ 
   \maps[datatype=bibtex]{ 
     \map{ 
       \step[notfield=translator, final] 
       \step[notfield=editor, final] 
-      \step[fieldset=author, fieldvalue={{{o\noexpand\adddot V\noexpand\adddot}}}] 
+      \step[fieldset=author, fieldvalue={{{\langde{o\noexpand\adddot V\noexpand\adddot}\langen{Anon}}}}] 
     } 
     \map{ 
       \pernottype{online} 
-      \step[fieldset=location, fieldvalue={o\noexpand\adddot O\noexpand\adddot}] 
+      \step[fieldset=location, fieldvalue={\langde{o\noexpand\adddot O\noexpand\adddot}\langen{s\noexpand\adddot I\noexpand\adddot}}] 
     } 
   } 
 } 
@@ -158,5 +161,5 @@
 \renewbibmacro*{postnote}{% 
   \setunit{\postnotedelim}% 
   \iffieldundef{postnote} 
-    {\printtext{o.S\adddot}} 
+    {\printtext{\langde{o.S\adddot}\langen{no page number}}} 
     {\printfield{postnote}}} 

@@ -1,9 +1,22 @@
 %-----------------------------------
 % Define document and include general packages
 %-----------------------------------
+
 \documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
+%Dokumentensprache
+\newif\ifde
+\newif\ifen
+ 
+%-----------------------------------
+% Meta informationen
+%-----------------------------------
+\input{skripte/meta}
+
+\newcommand{\langde}[1]{%
+   \ifde\selectlanguage{ngerman}#1\fi}
+\newcommand{\langen}[1]{%
+   \ifen\selectlanguage{english}#1\fi}
 \usepackage[babel,german=quotes]{csquotes}
 \usepackage[T1]{fontenc}
 \usepackage{fancyhdr}
@@ -138,11 +151,6 @@ doi=false
 \makenomenclature
 
 %-----------------------------------
-% Meta informationen
-%-----------------------------------
-\input{skripte/meta}
-
-%-----------------------------------
 % PDF Meta Daten setzen
 %-----------------------------------
 \hypersetup{
@@ -189,7 +197,8 @@ doi=false
 \begin{document}
 
 \pagenumbering{Roman}								% Seitennumerierung auf römisch umstellen
-\renewcommand{\refname}{Literaturverzeichnis}		% "Literatur" in
+\renewcommand{\refname}{\langde{Literaturverzeichnis}
+						\langen{Bibliography}}		% "Literatur" in
 %"Literaturverzeichnis" umbenennen
 \newcolumntype{C}{>{\centering\arraybackslash}X}	% Neuer Tabellen-Spalten-Typ:
 %Zentriert und umbrechbar
@@ -201,36 +210,48 @@ doi=false
 	\newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
 	\begin{center}
 		\textbf{\myHochschulName}\\
-		\textbf{\myHochschulStandort}\\
+		\textbf{
+			\langde{Hochschulzentrum}
+			\langen{university location}
+			\myHochschulStandort}\\
 		\vspace{1.5cm}
 			\includegraphics[width=3cm]{abbildungen/fomLogo.jpg} \\
 		\vspace{1.5cm}
-		Berufsbegleitender Studiengang\\
+		\langde{Berufsbegleitender Studiengang}
+		\langen{part-time degree program}\\
 		\myStudiengang, \mySemesterZahl. Semester\\
 		\vspace{2cm}
 		\textbf{\myThesisArt}\\
-		\textbf{zur Erlangung des Grades eines}\\
+		\textbf{
+				\langde{zur Erlangung des Grades eines}
+				\langen{to obtain the degree of}
+				}\\
 		\textbf{\myAkademischerGrad}\\
 		% Oder für Hausarbeiten:
 		%\textbf{im Rahmen der Lehrveranstaltung}\\
 		%\textbf{\myLehrveranstaltung}\\
 		\vspace{2cm}
-		über das Thema\\
+		\langde{über das Thema}
+		\langen{on the subject}\\
 		\Huge{\myTitel}\\
 		\vspace{0.2cm}
 	\end{center}
 	\normalsize
 	\vfill
 	\begin{tabbing}
-		Links \= Mitte \= Rechts\kill
-		Betreuer: \> \> \myBetreuer\\
+		Links \= Mitte \=Mittez \= Rechts\kill
+		\langde{Betreuer}
+		\langen{Advisor}: \> \> \>\myBetreuer\\
 		\> \> \\
 
-		Autor: \> \> \myAutor\\
-		\> \>  Matrikelnr.: \myMatrikelNr\\
-		\> \> \myAdresse\\
-		\> \> \\
-		Abgabe: \> \> \myAbgabeDatum
+		\langde{Autor}
+		\langen{Author}: \> \> \> \myAutor\\
+		\> \> \>  \langde{Matrikelnr.}
+				\langen{Matriculation Number}: \myMatrikelNr\\
+		\> \> \> \myAdresse\\
+		\> \> \>  \\
+		\langde{Abgabe}
+		\langen{Submission}: \> \> \> \myAbgabeDatum
 	\end{tabbing}
 \end{titlepage}
 
