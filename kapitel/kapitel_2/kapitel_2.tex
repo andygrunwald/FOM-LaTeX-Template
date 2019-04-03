@@ -1,5 +1,5 @@
 \newpage
-\section{Latex-Details}
+\section{Latex-Details} \label{latexDetails}
 
 \subsection{Verwendete Software, Editor und Zusatzpakete}
 \subsubsection{Windows 8+}
@@ -54,7 +54,7 @@ Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur n
 \subsection{Tabellen}
 \begin{table}[H]
 \centering
-\begin{tabular}[ht]{|l|l|l|}
+\begin{tabularx}{\textwidth}[ht]{|l|X|l|}
   \hline
   \textbf{Abkürzung} & \textbf{Beschreibung} & \textbf{Berechnung}\\
   \hline\hline
@@ -81,7 +81,7 @@ Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur n
 	\hline\hline
 	\multicolumn{3}{|l|}{\textbf{= Bruttoverkaufspreis (BVP)}} \\
 	\hline
-\end{tabular} \\
+\end{tabularx} \\
 		\caption{Beispieltabelle 1}
 		\label{tbl:beispieltabelle2}
 \end{table}
@@ -91,7 +91,7 @@ Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur n
 \subsection{Biblatex}
 Von den vielen verfügbaren Literatur-Paketen habe ich mich für Biblatex entschieden. Die Anforderungen der FOM sollten hiermit erfüllt sein. Ich habe bisher nur Einträge \enquote{@book} getestet. Wie immer steckt der Teufel hier im Detail und es wird sich später herausstellen, ob Biblatex eine gute Wahl war. Die Anpassungen hierfür liegen unter skripte/modsBiblatex. Ich verwende das Backend Biber, welches bib-Dateien in UTF-8 verarbeiten kann.
 
-In der für den Leitfaden 2018 aktualisierten Version sind außerdem Beispiele für \enquote{online},\footcite[Vgl. ][]{website:angular:aboutAngular} also Webseiten, und \enquote{article},\footcite[Vgl. ][S. 140]{Decker2009} also wissenschaftliche Artikel, enthalten. Auch \enquote{incollection} ist möglich.\footcite{becker2016data}
+In der für den Leitfaden 2018 aktualisierten Version sind außerdem Beispiele für \enquote{online},\footcite[Vgl. ][]{website:angular:aboutAngular} also Webseiten, und \enquote{article},\footcite[Vgl. ][S. 140]{Decker2009} also wissenschaftliche Artikel, enthalten.
 
 \subsection{Listen und Aufzählungen}
 \subsubsection{Listen}
