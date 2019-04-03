@@ -42,6 +42,7 @@
 \usepackage{multirow}
 \usepackage{rotating} % vertikal schreiben
 \usepackage{mdwlist}
+\usepackage{tabularx}% für breitenangabe
 
 \definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
 \definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
@@ -67,6 +68,8 @@
 }
 
 % Biblatex
+
+%%%% Neuer Leitfaden (2018)
 \usepackage[
 backend=biber,
 style=ext-authoryear,
@@ -82,8 +85,23 @@ doi=false
 ]{biblatex}%iso dateformat für YYYY-MM-DD
 
 %weitere Anpassungen für BibLaTex
-\input{skripte/modsBiblatex}
+\input{skripte/modsBiblatex2018}
 
+%%%%% Alter Leitfaden. Ggf. Einkommentieren und Bereich hierüber auskommentieren
+%\usepackage[
+%backend=biber,
+%style=numeric,
+%citestyle=authoryear,
+%url=false,
+%isbn=false,
+%notetype=footonly,
+%hyperref=false,
+%sortlocale=de]{biblatex}
+
+%weitere Anpassungen für BibLaTex
+%\input{skripte/modsBiblatex}
+
+%%%% Ende Alter Leitfaden
 
 %Bib-Datei einbinden
 \addbibresource{literatur/literatur.bib}
@@ -230,6 +248,7 @@ doi=false
 \setcounter{page}{2}
 \tableofcontents
 \newpage
+\setcounter{tocdepth}{2} %wurde vorher in zusaetzlichesMaterial.tex auf 0 gesetzt um Inhalt des Anhangs zu verbergen. Dadurch gehen allerdings Abbildungs und Tabellenverzeichnis kaputt.
 
 %-----------------------------------
 % Abkürzungsverzeichnis
@@ -281,5 +300,6 @@ doi=false
 %\printbibliography[type=book,heading=subbibliography,title={Bücher}]
 %\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
 
+\fancyhead[C]{\thepage} %weil die Ehrenwörtliche Erklärung keine Seitenzahl hat müssen die Striche entfernt werden
 \input{kapitel/anhang/erklaerung}
 \end{document}
