@@ -6,7 +6,13 @@ Diese Vorlage hat weder einen Anspruch auf Richtigkeit, noch auf Vollständigkei
 Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)).
 
 ---
-
+### Bekannte Bugs
+- Allgemein: noch nicht auf Leitfaden 2018 umgestellt!
+- Fußnoten: ebd. (ebenda) funktioniert nicht
+- Linux: Allgemein komplett getestet
+- Linux: Docker Probleme
+- Linux: Times New Roman sehr speziell (für bessere Darstelleung) siehe hirzu den Abschnitt in diesem Handbuch
+---
 ### Tutorial
 
 Ein kurzes [Tutorial](#tutorial-jetbrains-intellij-idea) zu einem Setup, findest du [hier](#tutorial-jetbrains-intellij-idea).
@@ -56,7 +62,7 @@ Die aktuelle Standarteinstellung ist HAUSARBEIT.
 
 ## Achtung
 
-Dies soll eine LaTeX -Vorlage für den persönlichen Gebrauch werden. Sie hat weder einen Anspruch auf Richtigkeit, noch auf Vollständigkeit. 
+Dies soll eine LaTeX -Vorlage für den persönlichen Gebrauch werden. Sie hat weder einen Anspruch auf Richtigkeit, noch auf Vollständigkeit. 
 Kontrolle und ggf. klärung mit deinem betreuenden Dozenten vor Abgabe sind notwendig.
 
 ## Änderungen am Original
@@ -128,7 +134,7 @@ Vgl.    Tanenbaum, Andrew,      Netzwerke,     2003,   S. 69–98.
         [author]                [shorttitle]   [year]  [pages]
 
 Befehl \onlinecite:
-Vgl.    https://...,  Zugriff am ...2015...;   Grünwald,...,   Template,    2015,    S. 1.
+Vgl.    https://...,  Zugriff am ...2015...;   Grünwald,...,   Template,    2015,    S. 1.
         [url]         [note]                   [author]        [shorttitle] [year]   [pages]
 ```
 bookcite` und `articlecite` sind synonym. `onlinecite` soll für Onlinequellen benutzt werden. Alle drei sind Furßnotenzitate.
