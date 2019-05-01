@@ -11,7 +11,7 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 - Fußnoten: ebd. (ebenda) funktioniert nicht
 - Linux: Allgemein nicht komplett getestet
 - Linux: Docker Probleme
-- Linux: Times New Roman sehr speziell (für bessere Darstelleung) siehe hirzu den Abschnitt in diesem Handbuch
+- Linux: Times New Roman sehr speziell (für bessere Darstellung) siehe hirzu den Abschnitt in diesem Handbuch
 ---
 ### Tutorial
 
