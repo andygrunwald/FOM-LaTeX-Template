@@ -9,7 +9,7 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 ### Bekannte Bugs
 - Allgemein: noch nicht auf Leitfaden 2018 umgestellt!
 - Fußnoten: ebd. (ebenda) funktioniert nicht
-- Linux: Allgemein komplett getestet
+- Linux: Allgemein nicht komplett getestet
 - Linux: Docker Probleme
 - Linux: Times New Roman sehr speziell (für bessere Darstelleung) siehe hirzu den Abschnitt in diesem Handbuch
 ---
