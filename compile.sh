@@ -50,6 +50,7 @@ rm *.nls* > /dev/null
 rm *.out > /dev/null
 rm *.toc > /dev/null
 rm *.run.xml > /dev/null
+rm *.lot > /dev/null
 
 echo "PDF Compile: Success"
 
