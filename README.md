@@ -169,12 +169,33 @@ docker-compose up
 
 Den Befehl lasst ihr einfach über eure Kommandozeile bzw. PowerShell laufen (in Windows cmd.exe bzw. powershell.exe, beim Mac ist es das Terminal). Zum Projektordner könnt ihr kommen, indem ihr über den cd Befehl dorthin navigiert oder im Windows-Explorer in diesen Ordner wechselt und dann bei gedrückter Shift-Taste die rechte Maus-Taste klickt. Dort müsst ihr dann im Menü den Eintrag : "Öffne Kommandozeile hier" auswählen.
 
+Falls es hier zu Problemen kommt, wenn ein gecachtes Image verwendet wird können die folgende Befehle ausgeführt werden:
+
+```
+docker-compose build --no cache
+docker-compose up
+```
+
 Wird Docker unter Windows 10 verwendet, muss der Daemon wie folgt konfiguriert werden:
 
 ![Docker Konfiguration unter Windows 10](https://cloud.githubusercontent.com/assets/6319666/17108377/7c3aef54-5293-11e6-95e3-bd99f42820f0.png)
 
 Die benötigten Pakete befinden sich in dem Docker-Image, welches auf [Docker Hub unter andygrunwald/fom-latex-template](https://hub.docker.com/r/andygrunwald/fom-latex-template/) zur Verfügung steht.
 Es wird bei der Ausführung automatisch heruntergeladen.
+
+### Fehlerbehandlung
+
+Falls unter Windows der folgende Fehler auftritt checkt `git` die Dateien mit Windows Line Endings aus. Dies verursacht im Ubuntu Container einen Fehler.
+
+```
+  env: bash\r: No such file or directory
+```
+
+Mit dem folgenden Befehl kann man `git` dazu zwingen alle Dateien mit UNIX Zeilenendungen zu laden (siehe [stackoverflow](https://stackoverflow.com/questions/29045140/env-bash-r-no-such-file-or-directory)):
+
+```
+git config --global core.autocrlf true
+```
 
 #### Image selbst bauen
 
