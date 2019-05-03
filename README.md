@@ -233,17 +233,17 @@ Mit Hilfe der Extension kann das Projekt kompiliert und als Vorschau angesehen w
 
 ## Wörter zählen
 
-Gerade bei der Verwendung eines Texteditors ist das Zählen der Wörter unter umständen gar nicht so einfach. Deshalb hier zwei Vorschläge um die Wörter der Arbeit zu zählen:
+Gerade bei der Verwendung eines Texteditors ist das Zählen der Wörter unter umständen eine mühselige Aufgabe. Mit den folgenden Vorschlägen kann man die Wörter der Arbeit zählen:
 
 ### TeXcount
 
-Über die Seite [TeXcount](https://app.uio.no/ifi/texcount/online.php) können Latex Dateien gezählt werden.
+Über die Seite [TeXcount](https://app.uio.no/ifi/texcount/online.php) können Latex Dateien hochgeladen und gezählt werden.
 
 ### Unix / macOS Script
 
-Unter Unix und macOS kann das mitgelieferte Script helfen die Wörter zu zählen. Dafür muss nur [detex](https://github.com/pkubowicz/opendetex) installiert werden, was unter macOS mittels [homebrew](https://brew.sh/index_de) mit dem Befehl `brew install opendetex` gemacht werden kann.
+Unter Unix und macOS kann das mitgelieferte Script helfen die Wörter zu zählen. Dafür muss nur [detex](https://github.com/pkubowicz/opendetex) installiert werden. Unter macOS kann `detex` mittels [homebrew](https://brew.sh/index_de) über den Befehl `brew install opendetex` installiert werden.
 
-Das Skript muss einfach über `sh ./countwords.sh` gestartet werden.
+Das Skript wird einfach über `sh ./countwords.sh` gestartet.
 
 ## Ich habe eine Frage oder ein Problem
 
