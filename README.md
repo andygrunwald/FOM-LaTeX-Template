@@ -29,10 +29,11 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
     1. [Image selbst bauen](#image-selbst-bauen)
 10. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
     1. [Texpad](#texpad)
-11. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
-12. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
-13. [Disclaimer](#disclaimer)
-14. [Lizenz](#lizenz)
+11. [Wörter zählen](#wörter-zählen)
+12. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
+13. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
+14. [Disclaimer](#disclaimer)
+15. [Lizenz](#lizenz)
 
 ## Für die eigene Arbeit nutzen
 
@@ -104,7 +105,7 @@ Und die folgenden Zeilen einkommentieren und ggf. anpassen.
 
 ## Sperrvermerk
 
-Sollte ein Sperrvermerk für die Arbeit notwendig sein, so kann dieser durch einkommentieren der folgenden Zeile aktiviert werden: 
+Sollte ein Sperrvermerk für die Arbeit notwendig sein, so kann dieser durch einkommentieren der folgenden Zeile aktiviert werden:
 
 ```latex
 \input{kapitel/anhang/sperrvermerk}
@@ -229,6 +230,20 @@ Wer eine etwas moderne IDE benutzen möchte, kann auch Visual Studio Code verwen
 [Latex Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
 Mit Hilfe der Extension kann das Projekt kompiliert und als Vorschau angesehen werden. In der ```settings.json``` sind die Einstellungen der ```compile.sh``` für Latex Workshop hinterlegt.
+
+## Wörter zählen
+
+Gerade bei der Verwendung eines Texteditors ist das Zählen der Wörter unter umständen gar nicht so einfach. Deshalb hier zwei Vorschläge um die Wörter der Arbeit zu zählen:
+
+### TeXcount
+
+Über die Seite [TeXcount](https://app.uio.no/ifi/texcount/online.php) können Latex Dateien gezählt werden.
+
+### Unix / macOS Script
+
+Unter Unix und macOS kann das mitgelieferte Script helfen die Wörter zu zählen. Dafür muss nur [detex](https://github.com/pkubowicz/opendetex) installiert werden, was unter macOS mittels [homebrew](https://brew.sh/index_de) mit dem Befehl `brew install opendetex` gemacht werden kann.
+
+Das Skript muss einfach über `sh ./countwords.sh` gestartet werden.
 
 ## Ich habe eine Frage oder ein Problem
 
