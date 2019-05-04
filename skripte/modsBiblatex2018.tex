@@ -47,8 +47,13 @@
 \renewcommand*{\mkbibnamegiven}{\mkbibemph} 
 \renewcommand*{\mkbibnamesuffix}{\mkbibemph} 
 \renewcommand*{\mkbibnameprefix}{\mkbibemph} 
+
+% Die Trennung mehrerer Autorennamen erfolgt durch Kommata.
+% siehe Beispiele im Leitfaden S. 16
+% Die folgende Zeile würde mit Semikolon trennen
+%\DeclareDelimFormat{multinamedelim}{\addsemicolon\addspace}
+
 %Delimiter für mehrere und letzten Namen gleich setzen
-\DeclareDelimFormat{multinamedelim}{\addsemicolon\addspace}%hinzugefügt. Ansonsten werden mehrere namen mit komma getrennt
 \DeclareDelimAlias{finalnamedelim}{multinamedelim} 
 
 \DeclareNameAlias{default}{family-given} 
