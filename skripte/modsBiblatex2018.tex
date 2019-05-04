@@ -113,12 +113,12 @@
     \map{ 
       \step[notfield=translator, final] 
       \step[notfield=editor, final] 
-      \step[fieldset=author, fieldvalue={{{o\noexpand\adddot V\noexpand\adddot}}}] 
-    } 
+      \step[fieldset=author,
+      fieldvalue={{{o\noexpand\adddot\addspace V\noexpand\adddot}}}] } 
     \map{ 
       \pernottype{online} 
-      \step[fieldset=location, fieldvalue={o\noexpand\adddot O\noexpand\adddot}] 
-    } 
+      \step[fieldset=location,
+      fieldvalue={o\noexpand\adddot\addspace O\noexpand\adddot}] } 
   } 
 } 
 
@@ -160,10 +160,11 @@
   {\printfield{eid}}
 }
 
+% Postnote ist der Text in der zweiten eckigen Klammer bei einem Zitat
 \renewbibmacro*{postnote}{% 
   \setunit{\postnotedelim}% 
   \iffieldundef{postnote} 
-    {\printtext{o.S\adddot}} 
+    {\printtext{o\adddot\addspace S\adddot}} 
     {\printfield{postnote}}} 
     
 % Abstand bei Änderung Anfangsbuchstabe ca. 1.5 Zeilen
