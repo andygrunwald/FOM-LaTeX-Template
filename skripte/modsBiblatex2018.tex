@@ -161,10 +161,13 @@
 }
 
 % Postnote ist der Text in der zweiten eckigen Klammer bei einem Zitat
+% wenn es keinen solchen Eintrag gibt, dann auch nicht ausgeben, z.B. 'o. S.'
+% Wenn man das will, kann man das 'o. S.' ja explizit angeben. Andernfalls steht
+% sonst auch bei Webseiten 'o. S.' da, was laut Leitfaden nicht ok ist.
 \renewbibmacro*{postnote}{% 
   \setunit{\postnotedelim}% 
   \iffieldundef{postnote} 
-    {\printtext{o\adddot\addspace S\adddot}} 
+    {} %{\printtext{o\adddot\addspace S\adddot}} 
     {\printfield{postnote}}} 
     
 % Abstand bei Änderung Anfangsbuchstabe ca. 1.5 Zeilen
