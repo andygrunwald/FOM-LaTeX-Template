@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 #Run the Script from the folder you are in...
+#CMD_LATEX=pdflatex
+CMD_LATEX=lualatex
+
 CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-pdflatex "$CURRENT_DIR/thesis_main.tex"
+$CMD_LATEX "$CURRENT_DIR/thesis_main.tex"
 RETVAL="$?"
 if [[ "${RETVAL}" -ne 0 ]] ; then
     echo "First pdflatex run failed"
@@ -23,14 +26,14 @@ if [[ "${RETVAL}" -ne 0 ]] ; then
     exit ${RETVAL}
 fi
 
-pdflatex "$CURRENT_DIR/thesis_main.tex"
+$CMD_LATEX "$CURRENT_DIR/thesis_main.tex"
 RETVAL="$?"
 if [[ "${RETVAL}" -ne 0 ]] ; then
     echo "Second pdflatex run failed"
     exit ${RETVAL}
 fi
 
-pdflatex "$CURRENT_DIR/thesis_main.tex"
+$CMD_LATEX "$CURRENT_DIR/thesis_main.tex"
 RETVAL="$?"
 if [[ "${RETVAL}" -ne 0 ]] ; then
     echo "Third pdflatex run failed"

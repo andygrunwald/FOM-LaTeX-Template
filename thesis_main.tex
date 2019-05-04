@@ -9,7 +9,7 @@
 % Da es aber verschiedene Regelungen je nach Dozent geben kann, werden hier
 % beide Varianten dargestellt.
 %\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
-\documentclass[12pt,oneside,titlepage]{scrartcl}
+\documentclass[11pt,oneside,titlepage]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage[babel,german=quotes]{csquotes}
@@ -42,6 +42,11 @@
 \hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
 \fontfamily{ptm}\selectfont
 \usepackage{ragged2e}
+
+% Schriftart Arial
+\usepackage{fontspec}
+\setsansfont{Arial}
+\renewcommand\familydefault{\sfdefault}
 
 % Mehrere Fussnoten nacheinander mit Komma separiert
 \usepackage[hang, multiple]{footmisc}
