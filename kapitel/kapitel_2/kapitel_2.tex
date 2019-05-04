@@ -45,15 +45,15 @@ Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur n
 
 
 \begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.9\textwidth]{sup}
 \caption{Titel der Abbildung hier}
-\end{center}
+\includegraphics[width=0.9\textwidth]{sup}
+\\
+Quelle: Eigene Darstellung
 \end{figure}
 
 \subsection{Tabellen}
 \begin{table}[H]
-\centering
+\caption{Beispieltabelle 1}
 \begin{tabularx}{\textwidth}[ht]{|l|X|l|}
   \hline
   \textbf{Abkürzung} & \textbf{Beschreibung} & \textbf{Berechnung}\\
@@ -82,8 +82,8 @@ Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur n
 	\multicolumn{3}{|l|}{\textbf{= Bruttoverkaufspreis (BVP)}} \\
 	\hline
 \end{tabularx} \\
-		\caption{Beispieltabelle 1}
-		\label{tbl:beispieltabelle2}
+\label{tbl:beispieltabelle2}
+\cite[Quelle: In Anlehnung an][S. 4]{Beckert.2012}
 \end{table}
 
 %\clearpage % hiermit werden alle Bilder Tabellen ausgeworfen
