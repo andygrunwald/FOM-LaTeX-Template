@@ -97,14 +97,37 @@
   } 
 
 
+%% Anzeige des Jahres nach dem Stichwort (usera) im Literaturverzeichnis
+%% Wenn das Jahr bei Online-Quellen nicht explizit angegeben wurde, wird nach
+%% dem Stichwort 'o. J.' ausgegeben. Nach der URL steht dann 'keine
+%% Datumsangabe'. Ist das Jahr definiert, wird es an beiden Stellen ausgegeben.
+%% Das Zugriffsdatum (urldate) spielt hier keine Rolle.
+%% Für Nicht-Online-Quellen wird nichts geändert.
 \renewbibmacro*{date+extradate}{% 
   \printtext[parens]{% 
     \printfield{usera}% 
-    \setunit{\printdelim{titleyeardelim}}% 
-    \printlabeldateextra}} 
+    \setunit{\printdelim{titleyeardelim}}%
+    \ifentrytype{online} 
+       {\setunit*{\addspace\addcomma\addspace}% 
+         \iffieldundef{year}
+           {\bibstring{nodate}} 
+       {\printlabeldateextra}}% 
+       {\printlabeldateextra}}}
+ 
+%% Anzeige des Jahres nach dem Stichwort (usera) in der Fussnote
+%% das Stichwort hat der Aufrufer hier schon ausgegeben.
+%% siehe auch Kommentar zu: \renewbibmacro*{date+extradate}
+\renewbibmacro*{cite:labeldate+extradate}{% 
+    \ifentrytype{online} 
+       {\setunit*{\addspace\addcomma\addspace}% 
+         \iffieldundef{year}
+           {\bibstring{nodate}} 
+       {\printlabeldateextra}}% 
+       {\printlabeldateextra}}
+ 
 
 \DefineBibliographyStrings{german}{ 
-  nodate    = {{}o.\adddot J\adddot}, 
+  nodate    = {{}o.\adddot\addspace J\adddot}, 
   andothers = {et\addabbrvspace al\adddot} 
 } 
 
