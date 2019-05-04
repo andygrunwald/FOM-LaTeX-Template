@@ -22,6 +22,12 @@
 \usepackage{array}
 \usepackage{float}      %Positionierung von Abb. und Tabellen mit [H] erzwingen
 \usepackage{footnote}
+% Darstellung der Beschriftung von Tabellen und Abbildungen (Leitfaden S. 44)
+% singlelinecheck=false: macht die Caption linksbündig (statt zentriert)
+% labelfont auf fett: (Tabelle x.y:, Abbildung: x.y)
+% font auf fett: eigentliche Bezeichnung der Abbildung oder Tabelle
+% Fettschrift laut Leitfaden 2018 S. 45
+\usepackage[singlelinecheck=false, labelfont=bf, font=bf]{caption}	
 \usepackage{caption}
 \usepackage{enumitem}
 \usepackage{amssymb}
