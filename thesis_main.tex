@@ -193,9 +193,17 @@ doi=false
 %-----------------------------------
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[C]{-\ \thepage\ -}						% Seitenzahl oben, mittg
+% Seitenzahl oben, mittig, mit Strichen beidseits 
+% \fancyhead[C]{-\ \thepage\ -}						
+
+% Seitenzahl oben, mittig, entsprechend Leitfaden ohne Striche beidseits
+\fancyhead[C]{\thepage}						
+
 %\fancyhead[L]{\leftmark}							% kein Footer vorhanden
-\renewcommand{\headrulewidth}{0.4pt}
+% Waagerechte Linie unterhalb des Kopfbereiches anzeigen. Laut Leitfaden ist
+% diese Linie nicht erforderlich. Ihre Breite kann daher auf 0pt gesetzt werden.
+%\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0pt}
 
 
 %-----------------------------------
