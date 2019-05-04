@@ -1,7 +1,15 @@
 %-----------------------------------
 % Define document and include general packages
 %-----------------------------------
-\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+% Tabellen- und Abkürzungsverzeichnis stehen normalerweise nicht im
+% Inhaltsverzeichnis. Gleiches gilt für das Abkürzungsverzeichnis (siehe unten).
+% Manche Dozenten bemängeln das. Die Optionen 'listof=totoc,bibliography=totoc'
+% geben das Tabellen- und Abkürzungsverzeichnis im Inhaltsverzeichnis (toc=Table
+% of Content) aus.
+% Da es aber verschiedene Regelungen je nach Dozent geben kann, werden hier
+% beide Varianten dargestellt.
+%\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+\documentclass[12pt,oneside,titlepage]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage[babel,german=quotes]{csquotes}
@@ -131,7 +139,13 @@ doi=false
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
-\usepackage[intoc]{nomencl}
+
+% Die Option 'intoc' zeigt das Abkürzungsverzeichnis innerhalb des
+% Inhaltsverzeichnisses an. (siehe auch Tabellen- und Abbildungsverzeichnis
+% oben)
+% \usepackage[intoc]{nomencl}
+\usepackage{nomencl}
+
 \renewcommand{\nomname}{Abkürzungsverzeichnis}
 \setlength{\nomlabelwidth}{.20\textwidth}
 \renewcommand{\nomlabel}[1]{#1 \dotfill}
@@ -250,11 +264,7 @@ doi=false
 \newpage
 \setcounter{tocdepth}{2} %wurde vorher in zusaetzlichesMaterial.tex auf 0 gesetzt um Inhalt des Anhangs zu verbergen. Dadurch gehen allerdings Abbildungs und Tabellenverzeichnis kaputt.
 
-%-----------------------------------
-% Abkürzungsverzeichnis
-%-----------------------------------
-\printnomenclature
-\newpage
+
 %-----------------------------------
 % Abbildungsverzeichnis
 %-----------------------------------
@@ -264,6 +274,13 @@ doi=false
 % Tabellenverzeichnis
 %-----------------------------------
 \listoftables
+\newpage
+%-----------------------------------
+% Abkürzungsverzeichnis 
+% Es kommt laut der Reihenfolge im Leitfaden erst nach Abbildungs- und
+% Tabellenverzeichnis. 
+%-----------------------------------
+\printnomenclature
 \newpage
 %-----------------------------------
 % Seitennummerierung auf arabisch und ab 1 beginnend umstellen
@@ -284,21 +301,45 @@ doi=false
 \newpage
 %\addcontentsline{toc}{section}{Literatur}
 
-\pagenumbering{Roman} %Zähler wieder römisch ausgeben
-\setcounter{page}{4}  %Zähler manuell hochsetzen
+% Die folgenden beiden Befehle würden ab dem Literaturverzeichnis wieder eine
+% römische Seitennummerierung nutzen.
+% Das ist nach dem Leitfaden nicht zu tun. Dort steht nur dass 'sämtliche
+% Verzeichnisse VOR dem Textteil' römisch zu nummerieren sind. (vgl. S. 3)
+%\pagenumbering{Roman} %Zähler wieder römisch ausgeben
+%\setcounter{page}{4}  %Zähler manuell hochsetzen
 
-\begin{RaggedRight}
-\printbibliography
-\end{RaggedRight}
+% Ausgabe des Literaturverzeichnisses
 
-% Alternative Darstellung:
-% Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
-% Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
+% Keine Trennung der Werke im Literaturverzeichnis nach ihrer Art
+% (Online/nicht-Online)
+%\begin{RaggedRight}
+%\printbibliography
+%\end{RaggedRight}
 
-%\printbibheading
-%\printbibliography[type=article,heading=subbibliography,title={Artikel}]
-%\printbibliography[type=book,heading=subbibliography,title={Bücher}]
-%\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
+% Alternative Darstellung, die laut Leitfaden genutzt werden sollte.
+% Dazu die Zeilen auskommentieren und folgenden code verwenden:
+
+% Literaturverzeichnis getrennt nach Nicht-Online-Werken und Online-Werken
+% (Internetquellen).
+% Die Option nottype=online nimmt alles, was kein Online-Werk ist.
+% Die Option heading=bibintoc sorgt dafür, dass das Literaturverzeichnis im
+% Inhaltsverzeichnis steht.
+% Es ist übrigens auch möglich mehrere type- bzw. nottype-Optionen anzugeben, um
+% noch weitere Arten von Zusammenfassungen eines Literaturverzeichnisse zu
+% erzeugen.
+% Beispiel: [type=book,type=article]
+\printbibliography[nottype=online,heading=bibintoc,title={Literaturverzeichnis}]
+
+% neue Seite für Internetquellen-Verzeichnis
+\newpage
+
+% Laut Leitfaden 2018, S. 14, Fussnote 44 stehen die Internetquellen NICHT im
+% Inhaltsverzeichnis, sondern gehören zum Literaturverzeichnis. 
+% Die Option heading=bibintoc würde die Internetquelle als eigenen Eintrag im
+% Inhaltsverzeicnis anzeigen.
+%\printbibliography[type=online,heading=bibintoc,title={Internetquellen}]
+\printbibliography[type=online,title={Internetquellen}]
+
 
 \fancyhead[C]{\thepage} %weil die Ehrenwörtliche Erklärung keine Seitenzahl hat müssen die Striche entfernt werden
 \input{kapitel/anhang/erklaerung}
