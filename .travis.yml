@@ -1,16 +1,11 @@
-dist: bionic
+env:
+  - DOCKER_COMPOSE_VERSION=1.4.2
+
 before_install:
-  - sudo add-apt-repository ppa:jonathonf/texlive-2018 -y 
-  - sudo apt-get update
-  
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+ 
 install:
-  - sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber xzdec --no-install-recommends
-  - sudo tlmgr init-usertree
-  - sudo tlmgr update --self
-  - sudo tlmgr update --all
-  - sudo tlmgr install biblatex-ext
-  
-script:
-  - pdflatex --version
-  - biber --version
-  - ./compile.sh
+  - docker-compose up
