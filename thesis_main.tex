@@ -8,9 +8,10 @@
 \usepackage[T1]{fontenc}
 \usepackage{fancyhdr}
 \usepackage{fancybox}
-\usepackage[a4paper, left=4cm, right=2cm, top=2.8cm, bottom=2.3cm]{geometry}
+\usepackage[a4paper, left=4cm, right=2cm, top=4cm, bottom=2cm]{geometry}
 \usepackage{graphicx}
 \usepackage{colortbl}
+\usepackage[capposition=top]{floatrow}
 \usepackage{array}
 \usepackage{float}      %Positionierung von Abb. und Tabellen mit [H] erzwingen
 \usepackage{footnote}
@@ -18,6 +19,7 @@
 \usepackage{enumitem}
 \usepackage{amssymb}
 \usepackage{mathptmx}
+\usepackage{minted}
 \usepackage[scaled=0.9]{helvet} % Behebt, zusammen mit Package courier, pixelige Überschriften. Ist, zusammen mit mathptx, dem times-Package vorzuziehen. Details: https://latex-kurs.de/fragen/schriftarten/Times_New_Roman.html
 \usepackage{courier}
 \usepackage{amsmath}
@@ -26,7 +28,7 @@
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \definecolor{darkblack}{rgb}{0,0,0}
 \hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
-\fontfamily{ptm}\selectfont
+\renewcommand\familydefault{\sfdefault}
 \usepackage{ragged2e}
 
 % Mehrere Fussnoten nacheinander mit Komma separiert
@@ -105,6 +107,12 @@ doi=false
 
 %Bib-Datei einbinden
 \addbibresource{literatur/literatur.bib}
+
+%Silbentrennung
+\usepackage{hyphsubst}
+\HyphSubstIfExists{ngerman-x-latest}{%
+\HyphSubstLet{ngerman}{ngerman-x-latest}}{}
+\usepackage[ngerman]{babel}
 
 % Pfad fuer Abbildungen
 \graphicspath{{./}{./abbildungen/}}
@@ -217,7 +225,7 @@ doi=false
 		%\textbf{\myLehrveranstaltung}\\
 		\vspace{2cm}
 		über das Thema\\
-		\Huge{\myTitel}\\
+		\Large{\myTitel}\\
 		\vspace{0.2cm}
 	\end{center}
 	\normalsize
@@ -299,6 +307,14 @@ doi=false
 %\printbibliography[type=article,heading=subbibliography,title={Artikel}]
 %\printbibliography[type=book,heading=subbibliography,title={Bücher}]
 %\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
+
+% Um mehrere Typen zu vereinen kann ein Bibliography-Filter verwendet werden
+% \defbibfilter{literature}{
+%   type=article or
+%   type=book
+% }
+% \printbibliography[filter=literature,heading=subbibliography,title={Literatur}]
+
 
 \fancyhead[C]{\thepage} %weil die Ehrenwörtliche Erklärung keine Seitenzahl hat müssen die Striche entfernt werden
 \input{kapitel/anhang/erklaerung}
