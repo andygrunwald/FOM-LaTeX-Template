@@ -1,16 +1,13 @@
-dist: bionic
-before_install:
-  - sudo add-apt-repository ppa:jonathonf/texlive-2019 -y
-  - sudo apt-get update
+sudo: required
 
-install:
-  - sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-lang-german texlive-generic-extra biber xzdec python python-pygments --no-install-recommends
-  - sudo tlmgr init-usertree
-  - sudo tlmgr update --self
-  - sudo tlmgr update --all
-  - sudo tlmgr install biblatex-ext
+services:
+  - docker
+
+env:
+  - COMPOSE_FILE=docker-compose.yml
+
+before_script:
+  - docker build -t andygrunwald/fom-latex-template .
 
 script:
-  - pdflatex --version
-  - biber --version
-  - ./compile.sh
+  - docker-compose up

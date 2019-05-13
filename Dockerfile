@@ -25,11 +25,7 @@ RUN echo 'deb [trusted=yes] http://ppa.launchpad.net/jonathonf/texlive-2018/ubun
 		python \
 		python-pygments \
 		--no-install-recommends \
-	&& rm -rf /var/lib/apt/lists/* \
-	&& tlmgr init-usertree \
-  	&& tlmgr update --self \
-  	&& tlmgr update --all \
-  	&& tlmgr install biblatex-ext
+	&& rm -rf /var/lib/apt/lists/*
 # This can get removed at some point due to docker-compose
 VOLUME ["/data"]
 

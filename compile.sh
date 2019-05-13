@@ -37,20 +37,21 @@ if [[ "${RETVAL}" -ne 0 ]] ; then
     exit ${RETVAL}
 fi
 
-rm *.bbl > /dev/null
-rm *.blg > /dev/null
-rm *.aux > /dev/null
-rm *.bcf > /dev/null
-rm *.ilg > /dev/null
-rm *.lof > /dev/null
-rm *.log > /dev/null
-rm *.nlo > /dev/null
-rm *.nls* > /dev/null
-rm *.out > /dev/null
-rm *.toc > /dev/null
-rm *.run.xml > /dev/null
+rm *.bbl 2> /dev/null
+rm *.blg 2> /dev/null
+rm *.aux 2> /dev/null
+rm *.bcf 2> /dev/null
+rm *.ilg 2> /dev/null
+rm *.lof 2> /dev/null
+rm *.log 2> /dev/null
+rm *.lot 2> /dev/null
+rm *.nlo 2> /dev/null
+rm *.nls* 2> /dev/null
+rm *.out 2> /dev/null
+rm *.toc 2> /dev/null
+rm *.run.xml 2> /dev/null
+rm *.lot 2> /dev/null
 
 echo "PDF Compile: Success"
 
 exit 0
-
