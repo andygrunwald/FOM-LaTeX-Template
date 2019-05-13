@@ -22,6 +22,8 @@ RUN echo 'deb [trusted=yes] http://ppa.launchpad.net/jonathonf/texlive-2018/ubun
 		texlive-generic-extra \
 		biber \
 		xz-utils \
+		python \
+		python-pygments \
 		--no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 # This can get removed at some point due to docker-compose
