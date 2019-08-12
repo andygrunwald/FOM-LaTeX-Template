@@ -123,8 +123,8 @@ Folgendermaßen könnt ihr Quellcode einbauen:
 \lstinputlisting[language=Java]{./Quellcode/Dateiname.js}
 ```
 
-Für [Javascript](https://de.wikipedia.org/wiki/JavaScript) gibt es noch keine eigene Sprache, daher benutzt am besten [Java](https://de.wikipedia.org/wiki/Java_(Programmiersprache)).
-Für eine genauere Beschreibung empfehlen wir folgenden Artikel: [LaTeX/Source Code Listings @ Wikibooks](http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings).
+Für [Javascript](https://de.wikipedia.org/wiki/JavaScript) wurde eine eigene Definition erstellt und eingebaut. 
+Für eine genauere Beschreibung aller im Standard verfügbaren Sprachen empfehlen wir folgenden Artikel: [LaTeX/Source Code Listings @ Wikibooks](http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings).
 
 ## Einheitliche Schriftarten erzwingen
 
