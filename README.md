@@ -120,7 +120,7 @@ Dieses wird dort auch mit den Farben für Kommentare, Strings, etc konfiguriert.
 Folgendermaßen könnt ihr Quellcode einbauen:
 
 ```latex
-\lstinputlisting[language=Java]{./Quellcode/Dateiname.js}
+\lstinputlisting[language=JavaScript]{./Quellcode/Dateiname.js}
 ```
 
 Für [Javascript](https://de.wikipedia.org/wiki/JavaScript) wurde eine eigene Definition erstellt und eingebaut. 
