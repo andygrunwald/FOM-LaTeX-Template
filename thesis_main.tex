@@ -54,7 +54,25 @@
 
 % sauber formatierter Quelltext
 \usepackage{listings}
-\lstset{numbers=left,
+% JavaScript als Sprache definieren:
+\lstdefinelanguage{JavaScript}{
+	keywords={break, super, case, extends, switch, catch, finally, for, const, function, try, continue, if, typeof, debugger, var, default, in, void, delete, instanceof, while, do, new, with, else, return, yield, enum, let, await},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywords={class, export, boolean, throw, implements, import, this, interface, package, private, protected, public, static},
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	sensitive=false,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	morestring=[b]',
+	morestring=[b]"
+}
+
+\lstset{
+	%language=JavaScript,
+	numbers=left,
 	numberstyle=\tiny,
 	numbersep=5pt,
 	breaklines=true,
@@ -83,7 +101,8 @@ urldate=iso,
 innamebeforetitle,
 dashed=false,
 autocite=footnote,
-doi=false
+doi=false,
+mincrossrefs = 1
 ]{biblatex}%iso dateformat für YYYY-MM-DD
 
 %weitere Anpassungen für BibLaTex
@@ -307,6 +326,13 @@ doi=false
 %\printbibliography[type=article,heading=subbibliography,title={Artikel}]
 %\printbibliography[type=book,heading=subbibliography,title={Bücher}]
 %\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
+
+% weitere Variante, die nur Online von anderen Quellen trennt:
+
+%\printbibheading
+%\printbibliography[nottype=online,heading=subbibliography,title={Literaturquellen}]
+%\printbibliography[type=online,heading=subbibliography,title={Internetquellen}]
+
 
 % Um mehrere Typen zu vereinen kann ein Bibliography-Filter verwendet werden
 % \defbibfilter{literature}{
