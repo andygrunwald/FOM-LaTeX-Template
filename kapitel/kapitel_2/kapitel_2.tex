@@ -45,17 +45,19 @@ Statt dem Package lstlisting, welches direkt auf Tex basiert, kann auch das Pack
 Dieses Package basiert auf python-pygments und unterstützt weit mehr Sprachkonstrukte als lstlisting.
 Um das Paket zu verwenden muss es eingebunden werden und zusätzlich python-pygments installiert sein.
 (Dies ist mit im Dockerfile vorhanden)
-Minted lässt sich ganz ähnlich zu lstlisting verwenden:
+Damit das kompilieren ohne Python trotzdem möglich ist, ist die Funktion standardmäßig ausgebaut. Deshalb muss zusätzlich in der Datei \begin{verbatim}thesis_main.tex \usepackage{minted} \end{verbatim} wieder einkommentiert werden. 
 
-\begin{minted}{c}
-	int main() {
-		printf("hello, world");
-		return 0;
-	}
-\end{minted}
+Minted lässt sich dann ganz ähnlich zu lstlisting verwenden:
+\begin{lstlisting}
+	\begin{minted}{c}
+		int main() {
+			printf("hello, world");
+			return 0;
+		}
+	\end{minted}
+\end{lstlisting}	
 
 Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur noch der Name des Bildes ohne Dateiendung stehen (sup).
-
 
 \begin{figure}[H]
 \begin{center}
