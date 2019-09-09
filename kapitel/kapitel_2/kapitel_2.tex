@@ -44,7 +44,8 @@ Bei längeren Quellcode-Listings empfiehlt es sich jedoch auf eine externe Datei
 Statt dem Package lstlisting, welches direkt auf Tex basiert, kann auch das Package minted verwendet werden.
 Dieses Package basiert auf python-pygments und unterstützt weit mehr Sprachkonstrukte als lstlisting.
 Um das Paket zu verwenden muss es eingebunden werden und zusätzlich python-pygments installiert sein.
-(Dies ist mit im Dockerfile vorhanden)
+(Dies ist mit im Dockerfile vorhanden. Für die anderen Compile-Methoden, wie das native verwenden von Tex Live findet sich hier die Installationsanleitung für das minted Paket: https://ctan.org/pkg/minted?lang=de)
+
 Damit das kompilieren ohne Python trotzdem möglich ist, ist die Funktion standardmäßig ausgebaut. Deshalb muss zusätzlich in der Datei \begin{verbatim}thesis_main.tex \usepackage{minted} \end{verbatim} wieder einkommentiert werden. 
 
 Minted lässt sich dann ganz ähnlich zu lstlisting verwenden:
