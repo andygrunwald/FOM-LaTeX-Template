@@ -1,7 +1,14 @@
 %-----------------------------------
 % Define document and include general packages
 %-----------------------------------
-\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+% Tabellen- und Abkürzungsverzeichnis stehen normalerweise nicht im
+% Inhaltsverzeichnis. Gleiches gilt für das Abkürzungsverzeichnis (siehe unten).
+% Manche Dozenten bemängeln das. Die Optionen 'listof=totoc'
+% gibt das Tabellenverzeichnis im Inhaltsverzeichnis (toc=Table% of Content) aus.
+% Da es aber verschiedene Regelungen je nach Dozent geben kann, werden hier
+% beide Varianten dargestellt.
+%\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+\documentclass[12pt,oneside,titlepage,bibliography=totoc]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage[babel,german=quotes]{csquotes}
@@ -97,6 +104,7 @@ maxcitenames=2,
 maxbibnames=999,
 mergedate=false,
 date=iso,
+seconds=true, %werden nicht verwendet, so werden aber Warnungen unterdrückt.
 urldate=iso,
 innamebeforetitle,
 dashed=false,
@@ -158,7 +166,11 @@ mincrossrefs = 1
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
-\usepackage[intoc]{nomencl}
+% Die Option 'intoc' zeigt das Abkürzungsverzeichnis innerhalb des
+% Inhaltsverzeichnisses an. Das ist laut Leitfaden nicht nötig.
+% (siehe auch Tabellen- und Abbildungsverzeichnis oben)
+% \usepackage[intoc]{nomencl}
+\usepackage{nomencl}
 \renewcommand{\nomname}{Abkürzungsverzeichnis}
 \setlength{\nomlabelwidth}{.20\textwidth}
 \renewcommand{\nomlabel}[1]{#1 \dotfill}
@@ -278,11 +290,6 @@ mincrossrefs = 1
 \setcounter{tocdepth}{2} %wurde vorher in zusaetzlichesMaterial.tex auf 0 gesetzt um Inhalt des Anhangs zu verbergen. Dadurch gehen allerdings Abbildungs und Tabellenverzeichnis kaputt.
 
 %-----------------------------------
-% Abkürzungsverzeichnis
-%-----------------------------------
-\printnomenclature
-\newpage
-%-----------------------------------
 % Abbildungsverzeichnis
 %-----------------------------------
 \listoffigures
@@ -291,6 +298,11 @@ mincrossrefs = 1
 % Tabellenverzeichnis
 %-----------------------------------
 \listoftables
+\newpage
+%-----------------------------------
+% Abkürzungsverzeichnis
+%-----------------------------------
+\printnomenclature
 \newpage
 %-----------------------------------
 % Seitennummerierung auf arabisch und ab 1 beginnend umstellen
