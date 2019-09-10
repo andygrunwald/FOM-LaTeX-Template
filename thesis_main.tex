@@ -1,7 +1,15 @@
 %-----------------------------------
 % Define document and include general packages
 %-----------------------------------
-\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+% Tabellen- und Abkürzungsverzeichnis stehen normalerweise nicht im
+% Inhaltsverzeichnis. Gleiches gilt für das Abkürzungsverzeichnis (siehe unten).
+% Manche Dozenten bemängeln das. Die Optionen 'listof=totoc,bibliography=totoc'
+% geben das Tabellen- und Abkürzungsverzeichnis im Inhaltsverzeichnis (toc=Table
+% of Content) aus.
+% Da es aber verschiedene Regelungen je nach Dozent geben kann, werden hier
+% beide Varianten dargestellt.
+%\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+\documentclass[12pt,oneside,titlepage,bibliography=totoc]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage[babel,german=quotes]{csquotes}
@@ -158,7 +166,11 @@ mincrossrefs = 1
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
-\usepackage[intoc]{nomencl}
+% Die Option 'intoc' zeigt das Abkürzungsverzeichnis innerhalb des
+% Inhaltsverzeichnisses an. Das ist laut Leitfaden nicht nötig.
+% (siehe auch Tabellen- und Abbildungsverzeichnis oben)
+% \usepackage[intoc]{nomencl}
+\usepackage{nomencl}
 \renewcommand{\nomname}{Abkürzungsverzeichnis}
 \setlength{\nomlabelwidth}{.20\textwidth}
 \renewcommand{\nomlabel}[1]{#1 \dotfill}
