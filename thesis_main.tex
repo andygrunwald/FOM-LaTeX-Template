@@ -1,8 +1,14 @@
 %-----------------------------------
 % Define document and include general packages
 %-----------------------------------
-
-\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+% Tabellen- und Abkürzungsverzeichnis stehen normalerweise nicht im
+% Inhaltsverzeichnis. Gleiches gilt für das Abkürzungsverzeichnis (siehe unten).
+% Manche Dozenten bemängeln das. Die Optionen 'listof=totoc'
+% gibt das Tabellenverzeichnis im Inhaltsverzeichnis (toc=Table% of Content) aus.
+% Da es aber verschiedene Regelungen je nach Dozent geben kann, werden hier
+% beide Varianten dargestellt.
+%\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+\documentclass[12pt,oneside,titlepage,bibliography=totoc]{scrartcl}
 \usepackage[utf8]{inputenc}
 %Dokumentensprache
 \newif\ifde
@@ -21,9 +27,10 @@
 \usepackage[T1]{fontenc}
 \usepackage{fancyhdr}
 \usepackage{fancybox}
-\usepackage[a4paper, left=4cm, right=2cm, top=2.8cm, bottom=2.3cm]{geometry}
+\usepackage[a4paper, left=4cm, right=2cm, top=4cm, bottom=2cm]{geometry}
 \usepackage{graphicx}
 \usepackage{colortbl}
+\usepackage[capposition=top]{floatrow}
 \usepackage{array}
 \usepackage{float}      %Positionierung von Abb. und Tabellen mit [H] erzwingen
 \usepackage{footnote}
@@ -31,6 +38,7 @@
 \usepackage{enumitem}
 \usepackage{amssymb}
 \usepackage{mathptmx}
+%\usepackage{minted} %Kann für schöneres Syntax Highlighting genutzt werden. ACHTUNG: Python muss installiert sein.
 \usepackage[scaled=0.9]{helvet} % Behebt, zusammen mit Package courier, pixelige Überschriften. Ist, zusammen mit mathptx, dem times-Package vorzuziehen. Details: https://latex-kurs.de/fragen/schriftarten/Times_New_Roman.html
 \usepackage{courier}
 \usepackage{amsmath}
@@ -39,7 +47,7 @@
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \definecolor{darkblack}{rgb}{0,0,0}
 \hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
-\fontfamily{ptm}\selectfont
+\renewcommand\familydefault{\sfdefault}
 \usepackage{ragged2e}
 
 % Mehrere Fussnoten nacheinander mit Komma separiert
@@ -65,7 +73,25 @@
 
 % sauber formatierter Quelltext
 \usepackage{listings}
-\lstset{numbers=left,
+% JavaScript als Sprache definieren:
+\lstdefinelanguage{JavaScript}{
+	keywords={break, super, case, extends, switch, catch, finally, for, const, function, try, continue, if, typeof, debugger, var, default, in, void, delete, instanceof, while, do, new, with, else, return, yield, enum, let, await},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywords={class, export, boolean, throw, implements, import, this, interface, package, private, protected, public, static},
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	sensitive=false,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	morestring=[b]',
+	morestring=[b]"
+}
+
+\lstset{
+	%language=JavaScript,
+	numbers=left,
 	numberstyle=\tiny,
 	numbersep=5pt,
 	breaklines=true,
@@ -90,11 +116,13 @@ maxcitenames=2,
 maxbibnames=999,
 mergedate=false,
 date=iso,
+seconds=true, %werden nicht verwendet, so werden aber Warnungen unterdrückt.
 urldate=iso,
 innamebeforetitle,
 dashed=false,
 autocite=footnote,
-doi=false
+doi=false,
+mincrossrefs = 1
 ]{biblatex}%iso dateformat für YYYY-MM-DD
 
 %weitere Anpassungen für BibLaTex
@@ -118,6 +146,12 @@ doi=false
 
 %Bib-Datei einbinden
 \addbibresource{literatur/literatur.bib}
+
+%Silbentrennung
+\usepackage{hyphsubst}
+\HyphSubstIfExists{ngerman-x-latest}{%
+\HyphSubstLet{ngerman}{ngerman-x-latest}}{}
+\usepackage[ngerman]{babel}
 
 % Pfad fuer Abbildungen
 \graphicspath{{./}{./abbildungen/}}
@@ -144,7 +178,11 @@ doi=false
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
-\usepackage[intoc]{nomencl}
+% Die Option 'intoc' zeigt das Abkürzungsverzeichnis innerhalb des
+% Inhaltsverzeichnisses an. Das ist laut Leitfaden nicht nötig.
+% (siehe auch Tabellen- und Abbildungsverzeichnis oben)
+% \usepackage[intoc]{nomencl}
+\usepackage{nomencl}
 \renewcommand{\nomname}{Abkürzungsverzeichnis}
 \setlength{\nomlabelwidth}{.20\textwidth}
 \renewcommand{\nomlabel}[1]{#1 \dotfill}
@@ -234,7 +272,7 @@ doi=false
 		\vspace{2cm}
 		\langde{über das Thema}
 		\langen{on the subject}\\
-		\Huge{\myTitel}\\
+		\Large{\myTitel}\\
 		\vspace{0.2cm}
 	\end{center}
 	\normalsize
@@ -272,11 +310,6 @@ doi=false
 \setcounter{tocdepth}{2} %wurde vorher in zusaetzlichesMaterial.tex auf 0 gesetzt um Inhalt des Anhangs zu verbergen. Dadurch gehen allerdings Abbildungs und Tabellenverzeichnis kaputt.
 
 %-----------------------------------
-% Abkürzungsverzeichnis
-%-----------------------------------
-\printnomenclature
-\newpage
-%-----------------------------------
 % Abbildungsverzeichnis
 %-----------------------------------
 \listoffigures
@@ -285,6 +318,11 @@ doi=false
 % Tabellenverzeichnis
 %-----------------------------------
 \listoftables
+\newpage
+%-----------------------------------
+% Abkürzungsverzeichnis
+%-----------------------------------
+\printnomenclature
 \newpage
 %-----------------------------------
 % Seitennummerierung auf arabisch und ab 1 beginnend umstellen
@@ -320,6 +358,21 @@ doi=false
 %\printbibliography[type=article,heading=subbibliography,title={Artikel}]
 %\printbibliography[type=book,heading=subbibliography,title={Bücher}]
 %\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
+
+% weitere Variante, die nur Online von anderen Quellen trennt:
+
+%\printbibheading
+%\printbibliography[nottype=online,heading=subbibliography,title={Literaturquellen}]
+%\printbibliography[type=online,heading=subbibliography,title={Internetquellen}]
+
+
+% Um mehrere Typen zu vereinen kann ein Bibliography-Filter verwendet werden
+% \defbibfilter{literature}{
+%   type=article or
+%   type=book
+% }
+% \printbibliography[filter=literature,heading=subbibliography,title={Literatur}]
+
 
 \fancyhead[C]{\thepage} %weil die Ehrenwörtliche Erklärung keine Seitenzahl hat müssen die Striche entfernt werden
 \input{kapitel/anhang/erklaerung}
