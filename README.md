@@ -78,6 +78,7 @@ Die Vorlage ist sowohl auf Deutsch, als auch auf Englisch umgesetzt. Um die Spra
 %\entrue
 %\usepackage[english]{babel}
 ```
+Nach dem kompilieren findet sich das Ergebnis in der Datei [`thesis_main.pdf`](./thesis_main.pdf). Die [`thesis_englisch.pdf`](./thesis_englisch.pdf) ist nur dazu da auf Github die Möglichkeit aufzuzeigen.
 
 ## Fußnoten
 
