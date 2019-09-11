@@ -23,7 +23,8 @@
    \ifde\selectlanguage{ngerman}#1\fi}
 \newcommand{\langen}[1]{%
    \ifen\selectlanguage{english}#1\fi}
-\usepackage[babel,german=quotes]{csquotes}
+\langde{\usepackage[babel,german=quotes]{csquotes}}
+\langen{\usepackage[babel,english=british]{csquotes}}
 \usepackage[T1]{fontenc}
 \usepackage{fancyhdr}
 \usepackage{fancybox}
@@ -151,7 +152,6 @@ mincrossrefs = 1
 \usepackage{hyphsubst}
 \HyphSubstIfExists{ngerman-x-latest}{%
 \HyphSubstLet{ngerman}{ngerman-x-latest}}{}
-\usepackage[ngerman]{babel}
 
 % Pfad fuer Abbildungen
 \graphicspath{{./}{./abbildungen/}}
