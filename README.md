@@ -17,23 +17,24 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
     1. [Klassischer Download](#klassischer-download)
     2. [Fork auf Github](#fork-auf-github)
 2. [Vorlage personalisieren](#vorlage-personalisieren)
-3. [Fußnoten](#fußnoten)
-4. [Literaturverzeichnis](#literaturverzeichnis)
-5. [Sperrvermerk](#sperrvermerk)
-6. [Quellcode einbinden](#quellcode-einbinden)
-7. [Einheitliche Schriftarten erzwingen](#einheitliche-schriftarten-erzwingen)
-8. [Vorraussetzungen](#vorraussetzungen)
+3. [Dokumentensprache](#Dokumentensprache)
+4. [Fußnoten](#fußnoten)
+5. [Literaturverzeichnis](#literaturverzeichnis)
+6. [Sperrvermerk](#sperrvermerk)
+7. [Quellcode einbinden](#quellcode-einbinden)
+8. [Einheitliche Schriftarten erzwingen](#einheitliche-schriftarten-erzwingen)
+9. [Vorraussetzungen](#vorraussetzungen)
     1. [LaTeX-Pakete](#latex-pakete)
-9. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
+10. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
     1. [Docker unter Linux / macOS / Windows](#docker-unter-linux--macos--windows)
     1. [Image selbst bauen](#image-selbst-bauen)
-10. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
+11. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
     1. [Texpad](#texpad)
-11. [Wörter zählen](#wörter-zählen)
-12. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
-13. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
-14. [Disclaimer](#disclaimer)
-15. [Lizenz](#lizenz)
+12. [Wörter zählen](#wörter-zählen)
+13. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
+14. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
+15. [Disclaimer](#disclaimer)
+16. [Lizenz](#lizenz)
 
 ## Für die eigene Arbeit nutzen
 
@@ -67,6 +68,18 @@ In der Datei haben wir einige Variablen hinterlegt, die im Dokument (u.a. auf de
 
 Ersetze die Muster-Werte durch deine persönlichen Angaben und diese werden automatisch im Dokument verwendet.
 
+## Dokumentensprache
+
+Die Vorlage ist sowohl auf Deutsch, als auch auf Englisch umgesetzt. Um die Sprache auf Englisch umzustellen müssen in der Datei [`skripte/meta.tex`](./skripte/meta.tex) die beiden oberen Zeilen mit % auskommentiert werden. Stattdessen muss das % vor den unteren beiden Zeilen entfernt werden. Dadurch wird das Titelblatt, Verzeichnisüberschriften und auch der Inhalt des Literaturverzeichnis auf die englische Sprache umgestellt.
+```
+\detrue
+\usepackage[ngerman]{babel}
+
+%\entrue
+%\usepackage[english]{babel}
+```
+Nach dem kompilieren findet sich das Ergebnis in der Datei [`thesis_main.pdf`](./thesis_main.pdf). Die [`thesis_englisch.pdf`](./thesis_englisch.pdf) ist nur dazu da auf Github die Möglichkeit aufzuzeigen.
+
 ## Fußnoten
 
 Einige Professoren bevorzugen ein anderes Fußnoten-Format.
@@ -82,6 +95,8 @@ Dazu kann der Custom-Befehl `\fullfootcite[Vgl. ][Seite 1]{Balzert.2008}` genutz
 ```
 Vgl. Balzert, Helmut et al. (2008), Seite 1.
 ```
+
+Wird die englische Version genutzt muss "Vgl." durch "compare" und "S." durch "p." ersetzt werden.
 
 ## Literaturverzeichnis
 
