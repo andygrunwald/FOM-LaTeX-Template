@@ -13,7 +13,7 @@
 %Dokumentensprache
 \newif\ifde
 \newif\ifen
- 
+
 %-----------------------------------
 % Meta informationen
 %-----------------------------------
@@ -178,16 +178,7 @@ mincrossrefs = 1
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
-% Die Option 'intoc' zeigt das Abkürzungsverzeichnis innerhalb des
-% Inhaltsverzeichnisses an. Das ist laut Leitfaden nicht nötig.
-% (siehe auch Tabellen- und Abbildungsverzeichnis oben)
-% \usepackage[intoc]{nomencl}
-\usepackage{nomencl}
-\renewcommand{\nomname}{Abkürzungsverzeichnis}
-\setlength{\nomlabelwidth}{.20\textwidth}
-\renewcommand{\nomlabel}[1]{#1 \dotfill}
-\setlength{\nomitemsep}{-\parsep}
-\makenomenclature
+\usepackage[printonlyused]{acronym}
 
 %-----------------------------------
 % PDF Meta Daten setzen
@@ -322,7 +313,7 @@ mincrossrefs = 1
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
-\printnomenclature
+\input{acronyms}
 \newpage
 %-----------------------------------
 % Seitennummerierung auf arabisch und ab 1 beginnend umstellen
