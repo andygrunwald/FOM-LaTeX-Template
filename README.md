@@ -70,14 +70,16 @@ Ersetze die Muster-Werte durch deine persönlichen Angaben und diese werden auto
 
 ## Dokumentensprache
 
-Die Vorlage ist sowohl auf Deutsch, als auch auf Englisch umgesetzt. Um die Sprache auf Englisch umzustellen müssen in der Datei [`skripte/meta.tex`](./skripte/meta.tex) die beiden oberen Zeilen mit % auskommentiert werden. Stattdessen muss das % vor den unteren beiden Zeilen entfernt werden. Dadurch wird das Titelblatt, Verzeichnisüberschriften und auch der Inhalt des Literaturverzeichnis auf die englische Sprache umgestellt.
+Die Vorlage ist sowohl auf Deutsch, als auch auf Englisch umgesetzt. Dadurch wird das Titelblatt, Verzeichnisüberschriften und auch der Inhalt des Literaturverzeichnis auf die englische Sprache umgestellt.
+Um die Datei auf Englisch zu kompilieren muss mit docker-compose folgender Befehl umgesetzt werden:
 ```
-\detrue
-\usepackage[ngerman]{babel}
-
-%\entrue
-%\usepackage[english]{babel}
+docker-compose run --service-ports fom ./compile.sh en
 ```
+Ohne Docker muss die Datei mit der compile.sh folgendermaßen aufgerufen werden:
+```
+./compile.sh en
+```
+Für die Batch-Datei ist das Kompilieren auf Englisch leider noch nicht möglich.
 Nach dem kompilieren findet sich das Ergebnis in der Datei [`thesis_main.pdf`](./thesis_main.pdf). Die [`thesis_englisch.pdf`](./thesis_englisch.pdf) ist nur dazu da auf Github die Möglichkeit aufzuzeigen.
 
 ## Fußnoten

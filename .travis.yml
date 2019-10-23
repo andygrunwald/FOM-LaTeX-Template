@@ -11,3 +11,4 @@ before_script:
 
 script:
   - docker-compose up --exit-code-from fom
+  - docker-compose run --service-ports fom ./compile.sh en

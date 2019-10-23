@@ -30,5 +30,6 @@ RUN echo 'deb [trusted=yes] http://ppa.launchpad.net/jonathonf/texlive-2018/ubun
 VOLUME ["/data"]
 
 WORKDIR /data
+ENTRYPOINT ["/compile.sh"]
 
-CMD pdflatex --version && biber --version && ./compile.sh
+CMD pdflatex --version && biber --version

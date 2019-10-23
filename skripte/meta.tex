@@ -47,9 +47,15 @@
 % Firma
 \newcommand{\myFirma}{Mustermann GmbH}
 
+
+\ifdefined\FOMEN
+%Englisch - Kommentar entfernen und die zwei Zeilen hierüber einkommentieren
+\entrue
+\usepackage[english]{babel}
+\else
 %Deutsch
 \detrue
 \usepackage[ngerman]{babel}
-%Englisch - Kommentar entfernen und die zwei Zeilen hierüber einkommentieren
-%\entrue
-%\usepackage[english]{babel}
+\fi
+
+
