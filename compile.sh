@@ -4,6 +4,7 @@ CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 compile=""
 biberarg=""
 
+echo "Compiling in Language: $1"
 if [ "$1" = "en" ]; then
   compile='pdflatex --shell-escape --jobname="thesis_englisch" "\def\FOMEN{}\input{$CURRENT_DIR/thesis_main.tex}"'
   biberarg="$CURRENT_DIR/thesis_englisch"
