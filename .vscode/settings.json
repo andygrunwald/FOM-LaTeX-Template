@@ -46,17 +46,6 @@
             ]
         },
         {
-            "name": "makeindex",
-            "command": "makeindex",
-            "args": [
-                "%DOCFILE%.nlo",
-                "-s",
-                "nomencl.ist",
-                "-o",
-                "%DOCFILE%.nls"
-            ]
-        },
-        {
             "name": "biber",
             "command": "biber",
             "args": [
