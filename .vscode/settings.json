@@ -4,7 +4,6 @@
             "name": "build",
             "tools": [
                 "pdflatex",
-                "makeindex",
                 "biber",
                 "pdflatex",
                 "pdflatex"
