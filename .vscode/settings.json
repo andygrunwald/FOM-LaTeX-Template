@@ -5,7 +5,6 @@
             "name": "build",
             "tools": [
                 "pdflatex",
-                "makeindex",
                 "biber",
                 "pdflatex",
                 "pdflatex"
@@ -44,17 +43,6 @@
             "command": "pdflatex",
             "args": [
                 "%DOC%.tex"
-            ]
-        },
-        {
-            "name": "makeindex",
-            "command": "makeindex",
-            "args": [
-                "%DOCFILE%.nlo",
-                "-s",
-                "nomencl.ist",
-                "-o",
-                "%DOCFILE%.nls"
             ]
         },
         {

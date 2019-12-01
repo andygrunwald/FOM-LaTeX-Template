@@ -6,7 +6,7 @@
 \newcommand{\myAutor}{Max Mustermann}
 
 % Adresse
-\newcommand{\myAdresse}{Heidestra\ss e 17 \\ \> \> 51147 Köln}
+\newcommand{\myAdresse}{Heidestra\ss e 17 \\ \> \> \> 51147 Köln}
 
 % Titel der Arbeit
 \newcommand{\myTitel}{LATEX-Vorlage - mit Biblatex}
@@ -24,7 +24,7 @@
 \newcommand{\myOrt}{Düsseldorf}
 
 % Datum der Abgabe
-\newcommand{\myAbgabeDatum}{28. Februar 2014}
+\newcommand{\myAbgabeDatum}{\today}
 
 % Semesterzahl
 \newcommand{\mySemesterZahl}{7}
@@ -33,7 +33,7 @@
 \newcommand{\myHochschulName}{FOM Hochschule für Oekonomie \& Management Essen}
 
 % Standort der Hochschule
-\newcommand{\myHochschulStandort}{Standort Düsseldorf}
+\newcommand{\myHochschulStandort}{Düsseldorf}
 
 % Studiengang
 \newcommand{\myStudiengang}{Wirtschaftsinformatik}
@@ -46,3 +46,16 @@
 
 % Firma
 \newcommand{\myFirma}{Mustermann GmbH}
+
+
+\ifdefined\FOMEN
+%Englisch
+\entrue
+\usepackage[english]{babel}
+\else
+%Deutsch
+\detrue
+\usepackage[ngerman]{babel}
+\fi
+
+

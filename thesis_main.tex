@@ -1,16 +1,37 @@
 %-----------------------------------
 % Define document and include general packages
 %-----------------------------------
-\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+% Tabellen- und Abkürzungsverzeichnis stehen normalerweise nicht im
+% Inhaltsverzeichnis. Gleiches gilt für das Abkürzungsverzeichnis (siehe unten).
+% Manche Dozenten bemängeln das. Die Optionen 'listof=totoc'
+% gibt das Tabellenverzeichnis im Inhaltsverzeichnis (toc=Table% of Content) aus.
+% Da es aber verschiedene Regelungen je nach Dozent geben kann, werden hier
+% beide Varianten dargestellt.
+%\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+\documentclass[12pt,oneside,titlepage,bibliography=totoc]{scrartcl}
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
-\usepackage[babel,german=quotes]{csquotes}
+%Dokumentensprache
+\newif\ifde
+\newif\ifen
+
+%-----------------------------------
+% Meta informationen
+%-----------------------------------
+\input{skripte/meta}
+
+\newcommand{\langde}[1]{%
+   \ifde\selectlanguage{ngerman}#1\fi}
+\newcommand{\langen}[1]{%
+   \ifen\selectlanguage{english}#1\fi}
+\langde{\usepackage[babel,german=quotes]{csquotes}}
+\langen{\usepackage[babel,english=british]{csquotes}}
 \usepackage[T1]{fontenc}
 \usepackage{fancyhdr}
 \usepackage{fancybox}
-\usepackage[a4paper, left=4cm, right=2cm, top=2.8cm, bottom=2.3cm]{geometry}
+\usepackage[a4paper, left=4cm, right=2cm, top=4cm, bottom=2cm]{geometry}
 \usepackage{graphicx}
 \usepackage{colortbl}
+\usepackage[capposition=top]{floatrow}
 \usepackage{array}
 \usepackage{float}      %Positionierung von Abb. und Tabellen mit [H] erzwingen
 \usepackage{footnote}
@@ -20,6 +41,9 @@
 \usepackage{mathptmx}
 % Behebt, zusammen mit Package courier, pixelige Überschriften. Ist, zusammen mit mathptx, dem times-Package vorzuziehen. Details: https://latex-kurs.de/fragen/schriftarten/Times_New_Roman.html
 \usepackage{helvet}\renewcommand{\familydefault}{\sfdefault}\fontfamily{phv}\selectfont   % Custom: Helvetica
+%\usepackage{minted} %Kann für schöneres Syntax Highlighting genutzt werden. ACHTUNG: Python muss installiert sein.
+% Template Original: 
+% \usepackage[scaled=0.9]{helvet} % Behebt, zusammen mit Package courier, pixelige Überschriften. Ist, zusammen mit mathptx, dem times-Package vorzuziehen. Details: https://latex-kurs.de/fragen/schriftarten/Times_New_Roman.html
 \usepackage{courier}
 \usepackage{amsmath}
 \usepackage[table]{xcolor}
@@ -27,10 +51,7 @@
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \definecolor{darkblack}{rgb}{0,0,0}
 \hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
-
-% original:
-% \fontfamily{ptm}\selectfont
-
+\renewcommand\familydefault{\sfdefault}
 \usepackage{ragged2e}
 
 % Mehrere Fussnoten nacheinander mit Komma separiert
@@ -47,6 +68,7 @@
 \usepackage{multirow}
 \usepackage{rotating} % vertikal schreiben
 \usepackage{mdwlist}
+\usepackage{tabularx}% für breitenangabe
 
 \definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
 \definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
@@ -56,9 +78,25 @@
 
 % sauber formatierter Quelltext
 \usepackage{listings}
+
+% JavaScript als Sprache definieren:
+\lstdefinelanguage{JavaScript}{
+	keywords={break, super, case, extends, switch, catch, finally, for, const, function, try, continue, if, typeof, debugger, var, default, in, void, delete, instanceof, while, do, new, with, else, return, yield, enum, let, await},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywords={class, export, boolean, throw, implements, import, this, interface, package, private, protected, public, static},
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	sensitive=false,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	morestring=[b]',
+	morestring=[b]"
+}
+
 \lstset{
-	captionpos=t,
-	extendedchars=true,
+	%language=JavaScript,
 	numbers=left,
 	numberstyle=\tiny,
 	numbersep=5pt,
@@ -86,22 +124,50 @@
 \input{skripte/modsTypeScript}
 
 % Biblatex
+
+%%%% Neuer Leitfaden (2018)
 \usepackage[
 backend=biber,
-style=numeric,
-citestyle=authoryear,
-url=false,
-isbn=false,
-notetype=footonly,
-hyperref=false,
-sortlocale=de]{biblatex}
+style=ext-authoryear,
+maxcitenames=2,
+maxbibnames=999,
+mergedate=false,
+date=iso,
+seconds=true, %werden nicht verwendet, so werden aber Warnungen unterdrückt.
+urldate=iso,
+innamebeforetitle,
+dashed=false,
+autocite=footnote,
+doi=false,
+mincrossrefs = 1
+]{biblatex}%iso dateformat für YYYY-MM-DD
 
 %weitere Anpassungen für BibLaTex
-\input{skripte/modsBiblatex}
+\input{skripte/modsBiblatex2018}
 
+%%%%% Alter Leitfaden. Ggf. Einkommentieren und Bereich hierüber auskommentieren
+%\usepackage[
+%backend=biber,
+%style=numeric,
+%citestyle=authoryear,
+%url=false,
+%isbn=false,
+%notetype=footonly,
+%hyperref=false,
+%sortlocale=de]{biblatex}
+
+%weitere Anpassungen für BibLaTex
+%\input{skripte/modsBiblatex}
+
+%%%% Ende Alter Leitfaden
 
 %Bib-Datei einbinden
 \addbibresource{literatur/literatur.bib}
+
+%Silbentrennung
+\usepackage{hyphsubst}
+\HyphSubstIfExists{ngerman-x-latest}{%
+\HyphSubstLet{ngerman}{ngerman-x-latest}}{}
 
 % Pfad fuer Abbildungen
 \graphicspath{{./}{./abbildungen/}}
@@ -128,17 +194,7 @@ sortlocale=de]{biblatex}
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
-\usepackage[intoc]{nomencl}
-\renewcommand{\nomname}{Abkürzungsverzeichnis}
-\setlength{\nomlabelwidth}{.20\textwidth}
-\renewcommand{\nomlabel}[1]{#1 \dotfill}
-\setlength{\nomitemsep}{-\parsep}
-\makenomenclature
-
-%-----------------------------------
-% Meta informationen
-%-----------------------------------
-\input{skripte/meta}
+\usepackage[printonlyused]{acronym}
 
 %-----------------------------------
 % PDF Meta Daten setzen
@@ -186,8 +242,9 @@ sortlocale=de]{biblatex}
 %-----------------------------------
 \begin{document}
 
-\pagenumbering{Roman}								% Seitennummerierung auf römisch umstellen
-\renewcommand{\refname}{Literaturverzeichnis}		% "Literatur" in
+\pagenumbering{Roman}								% Seitennumerierung auf römisch umstellen
+\renewcommand{\refname}{\langde{Literaturverzeichnis}
+						\langen{Bibliography}}		% "Literatur" in
 %"Literaturverzeichnis" umbenennen
 \newcolumntype{C}{>{\centering\arraybackslash}X}	% Neuer Tabellen-Spalten-Typ:
 %Zentriert und umbrechbar
@@ -199,36 +256,48 @@ sortlocale=de]{biblatex}
 	\newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
 	\begin{center}
 		\textbf{\myHochschulName}\\
-		\textbf{\myHochschulStandort}\\
+		\textbf{
+			\langde{Hochschulzentrum}
+			\langen{university location}
+			\myHochschulStandort}\\
 		\vspace{1.5cm}
 			\includegraphics[width=3cm]{abbildungen/fomLogo.jpg} \\
 		\vspace{1.5cm}
-		Berufsbegleitender Studiengang\\
+		\langde{Berufsbegleitender Studiengang}
+		\langen{part-time degree program}\\
 		\myStudiengang, \mySemesterZahl. Semester\\
 		\vspace{2cm}
 		\textbf{\myThesisArt}\\
-		\textbf{zur Erlangung des Grades eines}\\
+		\textbf{
+				\langde{zur Erlangung des Grades eines}
+				\langen{to obtain the degree of}
+				}\\
 		\textbf{\myAkademischerGrad}\\
 		% Oder für Hausarbeiten:
 		%\textbf{im Rahmen der Lehrveranstaltung}\\
 		%\textbf{\myLehrveranstaltung}\\
 		\vspace{2cm}
-		über das Thema\\
-		\Huge{\myTitel}\\
+		\langde{über das Thema}
+		\langen{on the subject}\\
+		\Large{\myTitel}\\
 		\vspace{0.2cm}
 	\end{center}
 	\normalsize
 	\vfill
 	\begin{tabbing}
-		Links \= Mitte \= Rechts\kill
-		Betreuer: \> \> \myBetreuer\\
+		Links \= Mitte \=Mittez \= Rechts\kill
+		\langde{Betreuer}
+		\langen{Advisor}: \> \> \>\myBetreuer\\
 		\> \> \\
 
-		Autor: \> \> \myAutor\\
-		\> \>  Matrikelnr.: \myMatrikelNr\\
-		\> \> \myAdresse\\
-		\> \> \\
-		Abgabe: \> \> \myAbgabeDatum
+		\langde{Autor}
+		\langen{Author}: \> \> \> \myAutor\\
+		\> \> \>  \langde{Matrikelnr.}
+				\langen{Matriculation Number}: \myMatrikelNr\\
+		\> \> \> \myAdresse\\
+		\> \> \>  \\
+		\langde{Abgabe}
+		\langen{Submission}: \> \> \> \myAbgabeDatum
 	\end{tabbing}
 \end{titlepage}
 
@@ -245,12 +314,8 @@ sortlocale=de]{biblatex}
 \setcounter{page}{2}
 \tableofcontents
 \newpage
+\setcounter{tocdepth}{2} %wurde vorher in zusaetzlichesMaterial.tex auf 0 gesetzt um Inhalt des Anhangs zu verbergen. Dadurch gehen allerdings Abbildungs und Tabellenverzeichnis kaputt.
 
-%-----------------------------------
-% Abkürzungsverzeichnis
-%-----------------------------------
-\printnomenclature
-\newpage
 %-----------------------------------
 % Abbildungsverzeichnis
 %-----------------------------------
@@ -265,6 +330,11 @@ sortlocale=de]{biblatex}
 % Tabellenverzeichnis
 %-----------------------------------
 \listoftables
+\newpage
+%-----------------------------------
+% Abkürzungsverzeichnis
+%-----------------------------------
+\input{acronyms}
 \newpage
 %-----------------------------------
 % Seitennummerierung auf arabisch und ab 1 beginnend umstellen
@@ -301,5 +371,21 @@ sortlocale=de]{biblatex}
 %\printbibliography[type=book,heading=subbibliography,title={Bücher}]
 %\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
 
+% weitere Variante, die nur Online von anderen Quellen trennt:
+
+%\printbibheading
+%\printbibliography[nottype=online,heading=subbibliography,title={Literaturquellen}]
+%\printbibliography[type=online,heading=subbibliography,title={Internetquellen}]
+
+
+% Um mehrere Typen zu vereinen kann ein Bibliography-Filter verwendet werden
+% \defbibfilter{literature}{
+%   type=article or
+%   type=book
+% }
+% \printbibliography[filter=literature,heading=subbibliography,title={Literatur}]
+
+
+\fancyhead[C]{\thepage} %weil die Ehrenwörtliche Erklärung keine Seitenzahl hat müssen die Striche entfernt werden
 \input{kapitel/anhang/erklaerung}
 \end{document}

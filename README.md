@@ -17,22 +17,24 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
     1. [Klassischer Download](#klassischer-download)
     2. [Fork auf Github](#fork-auf-github)
 2. [Vorlage personalisieren](#vorlage-personalisieren)
-3. [Fußnoten](#fußnoten)
-4. [Literaturverzeichnis](#literaturverzeichnis)
-5. [Sperrvermerk](#sperrvermerk)
-6. [Quellcode einbinden](#quellcode-einbinden)
-7. [Einheitliche Schriftarten erzwingen](#einheitliche-schriftarten-erzwingen)
-8. [Vorraussetzungen](#vorraussetzungen)
+3. [Dokumentensprache](#Dokumentensprache)
+4. [Fußnoten](#fußnoten)
+5. [Literaturverzeichnis](#literaturverzeichnis)
+6. [Sperrvermerk](#sperrvermerk)
+7. [Quellcode einbinden](#quellcode-einbinden)
+8. [Einheitliche Schriftarten erzwingen](#einheitliche-schriftarten-erzwingen)
+9. [Vorraussetzungen](#vorraussetzungen)
     1. [LaTeX-Pakete](#latex-pakete)
-9. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
+10. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
     1. [Docker unter Linux / macOS / Windows](#docker-unter-linux--macos--windows)
     1. [Image selbst bauen](#image-selbst-bauen)
-10. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
+11. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
     1. [Texpad](#texpad)
-11. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem) 
-12. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
-13. [Disclaimer](#disclaimer)
-14. [Lizenz](#lizenz)
+12. [Wörter zählen](#wörter-zählen)
+13. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
+14. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
+15. [Disclaimer](#disclaimer)
+16. [Lizenz](#lizenz)
 
 ## Für die eigene Arbeit nutzen
 
@@ -66,6 +68,20 @@ In der Datei haben wir einige Variablen hinterlegt, die im Dokument (u.a. auf de
 
 Ersetze die Muster-Werte durch deine persönlichen Angaben und diese werden automatisch im Dokument verwendet.
 
+## Dokumentensprache
+
+Die Vorlage ist sowohl auf Deutsch, als auch auf Englisch umgesetzt. Dadurch wird das Titelblatt, Verzeichnisüberschriften und auch der Inhalt des Literaturverzeichnis auf die englische Sprache umgestellt.
+Um die Datei auf Englisch zu kompilieren muss mit docker-compose folgender Befehl umgesetzt werden:
+```
+docker-compose run --service-ports fom ./compile.sh en
+```
+Ohne Docker muss die Datei mit der compile.sh folgendermaßen aufgerufen werden:
+```
+./compile.sh en
+```
+Für die Batch-Datei ist das Kompilieren auf Englisch leider noch nicht möglich.
+Nach dem kompilieren findet sich das Ergebnis in der Datei [`thesis_main.pdf`](./thesis_main.pdf). Die [`thesis_englisch.pdf`](./thesis_englisch.pdf) ist nur dazu da auf Github die Möglichkeit aufzuzeigen.
+
 ## Fußnoten
 
 Einige Professoren bevorzugen ein anderes Fußnoten-Format.
@@ -81,6 +97,8 @@ Dazu kann der Custom-Befehl `\fullfootcite[Vgl. ][Seite 1]{Balzert.2008}` genutz
 ```
 Vgl. Balzert, Helmut et al. (2008), Seite 1.
 ```
+
+Wird die englische Version genutzt muss "Vgl." durch "compare" und "S." durch "p." ersetzt werden.
 
 ## Literaturverzeichnis
 
@@ -104,7 +122,7 @@ Und die folgenden Zeilen einkommentieren und ggf. anpassen.
 
 ## Sperrvermerk
 
-Sollte ein Sperrvermerk für die Arbeit notwendig sein, so kann dieser durch einkommentieren der folgenden Zeile aktiviert werden: 
+Sollte ein Sperrvermerk für die Arbeit notwendig sein, so kann dieser durch einkommentieren der folgenden Zeile aktiviert werden:
 
 ```latex
 \input{kapitel/anhang/sperrvermerk}
@@ -119,11 +137,11 @@ Dieses wird dort auch mit den Farben für Kommentare, Strings, etc konfiguriert.
 Folgendermaßen könnt ihr Quellcode einbauen:
 
 ```latex
-\lstinputlisting[language=Java]{./Quellcode/Dateiname.js}
+\lstinputlisting[language=JavaScript]{./Quellcode/Dateiname.js}
 ```
 
-Für [Javascript](https://de.wikipedia.org/wiki/JavaScript) gibt es noch keine eigene Sprache, daher benutzt am besten [Java](https://de.wikipedia.org/wiki/Java_(Programmiersprache)).
-Für eine genauere Beschreibung empfehlen wir folgenden Artikel: [LaTeX/Source Code Listings @ Wikibooks](http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings).
+Für [Javascript](https://de.wikipedia.org/wiki/JavaScript) wurde eine eigene Definition erstellt und eingebaut. 
+Für eine genauere Beschreibung aller im Standard verfügbaren Sprachen empfehlen wir folgenden Artikel: [LaTeX/Source Code Listings @ Wikibooks](http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings).
 
 ## Einheitliche Schriftarten erzwingen
 
@@ -169,12 +187,33 @@ docker-compose up
 
 Den Befehl lasst ihr einfach über eure Kommandozeile bzw. PowerShell laufen (in Windows cmd.exe bzw. powershell.exe, beim Mac ist es das Terminal). Zum Projektordner könnt ihr kommen, indem ihr über den cd Befehl dorthin navigiert oder im Windows-Explorer in diesen Ordner wechselt und dann bei gedrückter Shift-Taste die rechte Maus-Taste klickt. Dort müsst ihr dann im Menü den Eintrag : "Öffne Kommandozeile hier" auswählen.
 
+Falls es hier zu Problemen kommt, wenn ein gecachtes Image verwendet wird können die folgende Befehle ausgeführt werden:
+
+```
+docker-compose build --no cache
+docker-compose up
+```
+
 Wird Docker unter Windows 10 verwendet, muss der Daemon wie folgt konfiguriert werden:
 
 ![Docker Konfiguration unter Windows 10](https://cloud.githubusercontent.com/assets/6319666/17108377/7c3aef54-5293-11e6-95e3-bd99f42820f0.png)
 
 Die benötigten Pakete befinden sich in dem Docker-Image, welches auf [Docker Hub unter andygrunwald/fom-latex-template](https://hub.docker.com/r/andygrunwald/fom-latex-template/) zur Verfügung steht.
 Es wird bei der Ausführung automatisch heruntergeladen.
+
+### Fehlerbehandlung
+
+Falls unter Windows der folgende Fehler auftritt checkt `git` die Dateien mit Windows Line Endings aus. Dies verursacht im Ubuntu Container einen Fehler.
+
+```
+  env: bash\r: No such file or directory
+```
+
+Mit dem folgenden Befehl kann man `git` dazu zwingen alle Dateien mit UNIX Zeilenendungen zu laden (siehe [stackoverflow](https://stackoverflow.com/questions/29045140/env-bash-r-no-such-file-or-directory)):
+
+```
+git config --global core.autocrlf true
+```
 
 #### Image selbst bauen
 
@@ -208,6 +247,20 @@ Wer eine etwas moderne IDE benutzen möchte, kann auch Visual Studio Code verwen
 [Latex Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
 Mit Hilfe der Extension kann das Projekt kompiliert und als Vorschau angesehen werden. In der ```settings.json``` sind die Einstellungen der ```compile.sh``` für Latex Workshop hinterlegt.
+
+## Wörter zählen
+
+Gerade bei der Verwendung eines Texteditors ist das Zählen der Wörter unter umständen eine mühselige Aufgabe. Mit den folgenden Vorschlägen kann man die Wörter der Arbeit zählen:
+
+### TeXcount
+
+Über die Seite [TeXcount](https://app.uio.no/ifi/texcount/online.php) können Latex Dateien hochgeladen und gezählt werden.
+
+### Unix / macOS Script
+
+Unter Unix und macOS kann das mitgelieferte Script helfen die Wörter zu zählen. Dafür muss nur [detex](https://github.com/pkubowicz/opendetex) installiert werden. Unter macOS kann `detex` mittels [homebrew](https://brew.sh/index_de) über den Befehl `brew install opendetex` installiert werden.
+
+Das Skript wird einfach über `sh ./countwords.sh` gestartet.
 
 ## Ich habe eine Frage oder ein Problem
 
