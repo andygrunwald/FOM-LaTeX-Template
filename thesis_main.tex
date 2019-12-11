@@ -3,13 +3,13 @@
 %-----------------------------------
 % Tabellen- und Abkürzungsverzeichnis stehen normalerweise nicht im
 % Inhaltsverzeichnis. Gleiches gilt für das Abkürzungsverzeichnis (siehe unten).
-% Manche Dozenten bemängeln das. Die Optionen 'listof=totoc'
-% gibt das Tabellenverzeichnis im Inhaltsverzeichnis (toc=Table% of Content) aus.
+% Manche Dozenten bemängeln das. Die Optionen 'listof=totoc,bibliography=totoc'
+% geben das Tabellen- und Abkürzungsverzeichnis im Inhaltsverzeichnis (toc=Table
+% of Content) aus.
 % Da es aber verschiedene Regelungen je nach Dozent geben kann, werden hier
 % beide Varianten dargestellt.
 %\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
-\documentclass[12pt,oneside,titlepage,bibliography=totoc]{scrartcl}
-\usepackage[utf8]{inputenc}
+\documentclass[12pt,oneside,titlepage]{scrartcl}
 %Dokumentensprache
 \newif\ifde
 \newif\ifen
@@ -35,6 +35,12 @@
 \usepackage{array}
 \usepackage{float}      %Positionierung von Abb. und Tabellen mit [H] erzwingen
 \usepackage{footnote}
+% Darstellung der Beschriftung von Tabellen und Abbildungen (Leitfaden S. 44)
+% singlelinecheck=false: macht die Caption linksbündig (statt zentriert)
+% labelfont auf fett: (Tabelle x.y:, Abbildung: x.y)
+% font auf fett: eigentliche Bezeichnung der Abbildung oder Tabelle
+% Fettschrift laut Leitfaden 2018 S. 45
+\usepackage[singlelinecheck=false, labelfont=bf, font=bf]{caption}
 \usepackage{caption}
 \usepackage{enumitem}
 \usepackage{amssymb}
@@ -113,7 +119,7 @@
 \usepackage[
 backend=biber,
 style=ext-authoryear,
-maxcitenames=2,
+maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
 maxbibnames=999,
 mergedate=false,
 date=iso,
@@ -123,6 +129,7 @@ innamebeforetitle,
 dashed=false,
 autocite=footnote,
 doi=false,
+useprefix=true, % 'von' im Namen beachten (beim Anzeigen)
 mincrossrefs = 1
 ]{biblatex}%iso dateformat für YYYY-MM-DD
 
@@ -147,6 +154,10 @@ mincrossrefs = 1
 
 %Bib-Datei einbinden
 \addbibresource{literatur/literatur.bib}
+
+% Zeilenabstand im Literaturverzeichnis ist Einzeilig
+% siehe Leitfaden S. 14
+\AtBeginBibliography{\singlespacing}
 
 %Silbentrennung
 \usepackage{hyphsubst}
@@ -216,9 +227,16 @@ mincrossrefs = 1
 %-----------------------------------
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[C]{-\ \thepage\ -}						% Seitenzahl oben, mittg
+% Seitenzahl oben, mittig, mit Strichen beidseits
+% \fancyhead[C]{-\ \thepage\ -}
+
+% Seitenzahl oben, mittig, entsprechend Leitfaden ohne Striche beidseits
+\fancyhead[C]{\thepage}
 %\fancyhead[L]{\leftmark}							% kein Footer vorhanden
+% Waagerechte Linie unterhalb des Kopfbereiches anzeigen. Laut Leitfaden ist
+% diese Linie nicht erforderlich. Ihre Breite kann daher auf 0pt gesetzt werden.
 \renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\headrulewidth}{0pt}
 
 
 %-----------------------------------
@@ -320,6 +338,11 @@ mincrossrefs = 1
 %-----------------------------------
 \pagenumbering{arabic}
 \setcounter{page}{1}
+% Die folgende Zeile trägt ALLE Werke aus literatur.bib in das
+% Literaturverzeichnis ein, egal ob sie zietiert wurden oder nicht.
+% Der Befehl ist also nur zum Test der Skripte sinnvoll und muss bei echten
+% Arbeiten entfernt werden.
+%\nocite{*}
 %-----------------------------------
 % Kapitel / Inhalte
 %-----------------------------------
@@ -334,37 +357,44 @@ mincrossrefs = 1
 \newpage
 %\addcontentsline{toc}{section}{Literatur}
 
-\pagenumbering{Roman} %Zähler wieder römisch ausgeben
-\setcounter{page}{4}  %Zähler manuell hochsetzen
+% Die folgenden beiden Befehle würden ab dem Literaturverzeichnis wieder eine
+% römische Seitennummerierung nutzen.
+% Das ist nach dem Leitfaden nicht zu tun. Dort steht nur dass 'sämtliche
+% Verzeichnisse VOR dem Textteil' römisch zu nummerieren sind. (vgl. S. 3)
+%\pagenumbering{Roman} %Zähler wieder römisch ausgeben
+%\setcounter{page}{4}  %Zähler manuell hochsetzen
 
-\begin{RaggedRight}
-\printbibliography
-\end{RaggedRight}
+% Ausgabe des Literaturverzeichnisses
 
-% Alternative Darstellung:
-% Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
-% Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
+% Keine Trennung der Werke im Literaturverzeichnis nach ihrer Art
+% (Online/nicht-Online)
+%\begin{RaggedRight}
+%\printbibliography
+%\end{RaggedRight}
 
-%\printbibheading
-%\printbibliography[type=article,heading=subbibliography,title={Artikel}]
-%\printbibliography[type=book,heading=subbibliography,title={Bücher}]
-%\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
+% Alternative Darstellung, die laut Leitfaden genutzt werden sollte.
+% Dazu die Zeilen auskommentieren und folgenden code verwenden:
 
-% weitere Variante, die nur Online von anderen Quellen trennt:
+% Literaturverzeichnis getrennt nach Nicht-Online-Werken und Online-Werken
+% (Internetquellen).
+% Die Option nottype=online nimmt alles, was kein Online-Werk ist.
+% Die Option heading=bibintoc sorgt dafür, dass das Literaturverzeichnis im
+% Inhaltsverzeichnis steht.
+% Es ist übrigens auch möglich mehrere type- bzw. nottype-Optionen anzugeben, um
+% noch weitere Arten von Zusammenfassungen eines Literaturverzeichnisse zu
+% erzeugen.
+% Beispiel: [type=book,type=article]
+\printbibliography[nottype=online,heading=bibintoc,title={Literaturverzeichnis}]
 
-%\printbibheading
-%\printbibliography[nottype=online,heading=subbibliography,title={Literaturquellen}]
-%\printbibliography[type=online,heading=subbibliography,title={Internetquellen}]
+% neue Seite für Internetquellen-Verzeichnis
+\newpage
 
+% Laut Leitfaden 2018, S. 14, Fussnote 44 stehen die Internetquellen NICHT im
+% Inhaltsverzeichnis, sondern gehören zum Literaturverzeichnis.
+% Die Option heading=bibintoc würde die Internetquelle als eigenen Eintrag im
+% Inhaltsverzeicnis anzeigen.
+%\printbibliography[type=online,heading=bibintoc,title={Internetquellen}]
+\printbibliography[type=online,title={Internetquellen}]
 
-% Um mehrere Typen zu vereinen kann ein Bibliography-Filter verwendet werden
-% \defbibfilter{literature}{
-%   type=article or
-%   type=book
-% }
-% \printbibliography[filter=literature,heading=subbibliography,title={Literatur}]
-
-
-\fancyhead[C]{\thepage} %weil die Ehrenwörtliche Erklärung keine Seitenzahl hat müssen die Striche entfernt werden
 \input{kapitel/anhang/erklaerung}
 \end{document}

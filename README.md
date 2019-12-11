@@ -22,15 +22,18 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 5. [Literaturverzeichnis](#literaturverzeichnis)
 6. [Sperrvermerk](#sperrvermerk)
 7. [Quellcode einbinden](#quellcode-einbinden)
-8. [Einheitliche Schriftarten erzwingen](#einheitliche-schriftarten-erzwingen)
-9. [Vorraussetzungen](#vorraussetzungen)
-    1. [LaTeX-Pakete](#latex-pakete)
+8. [Schriftarten](#schriftarten)
 10. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
     1. [Docker unter Linux / macOS / Windows](#docker-unter-linux--macos--windows)
-    1. [Image selbst bauen](#image-selbst-bauen)
+    2. [LaTeX-Pakete](#latex-pakete)
+    3. [Image selbst bauen](#image-selbst-bauen)
+    4. [Fehlerbehandlung](#fehlerbehandlung)
 11. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
     1. [Texpad](#texpad)
+    2. [Visual Stuido Code](#visual-studio-code)
 12. [Wörter zählen](#wörter-zählen)
+    1. [TeXcount](#texcount)
+    2. [Unix / macOS Script](#unix--macos-script)
 13. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
 14. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
 15. [Disclaimer](#disclaimer)
@@ -143,33 +146,28 @@ Folgendermaßen könnt ihr Quellcode einbauen:
 Für [Javascript](https://de.wikipedia.org/wiki/JavaScript) wurde eine eigene Definition erstellt und eingebaut. 
 Für eine genauere Beschreibung aller im Standard verfügbaren Sprachen empfehlen wir folgenden Artikel: [LaTeX/Source Code Listings @ Wikibooks](http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings).
 
-## Einheitliche Schriftarten erzwingen
+## Schriftarten
 
-Durch die Kompilierung mit pdflatex kann es in der PDF zu unterschiedlichen Schriftarten kommen, da die voreingestellte Schriftart Serifen enthält. Mit den folgenden Zeilen kann in der Datei [*thesis_main.tex*](./thesis_main.tex) die Nutzung der Schfriftart Helvet erzwungen werden.
+Die voreingestellte Schriftart enthält Serifen. Mit den folgenden Zeilen kann in der Datei [*thesis_main.tex*](./thesis_main.tex) die Nutzung der Schfriftart Helvet erzwungen werden.
 
 ```latex
-% Überschreibe die pdflatex default Schriftart mit helvet
+% Überschreibe die default Schriftart mit helvet
 \usepackage[scaled]{helvet}
 \renewcommand\familydefault{\sfdefault}
 ```
 
-## Vorraussetzungen
-
-### LaTeX-Pakete
-
-LaTeX ist Grundvoraussetzung.
-Wenn Du _[MikTex](http://miktex.org/)_ oder _[MacTex](http://tug.org/mactex/)_ verwendest, dann brauchst Du keine weiteren LaTeX-Pakete installieren.
-
-Weiterhin wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Version 1.8) für das Literaturverzeichnisses benötigt.
 
 ## LaTeX zu PDF kompilieren
 
-Um die LaTeX-Dateien in eine PDF zu kompilieren müsst ihr unter **Windows** einfach die beiliegende `compile.bat` ausführen.
-Benutzer von **macOS** und **Linux** verwenden bitte die ```compile.sh```.
-Zum Kompilieren müssen die oben beschriebenen Vorraussetzungen erfüllt sein.
+Wir empfehlen das Dokument mit Docker (siehe unten) zu kompilieren.
 
-Wenn das kompilieren nicht ohne Fehler möglich ist, kontrolliert bitte ganz genau eure LaTeX-versionen.
-Alternativ empfehlen wir das Dokument mit Docker (siehe unten) zu kompilieren.
+Alternativ kann auch über die Ausführung der Skripte kompiliert werden, dafür müssen aber die unten beschriebenen Latex-Pakete installiert sein.
+Unter **Windows** muss dafür die beiliegende `compile.bat` ausführen.
+Benutzer von **macOS** und **Linux** verwenden bitte die ```compile.sh```.
+
+
+Wenn das kompilieren nicht ohne Fehler möglich ist, kontrolliert bitte ganz genau eure LaTeX-versionen oder nutzt Docker.
+
 
 ### Docker unter Linux / macOS / Windows
 
@@ -200,6 +198,14 @@ Wird Docker unter Windows 10 verwendet, muss der Daemon wie folgt konfiguriert w
 
 Die benötigten Pakete befinden sich in dem Docker-Image, welches auf [Docker Hub unter andygrunwald/fom-latex-template](https://hub.docker.com/r/andygrunwald/fom-latex-template/) zur Verfügung steht.
 Es wird bei der Ausführung automatisch heruntergeladen.
+
+### LaTeX-Pakete
+
+Für das kompilieren ohne Docker ist LaTeX Grundvoraussetzung.
+Wenn Du _[MikTex](http://miktex.org/)_ oder _[MacTex](http://tug.org/mactex/)_ verwendest, dann brauchst Du keine weiteren LaTeX-Pakete installieren.
+
+Weiterhin wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Version 1.8) für das Literaturverzeichnisses benötigt.
+
 
 ### Fehlerbehandlung
 
