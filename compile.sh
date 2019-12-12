@@ -3,20 +3,21 @@
 CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 compile=""
 biberarg=""
+CMD_LATEX=lualatex
 
 echo "Compiling in Language: $1"
 if [ "$1" = "en" ] || [ "$2" = "en" ] ; then
-  compile='pdflatex --shell-escape --jobname="thesis_englisch" "\def\FOMEN{}\input{$CURRENT_DIR/thesis_main.tex}"'
+  compile='$CMD_LATEX --shell-escape --jobname="thesis_englisch" "\def\FOMEN{}\input{$CURRENT_DIR/thesis_main.tex}"'
   biberarg="$CURRENT_DIR/thesis_englisch"
 else
-  compile='pdflatex --shell-escape "$CURRENT_DIR/thesis_main.tex"'
+  compile='$CMD_LATEX --shell-escape "$CURRENT_DIR/thesis_main.tex"'
   biberarg="$CURRENT_DIR/thesis_main"
 fi
 
 eval "$compile"
 RETVAL="$?"
 if [[ "${RETVAL}" -ne 0 ]] ; then
-    echo "First pdflatex run failed"
+    echo "First $CMD_LATEX run failed"
     exit ${RETVAL}
 fi
 
@@ -30,14 +31,14 @@ fi
 eval "$compile"
 RETVAL="$?"
 if [[ "${RETVAL}" -ne 0 ]] ; then
-    echo "Second pdflatex run failed"
+    echo "Second $CMD_LATEX run failed"
     exit ${RETVAL}
 fi
 
 eval "$compile"
 RETVAL="$?"
 if [[ "${RETVAL}" -ne 0 ]] ; then
-    echo "Third pdflatex run failed"
+    echo "Third $CMD_LATEX run failed"
     exit ${RETVAL}
 fi
 

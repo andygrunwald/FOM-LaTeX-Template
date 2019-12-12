@@ -3,10 +3,10 @@
         {
             "name": "build",
             "tools": [
-                "pdflatex",
+                "lualatex",
                 "biber",
-                "pdflatex",
-                "pdflatex"
+                "lualatex",
+                "lualatex"
             ]
         }
     ],
@@ -38,8 +38,8 @@
     ],
     "latex-workshop.latex.tools": [
         {
-            "name": "pdflatex",
-            "command": "pdflatex",
+            "name": "lualatex",
+            "command": "lualatex",
             "args": [
                 "%DOC%.tex"
             ]

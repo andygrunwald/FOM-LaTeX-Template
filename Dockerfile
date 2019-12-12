@@ -34,4 +34,4 @@ COPY ./compile.sh /compile.sh
 RUN chmod +x /compile.sh
 ENTRYPOINT ["./compile.sh"]
 
-CMD pdflatex --version && biber --version
+CMD lualatex --version && biber --version
