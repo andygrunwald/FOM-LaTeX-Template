@@ -20,6 +20,7 @@ RUN echo 'deb [trusted=yes] http://ppa.launchpad.net/jonathonf/texlive-2018/ubun
 		texlive-bibtex-extra \
 		texlive-lang-german \
 		texlive-generic-extra \
+		texlive-luatex \
 		biber \
 		xz-utils \
 		python \
@@ -30,5 +31,8 @@ RUN echo 'deb [trusted=yes] http://ppa.launchpad.net/jonathonf/texlive-2018/ubun
 VOLUME ["/data"]
 
 WORKDIR /data
+COPY ./compile.sh /compile.sh
+RUN chmod +x /compile.sh
+ENTRYPOINT ["./compile.sh"]
 
-CMD pdflatex --version && biber --version && ./compile.sh
+CMD lualatex --version && biber --version

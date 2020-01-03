@@ -3,15 +3,29 @@
 %-----------------------------------
 % Tabellen- und Abkürzungsverzeichnis stehen normalerweise nicht im
 % Inhaltsverzeichnis. Gleiches gilt für das Abkürzungsverzeichnis (siehe unten).
-% Manche Dozenten bemängeln das. Die Optionen 'listof=totoc'
-% gibt das Tabellenverzeichnis im Inhaltsverzeichnis (toc=Table% of Content) aus.
+% Manche Dozenten bemängeln das. Die Optionen 'listof=totoc,bibliography=totoc'
+% geben das Tabellen- und Abkürzungsverzeichnis im Inhaltsverzeichnis (toc=Table
+% of Content) aus.
 % Da es aber verschiedene Regelungen je nach Dozent geben kann, werden hier
 % beide Varianten dargestellt.
 %\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
-\documentclass[12pt,oneside,titlepage,bibliography=totoc]{scrartcl}
-\usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
-\usepackage[babel,german=quotes]{csquotes}
+\documentclass[12pt,oneside,titlepage]{scrartcl}
+%Dokumentensprache
+\newif\ifde
+\newif\ifen
+
+%-----------------------------------
+% Meta informationen
+%-----------------------------------
+\input{skripte/meta}
+
+\newcommand{\langde}[1]{%
+   \ifde\selectlanguage{ngerman}#1\fi}
+\newcommand{\langen}[1]{%
+   \ifen\selectlanguage{english}#1\fi}
+\langde{\usepackage[babel,german=quotes]{csquotes}}
+\langen{\usepackage[babel,english=british]{csquotes}}
+\usepackage[utf8]{luainputenc}
 \usepackage[T1]{fontenc}
 \usepackage{fancyhdr}
 \usepackage{fancybox}
@@ -22,6 +36,12 @@
 \usepackage{array}
 \usepackage{float}      %Positionierung von Abb. und Tabellen mit [H] erzwingen
 \usepackage{footnote}
+% Darstellung der Beschriftung von Tabellen und Abbildungen (Leitfaden S. 44)
+% singlelinecheck=false: macht die Caption linksbündig (statt zentriert)
+% labelfont auf fett: (Tabelle x.y:, Abbildung: x.y)
+% font auf fett: eigentliche Bezeichnung der Abbildung oder Tabelle
+% Fettschrift laut Leitfaden 2018 S. 45
+\usepackage[singlelinecheck=false, labelfont=bf, font=bf]{caption}
 \usepackage{caption}
 \usepackage{enumitem}
 \usepackage{amssymb}
@@ -100,7 +120,7 @@
 \usepackage[
 backend=biber,
 style=ext-authoryear,
-maxcitenames=2,
+maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
 maxbibnames=999,
 mergedate=false,
 date=iso,
@@ -110,6 +130,7 @@ innamebeforetitle,
 dashed=false,
 autocite=footnote,
 doi=false,
+useprefix=true, % 'von' im Namen beachten (beim Anzeigen)
 mincrossrefs = 1
 ]{biblatex}%iso dateformat für YYYY-MM-DD
 
@@ -135,11 +156,14 @@ mincrossrefs = 1
 %Bib-Datei einbinden
 \addbibresource{literatur/literatur.bib}
 
+% Zeilenabstand im Literaturverzeichnis ist Einzeilig
+% siehe Leitfaden S. 14
+\AtBeginBibliography{\singlespacing}
+
 %Silbentrennung
 \usepackage{hyphsubst}
 \HyphSubstIfExists{ngerman-x-latest}{%
 \HyphSubstLet{ngerman}{ngerman-x-latest}}{}
-\usepackage[ngerman]{babel}
 
 % Pfad fuer Abbildungen
 \graphicspath{{./}{./abbildungen/}}
@@ -166,21 +190,7 @@ mincrossrefs = 1
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
-% Die Option 'intoc' zeigt das Abkürzungsverzeichnis innerhalb des
-% Inhaltsverzeichnisses an. Das ist laut Leitfaden nicht nötig.
-% (siehe auch Tabellen- und Abbildungsverzeichnis oben)
-% \usepackage[intoc]{nomencl}
-\usepackage{nomencl}
-\renewcommand{\nomname}{Abkürzungsverzeichnis}
-\setlength{\nomlabelwidth}{.20\textwidth}
-\renewcommand{\nomlabel}[1]{#1 \dotfill}
-\setlength{\nomitemsep}{-\parsep}
-\makenomenclature
-
-%-----------------------------------
-% Meta informationen
-%-----------------------------------
-\input{skripte/meta}
+\usepackage[printonlyused]{acronym}
 
 %-----------------------------------
 % PDF Meta Daten setzen
@@ -218,9 +228,16 @@ mincrossrefs = 1
 %-----------------------------------
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[C]{-\ \thepage\ -}						% Seitenzahl oben, mittg
+% Seitenzahl oben, mittig, mit Strichen beidseits
+% \fancyhead[C]{-\ \thepage\ -}
+
+% Seitenzahl oben, mittig, entsprechend Leitfaden ohne Striche beidseits
+\fancyhead[C]{\thepage}
 %\fancyhead[L]{\leftmark}							% kein Footer vorhanden
+% Waagerechte Linie unterhalb des Kopfbereiches anzeigen. Laut Leitfaden ist
+% diese Linie nicht erforderlich. Ihre Breite kann daher auf 0pt gesetzt werden.
 \renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\headrulewidth}{0pt}
 
 
 %-----------------------------------
@@ -229,7 +246,8 @@ mincrossrefs = 1
 \begin{document}
 
 \pagenumbering{Roman}								% Seitennumerierung auf römisch umstellen
-\renewcommand{\refname}{Literaturverzeichnis}		% "Literatur" in
+\renewcommand{\refname}{\langde{Literaturverzeichnis}
+						\langen{Bibliography}}		% "Literatur" in
 %"Literaturverzeichnis" umbenennen
 \newcolumntype{C}{>{\centering\arraybackslash}X}	% Neuer Tabellen-Spalten-Typ:
 %Zentriert und umbrechbar
@@ -241,36 +259,48 @@ mincrossrefs = 1
 	\newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
 	\begin{center}
 		\textbf{\myHochschulName}\\
-		\textbf{\myHochschulStandort}\\
+		\textbf{
+			\langde{Hochschulzentrum}
+			\langen{university location}
+			\myHochschulStandort}\\
 		\vspace{1.5cm}
 			\includegraphics[width=3cm]{abbildungen/fomLogo.jpg} \\
 		\vspace{1.5cm}
-		Berufsbegleitender Studiengang\\
+		\langde{Berufsbegleitender Studiengang}
+		\langen{part-time degree program}\\
 		\myStudiengang, \mySemesterZahl. Semester\\
 		\vspace{2cm}
 		\textbf{\myThesisArt}\\
-		\textbf{zur Erlangung des Grades eines}\\
+		\textbf{
+				\langde{zur Erlangung des Grades eines}
+				\langen{to obtain the degree of}
+				}\\
 		\textbf{\myAkademischerGrad}\\
 		% Oder für Hausarbeiten:
 		%\textbf{im Rahmen der Lehrveranstaltung}\\
 		%\textbf{\myLehrveranstaltung}\\
 		\vspace{2cm}
-		über das Thema\\
+		\langde{über das Thema}
+		\langen{on the subject}\\
 		\Large{\myTitel}\\
 		\vspace{0.2cm}
 	\end{center}
 	\normalsize
 	\vfill
 	\begin{tabbing}
-		Links \= Mitte \= Rechts\kill
-		Betreuer: \> \> \myBetreuer\\
+		Links \= Mitte \=Mittez \= Rechts\kill
+		\langde{Betreuer}
+		\langen{Advisor}: \> \> \>\myBetreuer\\
 		\> \> \\
 
-		Autor: \> \> \myAutor\\
-		\> \>  Matrikelnr.: \myMatrikelNr\\
-		\> \> \myAdresse\\
-		\> \> \\
-		Abgabe: \> \> \myAbgabeDatum
+		\langde{Autor}
+		\langen{Author}: \> \> \> \myAutor\\
+		\> \> \>  \langde{Matrikelnr.}
+				\langen{Matriculation Number}: \myMatrikelNr\\
+		\> \> \> \myAdresse\\
+		\> \> \>  \\
+		\langde{Abgabe}
+		\langen{Submission}: \> \> \> \myAbgabeDatum
 	\end{tabbing}
 \end{titlepage}
 
@@ -302,13 +332,18 @@ mincrossrefs = 1
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
-\printnomenclature
+\input{abkuerzungen/acronyms}
 \newpage
 %-----------------------------------
 % Seitennummerierung auf arabisch und ab 1 beginnend umstellen
 %-----------------------------------
 \pagenumbering{arabic}
 \setcounter{page}{1}
+% Die folgende Zeile trägt ALLE Werke aus literatur.bib in das
+% Literaturverzeichnis ein, egal ob sie zietiert wurden oder nicht.
+% Der Befehl ist also nur zum Test der Skripte sinnvoll und muss bei echten
+% Arbeiten entfernt werden.
+%\nocite{*}
 %-----------------------------------
 % Kapitel / Inhalte
 %-----------------------------------
@@ -323,37 +358,44 @@ mincrossrefs = 1
 \newpage
 %\addcontentsline{toc}{section}{Literatur}
 
-\pagenumbering{Roman} %Zähler wieder römisch ausgeben
-\setcounter{page}{4}  %Zähler manuell hochsetzen
+% Die folgenden beiden Befehle würden ab dem Literaturverzeichnis wieder eine
+% römische Seitennummerierung nutzen.
+% Das ist nach dem Leitfaden nicht zu tun. Dort steht nur dass 'sämtliche
+% Verzeichnisse VOR dem Textteil' römisch zu nummerieren sind. (vgl. S. 3)
+%\pagenumbering{Roman} %Zähler wieder römisch ausgeben
+%\setcounter{page}{4}  %Zähler manuell hochsetzen
 
-\begin{RaggedRight}
-\printbibliography
-\end{RaggedRight}
+% Ausgabe des Literaturverzeichnisses
 
-% Alternative Darstellung:
-% Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
-% Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
+% Keine Trennung der Werke im Literaturverzeichnis nach ihrer Art
+% (Online/nicht-Online)
+%\begin{RaggedRight}
+%\printbibliography
+%\end{RaggedRight}
 
-%\printbibheading
-%\printbibliography[type=article,heading=subbibliography,title={Artikel}]
-%\printbibliography[type=book,heading=subbibliography,title={Bücher}]
-%\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
+% Alternative Darstellung, die laut Leitfaden genutzt werden sollte.
+% Dazu die Zeilen auskommentieren und folgenden code verwenden:
 
-% weitere Variante, die nur Online von anderen Quellen trennt:
+% Literaturverzeichnis getrennt nach Nicht-Online-Werken und Online-Werken
+% (Internetquellen).
+% Die Option nottype=online nimmt alles, was kein Online-Werk ist.
+% Die Option heading=bibintoc sorgt dafür, dass das Literaturverzeichnis im
+% Inhaltsverzeichnis steht.
+% Es ist übrigens auch möglich mehrere type- bzw. nottype-Optionen anzugeben, um
+% noch weitere Arten von Zusammenfassungen eines Literaturverzeichnisse zu
+% erzeugen.
+% Beispiel: [type=book,type=article]
+\printbibliography[nottype=online,heading=bibintoc,title={\langde{Literaturverzeichnis}\langen{Bibliography}}]
 
-%\printbibheading
-%\printbibliography[nottype=online,heading=subbibliography,title={Literaturquellen}]
-%\printbibliography[type=online,heading=subbibliography,title={Internetquellen}]
+% neue Seite für Internetquellen-Verzeichnis
+\newpage
 
+% Laut Leitfaden 2018, S. 14, Fussnote 44 stehen die Internetquellen NICHT im
+% Inhaltsverzeichnis, sondern gehören zum Literaturverzeichnis.
+% Die Option heading=bibintoc würde die Internetquelle als eigenen Eintrag im
+% Inhaltsverzeicnis anzeigen.
+%\printbibliography[type=online,heading=bibintoc,title={Internetquellen}]
+\printbibliography[type=online,title={\langde{Internetquellen}\langen{Internet sources}}]
 
-% Um mehrere Typen zu vereinen kann ein Bibliography-Filter verwendet werden
-% \defbibfilter{literature}{
-%   type=article or
-%   type=book
-% }
-% \printbibliography[filter=literature,heading=subbibliography,title={Literatur}]
-
-
-\fancyhead[C]{\thepage} %weil die Ehrenwörtliche Erklärung keine Seitenzahl hat müssen die Striche entfernt werden
 \input{kapitel/anhang/erklaerung}
 \end{document}

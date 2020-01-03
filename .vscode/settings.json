@@ -3,11 +3,10 @@
         {
             "name": "build",
             "tools": [
-                "pdflatex",
-                "makeindex",
+                "lualatex",
                 "biber",
-                "pdflatex",
-                "pdflatex"
+                "lualatex",
+                "lualatex"
             ]
         }
     ],
@@ -39,21 +38,10 @@
     ],
     "latex-workshop.latex.tools": [
         {
-            "name": "pdflatex",
-            "command": "pdflatex",
+            "name": "lualatex",
+            "command": "lualatex",
             "args": [
                 "%DOC%.tex"
-            ]
-        },
-        {
-            "name": "makeindex",
-            "command": "makeindex",
-            "args": [
-                "%DOCFILE%.nlo",
-                "-s",
-                "nomencl.ist",
-                "-o",
-                "%DOCFILE%.nls"
             ]
         },
         {

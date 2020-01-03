@@ -17,23 +17,27 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
     1. [Klassischer Download](#klassischer-download)
     2. [Fork auf Github](#fork-auf-github)
 2. [Vorlage personalisieren](#vorlage-personalisieren)
-3. [Fußnoten](#fußnoten)
-4. [Literaturverzeichnis](#literaturverzeichnis)
-5. [Sperrvermerk](#sperrvermerk)
-6. [Quellcode einbinden](#quellcode-einbinden)
-7. [Einheitliche Schriftarten erzwingen](#einheitliche-schriftarten-erzwingen)
-8. [Vorraussetzungen](#vorraussetzungen)
-    1. [LaTeX-Pakete](#latex-pakete)
-9. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
+3. [Dokumentensprache](#Dokumentensprache)
+4. [Fußnoten](#fußnoten)
+5. [Literaturverzeichnis](#literaturverzeichnis)
+6. [Sperrvermerk](#sperrvermerk)
+7. [Quellcode einbinden](#quellcode-einbinden)
+8. [Schriftarten](#schriftarten)
+10. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
     1. [Docker unter Linux / macOS / Windows](#docker-unter-linux--macos--windows)
-    1. [Image selbst bauen](#image-selbst-bauen)
-10. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
+    2. [LaTeX-Pakete](#latex-pakete)
+    3. [Image selbst bauen](#image-selbst-bauen)
+    4. [Fehlerbehandlung](#fehlerbehandlung)
+11. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
     1. [Texpad](#texpad)
-11. [Wörter zählen](#wörter-zählen)
-12. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
-13. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
-14. [Disclaimer](#disclaimer)
-15. [Lizenz](#lizenz)
+    2. [Visual Stuido Code](#visual-studio-code)
+12. [Wörter zählen](#wörter-zählen)
+    1. [TeXcount](#texcount)
+    2. [Unix / macOS Script](#unix--macos-script)
+13. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
+14. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
+15. [Disclaimer](#disclaimer)
+16. [Lizenz](#lizenz)
 
 ## Für die eigene Arbeit nutzen
 
@@ -67,6 +71,20 @@ In der Datei haben wir einige Variablen hinterlegt, die im Dokument (u.a. auf de
 
 Ersetze die Muster-Werte durch deine persönlichen Angaben und diese werden automatisch im Dokument verwendet.
 
+## Dokumentensprache
+
+Die Vorlage ist sowohl auf Deutsch, als auch auf Englisch umgesetzt. Dadurch wird das Titelblatt, Verzeichnisüberschriften und auch der Inhalt des Literaturverzeichnis auf die englische Sprache umgestellt.
+Um die Datei auf Englisch zu kompilieren muss mit docker-compose folgender Befehl umgesetzt werden:
+```
+docker-compose run --service-ports fom ./compile.sh en
+```
+Ohne Docker muss die Datei mit der compile.sh folgendermaßen aufgerufen werden:
+```
+./compile.sh en
+```
+Für die Batch-Datei ist das Kompilieren auf Englisch leider noch nicht möglich.
+Nach dem kompilieren findet sich das Ergebnis in der Datei [`thesis_main.pdf`](./thesis_main.pdf). Die [`thesis_englisch.pdf`](./thesis_englisch.pdf) ist nur dazu da auf Github die Möglichkeit aufzuzeigen.
+
 ## Fußnoten
 
 Einige Professoren bevorzugen ein anderes Fußnoten-Format.
@@ -82,6 +100,8 @@ Dazu kann der Custom-Befehl `\fullfootcite[Vgl. ][Seite 1]{Balzert.2008}` genutz
 ```
 Vgl. Balzert, Helmut et al. (2008), Seite 1.
 ```
+
+Wird die englische Version genutzt muss "Vgl." durch "compare" und "S." durch "p." ersetzt werden.
 
 ## Literaturverzeichnis
 
@@ -126,33 +146,28 @@ Folgendermaßen könnt ihr Quellcode einbauen:
 Für [Javascript](https://de.wikipedia.org/wiki/JavaScript) wurde eine eigene Definition erstellt und eingebaut. 
 Für eine genauere Beschreibung aller im Standard verfügbaren Sprachen empfehlen wir folgenden Artikel: [LaTeX/Source Code Listings @ Wikibooks](http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings).
 
-## Einheitliche Schriftarten erzwingen
+## Schriftarten
 
-Durch die Kompilierung mit pdflatex kann es in der PDF zu unterschiedlichen Schriftarten kommen, da die voreingestellte Schriftart Serifen enthält. Mit den folgenden Zeilen kann in der Datei [*thesis_main.tex*](./thesis_main.tex) die Nutzung der Schfriftart Helvet erzwungen werden.
+Die voreingestellte Schriftart enthält Serifen. Mit den folgenden Zeilen kann in der Datei [*thesis_main.tex*](./thesis_main.tex) die Nutzung der Schfriftart Helvet erzwungen werden.
 
 ```latex
-% Überschreibe die pdflatex default Schriftart mit helvet
+% Überschreibe die default Schriftart mit helvet
 \usepackage[scaled]{helvet}
 \renewcommand\familydefault{\sfdefault}
 ```
 
-## Vorraussetzungen
-
-### LaTeX-Pakete
-
-LaTeX ist Grundvoraussetzung.
-Wenn Du _[MikTex](http://miktex.org/)_ oder _[MacTex](http://tug.org/mactex/)_ verwendest, dann brauchst Du keine weiteren LaTeX-Pakete installieren.
-
-Weiterhin wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Version 1.8) für das Literaturverzeichnisses benötigt.
 
 ## LaTeX zu PDF kompilieren
 
-Um die LaTeX-Dateien in eine PDF zu kompilieren müsst ihr unter **Windows** einfach die beiliegende `compile.bat` ausführen.
-Benutzer von **macOS** und **Linux** verwenden bitte die ```compile.sh```.
-Zum Kompilieren müssen die oben beschriebenen Vorraussetzungen erfüllt sein.
+Wir empfehlen das Dokument mit Docker (siehe unten) zu kompilieren.
 
-Wenn das kompilieren nicht ohne Fehler möglich ist, kontrolliert bitte ganz genau eure LaTeX-versionen.
-Alternativ empfehlen wir das Dokument mit Docker (siehe unten) zu kompilieren.
+Alternativ kann auch über die Ausführung der Skripte kompiliert werden, dafür müssen aber die unten beschriebenen Latex-Pakete installiert sein.
+Unter **Windows** muss dafür die beiliegende `compile.bat` ausführen.
+Benutzer von **macOS** und **Linux** verwenden bitte die ```compile.sh```.
+
+
+Wenn das kompilieren nicht ohne Fehler möglich ist, kontrolliert bitte ganz genau eure LaTeX-versionen oder nutzt Docker.
+
 
 ### Docker unter Linux / macOS / Windows
 
@@ -173,7 +188,7 @@ Den Befehl lasst ihr einfach über eure Kommandozeile bzw. PowerShell laufen (in
 Falls es hier zu Problemen kommt, wenn ein gecachtes Image verwendet wird können die folgende Befehle ausgeführt werden:
 
 ```
-docker-compose build --no cache
+docker-compose build --no-cache
 docker-compose up
 ```
 
@@ -183,6 +198,14 @@ Wird Docker unter Windows 10 verwendet, muss der Daemon wie folgt konfiguriert w
 
 Die benötigten Pakete befinden sich in dem Docker-Image, welches auf [Docker Hub unter andygrunwald/fom-latex-template](https://hub.docker.com/r/andygrunwald/fom-latex-template/) zur Verfügung steht.
 Es wird bei der Ausführung automatisch heruntergeladen.
+
+### LaTeX-Pakete
+
+Für das kompilieren ohne Docker ist LaTeX Grundvoraussetzung.
+Wenn Du _[MikTex](http://miktex.org/)_ oder _[MacTex](http://tug.org/mactex/)_ verwendest, dann brauchst Du keine weiteren LaTeX-Pakete installieren.
+
+Weiterhin wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Version 1.8) für das Literaturverzeichnisses benötigt.
+
 
 ### Fehlerbehandlung
 

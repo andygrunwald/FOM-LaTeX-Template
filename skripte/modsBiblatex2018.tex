@@ -54,8 +54,13 @@
 \renewcommand*{\mkbibnamegiven}{\mkbibemph} 
 \renewcommand*{\mkbibnamesuffix}{\mkbibemph} 
 \renewcommand*{\mkbibnameprefix}{\mkbibemph} 
+
+% Die Trennung mehrerer Autorennamen erfolgt durch Kommata.
+% siehe Beispiele im Leitfaden S. 16
+% Die folgende Zeile würde mit Semikolon trennen
+%\DeclareDelimFormat{multinamedelim}{\addsemicolon\addspace}
+
 %Delimiter für mehrere und letzten Namen gleich setzen
-\DeclareDelimFormat{multinamedelim}{\addsemicolon\addspace}%hinzugefügt. Ansonsten werden mehrere namen mit komma getrennt
 \DeclareDelimAlias{finalnamedelim}{multinamedelim} 
 
 \DeclareNameAlias{default}{family-given} 
@@ -79,9 +84,9 @@
   {}{} 
 
 \DeclareFieldFormat[online]{date}{\mkbibparens{#1}} 
-\DeclareFieldFormat{urltime}{#1\addspace Uhr}
+\DeclareFieldFormat{urltime}{#1\addspace \langde{Uhr}\langen{MEZ}}
 \DeclareFieldFormat{urldate}{%urltime zu urldate hinzufügen
-  [Zugriff\addcolon\addspace
+  [\langde{Zugriff}\langen{Access}\addcolon\addspace
   #1
   \printfield{urltime}]
 }
@@ -91,7 +96,7 @@
   \ifentrytype{online} 
     {\setunit*{\addspace}% 
      \iffieldundef{year}
-       {\printtext[date]{keine Datumsangabe}} 
+       {\printtext[date]{\langde{keine Datumsangabe}\langen{no Date} }}
        {\usebibmacro{date}}}% 
     {}% 
   \setunit*{\addspace}% 
@@ -99,28 +104,54 @@
   } 
 
 
+%% Anzeige des Jahres nach dem Stichwort (usera) im Literaturverzeichnis
+%% Wenn das Jahr bei Online-Quellen nicht explizit angegeben wurde, wird nach
+%% dem Stichwort 'o. J.' ausgegeben. Nach der URL steht dann 'keine
+%% Datumsangabe'. Ist das Jahr definiert, wird es an beiden Stellen ausgegeben.
+%% Das Zugriffsdatum (urldate) spielt hier keine Rolle.
+%% Für Nicht-Online-Quellen wird nichts geändert.
 \renewbibmacro*{date+extradate}{% 
   \printtext[parens]{% 
     \printfield{usera}% 
-    \setunit{\printdelim{titleyeardelim}}% 
-    \printlabeldateextra}} 
+    \setunit{\printdelim{titleyeardelim}}%
+    \ifentrytype{online} 
+       {\setunit*{\addspace\addcomma\addspace}% 
+         \iffieldundef{year}
+           {\bibstring{nodate}} 
+       {\printlabeldateextra}}% 
+       {\printlabeldateextra}}}
+ 
+%% Anzeige des Jahres nach dem Stichwort (usera) in der Fussnote
+%% das Stichwort hat der Aufrufer hier schon ausgegeben.
+%% siehe auch Kommentar zu: \renewbibmacro*{date+extradate}
+\renewbibmacro*{cite:labeldate+extradate}{% 
+    \ifentrytype{online} 
+       {\setunit*{\addspace\addcomma\addspace}% 
+         \iffieldundef{year}
+           {\bibstring{nodate}} 
+       {\printlabeldateextra}}% 
+       {\printlabeldateextra}}
+ 
 
 \DefineBibliographyStrings{german}{ 
-  nodate    = {{}o.\adddot J\adddot}, 
+  nodate    = {{}o.\adddot\addspace J\adddot}, 
   andothers = {et\addabbrvspace al\adddot} 
 } 
-
+\DefineBibliographyStrings{english}{
+  nodate    = {{}n.\adddot\addspace d\adddot},
+  andothers = {et\addabbrvspace al\adddot}
+}
 \DeclareSourcemap{ 
   \maps[datatype=bibtex]{ 
     \map{ 
       \step[notfield=translator, final] 
       \step[notfield=editor, final] 
-      \step[fieldset=author, fieldvalue={{{o\noexpand\adddot V\noexpand\adddot}}}] 
-    } 
+      \step[fieldset=author, fieldvalue={{{\langde{o\noexpand\adddot\addspace V\noexpand\adddot}\langen{Anon}}}}]
+    }
     \map{ 
       \pernottype{online} 
-      \step[fieldset=location, fieldvalue={o\noexpand\adddot O\noexpand\adddot}] 
-    } 
+      \step[fieldset=location, fieldvalue={\langde{o\noexpand\adddot\addspace O\noexpand\adddot}\langen{s\noexpand\adddot I\noexpand\adddot}}]
+    }
   } 
 } 
 
@@ -155,15 +186,41 @@
   {
   (\thefield{year}) %Ansonsten wird wenn kein Volume angegeben ist ein Komma vorangestellt
   }
-  \setunit*{\addcomma\addspace Nr\adddot\addcolon\addspace}
+  \setunit*{\addcomma\addspace Nr\adddot\addspace}
   \printfield{number}
   \iffieldundef{eid}
   {}
   {\printfield{eid}}
 }
 
+% Postnote ist der Text in der zweiten eckigen Klammer bei einem Zitat
+% wenn es keinen solchen Eintrag gibt, dann auch nicht ausgeben, z.B. 'o. S.'
+% Wenn man das will, kann man das 'o. S.' ja explizit angeben. Andernfalls steht
+% sonst auch bei Webseiten 'o. S.' da, was laut Leitfaden nicht ok ist.
 \renewbibmacro*{postnote}{% 
   \setunit{\postnotedelim}% 
   \iffieldundef{postnote} 
-    {\printtext{o.S\adddot}} 
+    {} %{\printtext{\langde{o.S\adddot}\langen{no page number}}}
     {\printfield{postnote}}} 
+    
+% Abstand bei Änderung Anfangsbuchstabe ca. 1.5 Zeilen
+\setlength{\bibinitsep}{0.75cm}
+
+% nur in den Zitaten/Fussnoten den Vornamen abkürzen (nicht im
+% Literaturverzeichnis)
+
+\DeclareDelimFormat{nonameyeardelim}{\addcomma\space} 
+\DeclareDelimFormat{nameyeardelim}{\addcomma\space} 
+
+\renewbibmacro*{cite}{%
+  \iffieldundef{shorthand}
+    {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+       {\usebibmacro{cite:label}%
+        \setunit{\printdelim{nonameyeardelim}}}
+      {\toggletrue{abx@bool@giveninits}
+        \printnames[family-given]{labelname}%
+        \setunit{\printdelim{nameyeardelim}}}%
+      \printfield{usera}%
+      \setunit{\printdelim{titleyeardelim}}% 
+     \usebibmacro{cite:labeldate+extradate}}
+   {\usebibmacro{cite:shorthand}}}

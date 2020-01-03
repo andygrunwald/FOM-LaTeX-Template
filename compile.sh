@@ -1,39 +1,44 @@
 #!/usr/bin/env bash
 #Run the Script from the folder you are in...
 CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+compile=""
+biberarg=""
+CMD_LATEX=lualatex
 
-pdflatex --shell-escape "$CURRENT_DIR/thesis_main.tex"
+echo "Compiling in Language: $1"
+if [ "$1" = "en" ] || [ "$2" = "en" ] ; then
+  compile='$CMD_LATEX --shell-escape --jobname="thesis_englisch" "\def\FOMEN{}\input{$CURRENT_DIR/thesis_main.tex}"'
+  biberarg="$CURRENT_DIR/thesis_englisch"
+else
+  compile='$CMD_LATEX --shell-escape "$CURRENT_DIR/thesis_main.tex"'
+  biberarg="$CURRENT_DIR/thesis_main"
+fi
+
+eval "$compile"
 RETVAL="$?"
 if [[ "${RETVAL}" -ne 0 ]] ; then
-    echo "First pdflatex run failed"
+    echo "First $CMD_LATEX run failed"
     exit ${RETVAL}
 fi
 
-makeindex thesis_main.nlo -s nomencl.ist -o thesis_main.nls
-RETVAL="$?"
-if [[ "${RETVAL}" -ne 0 ]] ; then
-    echo "makeindex run failed"
-    exit ${RETVAL}
-fi
-
-biber "$CURRENT_DIR/thesis_main"
+biber "$biberarg"
 RETVAL="$?"
 if [[ "${RETVAL}" -ne 0 ]] ; then
     echo "biber run failed"
     exit ${RETVAL}
 fi
 
-pdflatex --shell-escape "$CURRENT_DIR/thesis_main.tex"
+eval "$compile"
 RETVAL="$?"
 if [[ "${RETVAL}" -ne 0 ]] ; then
-    echo "Second pdflatex run failed"
+    echo "Second $CMD_LATEX run failed"
     exit ${RETVAL}
 fi
 
-pdflatex --shell-escape "$CURRENT_DIR/thesis_main.tex"
+eval "$compile"
 RETVAL="$?"
 if [[ "${RETVAL}" -ne 0 ]] ; then
-    echo "Third pdflatex run failed"
+    echo "Third $CMD_LATEX run failed"
     exit ${RETVAL}
 fi
 
