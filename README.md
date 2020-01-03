@@ -188,7 +188,7 @@ Den Befehl lasst ihr einfach über eure Kommandozeile bzw. PowerShell laufen (in
 Falls es hier zu Problemen kommt, wenn ein gecachtes Image verwendet wird können die folgende Befehle ausgeführt werden:
 
 ```
-docker-compose build --no cache
+docker-compose build --no-cache
 docker-compose up
 ```
 
