@@ -20,6 +20,7 @@ RUN echo 'deb [trusted=yes] http://ppa.launchpad.net/jonathonf/texlive-2018/ubun
 		texlive-bibtex-extra \
 		texlive-lang-german \
 		texlive-generic-extra \
+		texlive-luatex \
 		biber \
 		xz-utils \
 		python \
