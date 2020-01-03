@@ -57,6 +57,6 @@ rm *.toc 2> /dev/null
 rm *.run.xml 2> /dev/null
 rm *.lot 2> /dev/null
 
-echo "PDF Compile: Success"
+echo "PDF Compile: Successfully created ./thesis_main.pdf"
 
 exit 0
