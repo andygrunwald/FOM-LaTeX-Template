@@ -84,11 +84,10 @@
   {}{} 
 
 \DeclareFieldFormat[online]{date}{\mkbibparens{#1}} 
-\DeclareFieldFormat{urltime}{#1\addspace \langde{Uhr}\langen{MEZ}}
+\DeclareFieldFormat{urltime}{\addspace #1\addspace \langde{Uhr}\langen{MEZ}}
 \DeclareFieldFormat{urldate}{%urltime zu urldate hinzufügen
   [\langde{Zugriff}\langen{Access}\addcolon\addspace
-  #1
-  \printfield{urltime}]
+  #1\printfield{urltime}]
 }
 \DeclareFieldFormat[online]{url}{\mkbibacro{URL}\addcolon\space <\url{#1}>}
 \renewbibmacro*{url+urldate}{% 
