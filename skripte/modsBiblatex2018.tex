@@ -101,7 +101,18 @@
   \setunit*{\addspace}% 
   \usebibmacro{urldate}
   } 
-
+  
+%Verhindern, dass bei mehreren Quellen des gleichen Autors im gleichen Jahr 
+%Buchstaben nach der Jahreszahl angezeigt werden wenn sich das Keyword in usera unterscheidet.
+\DeclareExtradate{
+  \scope{
+    \field{labelyear}
+    \field{year}
+    }
+    \scope{
+      \field{usera}
+     }
+}       
 
 %% Anzeige des Jahres nach dem Stichwort (usera) im Literaturverzeichnis
 %% Wenn das Jahr bei Online-Quellen nicht explizit angegeben wurde, wird nach
