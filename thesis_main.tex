@@ -261,7 +261,7 @@ mincrossrefs = 1
 		\textbf{\myHochschulName}\\
 		\textbf{\langde{Hochschulzentrum}\langen{university location} \myHochschulStandort}\\
 		\vspace{1.5cm}
-			\includegraphics[width=3cm]{abbildungen/fomLogo.jpg} \\
+			\includegraphics[width=3cm]{abbildungen/fomLogo} \\
 		\vspace{1.5cm}
 		\langde{Berufsbegleitender Studiengang}
 		\langen{part-time degree program}\\
@@ -312,6 +312,8 @@ mincrossrefs = 1
 % Inhaltsverzeichnis
 %-----------------------------------
 \setcounter{page}{2}
+\addtocontents{toc}{\protect\enlargethispage{-20mm}}
+\clearpage
 \tableofcontents
 \newpage
 \setcounter{tocdepth}{2} %wurde vorher in zusaetzlichesMaterial.tex auf 0 gesetzt um Inhalt des Anhangs zu verbergen. Dadurch gehen allerdings Abbildungs und Tabellenverzeichnis kaputt.
