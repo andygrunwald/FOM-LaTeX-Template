@@ -110,19 +110,12 @@ Von den vielen verfügbaren Literatur-Paketen habe ich mich für Biblatex entsch
 In der für den Leitfaden 2018 aktualisierten Version sind außerdem Beispiele für \enquote{online},\footcite[Vgl.][]{website:angular:aboutAngular} also Webseiten, und \enquote{article},\footcite[Vgl.][S. 140]{Decker2009} also wissenschaftliche Artikel, enthalten.
 
 Laut Leitfaden sollen maximal 3 Autoren genannt werden und danach mit
-\enquote{et.
-al.}
-bzw. \enquote{u.a.} ergänzt werden. Damit im Literaturverzeichnis auch nur max.
-3 Autoren stehen, muss man beim Füllen der literatur.bib-Datei darauf achten auch nur 3
-einzutragen. Weitere Autoren kann man einfach mit \enquote{and others} ergänzen.
-Siehe Eintrag für \enquote{Balzert.2008}. Zitiert man dann diese Werk, werden auch in
-der Fussnote alle Autoren korrekt genannt wie in dieser
-Fußnote\footcite[Vgl.][S.
-1]{Balzert.2008} zu sehen ist.\\
+\enquote{et. al.} bzw. \enquote{u.a.} ergänzt werden. Damit im Literaturverzeichnis auch nur max. 3 Autoren stehen, muss man beim Füllen der literatur.bib-Datei darauf achten auch nur 3 einzutragen. Weitere Autoren kann man einfach mit \enquote{and others} ergänzen. Siehe Eintrag für \enquote{Balzert.2008}. Zitiert man dann diese Werk, werden auch in der Fussnote alle Autoren korrekt genannt wie in dieser Fußnote\footcite[Vgl.][S.1]{Balzert.2008} zu sehen ist.
+
 Hat man dagegen mehr als 3 Autoren in der bib-Datei hinterlegt, stehen im
 Literaturverzeichnis alle drin. In der Fussnote dagegen, steht nur
-einer\footcite[Vgl.][S.
-1]{Balzert2.2008}, was dem Leitfaden widerspricht.\\
+einer\footcite[Vgl.][S.1]{Balzert2.2008}, was dem Leitfaden widerspricht.
+
 Die Anzahl von 3 wird übrigens über die Option \enquote{maxcitenames=3} des
 biblatex-Packages gesetzt. Man muss selbst schauen, dass die Anzahl der Autoren
 in den Bib-Dateien mit der Optionseinstellung übereinstimmt.
@@ -134,6 +127,8 @@ setzen.
 
 Diese Fussnote soll zeigen, wie mit einer Online-Quelle ohne Jahresangabe
 umgegangen wird\footcite[Vgl.][]{Belastingdienst}.
+
+Diese Fußnote\footcite[Vgl.][S.1]{Beckert.2012} ist nur dazu da zu zeigen, wie mit mehreren Quellen des selben Autors aus dem selben Jahr umgegangen wird, wenn das Stichwort gleich bleibt \footcite[Vgl.][S.2]{Beckert.2012.1} oder sich ändert\footcite[Vgl.][S.3]{Beckert.2012.2}. Laut Leitfaden sollte bei gleichem Autor, Jahr und Stichwort ein Buchstabe an die Jahreszahl gehangen werden. Zum Beispiel 2012a. 
 \subsection{Listen und Aufzählungen}
 \subsubsection{Listen}
 \begin{itemize}
