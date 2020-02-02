@@ -363,11 +363,11 @@ mincrossrefs = 1
 %-----------------------------------
 \newpage
 \section*{Anhang} %Überschrift "Anhang", ohne Nummerierung
-\addcontentsline{toc}{section}{Anhang} %Den Anhang ohne Nummer zum Inhaltsverzeichnis hinzufügen
+\addcontentsline{toc}{section}{\langde{Anhang}\langen{Appendix}} %Den Anhang ohne Nummer zum Inhaltsverzeichnis hinzufügen
 \begin{appendices}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}} %
-	\renewcommand{\thesection}{Anhang \arabic{section}:}
-	\renewcommand\thesubsection{Anhang \arabic{section}.\arabic{subsection}:}
+	\renewcommand{\thesection}{\langde{Anhang}\langen{Appendix} \arabic{section}:}
+	\renewcommand\thesubsection{\langde{Anhang}\langen{Appendix} \arabic{section}.\arabic{subsection}:}
 	\input{kapitel/anhang/anhang}
 \end{appendices}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
