@@ -170,7 +170,14 @@ mincrossrefs = 1
 
 %-----------------------------------
 % Weitere Ebene einfügen
+%-----------------------------------
 \input{skripte/weitereEbene}
+
+%-----------------------------------
+% Paket für die Nutzung von Anhängen
+%-----------------------------------
+\usepackage{appendix}
+
 
 %-----------------------------------
 % Zeilenabstand 1,5-zeilig
@@ -350,6 +357,20 @@ mincrossrefs = 1
 \input{kapitel/kapitel_1/kapitel_1}
 \input{kapitel/kapitel_2/kapitel_2}
 \input{kapitel/fazit/fazit}
+
+%-----------------------------------
+% Anhang
+%-----------------------------------
+\newpage
+\section*{Anhang} %Überschrift "Anhang", ohne Nummerierung
+\addcontentsline{toc}{section}{\langde{Anhang}\langen{Appendix}} %Den Anhang ohne Nummer zum Inhaltsverzeichnis hinzufügen
+\begin{appendices}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} %
+	\renewcommand{\thesection}{\langde{Anhang}\langen{Appendix} \arabic{section}:}
+	\renewcommand\thesubsection{\langde{Anhang}\langen{Appendix} \arabic{section}.\arabic{subsection}:}
+	\input{kapitel/anhang/anhang}
+\end{appendices}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
 
 %-----------------------------------
 % Literaturverzeichnis
