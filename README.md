@@ -82,7 +82,13 @@ Ohne Docker muss die Datei mit der compile.sh folgendermaßen aufgerufen werden:
 ```
 ./compile.sh en
 ```
-Für die Batch-Datei ist das Kompilieren auf Englisch leider noch nicht möglich.
+Für die Batch-Datei ist das Kompilieren auf Englisch über folgenden Workaround möglich.
+1. Suche in der thesis_main.tex nach der Codezeile `%\def\FOMEN{}`
+2. Entkommentiere diese Codezeile indem du das Prozentzeichen entfernst
+3. Kompiliere neu
+
+Anmerkung: Der beschriebene Workaround funktioniert auch, wenn du Overleaf oder einen anderen TEX-Editor verwendest und die compile.bat nicht benötigst.
+
 Nach dem kompilieren findet sich das Ergebnis in der Datei [`thesis_main.pdf`](./thesis_main.pdf). Die [`thesis_englisch.pdf`](./thesis_englisch.pdf) ist nur dazu da auf Github die Möglichkeit aufzuzeigen.
 
 ## Fußnoten
