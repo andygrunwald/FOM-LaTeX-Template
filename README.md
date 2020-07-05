@@ -260,6 +260,14 @@ Wer eine etwas moderne IDE benutzen möchte, kann auch Visual Studio Code verwen
 
 Mit Hilfe der Extension kann das Projekt kompiliert und als Vorschau angesehen werden. In der ```settings.json``` sind die Einstellungen der ```compile.sh``` für Latex Workshop hinterlegt.
 
+## Overleaf zur Bearbeitung nutzen
+
+Anstatt dir einen TEX-Editor und alle weiteren Pakete selber zu installieren und wie oben beschrieben zu kompilieren etc. kannst du auch Online-Tools wie Overleaf (https://www.overleaf.com/) verwenden. Beides hat seine Vor- und Nachteile auf die hier nicht näher eingegangen wird.
+
+Zum Einbinden dieser Vorlage in Overleaf gibt es zwei Möglichkeiten:
+1. Der [klassische Download](#klassischer-download) wonach du das ZIP-File einfach bei Overleaf wieder hochlädst.
+2. Du kannst deinen [Fork von Github](#fork-auf-github) in Overleaf einbinden.
+
 ## Wörter zählen
 
 Gerade bei der Verwendung eines Texteditors ist das Zählen der Wörter unter umständen eine mühselige Aufgabe. Mit den folgenden Vorschlägen kann man die Wörter der Arbeit zählen:
