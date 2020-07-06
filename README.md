@@ -82,7 +82,13 @@ Ohne Docker muss die Datei mit der compile.sh folgendermaßen aufgerufen werden:
 ```
 ./compile.sh en
 ```
-Für die Batch-Datei ist das Kompilieren auf Englisch leider noch nicht möglich.
+Für die Batch-Datei ist das Kompilieren auf Englisch über folgenden Workaround möglich.
+1. Suche in der thesis_main.tex nach der Codezeile `%\def\FOMEN{}`
+2. Entkommentiere diese Codezeile indem du das Prozentzeichen entfernst
+3. Kompiliere neu
+
+Anmerkung: Der beschriebene Workaround funktioniert auch, wenn du Overleaf oder einen anderen TEX-Editor verwendest und die compile.bat nicht benötigst.
+
 Nach dem kompilieren findet sich das Ergebnis in der Datei [`thesis_main.pdf`](./thesis_main.pdf). Die [`thesis_englisch.pdf`](./thesis_englisch.pdf) ist nur dazu da auf Github die Möglichkeit aufzuzeigen.
 
 ## Fußnoten
@@ -253,6 +259,14 @@ Wer eine etwas moderne IDE benutzen möchte, kann auch Visual Studio Code verwen
 [Latex Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
 Mit Hilfe der Extension kann das Projekt kompiliert und als Vorschau angesehen werden. In der ```settings.json``` sind die Einstellungen der ```compile.sh``` für Latex Workshop hinterlegt.
+
+## Overleaf zur Bearbeitung nutzen
+
+Anstatt dir einen TEX-Editor und alle weiteren Pakete selber zu installieren und wie oben beschrieben zu kompilieren etc. kannst du auch Online-Tools wie Overleaf (https://www.overleaf.com/) verwenden. Beides hat seine Vor- und Nachteile auf die hier nicht näher eingegangen wird.
+
+Zum Einbinden dieser Vorlage in Overleaf gibt es zwei Möglichkeiten:
+1. Der [klassische Download](#klassischer-download) wonach du das ZIP-File einfach bei Overleaf wieder hochlädst.
+2. Du kannst deinen [Fork von Github](#fork-auf-github) in Overleaf einbinden.
 
 ## Wörter zählen
 
