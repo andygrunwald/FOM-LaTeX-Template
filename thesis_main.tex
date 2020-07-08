@@ -53,12 +53,8 @@
 \usepackage{amsmath}
 \usepackage[table]{xcolor}
 \usepackage{marvosym}			% Verwendung von Symbolen, z.B. perfektes Eurozeichen
-\usepackage[colorlinks=true,linkcolor=black]{hyperref}
-
-
 
 \definecolor{darkblack}{rgb}{0,0,0}
-\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
 \renewcommand\familydefault{\sfdefault}
 \usepackage{ragged2e}
 
@@ -77,7 +73,7 @@
 \usepackage{multirow}
 \usepackage{rotating} % vertikal schreiben
 \usepackage{mdwlist}
-\usepackage{tabularx}% für breitenangabe
+\usepackage{tabularx}% für breitenangabe%muss weiter unten eingesetzt werden
 
 \definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
 \definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
@@ -217,6 +213,7 @@ mincrossrefs = 1
 %-----------------------------------
 % PDF Meta Daten setzen
 %-----------------------------------
+\usepackage{hyperref}
 % Behebt die falsche Darstellung der Lesezeichen in PDF-Dateien, welche eine Übersetzung besitzen
 % siehe Issue 149
 \makeatletter
@@ -267,6 +264,16 @@ mincrossrefs = 1
 \renewcommand{\headrulewidth}{0.4pt}
 %\renewcommand{\headrulewidth}{0pt}
 
+%-----------------------------------
+% Damit die hochgestellten Zahlen auch auf die Fußnote verlinkt sind
+%-----------------------------------
+% hyperef soll als aller letztes Paket geladen werden und danach erst tabularx sonst werden Fußnoten auf die erste Seite verlinkt
+%Quelle: https://golatex.de/viewtopic.php?t=6356
+% geändert am 17.05.2020
+%-----------------------------------
+%\usepackage{hyperref}%vorher Zeile 51
+\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack, linktoc=all, bookmarksnumbered=false, pdfpagemode=UseOutlines, pdftoolbar=true}
+\urlstyle{same}%gleiche Schriftart für den Link wie für den Text
 
 %-----------------------------------
 % Start the document here:
