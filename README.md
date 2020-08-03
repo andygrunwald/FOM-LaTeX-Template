@@ -16,28 +16,29 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 1. [Für die eigene Arbeit nutzen](#für-die-eigene-arbeit-nutzen)
     1. [Klassischer Download](#klassischer-download)
     2. [Fork auf Github](#fork-auf-github)
-2. [Vorlage personalisieren](#vorlage-personalisieren)
-3. [Dokumentensprache](#Dokumentensprache)
-4. [Fußnoten](#fußnoten)
-5. [Literaturverzeichnis](#literaturverzeichnis)
-6. [Sperrvermerk](#sperrvermerk)
-7. [Quellcode einbinden](#quellcode-einbinden)
-8. [Schriftarten](#schriftarten)
-10. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
+1. [Vorlage personalisieren](#vorlage-personalisieren)
+1. [Dokumentensprache](#Dokumentensprache)
+1. [Fußnoten](#fußnoten)
+1. [Literaturverzeichnis](#literaturverzeichnis)
+1. [Sperrvermerk](#sperrvermerk)
+1. [Quellcode einbinden](#quellcode-einbinden)
+1. [Schriftarten](#schriftarten)
+1. [PlantUML](#plantuml)
+1. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
     1. [Docker unter Linux / macOS / Windows](#docker-unter-linux--macos--windows)
     2. [LaTeX-Pakete](#latex-pakete)
     3. [Image selbst bauen](#image-selbst-bauen)
     4. [Fehlerbehandlung](#fehlerbehandlung)
-11. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
+1. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
     1. [Texpad](#texpad)
     2. [Visual Stuido Code](#visual-studio-code)
-12. [Wörter zählen](#wörter-zählen)
+1. [Wörter zählen](#wörter-zählen)
     1. [TeXcount](#texcount)
     2. [Unix / macOS Script](#unix--macos-script)
-13. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
-14. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
-15. [Disclaimer](#disclaimer)
-16. [Lizenz](#lizenz)
+1. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
+1. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
+1. [Disclaimer](#disclaimer)
+1. [Lizenz](#lizenz)
 
 ## Für die eigene Arbeit nutzen
 
@@ -162,6 +163,24 @@ Die voreingestellte Schriftart enthält Serifen. Mit den folgenden Zeilen kann i
 \renewcommand\familydefault{\sfdefault}
 ```
 
+## PlantUML
+PlantUML ist ein Open-Source-Tool, mit dem UML-Diagramme aus einfacher Textsprache erstellt werden können.
+
+Um PlantUml benutzen zu können, müssen folgende Voraussetzungen erfüllt sein:
+
+* Das Prozentzeichen muss vor der Zeile `\usepackage{plantuml}` in der `thesis_main.tex` entfernt werden
+* Der PlantUML Code muss von `\begin{plantuml}` `\end{plantuml}` umhüllt werden
+* Die `plantuml.jar` muss vorhanden sein, Download unter [PlantUML](https://sourceforge.net/projects/plantuml/files/plantuml.jar/download)
+* Kopiere die `plantuml.jar` zu einem lokalen Ordner (z.B., `mkdir -p ~/bin/plantuml && cp ~/Downloads/plantuml.jar ~/bin/plantuml`)
+* Installiere Graphviz (PlantUML ist davon abhängig).
+
+Folgendes muss in der `~/.bashrc` oder `zshconfig` sein:
+
+```
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home'
+export PLANTUML_JAR='$HOME/bin/plantuml/plantuml.jar'
+export GRAPHVIZ_DOT='/usr/local/bin/dot'
+```
 
 ## LaTeX zu PDF kompilieren
 
