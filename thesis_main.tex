@@ -223,6 +223,15 @@ mincrossrefs = 1
 \usepackage[printonlyused]{acronym}
 
 %-----------------------------------
+% Glossar
+%-----------------------------------
+\usepackage{glossaries}
+% Soll das Glossar im Inhaltsverzeichnis angezeigt werden, muss die nachfolgende Zeile einkommentieren werden
+%\usepackage[toc]{glossaries}
+\makenoidxglossaries
+\input{abkuerzungen/glossar}
+
+%-----------------------------------
 % PDF Meta Daten setzen
 %-----------------------------------
 \usepackage{hyperref}
@@ -323,6 +332,12 @@ mincrossrefs = 1
 % Abkürzungsverzeichnis
 %-----------------------------------
 \input{abkuerzungen/acronyms}
+\newpage
+
+%-----------------------------------
+% Glossar
+%-----------------------------------
+\printnoidxglossaries
 \newpage
 
 %-----------------------------------
