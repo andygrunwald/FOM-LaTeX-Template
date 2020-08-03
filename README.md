@@ -164,7 +164,7 @@ Die voreingestellte Schriftart enthält Serifen. Mit den folgenden Zeilen kann i
 ```
 
 ## PlantUML
-PlantUML ist ein Open-Source-Toll, mit dem UML-Diagramme aus einfacher Textsprache erstellt werden können.
+PlantUML ist ein Open-Source-Tool, mit dem UML-Diagramme aus einfacher Textsprache erstellt werden können.
 
 Um PlantUml benutzen zu können, müssen folgende Voraussetzungen erfüllt sein:
 
