@@ -231,7 +231,6 @@ Wenn Du _[MikTex](http://miktex.org/)_ oder _[MacTex](http://tug.org/mactex/)_ v
 
 Weiterhin wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Version 1.8) für das Literaturverzeichnisses benötigt.
 
-
 ### Fehlerbehandlung
 
 Falls unter Windows der folgende Fehler auftritt checkt `git` die Dateien mit Windows Line Endings aus. Dies verursacht im Ubuntu Container einen Fehler.
@@ -253,6 +252,22 @@ Wenn du das Docker Image selbst bauen möchtest, kannst du es mit dem nachfolgen
 ```
 docker build -t andygrunwald/fom-latex-template .
 ```
+
+## LaTeX direkt mit Windows Subsystem for Linux nutzen (Alternative zu Docker)
+
+1. WSL und Distribution installieren und konfigurieren (siehe [Microsoft Docs](https://docs.microsoft.com/en-US/windows/wsl/install-win10))
+1. Fork des Repositories erzeugen (siehe oben) und Dein Repository klonen (siehe [Github](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)) 
+1. TexLive und benötigte Pakete installieren
+
+```
+sudo apt-get install texlive texlive-lang-german texlive-latex-extra texlive-bibtex-extra texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-lang-german texlive-luatex biber xz-utils
+```
+1. Installation überprüfen, durch Erzeugen der PDF-Datei.
+```
+./compile.sh
+```
+1. (optional) VS Code mit Extension "Remote - WSL" nutzen (siehe [Microsoft VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl&WT.mc_id=-blog-scottha))
+
 
 ## IDE zur Bearbeitung nutzen
 
