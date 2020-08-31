@@ -32,7 +32,7 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 1. [LaTeX mit Windows Subsystem for Linux kompilieren](#latex-mit-windows-subsystem-for-linux-kompilieren)
 1. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
     1. [Texpad](#texpad)
-    2. [Visual Stuido Code](#visual-studio-code)
+    2. [Visual Studio Code](#visual-studio-code)
 1. [Wörter zählen](#wörter-zählen)
     1. [TeXcount](#texcount)
     2. [Unix / macOS Script](#unix--macos-script)
