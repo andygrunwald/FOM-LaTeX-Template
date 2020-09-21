@@ -16,28 +16,30 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 1. [Für die eigene Arbeit nutzen](#für-die-eigene-arbeit-nutzen)
     1. [Klassischer Download](#klassischer-download)
     2. [Fork auf Github](#fork-auf-github)
-2. [Vorlage personalisieren](#vorlage-personalisieren)
-3. [Dokumentensprache](#Dokumentensprache)
-4. [Fußnoten](#fußnoten)
-5. [Literaturverzeichnis](#literaturverzeichnis)
-6. [Sperrvermerk](#sperrvermerk)
-7. [Quellcode einbinden](#quellcode-einbinden)
-8. [Schriftarten](#schriftarten)
-10. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
+1. [Vorlage personalisieren](#vorlage-personalisieren)
+1. [Dokumentensprache](#Dokumentensprache)
+1. [Fußnoten](#fußnoten)
+1. [Literaturverzeichnis](#literaturverzeichnis)
+1. [Sperrvermerk](#sperrvermerk)
+1. [Quellcode einbinden](#quellcode-einbinden)
+1. [Schriftarten](#schriftarten)
+1. [PlantUML](#plantuml)
+1. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
     1. [Docker unter Linux / macOS / Windows](#docker-unter-linux--macos--windows)
     2. [LaTeX-Pakete](#latex-pakete)
     3. [Image selbst bauen](#image-selbst-bauen)
     4. [Fehlerbehandlung](#fehlerbehandlung)
-11. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
+1. [LaTeX mit Windows Subsystem for Linux kompilieren](#latex-mit-windows-subsystem-for-linux-kompilieren)
+1. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
     1. [Texpad](#texpad)
     2. [Visual Stuido Code](#visual-studio-code)
-12. [Wörter zählen](#wörter-zählen)
+1. [Wörter zählen](#wörter-zählen)
     1. [TeXcount](#texcount)
     2. [Unix / macOS Script](#unix--macos-script)
-13. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
-14. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
-15. [Disclaimer](#disclaimer)
-16. [Lizenz](#lizenz)
+1. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
+1. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
+1. [Disclaimer](#disclaimer)
+1. [Lizenz](#lizenz)
 
 ## Für die eigene Arbeit nutzen
 
@@ -82,7 +84,13 @@ Ohne Docker muss die Datei mit der compile.sh folgendermaßen aufgerufen werden:
 ```
 ./compile.sh en
 ```
-Für die Batch-Datei ist das Kompilieren auf Englisch leider noch nicht möglich.
+Für die Batch-Datei ist das Kompilieren auf Englisch über folgenden Workaround möglich.
+1. Suche in der thesis_main.tex nach der Codezeile `%\def\FOMEN{}`
+2. Entkommentiere diese Codezeile indem du das Prozentzeichen entfernst
+3. Kompiliere neu
+
+Anmerkung: Der beschriebene Workaround funktioniert auch, wenn du Overleaf oder einen anderen TEX-Editor verwendest und die compile.bat nicht benötigst.
+
 Nach dem kompilieren findet sich das Ergebnis in der Datei [`thesis_main.pdf`](./thesis_main.pdf). Die [`thesis_englisch.pdf`](./thesis_englisch.pdf) ist nur dazu da auf Github die Möglichkeit aufzuzeigen.
 
 ## Fußnoten
@@ -156,6 +164,24 @@ Die voreingestellte Schriftart enthält Serifen. Mit den folgenden Zeilen kann i
 \renewcommand\familydefault{\sfdefault}
 ```
 
+## PlantUML
+PlantUML ist ein Open-Source-Tool, mit dem UML-Diagramme aus einfacher Textsprache erstellt werden können.
+
+Um PlantUml benutzen zu können, müssen folgende Voraussetzungen erfüllt sein:
+
+* Das Prozentzeichen muss vor der Zeile `\usepackage{plantuml}` in der `thesis_main.tex` entfernt werden
+* Der PlantUML Code muss von `\begin{plantuml}` `\end{plantuml}` umhüllt werden
+* Die `plantuml.jar` muss vorhanden sein, Download unter [PlantUML](https://sourceforge.net/projects/plantuml/files/plantuml.jar/download)
+* Kopiere die `plantuml.jar` zu einem lokalen Ordner (z.B., `mkdir -p ~/bin/plantuml && cp ~/Downloads/plantuml.jar ~/bin/plantuml`)
+* Installiere Graphviz (PlantUML ist davon abhängig).
+
+Folgendes muss in der `~/.bashrc` oder `zshconfig` sein:
+
+```
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home'
+export PLANTUML_JAR='$HOME/bin/plantuml/plantuml.jar'
+export GRAPHVIZ_DOT='/usr/local/bin/dot'
+```
 
 ## LaTeX zu PDF kompilieren
 
@@ -206,7 +232,6 @@ Wenn Du _[MikTex](http://miktex.org/)_ oder _[MacTex](http://tug.org/mactex/)_ v
 
 Weiterhin wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Version 1.8) für das Literaturverzeichnisses benötigt.
 
-
 ### Fehlerbehandlung
 
 Falls unter Windows der folgende Fehler auftritt checkt `git` die Dateien mit Windows Line Endings aus. Dies verursacht im Ubuntu Container einen Fehler.
@@ -228,6 +253,22 @@ Wenn du das Docker Image selbst bauen möchtest, kannst du es mit dem nachfolgen
 ```
 docker build -t andygrunwald/fom-latex-template .
 ```
+
+## LaTeX mit Windows Subsystem for Linux kompilieren 
+Eine mögliche Alternative zu Docker:
+
+1. WSL und Distribution installieren und konfigurieren (siehe [Microsoft Docs](https://docs.microsoft.com/en-US/windows/wsl/install-win10))
+1. Fork des Repositories erzeugen (siehe oben) und Dein Repository klonen (siehe [Github](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)) 
+1. TexLive und benötigte Pakete installieren 
+```
+sudo apt-get install texlive texlive-lang-german texlive-latex-extra texlive-bibtex-extra texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-lang-german texlive-luatex biber xz-utils
+```
+4. Installation überprüfen, durch Erzeugen der PDF-Datei.
+```
+./compile.sh
+```
+5. (optional) Visual Studio Code mit Extension "Remote - WSL" benutzen (siehe [Microsoft VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl&WT.mc_id=-blog-scottha))
+
 
 ## IDE zur Bearbeitung nutzen
 
@@ -253,6 +294,14 @@ Wer eine etwas moderne IDE benutzen möchte, kann auch Visual Studio Code verwen
 [Latex Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
 Mit Hilfe der Extension kann das Projekt kompiliert und als Vorschau angesehen werden. In der ```settings.json``` sind die Einstellungen der ```compile.sh``` für Latex Workshop hinterlegt.
+
+## Overleaf zur Bearbeitung nutzen
+
+Anstatt dir einen TEX-Editor und alle weiteren Pakete selber zu installieren und wie oben beschrieben zu kompilieren etc. kannst du auch Online-Tools wie Overleaf (https://www.overleaf.com/) verwenden. Beides hat seine Vor- und Nachteile auf die hier nicht näher eingegangen wird.
+
+Zum Einbinden dieser Vorlage in Overleaf gibt es zwei Möglichkeiten:
+1. Der [klassische Download](#klassischer-download) wonach du das ZIP-File einfach bei Overleaf wieder hochlädst.
+2. Du kannst deinen [Fork von Github](#fork-auf-github) in Overleaf einbinden.
 
 ## Wörter zählen
 

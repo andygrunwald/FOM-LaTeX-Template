@@ -10,7 +10,11 @@
 % beide Varianten dargestellt.
 %\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
 \documentclass[12pt,oneside,titlepage]{scrartcl}
-%Dokumentensprache
+
+%-----------------------------------
+% Dokumentensprache
+%-----------------------------------
+%\def\FOMEN{}% Auskommentieren um die Dokumentensprache auf englisch zu ändern
 \newif\ifde
 \newif\ifen
 
@@ -52,9 +56,7 @@
 \usepackage{amsmath}
 \usepackage[table]{xcolor}
 \usepackage{marvosym}			% Verwendung von Symbolen, z.B. perfektes Eurozeichen
-\usepackage[colorlinks=true,linkcolor=black]{hyperref}
-\definecolor{darkblack}{rgb}{0,0,0}
-\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
+
 \renewcommand\familydefault{\sfdefault}
 \usepackage{ragged2e}
 
@@ -65,21 +67,31 @@
 % todo Aufgaben als Kommentare verfassen für verschiedene Editoren
 \usepackage{todonotes}
 
-%Pakete für Tabellen
+% Verhindert, dass nur eine Zeile auf der nächsten Seite steht
+\usepackage[all]{nowidow}
+
+%-----------------------------------
+% Farbdefinitionen
+%-----------------------------------
+\definecolor{darkblack}{rgb}{0,0,0}
+\definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
+\definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+
+%-----------------------------------
+% Pakete für Tabellen
+%-----------------------------------
 \usepackage{epstopdf}
 \usepackage{nicefrac} % Brüche
 \usepackage{multirow}
 \usepackage{rotating} % vertikal schreiben
 \usepackage{mdwlist}
-\usepackage{tabularx}% für breitenangabe
+\usepackage{tabularx}% für Breitenangabe
 
-\definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
-\definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
-% Colors for listings
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-
+%-----------------------------------
 % sauber formatierter Quelltext
+%-----------------------------------
 \usepackage{listings}
 % JavaScript als Sprache definieren:
 \lstdefinelanguage{JavaScript}{
@@ -114,7 +126,14 @@
   	stringstyle=\color{mauve}         % string literal style
 }
 
+%-----------------------------------
+%Literaturverzeichnis Einstellungen
+%-----------------------------------
+
 % Biblatex
+
+\usepackage{url}
+\urlstyle{same}
 
 %%%% Neuer Leitfaden (2018)
 \usepackage[
@@ -160,12 +179,16 @@ mincrossrefs = 1
 % siehe Leitfaden S. 14
 \AtBeginBibliography{\singlespacing}
 
-%Silbentrennung
+%-----------------------------------
+% Silbentrennung
+%-----------------------------------
 \usepackage{hyphsubst}
 \HyphSubstIfExists{ngerman-x-latest}{%
 \HyphSubstLet{ngerman}{ngerman-x-latest}}{}
 
+%-----------------------------------
 % Pfad fuer Abbildungen
+%-----------------------------------
 \graphicspath{{./}{./abbildungen/}}
 
 %-----------------------------------
@@ -200,8 +223,24 @@ mincrossrefs = 1
 \usepackage[printonlyused]{acronym}
 
 %-----------------------------------
+% Glossar
+%-----------------------------------
+\usepackage{glossaries}
+% Soll das Glossar im Inhaltsverzeichnis angezeigt werden, muss die nachfolgende Zeile einkommentieren werden
+%\usepackage[toc]{glossaries}
+\makenoidxglossaries
+\input{abkuerzungen/glossar}
+
+%-----------------------------------
 % PDF Meta Daten setzen
 %-----------------------------------
+\usepackage{hyperref}
+% Behebt die falsche Darstellung der Lesezeichen in PDF-Dateien, welche eine Übersetzung besitzen
+% siehe Issue 149
+\makeatletter
+\pdfstringdefDisableCommands{\let\selectlanguage\@gobble}
+\makeatother
+
 \hypersetup{
     pdfinfo={
         Title={\myTitel},
@@ -210,6 +249,11 @@ mincrossrefs = 1
         Build=1.1
     }
 }
+
+%-----------------------------------
+% PlantUML
+%-----------------------------------
+%\usepackage{plantuml}
 
 %-----------------------------------
 % Umlaute in Code korrekt darstellen
@@ -246,6 +290,11 @@ mincrossrefs = 1
 \renewcommand{\headrulewidth}{0.4pt}
 %\renewcommand{\headrulewidth}{0pt}
 
+%-----------------------------------
+% Damit die hochgestellten Zahlen auch auf die Fußnote verlinkt sind (siehe Issue 169)
+%-----------------------------------
+\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack, linktoc=all, bookmarksnumbered=false, pdfpagemode=UseOutlines, pdftoolbar=true}
+\urlstyle{same}%gleiche Schriftart für den Link wie für den Text
 
 %-----------------------------------
 % Start the document here:
@@ -262,58 +311,7 @@ mincrossrefs = 1
 %-----------------------------------
 % Titlepage
 %-----------------------------------
-\begin{titlepage}
-	\newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
-	\begin{center}
-		\textbf{\myHochschulName}\\
-		\textbf{\langde{Hochschulzentrum}\langen{university location} \myHochschulStandort}\\
-		\vspace{1.5cm}
-			\includegraphics[width=3cm]{abbildungen/fomLogo} \\
-		\vspace{1.5cm}
-		\langde{Berufsbegleitender Studiengang}
-		\langen{part-time degree program}\\
-		\myStudiengang, \mySemesterZahl. Semester\\
-		\vspace{2cm}
-		\textbf{\myThesisArt}\\
-		\textbf{
-				\langde{zur Erlangung des Grades eines}
-				\langen{to obtain the degree of}
-				}\\
-		\textbf{\myAkademischerGrad}\\
-		% Oder für Hausarbeiten:
-		%\textbf{im Rahmen der Lehrveranstaltung}\\
-		%\textbf{\myLehrveranstaltung}\\
-		\vspace{2cm}
-		\langde{über das Thema}
-		\langen{on the subject}\\
-		\Large{\myTitel}\\
-		\vspace{0.2cm}
-	\end{center}
-	\normalsize
-	\vfill
-	\begin{tabbing}
-		Links \= Mitte \=Mittez \= Rechts\kill
-		\langde{Betreuer}
-		\langen{Advisor}: \> \> \>\myBetreuer\\
-		\> \> \\
-
-		\langde{Autor}
-		\langen{Author}: \> \> \> \myAutor\\
-		\> \> \>  \langde{Matrikelnr.}
-				\langen{Matriculation Number}: \myMatrikelNr\\
-		\> \> \> \myAdresse\\
-		\> \> \>  \\
-		\langde{Abgabe}
-		\langen{Submission}: \> \> \> \myAbgabeDatum
-	\end{tabbing}
-\end{titlepage}
-
-%-------Ende Titelseite-------------
-
-%-----------------------------------
-% Sperrvermerk
-%-----------------------------------
-%\input{kapitel/anhang/sperrvermerk}
+\input{kapitel/titelseite}
 
 %-----------------------------------
 % Inhaltsverzeichnis
@@ -340,6 +338,18 @@ mincrossrefs = 1
 %-----------------------------------
 \input{abkuerzungen/acronyms}
 \newpage
+
+%-----------------------------------
+% Glossar
+%-----------------------------------
+\printnoidxglossaries
+\newpage
+
+%-----------------------------------
+% Sperrvermerk
+%-----------------------------------
+%\input{kapitel/anhang/sperrvermerk}
+
 %-----------------------------------
 % Seitennummerierung auf arabisch und ab 1 beginnend umstellen
 %-----------------------------------
@@ -353,10 +363,8 @@ mincrossrefs = 1
 %-----------------------------------
 % Kapitel / Inhalte
 %-----------------------------------
-\input{kapitel/einleitung/einleitung}
-\input{kapitel/kapitel_1/kapitel_1}
-\input{kapitel/kapitel_2/kapitel_2}
-\input{kapitel/fazit/fazit}
+% geändert aufgrund von Issue 167
+\input{skripte/kapitelUebersicht.tex}
 
 %-----------------------------------
 % Anhang
@@ -365,9 +373,13 @@ mincrossrefs = 1
 \section*{Anhang} %Überschrift "Anhang", ohne Nummerierung
 \addcontentsline{toc}{section}{\langde{Anhang}\langen{Appendix}} %Den Anhang ohne Nummer zum Inhaltsverzeichnis hinzufügen
 \begin{appendices}
+% Nachfolgende Änderungen erfolgten aufgrund von Issue 163
+\makeatletter
+\renewcommand\@seccntformat[1]{\csname the#1\endcsname:\quad}
+\makeatother
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}} %
-	\renewcommand{\thesection}{\langde{Anhang}\langen{Appendix} \arabic{section}:}
-	\renewcommand\thesubsection{\langde{Anhang}\langen{Appendix} \arabic{section}.\arabic{subsection}:}
+	\renewcommand{\thesection}{\langde{Anhang}\langen{Appendix} \arabic{section}}
+	\renewcommand\thesubsection{\langde{Anhang}\langen{Appendix} \arabic{section}.\arabic{subsection}}
 	\input{kapitel/anhang/anhang}
 \end{appendices}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
