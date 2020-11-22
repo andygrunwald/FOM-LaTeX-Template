@@ -355,15 +355,11 @@ mincrossrefs = 1
 %-----------------------------------
 \pagenumbering{arabic}
 \setcounter{page}{1}
-% Die folgende Zeile trägt ALLE Werke aus literatur.bib in das
-% Literaturverzeichnis ein, egal ob sie zietiert wurden oder nicht.
-% Der Befehl ist also nur zum Test der Skripte sinnvoll und muss bei echten
-% Arbeiten entfernt werden.
-%\nocite{*}
+
 %-----------------------------------
 % Kapitel / Inhalte
 %-----------------------------------
-% geändert aufgrund von Issue 167
+% Die Kapitel werden über folgende Datei eingebunden
 \input{skripte/kapitelUebersicht.tex}
 
 %-----------------------------------
@@ -388,6 +384,13 @@ mincrossrefs = 1
 % Literaturverzeichnis
 %-----------------------------------
 \newpage
+
+% Die folgende Zeile trägt ALLE Werke aus literatur.bib in das
+% Literaturverzeichnis ein, egal ob sie zietiert wurden oder nicht.
+% Der Befehl ist also nur zum Test der Skripte sinnvoll und muss bei echten
+% Arbeiten entfernt werden.
+%\nocite{*}
+
 %\addcontentsline{toc}{section}{Literatur}
 
 % Die folgenden beiden Befehle würden ab dem Literaturverzeichnis wieder eine

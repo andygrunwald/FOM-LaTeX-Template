@@ -32,7 +32,7 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 1. [LaTeX mit Windows Subsystem for Linux kompilieren](#latex-mit-windows-subsystem-for-linux-kompilieren)
 1. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
     1. [Texpad](#texpad)
-    2. [Visual Stuido Code](#visual-studio-code)
+    2. [Visual Studio Code](#visual-studio-code)
 1. [Wörter zählen](#wörter-zählen)
     1. [TeXcount](#texcount)
     2. [Unix / macOS Script](#unix--macos-script)
@@ -44,12 +44,12 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 ## Für die eigene Arbeit nutzen
 
 Aufgrund der gewählten [Lizenz](./LICENSE) [MIT Lizenz](https://en.wikipedia.org/wiki/MIT_License), darfst du diese Vorlage für den persönlichen oder kommerziellen Gebrauch nutzen und abändern.
-Um dies zu tun gibt es mehrere Möglichkeiten, die wir nachfolgend kurz vorstellen.
+Um dies zu tun, gibt es mehrere Möglichkeiten, die wir nachfolgend kurz vorstellen.
 
 **Generell gilt**:
-Dieses Dokument beschreibt eine ganze Menge Details, die dir beim erstellen und bearbeiten des Dokument hilfreich sein könnten.
+Dieses Dokument beschreibt eine ganze Menge Details, die dir beim Erstellen und bearbeiten des Dokuments hilfreich sein könnten.
 Leider wird es unmöglich sein, jede Frage abzudecken.
-Solltest du uns kontaktieren wollen um eine Frage zu stellen, ein Problem mit zuteilen oder um einfach nur mal Danke sagen zu wollen, eröffne doch ein [neues Issue](https://github.com/andygrunwald/FOM-LaTeX-Template/issues/new) in diesem Projekt.
+Solltest du uns kontaktieren wollen, um eine Frage zu stellen, ein Problem mit zuteilen oder um einfach nur mal Danke sagen zu wollen, eröffne doch ein [neues Issue](https://github.com/andygrunwald/FOM-LaTeX-Template/issues/new) in diesem Projekt.
 
 ### Klassischer Download
 
@@ -60,7 +60,7 @@ Danach kannst du, wie gewohnt, die Dateien lokal bearbeiten, deine Arbeit schrei
 
 Die bessere Alternative zum klassischen Download ist ein *Fork* auf Github.
 Wie das im Detail funktioniert beschreibt der Artikel [Fork A Repo](https://help.github.com/articles/fork-a-repo/).
-Das ganze hat primär zwei Vorteile:
+Das Ganze hat primär zwei Vorteile:
 
 * Du hast automatisch ein Backup deiner Arbeit auf Github
 * Andere Personen / Studenten können sich deine Arbeit ansehen, diese verbessern, diese weiter verwenden (und ggf. Zeit sparen) oder daraus lernen (bedenke, all diese Vorteile hast du auch durch dieses Projekt)
@@ -68,15 +68,15 @@ Das ganze hat primär zwei Vorteile:
 
 ## Vorlage personalisieren
 
-Wenn du diese Vorlage nutzt ist der erste Einstiegspunkt die Datei [`skripte/meta.tex`](./skripte/meta.tex).
-In der Datei haben wir einige Variablen hinterlegt, die im Dokument (u.a. auf dem Deckblatt) genutzt werden.
+Wenn du diese Vorlage nutzt, ist der erste Einstiegspunkt die Datei [`skripte/meta.tex`](./skripte/meta.tex).
+In der Datei haben wir einige Variablen hinterlegt, die im Dokument (u. a. auf dem Deckblatt) genutzt werden.
 
 Ersetze die Muster-Werte durch deine persönlichen Angaben und diese werden automatisch im Dokument verwendet.
 
 ## Dokumentensprache
 
-Die Vorlage ist sowohl auf Deutsch, als auch auf Englisch umgesetzt. Dadurch wird das Titelblatt, Verzeichnisüberschriften und auch der Inhalt des Literaturverzeichnis auf die englische Sprache umgestellt.
-Um die Datei auf Englisch zu kompilieren muss mit docker-compose folgender Befehl umgesetzt werden:
+Die Vorlage ist sowohl auf Deutsch, als auch auf Englisch umgesetzt. Dadurch wird das Titelblatt, Verzeichnisüberschriften und auch der Inhalt des Literaturverzeichnisses auf die englische Sprache umgestellt.
+Um die Datei auf Englisch zu kompilieren, muss mit docker-compose folgender Befehl umgesetzt werden:
 ```
 docker-compose run --service-ports fom ./compile.sh en
 ```
@@ -84,9 +84,9 @@ Ohne Docker muss die Datei mit der compile.sh folgendermaßen aufgerufen werden:
 ```
 ./compile.sh en
 ```
-Für die Batch-Datei ist das Kompilieren auf Englisch über folgenden Workaround möglich.
+Für die Batch-Datei ist das kompilieren auf Englisch über folgenden Workaround möglich.
 1. Suche in der thesis_main.tex nach der Codezeile `%\def\FOMEN{}`
-2. Entkommentiere diese Codezeile indem du das Prozentzeichen entfernst
+2. Entkommentiere diese Codezeile, indem du das Prozentzeichen entfernst
 3. Kompiliere neu
 
 Anmerkung: Der beschriebene Workaround funktioniert auch, wenn du Overleaf oder einen anderen TEX-Editor verwendest und die compile.bat nicht benötigst.
@@ -109,7 +109,7 @@ Dazu kann der Custom-Befehl `\fullfootcite[Vgl. ][Seite 1]{Balzert.2008}` genutz
 Vgl. Balzert, Helmut et al. (2008), Seite 1.
 ```
 
-Wird die englische Version genutzt muss "Vgl." durch "compare" und "S." durch "p." ersetzt werden.
+Wird die englische Version genutzt, muss "Vgl." durch "compare" und "S." durch "p." ersetzt werden.
 
 ## Literaturverzeichnis
 
@@ -133,7 +133,7 @@ Und die folgenden Zeilen einkommentieren und ggf. anpassen.
 
 ## Sperrvermerk
 
-Sollte ein Sperrvermerk für die Arbeit notwendig sein, so kann dieser durch einkommentieren der folgenden Zeile aktiviert werden:
+Sollte ein Sperrvermerk für die Arbeit notwendig sein, so kann dieser durch Einkommentieren der folgenden Zeile aktiviert werden:
 
 ```latex
 \input{kapitel/anhang/sperrvermerk}
@@ -143,8 +143,8 @@ Die Angaben zu Titel der Arbeit und Name der Firma werden dabei aus den Metadate
 
 ## Quellcode einbinden
 
-Um euren Quellcode einzubinden, wurde bereits das Packet *listings* in der Datei [*thesis_main.tex*](./thesis_main.tex) eingebunden.
-Dieses wird dort auch mit den Farben für Kommentare, Strings, etc konfiguriert.
+Um euren Quellcode einzubinden, wurde bereits das Paket *listings* in der Datei [*thesis_main.tex*](./thesis_main.tex) eingebunden.
+Dieses wird dort auch mit den Farben für Kommentare, Strings, etc. konfiguriert.
 Folgendermaßen könnt ihr Quellcode einbauen:
 
 ```latex
@@ -156,7 +156,7 @@ Für eine genauere Beschreibung aller im Standard verfügbaren Sprachen empfehle
 
 ## Schriftarten
 
-Die voreingestellte Schriftart enthält Serifen. Mit den folgenden Zeilen kann in der Datei [*thesis_main.tex*](./thesis_main.tex) die Nutzung der Schfriftart Helvet erzwungen werden.
+Die voreingestellte Schriftart enthält Serifen. Mit den folgenden Zeilen kann in der Datei [*thesis_main.tex*](./thesis_main.tex) die Nutzung der Schriftart Helvet erzwungen werden.
 
 ```latex
 % Überschreibe die default Schriftart mit helvet
@@ -192,7 +192,7 @@ Unter **Windows** muss dafür die beiliegende `compile.bat` ausführen.
 Benutzer von **macOS** und **Linux** verwenden bitte die ```compile.sh```.
 
 
-Wenn das kompilieren nicht ohne Fehler möglich ist, kontrolliert bitte ganz genau eure LaTeX-versionen oder nutzt Docker.
+Wenn das Kompilieren nicht ohne Fehler möglich ist, kontrolliert bitte ganz genau eure LaTeX-Versionen oder nutzt Docker.
 
 
 ### Docker unter Linux / macOS / Windows
@@ -202,16 +202,16 @@ In diesem Container sind alle Vorraussetzungen mit der richtigen Software und de
 
 Voraussetzung ist eine installierte [Docker engine](https://docs.docker.com/engine/installation/).
 
-Um die **PDF ohne die Installation der LaTeX-Pakete zu kompilieren muss folgender Befehl in eurem Projekt-Ordner** ( da wo die compile.sh bzw compile.bat liegt) ausgeführt werden:
+Um die **PDF-Datei ohne die Installation der LaTeX-Pakete zu kompilieren, muss folgender Befehl in eurem Projekt-Ordner** ( da wo die compile.sh bzw compile.bat liegt) ausgeführt werden:
 
 ```
 docker-compose up
 ```
 
 
-Den Befehl lasst ihr einfach über eure Kommandozeile bzw. PowerShell laufen (in Windows cmd.exe bzw. powershell.exe, beim Mac ist es das Terminal). Zum Projektordner könnt ihr kommen, indem ihr über den cd Befehl dorthin navigiert oder im Windows-Explorer in diesen Ordner wechselt und dann bei gedrückter Shift-Taste die rechte Maus-Taste klickt. Dort müsst ihr dann im Menü den Eintrag : "Öffne Kommandozeile hier" auswählen.
+Den Befehl lasst ihr einfach über eure Kommandozeile bzw. PowerShell laufen (in Windows cmd.exe bzw. powershell.exe, beim Mac ist es das Terminal). Zum Projektordner könnt ihr kommen, indem ihr über den cd Befehl dorthin navigiert oder im Windows-Explorer in diesen Ordner wechselt und dann bei gedrückter Shift-Taste die rechte Maus-Taste klickt. Dort müsst ihr dann im Menü den Eintrag: "Öffne Kommandozeile hier" auswählen.
 
-Falls es hier zu Problemen kommt, wenn ein gecachtes Image verwendet wird können die folgende Befehle ausgeführt werden:
+Falls es hier zu Problemen kommt, wenn ein gecachtes Image verwendet wird, können die folgenden Befehle ausgeführt werden:
 
 ```
 docker-compose build --no-cache
@@ -234,7 +234,7 @@ Weiterhin wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Ve
 
 ### Fehlerbehandlung
 
-Falls unter Windows der folgende Fehler auftritt checkt `git` die Dateien mit Windows Line Endings aus. Dies verursacht im Ubuntu Container einen Fehler.
+Falls unter Windows der folgende Fehler auftritt, checkt `git` die Dateien mit Windows Line Endings aus. Dies verursacht im Ubuntu Container einen Fehler.
 
 ```
   env: bash\r: No such file or directory
@@ -248,7 +248,7 @@ git config --global core.autocrlf true
 
 #### Image selbst bauen
 
-Wenn du das Docker Image selbst bauen möchtest, kannst du es mit dem nachfolgenden Befehl tun:
+Wenn Du das Docker Image selbst bauen möchtest, kannst Du es mit dem nachfolgenden Befehl tun:
 
 ```
 docker build -t andygrunwald/fom-latex-template .
@@ -273,7 +273,7 @@ sudo apt-get install texlive texlive-lang-german texlive-latex-extra texlive-bib
 ## IDE zur Bearbeitung nutzen
 
 Prinzipiell reicht ein normaler Text-Editor zur Bearbeitung aus.
-Jedoch kannst du zum schreiben der Arbeit auch ein IDE verwenden.
+Jedoch kannst du zum Schreiben der Arbeit auch ein IDE verwenden.
 Hierzu gibt es nachfolgend einige Software:
 
 - [TeXstudio](http://texstudio.sourceforge.net/) (Windows, macOS, Linux)
@@ -294,6 +294,8 @@ Wer eine etwas moderne IDE benutzen möchte, kann auch Visual Studio Code verwen
 [Latex Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
 Mit Hilfe der Extension kann das Projekt kompiliert und als Vorschau angesehen werden. In der ```settings.json``` sind die Einstellungen der ```compile.sh``` für Latex Workshop hinterlegt.
+
+Zusätzlich kann die Extension [LTeX](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex) hilfreich sein, die eine **offline Grammatik- und Rechtschreibprüfung** für LaTeX-Dokumente bietet.
 
 ## Overleaf zur Bearbeitung nutzen
 
