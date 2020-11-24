@@ -93,6 +93,22 @@ Anmerkung: Der beschriebene Workaround funktioniert auch, wenn du Overleaf oder 
 
 Nach dem kompilieren findet sich das Ergebnis in der Datei [`thesis_main.pdf`](./thesis_main.pdf). Die [`thesis_englisch.pdf`](./thesis_englisch.pdf) ist nur dazu da auf Github die Möglichkeit aufzuzeigen.
 
+## Arbeiten mit eigen erstellten Commands zur Verwendung im Text
+
+Das Arbeiten mit Commands innerhalb des Textes kann eine schöne Möglichkeit darstellen um:
+- Wörter oder Abkürzungen, welche häufig falsch geschrieben werden, einmalig zu definieren
+- bestimmte Wörter die z. B. einfach zu lang sind durch ein Kürzel schneller schreiben zu können
+- Wörter oder Abkürzungen die häufig verwendet werden nie an der falschen Stelle zu trenen
+
+In meinen Arbeiten haben ich gemerkt, dass es sinnvoll ist verschiedene standard Abkürzungen zu verwenden und diese nur einmalig zu definieren. Beispielsweise habe ich die Abkürzung von "zum Beispiel" --> "z. B." immer ohne Leerzeichen geschrieben. Allerdings ist die Schreibweise mit Leerzeichen [wesentlich korrekter](https://de.wiktionary.org/wiki/z._B.#:~:text=Anmerkung%3A,z.B.). 
+
+Daher habe ich die Seite skripte\textcommands.tex erstellt und diese in die zwei Bereiche unterteilt:
+- common textCommands
+- project individual textCommands
+
+
+
+
 ## Fußnoten
 
 Einige Professoren bevorzugen ein anderes Fußnoten-Format.
