@@ -113,6 +113,10 @@ Auf der Seite skripte\textcommands.tex befinden sich zwei Bereiche:
 
 Hier könnt ihr die verschiedenen Commands definieren und dann sind sie auch zentral an einer Stelle verfügbar und pflegbar.
 
+TextCommands können bei Bedarf auch zweisprachig gepflegt werden:
+```
+\newcommand{\vglf}{\langde{Vgl.}\langen{compare}}
+```
 
 ## Fußnoten
 
@@ -131,6 +135,11 @@ Vgl. Balzert, Helmut et al. (2008), Seite 1.
 ```
 
 Wird die englische Version genutzt, muss "Vgl." durch "compare" und "S." durch "p." ersetzt werden.
+Beim verwenden von [Textcommands](#textcommands) müssen "Vgl." und "S." nicht manuell geändert werden. Dies wird automatisch erledigt.
+Beispiel für die Zitierung mit Textcomands (der Output sieht wie oben aus):
+```
+\footcite[\vglf][\pagef 1]{Balzert.2008}
+```
 
 ## Literaturverzeichnis
 
