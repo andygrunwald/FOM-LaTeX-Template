@@ -85,7 +85,7 @@ Ohne Docker muss die Datei mit der compile.sh folgendermaßen aufgerufen werden:
 ```
 ./compile.sh en
 ```
-Für die Batch-Datei ist das kompilieren auf Englisch über folgenden Workaround möglich.
+Für die Batch-Datei ist das Kompilieren auf Englisch über folgenden Workaround möglich.
 1. Suche in der thesis_main.tex nach der Codezeile `%\def\FOMEN{}`
 2. Entkommentiere diese Codezeile, indem du das Prozentzeichen entfernst
 3. Kompiliere neu
