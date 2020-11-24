@@ -101,13 +101,17 @@ Das Arbeiten mit Commands innerhalb des Textes kann eine schöne Möglichkeit da
 - bestimmte Wörter die z. B. einfach zu lang sind durch ein Kürzel schneller schreiben zu können
 - Wörter oder Abkürzungen die häufig verwendet werden nie an der falschen Stelle zu trenen
 
-In meinen Arbeiten haben ich gemerkt, dass es sinnvoll ist verschiedene standard Abkürzungen zu verwenden und diese nur einmalig zu definieren. Beispielsweise habe ich die Abkürzung von "zum Beispiel" --> "z. B." immer ohne Leerzeichen geschrieben. Allerdings ist die Schreibweise mit Leerzeichen [wesentlich korrekter](https://de.wiktionary.org/wiki/z._B.#:~:text=Anmerkung%3A,z.B.). 
+In meinen Arbeiten haben ich gemerkt, dass es sinnvoll ist verschiedene standard Abkürzungen zu verwenden und diese nur einmalig zu definieren. Beispielsweise habe ich die Abkürzung von "zum Beispiel" --> "z. B." immer ohne Leerzeichen geschrieben. Allerdings ist die Schreibweise mit Leerzeichen [wesentlich korrekter](https://de.wiktionary.org/wiki/z._B.#:~:text=Anmerkung%3A,z.B.). Einmal richtig definiert, lässt sich die Abkürzung "z. B." im Text-File einfach durch folgenden Code aufrufen:
+```
+\zb
+```
+Man sparrt sich sogar 2 Tastaturanschläge ;-)
 
-Daher habe ich die Seite skripte\textcommands.tex erstellt und diese in die zwei Bereiche unterteilt:
+Auf der Seite skripte\textcommands.tex befinden sich zwei Bereiche:
 - common textCommands
 - project individual textCommands
 
-
+Hier könnt ihr die verschiedenen Commands definieren und dann sind sie auch zentral an einer Stelle verfügbar und pflegbar.
 
 
 ## Fußnoten
