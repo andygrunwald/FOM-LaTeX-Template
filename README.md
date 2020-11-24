@@ -18,6 +18,7 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
     2. [Fork auf Github](#fork-auf-github)
 1. [Vorlage personalisieren](#vorlage-personalisieren)
 1. [Dokumentensprache](#Dokumentensprache)
+1. [TextComands](#TextC)ommands)
 1. [Fußnoten](#fußnoten)
 1. [Literaturverzeichnis](#literaturverzeichnis)
 1. [Sperrvermerk](#sperrvermerk)
@@ -93,7 +94,7 @@ Anmerkung: Der beschriebene Workaround funktioniert auch, wenn du Overleaf oder 
 
 Nach dem kompilieren findet sich das Ergebnis in der Datei [`thesis_main.pdf`](./thesis_main.pdf). Die [`thesis_englisch.pdf`](./thesis_englisch.pdf) ist nur dazu da auf Github die Möglichkeit aufzuzeigen.
 
-## Arbeiten mit eigen erstellten Commands zur Verwendung im Text
+## TextCommands
 
 Das Arbeiten mit Commands innerhalb des Textes kann eine schöne Möglichkeit darstellen um:
 - Wörter oder Abkürzungen, welche häufig falsch geschrieben werden, einmalig zu definieren
