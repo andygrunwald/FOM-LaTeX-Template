@@ -18,7 +18,7 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
     2. [Fork auf Github](#fork-auf-github)
 1. [Vorlage personalisieren](#vorlage-personalisieren)
 1. [Dokumentensprache](#Dokumentensprache)
-1. [TextComands](#TextCommands)
+1. [TextCommands](#TextCommands)
 1. [Fußnoten](#fußnoten)
 1. [Literaturverzeichnis](#literaturverzeichnis)
 1. [Sperrvermerk](#sperrvermerk)
