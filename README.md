@@ -187,7 +187,7 @@ export GRAPHVIZ_DOT='/usr/local/bin/dot'
 
 Wir empfehlen das Dokument mit Docker (siehe unten) zu kompilieren.
 
-Alternativ kann auch über die Ausführung der Skripte kompiliert werden, dafür müssen aber die unten beschriebenen Latex-Pakete installiert sein.
+Alternativ kann auch über die Ausführung der Skripte kompiliert werden, dafür müssen aber die unten beschriebenen [LaTeX-Pakete](#latex-pakete) installiert sein.
 Unter **Windows** muss dafür die beiliegende `compile.bat` ausführen.
 Benutzer von **macOS** und **Linux** verwenden bitte die ```compile.sh```.
 
