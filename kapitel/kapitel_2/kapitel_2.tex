@@ -146,6 +146,15 @@ Abkürzungen werden mithilfe des Pakets Acronym eingebunden. Alle Abkürzungen s
 
 Sollte es im Abkürzungsverzeichnis zu Anzeigefehlern kommen kann dies daher rühren, dass eine Abkürzung verwendet wird, die länger ist als \ac{WYSIWYG}. In diesem Fall müsst ihr in der Datei acronyms.tex den Parameter [WYSIWYG] durch eure längere Abkürzung ersetzen.
 
+\subsection{Formeln}
+\begin{align}
+L_P{=} 10lg \cdot \frac{P}{1 mW}
+\end{align}
+
+\subsection{Symbole}
+% die folgenden Symbole haben nicht mit der Formel oben drüber zu tun
+Das hier ist ein definiertes Symbol: \symnz und das hier auch \AB . Symbole werden in der Datei Skripte symboldef.tex zentral definiert.
+
 \subsection{Glossar}
 Begriffserklärungen bzw. das \gls{glossar} wird mithilfe des Pakets \gls{glossaries} eingebunden. Alle Begriffe die erklärt werden sollen, sollten in der Datei glossar.tex mithilfe des \begin{verbatim}
 	\newglossaryentry
