@@ -18,6 +18,7 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
     2. [Fork auf Github](#fork-auf-github)
 1. [Vorlage personalisieren](#vorlage-personalisieren)
 1. [Dokumentensprache](#Dokumentensprache)
+1. [TextCommands](#TextCommands)
 1. [Fußnoten](#fußnoten)
 1. [Literaturverzeichnis](#literaturverzeichnis)
 1. [Sperrvermerk](#sperrvermerk)
@@ -84,7 +85,7 @@ Ohne Docker muss die Datei mit der compile.sh folgendermaßen aufgerufen werden:
 ```
 ./compile.sh en
 ```
-Für die Batch-Datei ist das kompilieren auf Englisch über folgenden Workaround möglich.
+Für die Batch-Datei ist das Kompilieren auf Englisch über folgenden Workaround möglich.
 1. Suche in der thesis_main.tex nach der Codezeile `%\def\FOMEN{}`
 2. Entkommentiere diese Codezeile, indem du das Prozentzeichen entfernst
 3. Kompiliere neu
@@ -92,6 +93,30 @@ Für die Batch-Datei ist das kompilieren auf Englisch über folgenden Workaround
 Anmerkung: Der beschriebene Workaround funktioniert auch, wenn du Overleaf oder einen anderen TEX-Editor verwendest und die compile.bat nicht benötigst.
 
 Nach dem kompilieren findet sich das Ergebnis in der Datei [`thesis_main.pdf`](./thesis_main.pdf). Die [`thesis_englisch.pdf`](./thesis_englisch.pdf) ist nur dazu da auf Github die Möglichkeit aufzuzeigen.
+
+## TextCommands
+
+Das Arbeiten mit Commands innerhalb des Textes kann eine schöne Möglichkeit darstellen um:
+- Wörter oder Abkürzungen, welche häufig falsch geschrieben werden, einmalig zu definieren
+- bestimmte Wörter die z. B. einfach zu lang sind durch ein Kürzel schneller schreiben zu können
+- Wörter oder Abkürzungen die häufig verwendet werden nie an der falschen Stelle zu trenen
+
+In meinen Arbeiten haben ich gemerkt, dass es sinnvoll ist verschiedene standard Abkürzungen zu verwenden und diese nur einmalig zu definieren. Beispielsweise habe ich die Abkürzung von "zum Beispiel" --> "z. B." immer ohne Leerzeichen geschrieben. Allerdings ist die Schreibweise mit Leerzeichen [wesentlich korrekter](https://de.wiktionary.org/wiki/z._B.#:~:text=Anmerkung%3A,z.B.). Einmal richtig definiert, lässt sich die Abkürzung "z. B." im Text-File einfach durch folgenden Code aufrufen:
+```
+\zb
+```
+Man sparrt sich sogar 2 Tastaturanschläge ;-)
+
+Auf der Seite skripte\textcommands.tex befinden sich zwei Bereiche:
+- common textCommands
+- project individual textCommands
+
+Hier könnt ihr die verschiedenen Commands definieren und dann sind sie auch zentral an einer Stelle verfügbar und pflegbar.
+
+TextCommands können bei Bedarf auch zweisprachig gepflegt werden:
+```
+\newcommand{\vglf}{\langde{Vgl.}\langen{compare}}
+```
 
 ## Fußnoten
 
@@ -110,6 +135,11 @@ Vgl. Balzert, Helmut et al. (2008), Seite 1.
 ```
 
 Wird die englische Version genutzt, muss "Vgl." durch "compare" und "S." durch "p." ersetzt werden.
+Beim verwenden von [Textcommands](#textcommands) müssen "Vgl." und "S." nicht manuell geändert werden. Dies wird automatisch erledigt.
+Beispiel für die Verwendung von Textcommands (der Output sieht wie oben aus):
+```
+\footcite[\vglf][\pagef 1]{Balzert.2008}
+```
 
 ## Literaturverzeichnis
 
@@ -187,7 +217,7 @@ export GRAPHVIZ_DOT='/usr/local/bin/dot'
 
 Wir empfehlen das Dokument mit Docker (siehe unten) zu kompilieren.
 
-Alternativ kann auch über die Ausführung der Skripte kompiliert werden, dafür müssen aber die unten beschriebenen Latex-Pakete installiert sein.
+Alternativ kann auch über die Ausführung der Skripte kompiliert werden, dafür müssen aber die unten beschriebenen [LaTeX-Pakete](#latex-pakete) installiert sein.
 Unter **Windows** muss dafür die beiliegende `compile.bat` ausführen.
 Benutzer von **macOS** und **Linux** verwenden bitte die ```compile.sh```.
 

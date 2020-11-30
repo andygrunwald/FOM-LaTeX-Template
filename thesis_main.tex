@@ -223,6 +223,12 @@ mincrossrefs = 1
 \usepackage[printonlyused]{acronym}
 
 %-----------------------------------
+% Symbolverzeichnis
+%-----------------------------------
+% Quelle: https://www.namsu.de/Extra/pakete/Listofsymbols.pdf
+\usepackage[final]{listofsymbols}
+
+%-----------------------------------
 % Glossar
 %-----------------------------------
 \usepackage{glossaries}
@@ -309,6 +315,11 @@ mincrossrefs = 1
 %Zentriert und umbrechbar
 
 %-----------------------------------
+% Textcommands
+%-----------------------------------
+\input{skripte/textcommands}
+
+%-----------------------------------
 % Titlepage
 %-----------------------------------
 \input{kapitel/titelseite}
@@ -337,6 +348,15 @@ mincrossrefs = 1
 % Abkürzungsverzeichnis
 %-----------------------------------
 \input{abkuerzungen/acronyms}
+\newpage
+
+%-----------------------------------
+% Symbolverzeichnis
+%-----------------------------------
+% In overleaf führt der EInsatz des Symbolverzeichnisses zu einem Fehler, der aber ignoriert werdne kann
+\renewcommand{\symheadingname}{\langde{Symbolverzeichnis}\langen{List of Symbols}}
+\input{skripte/symbolDef}
+\listofsymbols
 \newpage
 
 %-----------------------------------
