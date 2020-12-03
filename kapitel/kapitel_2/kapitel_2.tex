@@ -147,9 +147,25 @@ Abkürzungen werden mithilfe des Pakets Acronym eingebunden. Alle Abkürzungen s
 Sollte es im Abkürzungsverzeichnis zu Anzeigefehlern kommen kann dies daher rühren, dass eine Abkürzung verwendet wird, die länger ist als \ac{WYSIWYG}. In diesem Fall müsst ihr in der Datei acronyms.tex den Parameter [WYSIWYG] durch eure längere Abkürzung ersetzen.
 
 \subsection{Formeln}
-\begin{align}
-L_P{=} 10lg \cdot \frac{P}{1 mW}
-\end{align}
+Um eine Formel nach links aus zurichten muss sie zwischen \& und \& eingesetzt werden:
+
+\textbf{Formel 1: Erste Formel}
+\begin{flalign}
+   & L_P{=} 10lg \cdot \frac{P}{1 mW} &
+\end{flalign}
+\cite[Quelle: In Anlehnung an][S. 4]{Beckert.2012}
+
+
+Etwas mehr Text.
+
+Ansonsten wird sie mittig ausgerichtet test.
+% Mehr infos: http://www.ctex.org/documents/packages/math/amsldoc.pdf
+
+\textbf{Formel 2: Zweite Formel}
+\begin{flalign}
+   L_P{=} 10lg \cdot \frac{P}{1 mW}
+\end{flalign}
+\cite[Quelle: In Anlehnung an][S. 4]{Beckert.2012}
 
 \subsection{Symbole}
 % die folgenden Symbole haben nicht mit der Formel oben drüber zu tun
