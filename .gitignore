@@ -1,10 +1,12 @@
 .DS_Store
 
 # Diese Dateien werden beim kompilieren erzeugt:
-*.bbl
-*.blg
 *.aux
+*.bbl
 *.bcf
+*.blg
+*.fdb_latexmk
+*.fls
 *.ilg
 *.lof
 *.log
@@ -12,11 +14,13 @@
 *.nlo
 *.nls*
 *.out
-*.toc
 *.run.xml
-*.fls
-*.fdb_latexmk
+*.sub
+*.suc
+*.syc
+*.sym
 *.synctex.gz
+*.toc
 
 # IDEs
 .texpadtmp/
