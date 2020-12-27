@@ -228,7 +228,7 @@
     {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
        {\usebibmacro{cite:label}%
         \setunit{\printdelim{nonameyeardelim}}}
-      {\toggletrue{abx@bool@giveninits}
+      {\toggletrue{abx@bool@giveninits}%
         \printnames[family-given]{labelname}%
         \setunit{\printdelim{nameyeardelim}}}%
       \printfield{usera}%
