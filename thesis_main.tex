@@ -60,8 +60,8 @@
 \renewcommand\familydefault{\sfdefault}
 \usepackage{ragged2e}
 
-% Mehrere Fussnoten nacheinander mit Komma separiert
-\usepackage[hang, multiple]{footmisc}
+% Mehrere Fussnoten nacheinander mit Komma separiert % multiple entfernt, da nicht kompatibel zu hyperref. Fix, um mehrere Fussnoten per Komma zu trennen, findet sich weiter unten
+\usepackage[hang]{footmisc}
 \setlength{\footnotemargin}{1em}
 
 % todo Aufgaben als Kommentare verfassen für verschiedene Editoren
@@ -257,6 +257,11 @@ mincrossrefs = 1
         Build=1.1
     }
 }
+
+% Mehrere Referenzen hintereinander bei Verwendung von Footcite durch Kommata trennen
+\usepackage{fnpct}
+\setfnpct{dont-mess-around}
+\AdaptNoteOpt\footcite\multfootcite
 
 %-----------------------------------
 % PlantUML
