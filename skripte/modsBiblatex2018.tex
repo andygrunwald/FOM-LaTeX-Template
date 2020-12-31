@@ -227,7 +227,7 @@
   \iffieldundef{shorthand}
     {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
        {\usebibmacro{cite:ibid}}
-    {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+    {\printtext[bibhyperref]{\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
        {\usebibmacro{cite:label}%
         \setunit{\printdelim{nonameyeardelim}}}
       {\toggletrue{abx@bool@giveninits}%
@@ -235,5 +235,5 @@
         \setunit{\printdelim{nameyeardelim}}}%
       \printfield{usera}%
       \setunit{\printdelim{titleyeardelim}}%
-     \usebibmacro{cite:labeldate+extradate}}}
+     \usebibmacro{cite:labeldate+extradate}}}}
    {\usebibmacro{cite:shorthand}}}
