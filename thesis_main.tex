@@ -60,8 +60,8 @@
 \renewcommand\familydefault{\sfdefault}
 \usepackage{ragged2e}
 
-% Mehrere Fussnoten nacheinander mit Komma separiert
-\usepackage[hang, multiple]{footmisc}
+% Mehrere Fussnoten nacheinander mit Komma separiert % multiple entfernt, da nicht kompatibel zu hyperref. Fix, um mehrere Fussnoten per Komma zu trennen, findet sich weiter unten
+\usepackage[hang]{footmisc}
 \setlength{\footnotemargin}{1em}
 
 % todo Aufgaben als Kommentare verfassen für verschiedene Editoren
@@ -139,6 +139,7 @@
 %%%% Neuer Leitfaden (2018)
 \usepackage[
 backend=biber,
+%style=ext-authoryear-ibid, % Auskommentieren und nächste Zeile kommentieren, um "Ebd." (ebenda) für sich-wiederholende Fussnoten zu nutzen
 style=ext-authoryear,
 maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
 maxbibnames=999,
@@ -257,6 +258,11 @@ mincrossrefs = 1
     }
 }
 
+% Mehrere Referenzen hintereinander bei Verwendung von Footcite durch Kommata trennen
+\usepackage{fnpct}
+\setfnpct{dont-mess-around}
+\AdaptNoteOpt\footcite\multfootcite
+
 %-----------------------------------
 % PlantUML
 %-----------------------------------
@@ -300,7 +306,7 @@ mincrossrefs = 1
 %-----------------------------------
 % Damit die hochgestellten Zahlen auch auf die Fußnote verlinkt sind (siehe Issue 169)
 %-----------------------------------
-\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack, linktoc=all, bookmarksnumbered=false, pdfpagemode=UseOutlines, pdftoolbar=true}
+\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, citecolor=darkblack, menucolor=darkblack, urlcolor=darkblack, linktoc=all, bookmarksnumbered=false, pdfpagemode=UseOutlines, pdftoolbar=true}
 \urlstyle{same}%gleiche Schriftart für den Link wie für den Text
 
 %-----------------------------------

@@ -225,13 +225,15 @@
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
-    {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+    {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+       {\usebibmacro{cite:ibid}}
+    {\printtext[bibhyperref]{\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
        {\usebibmacro{cite:label}%
         \setunit{\printdelim{nonameyeardelim}}}
-      {\toggletrue{abx@bool@giveninits}
+      {\toggletrue{abx@bool@giveninits}%
         \printnames[family-given]{labelname}%
         \setunit{\printdelim{nameyeardelim}}}%
       \printfield{usera}%
       \setunit{\printdelim{titleyeardelim}}%
-     \usebibmacro{cite:labeldate+extradate}}
+     \usebibmacro{cite:labeldate+extradate}}}}
    {\usebibmacro{cite:shorthand}}}
