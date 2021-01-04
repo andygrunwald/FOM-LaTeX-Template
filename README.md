@@ -144,7 +144,7 @@ Beispiel für die Verwendung von Textcommands (der Output sieht wie oben aus):
 
 ## Inhaltsverzeichnis Latex
 
-**Ebene des ausgegebenen Inhaltsverzeichnis einstellen**
+**Ebene des ausgegebenen Inhaltsverzeichnis einstellen**<br>
 Bis zu welcher Ebene das Inhaltsverzeichnis aufgelistet wird, kann über tocdepth Parameter eingestellt werden
 ```latex
 \setcounter{tocdepth}{4}
