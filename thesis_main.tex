@@ -1,15 +1,15 @@
 %-----------------------------------
 % Define document and include general packages
 %-----------------------------------
-% Tabellen- und Abkürzungsverzeichnis stehen normalerweise nicht im
+% Tabellen- und Abbildungsverzeichnis stehen normalerweise nicht im
 % Inhaltsverzeichnis. Gleiches gilt für das Abkürzungsverzeichnis (siehe unten).
 % Manche Dozenten bemängeln das. Die Optionen 'listof=totoc,bibliography=totoc'
-% geben das Tabellen- und Abkürzungsverzeichnis im Inhaltsverzeichnis (toc=Table
+% geben das Tabellen- und Abbildungsverzeichnis im Inhaltsverzeichnis (toc=Table
 % of Content) aus.
 % Da es aber verschiedene Regelungen je nach Dozent geben kann, werden hier
 % beide Varianten dargestellt.
-%\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
-\documentclass[12pt,oneside,titlepage]{scrartcl}
+\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+%\documentclass[12pt,oneside,titlepage]{scrartcl}
 
 %-----------------------------------
 % Dokumentensprache
@@ -139,8 +139,8 @@
 %%%% Neuer Leitfaden (2018)
 \usepackage[
 backend=biber,
-%style=ext-authoryear-ibid, % Auskommentieren und nächste Zeile kommentieren, um "Ebd." (ebenda) für sich-wiederholende Fussnoten zu nutzen
-style=ext-authoryear,
+style=ext-authoryear-ibid, % Auskommentieren und nächste Zeile kommentieren, um "Ebd." (ebenda) für sich-wiederholende Fussnoten zu nutzen
+%style=ext-authoryear,
 maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
 maxbibnames=999,
 mergedate=false,
@@ -203,7 +203,6 @@ mincrossrefs = 1
 %-----------------------------------
 \usepackage{appendix}
 
-
 %-----------------------------------
 % Zeilenabstand 1,5-zeilig
 %-----------------------------------
@@ -234,8 +233,7 @@ mincrossrefs = 1
 % Glossar
 %-----------------------------------
 \usepackage{glossaries}
-% Soll das Glossar im Inhaltsverzeichnis angezeigt werden, muss die nachfolgende Zeile einkommentieren werden
-%\usepackage[toc]{glossaries}
+\glstoctrue %Auskommentieren, damit das Glossar nicht im Inhaltsverzeichnis angezeigt wird.
 \makenoidxglossaries
 \input{abkuerzungen/glossar}
 
@@ -334,12 +332,12 @@ mincrossrefs = 1
 %-----------------------------------
 % Inhaltsverzeichnis
 %-----------------------------------
+% Um das Tabellen- und Abbbildungsverzeichnis zu de/aktivieren ganz oben in Documentclass schauen
 \setcounter{page}{2}
-\addtocontents{toc}{\protect\enlargethispage{-20mm}}
-\clearpage
+\addtocontents{toc}{\protect\enlargethispage{-20mm}}% Die Zeile sorgt dafür, dass das Inhaltsverzeichnisseite auf die zweite Seite gestreckt wird und somit schick aussieht. Das sollte eigentlich automatisch funktionieren. Wer rausfindet wie, kann das gern ändern.
+\setcounter{tocdepth}{4}
 \tableofcontents
 \newpage
-\setcounter{tocdepth}{2} %wurde vorher in zusaetzlichesMaterial.tex auf 0 gesetzt um Inhalt des Anhangs zu verbergen. Dadurch gehen allerdings Abbildungs und Tabellenverzeichnis kaputt.
 
 %-----------------------------------
 % Abbildungsverzeichnis
@@ -354,13 +352,19 @@ mincrossrefs = 1
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
+% Falls das Abkürzungsverzeichnis nicht im Inhaltsverzeichnis angezeigt werden soll
+% dann folgende Zeile auskommentieren.
+\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
 \input{abkuerzungen/acronyms}
 \newpage
 
 %-----------------------------------
 % Symbolverzeichnis
 %-----------------------------------
-% In overleaf führt der EInsatz des Symbolverzeichnisses zu einem Fehler, der aber ignoriert werdne kann
+% In Overleaf führt der Einsatz des Symbolverzeichnisses zu einem Fehler, der aber ignoriert werdne kann
+% Falls das Symbolverzeichnis nicht im Inhaltsverzeichnis angezeigt werden soll
+% dann folgende Zeile auskommentieren.
+\addcontentsline{toc}{section}{Symbolverzeichnis}
 \renewcommand{\symheadingname}{\langde{Symbolverzeichnis}\langen{List of Symbols}}
 \input{skripte/symbolDef}
 \listofsymbols
@@ -390,7 +394,7 @@ mincrossrefs = 1
 \input{skripte/kapitelUebersicht.tex}
 
 %-----------------------------------
-% Anhang
+% Apendix / Anhang
 %-----------------------------------
 \newpage
 \section*{Anhang} %Überschrift "Anhang", ohne Nummerierung
