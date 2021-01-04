@@ -150,22 +150,22 @@ Bis zu welcher Ebene das Inhaltsverzeichnis aufgelistet wird, kann über tocdept
 \setcounter{tocdepth}{4}
 ```
 
-**Tabellen- und Abbildungsverzeichnis im Inhaltsverzeichnis**
+**Tabellen- und Abbildungsverzeichnis im Inhaltsverzeichnis**<br>
 Die Anzeige des Tabbellen- und des Abbildungsverzeichnis lässt sich gleich am Anfang in der \documentclass einstellen.
 
-**Glossar im Inhaltsverzeichnis**
+**Glossar im Inhaltsverzeichnis**<br>
 Folgenden Eintrag auskommentieren, damit das Glossar nicht im Inhaltsverzeichnis angezeigt wird
 ```latex
 \glstoctrue
 ```
 
-**Symbolverzeichnis**
+**Symbolverzeichnis**<br>
 Damit das Symbolverzeichnis nicht mehr angezeigt wird, folgendes auskommentieren
 ```latex
  \addcontentsline{toc}{section}{Symbolverzeichnis}
 ```
 
-**Abkürzungsverzeichnis**
+**Abkürzungsverzeichnis**<br>
 Damit das Symbolverzeichnis nicht mehr angezeigt wird, folgendes auskommentieren
 ```latex
 \addcontentsline{toc}{section}{Abkürzungsverzeichnis}
