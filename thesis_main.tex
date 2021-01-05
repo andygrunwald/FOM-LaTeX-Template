@@ -1,15 +1,15 @@
 %-----------------------------------
 % Define document and include general packages
 %-----------------------------------
-% Tabellen- und Abkürzungsverzeichnis stehen normalerweise nicht im
+% Tabellen- und Abbildungsverzeichnis stehen normalerweise nicht im
 % Inhaltsverzeichnis. Gleiches gilt für das Abkürzungsverzeichnis (siehe unten).
 % Manche Dozenten bemängeln das. Die Optionen 'listof=totoc,bibliography=totoc'
-% geben das Tabellen- und Abkürzungsverzeichnis im Inhaltsverzeichnis (toc=Table
+% geben das Tabellen- und Abbildungsverzeichnis im Inhaltsverzeichnis (toc=Table
 % of Content) aus.
 % Da es aber verschiedene Regelungen je nach Dozent geben kann, werden hier
 % beide Varianten dargestellt.
-%\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
-\documentclass[12pt,oneside,titlepage]{scrartcl}
+\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+%\documentclass[12pt,oneside,titlepage]{scrartcl}
 
 %-----------------------------------
 % Dokumentensprache
@@ -139,8 +139,8 @@
 %%%% Neuer Leitfaden (2018)
 \usepackage[
 backend=biber,
-%style=ext-authoryear-ibid, % Auskommentieren und nächste Zeile kommentieren, um "Ebd." (ebenda) für sich-wiederholende Fussnoten zu nutzen
-style=ext-authoryear,
+style=ext-authoryear-ibid, % Auskommentieren und nächste Zeile kommentieren, um "Ebd." (ebenda) für sich-wiederholende Fussnoten zu nutzen
+%style=ext-authoryear,
 maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
 maxbibnames=999,
 mergedate=false,
@@ -203,7 +203,6 @@ mincrossrefs = 1
 %-----------------------------------
 \usepackage{appendix}
 
-
 %-----------------------------------
 % Zeilenabstand 1,5-zeilig
 %-----------------------------------
@@ -234,8 +233,7 @@ mincrossrefs = 1
 % Glossar
 %-----------------------------------
 \usepackage{glossaries}
-% Soll das Glossar im Inhaltsverzeichnis angezeigt werden, muss die nachfolgende Zeile einkommentieren werden
-%\usepackage[toc]{glossaries}
+\glstoctrue %Auskommentieren, damit das Glossar nicht im Inhaltsverzeichnis angezeigt wird.
 \makenoidxglossaries
 \input{abkuerzungen/glossar}
 
@@ -315,9 +313,6 @@ mincrossrefs = 1
 \begin{document}
 
 \pagenumbering{Roman}								% Seitennumerierung auf römisch umstellen
-\renewcommand{\refname}{\langde{Literaturverzeichnis}
-						\langen{Bibliography}}		% "Literatur" in
-%"Literaturverzeichnis" umbenennen
 \newcolumntype{C}{>{\centering\arraybackslash}X}	% Neuer Tabellen-Spalten-Typ:
 %Zentriert und umbrechbar
 
@@ -334,12 +329,12 @@ mincrossrefs = 1
 %-----------------------------------
 % Inhaltsverzeichnis
 %-----------------------------------
+% Um das Tabellen- und Abbbildungsverzeichnis zu de/aktivieren ganz oben in Documentclass schauen
 \setcounter{page}{2}
-\addtocontents{toc}{\protect\enlargethispage{-20mm}}
-\clearpage
+\addtocontents{toc}{\protect\enlargethispage{-20mm}}% Die Zeile sorgt dafür, dass das Inhaltsverzeichnisseite auf die zweite Seite gestreckt wird und somit schick aussieht. Das sollte eigentlich automatisch funktionieren. Wer rausfindet wie, kann das gern ändern.
+\setcounter{tocdepth}{4}
 \tableofcontents
 \newpage
-\setcounter{tocdepth}{2} %wurde vorher in zusaetzlichesMaterial.tex auf 0 gesetzt um Inhalt des Anhangs zu verbergen. Dadurch gehen allerdings Abbildungs und Tabellenverzeichnis kaputt.
 
 %-----------------------------------
 % Abbildungsverzeichnis
@@ -354,14 +349,19 @@ mincrossrefs = 1
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
+% Falls das Abkürzungsverzeichnis nicht im Inhaltsverzeichnis angezeigt werden soll
+% dann folgende Zeile auskommentieren.
+\addcontentsline{toc}{section}{\abbreHeadingName}
 \input{abkuerzungen/acronyms}
 \newpage
 
 %-----------------------------------
 % Symbolverzeichnis
 %-----------------------------------
-% In overleaf führt der EInsatz des Symbolverzeichnisses zu einem Fehler, der aber ignoriert werdne kann
-\renewcommand{\symheadingname}{\langde{Symbolverzeichnis}\langen{List of Symbols}}
+% In Overleaf führt der Einsatz des Symbolverzeichnisses zu einem Fehler, der aber ignoriert werdne kann
+% Falls das Symbolverzeichnis nicht im Inhaltsverzeichnis angezeigt werden soll
+% dann folgende Zeile auskommentieren.
+\addcontentsline{toc}{section}{\symheadingname}
 \input{skripte/symbolDef}
 \listofsymbols
 \newpage
@@ -390,19 +390,20 @@ mincrossrefs = 1
 \input{skripte/kapitelUebersicht.tex}
 
 %-----------------------------------
-% Anhang
+% Apendix / Anhang
 %-----------------------------------
 \newpage
-\section*{Anhang} %Überschrift "Anhang", ohne Nummerierung
-\addcontentsline{toc}{section}{\langde{Anhang}\langen{Appendix}} %Den Anhang ohne Nummer zum Inhaltsverzeichnis hinzufügen
+\section*{\AppendixName} %Überschrift "Anhang", ohne Nummerierung
+\addcontentsline{toc}{section}{\AppendixName} %Den Anhang ohne Nummer zum Inhaltsverzeichnis hinzufügen
+
 \begin{appendices}
 % Nachfolgende Änderungen erfolgten aufgrund von Issue 163
 \makeatletter
 \renewcommand\@seccntformat[1]{\csname the#1\endcsname:\quad}
 \makeatother
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}} %
-	\renewcommand{\thesection}{\langde{Anhang}\langen{Appendix} \arabic{section}}
-	\renewcommand\thesubsection{\langde{Anhang}\langen{Appendix} \arabic{section}.\arabic{subsection}}
+	\renewcommand{\thesection}{\AppendixName\ \arabic{section}}
+	\renewcommand\thesubsection{\AppendixName\ \arabic{section}.\arabic{subsection}}
 	\input{kapitel/anhang/anhang}
 \end{appendices}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
@@ -456,8 +457,8 @@ mincrossrefs = 1
 % Inhaltsverzeichnis, sondern gehören zum Literaturverzeichnis.
 % Die Option heading=bibintoc würde die Internetquelle als eigenen Eintrag im
 % Inhaltsverzeicnis anzeigen.
-%\printbibliography[type=online,heading=bibintoc,title={Internetquellen}]
-\printbibliography[type=online,title={\langde{Internetquellen}\langen{Internet sources}}]
+%\printbibliography[type=online,heading=bibintoc,title={\headingNameInternetSources}]
+\printbibliography[type=online,heading=subbibliography,title={\headingNameInternetSources}]
 
 \input{kapitel/anhang/erklaerung}
 \end{document}

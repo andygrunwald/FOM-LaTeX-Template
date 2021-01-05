@@ -20,6 +20,7 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 1. [Dokumentensprache](#Dokumentensprache)
 1. [TextCommands](#TextCommands)
 1. [Fußnoten](#fußnoten)
+1. [Inhaltsverzeichnis Latex](#inhaltsverzeichnis-latex)
 1. [Literaturverzeichnis](#literaturverzeichnis)
 1. [Sperrvermerk](#sperrvermerk)
 1. [Quellcode einbinden](#quellcode-einbinden)
@@ -139,6 +140,35 @@ Beim verwenden von [Textcommands](#textcommands) müssen "Vgl." und "S." nicht m
 Beispiel für die Verwendung von Textcommands (der Output sieht wie oben aus):
 ```
 \footcite[\vglf][\pagef 1]{Balzert.2008}
+```
+
+## Inhaltsverzeichnis Latex
+
+**Ebene des ausgegebenen Inhaltsverzeichnis einstellen**<br>
+Bis zu welcher Ebene das Inhaltsverzeichnis aufgelistet wird, kann über tocdepth Parameter eingestellt werden
+```latex
+\setcounter{tocdepth}{4}
+```
+
+**Tabellen- und Abbildungsverzeichnis im Inhaltsverzeichnis**<br>
+Die Anzeige des Tabbellen- und des Abbildungsverzeichnis lässt sich gleich am Anfang in der \documentclass einstellen.
+
+**Glossar im Inhaltsverzeichnis**<br>
+Folgenden Eintrag auskommentieren, damit das Glossar nicht im Inhaltsverzeichnis angezeigt wird
+```latex
+\glstoctrue
+```
+
+**Symbolverzeichnis**<br>
+Damit das Symbolverzeichnis nicht mehr angezeigt wird, folgendes auskommentieren
+```latex
+ \addcontentsline{toc}{section}{Symbolverzeichnis}
+```
+
+**Abkürzungsverzeichnis**<br>
+Damit das Symbolverzeichnis nicht mehr angezeigt wird, folgendes auskommentieren
+```latex
+\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
 ```
 
 ## Literaturverzeichnis
