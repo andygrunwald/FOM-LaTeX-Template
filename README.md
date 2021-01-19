@@ -402,14 +402,9 @@ Wenn du das erste mal mit [Git](https://git-scm.com/), [Github](https://github.c
 
 ## Disclaimer
 
-Diese Vorlage wurde zu meiner Studiumszeit erstellt und genutzt.
-Die Grundlage waren die damaligen Formatierungsregeln für Abschlussarbeiten der FOM (Standort Düsseldorf).
-I.d.R. sind diese jedoch für jeden Standort gültig.
-Ab und zu weichen einzelne Professoren davon ab.
-
-Mein Studium habe ich inzwischen abgeschlossen und deswegen nutze ich diese Vorlage nicht mehr aktiv.
-Jedoch wird sie von mehreren Personen genutzt, weiter gepflegt und angepasst.
-Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, wenn eine Antwort nicht innerhalb einer Stunde vorliegt.
+Die Nutzung des Projektes ist auf eigene Gefahr und es kann keine Vollständigkeit gewährleistet werden.
+Bitte überprüfe das Ergebnis erneut anhand der entsprechenden Leitfäden deines Studiengangs.
+Einzelne Standorte und Professoren stellen abgeänderte Leitfäden bereit.
 
 ## Lizenz
 
