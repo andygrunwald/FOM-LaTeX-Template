@@ -7,4 +7,5 @@ jobs:
       - uses: xu-cheng/texlive-action/full@v1
         with:
           run: |
+            tlmgr install biblatex-ext
             ./compile.sh
