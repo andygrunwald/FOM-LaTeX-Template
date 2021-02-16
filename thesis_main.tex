@@ -1,16 +1,20 @@
 %-----------------------------------
 % Define document and include general packages
 %-----------------------------------
-% Tabellen- und Abkürzungsverzeichnis stehen normalerweise nicht im
+% Tabellen- und Abbildungsverzeichnis stehen normalerweise nicht im
 % Inhaltsverzeichnis. Gleiches gilt für das Abkürzungsverzeichnis (siehe unten).
 % Manche Dozenten bemängeln das. Die Optionen 'listof=totoc,bibliography=totoc'
-% geben das Tabellen- und Abkürzungsverzeichnis im Inhaltsverzeichnis (toc=Table
+% geben das Tabellen- und Abbildungsverzeichnis im Inhaltsverzeichnis (toc=Table
 % of Content) aus.
 % Da es aber verschiedene Regelungen je nach Dozent geben kann, werden hier
 % beide Varianten dargestellt.
-%\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
-\documentclass[12pt,oneside,titlepage]{scrartcl}
-%Dokumentensprache
+\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+%\documentclass[12pt,oneside,titlepage]{scrartcl}
+
+%-----------------------------------
+% Dokumentensprache
+%-----------------------------------
+%\def\FOMEN{}% Auskommentieren um die Dokumentensprache auf englisch zu ändern
 \newif\ifde
 \newif\ifen
 
@@ -23,9 +27,9 @@
    \ifde\selectlanguage{ngerman}#1\fi}
 \newcommand{\langen}[1]{%
    \ifen\selectlanguage{english}#1\fi}
+\usepackage[utf8]{luainputenc}
 \langde{\usepackage[babel,german=quotes]{csquotes}}
 \langen{\usepackage[babel,english=british]{csquotes}}
-\usepackage[utf8]{luainputenc}
 \usepackage[T1]{fontenc}
 \usepackage{fancyhdr}
 \usepackage{fancybox}
@@ -52,34 +56,43 @@
 \usepackage{amsmath}
 \usepackage[table]{xcolor}
 \usepackage{marvosym}			% Verwendung von Symbolen, z.B. perfektes Eurozeichen
-\usepackage[colorlinks=true,linkcolor=black]{hyperref}
-\definecolor{darkblack}{rgb}{0,0,0}
-\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
+
 \renewcommand\familydefault{\sfdefault}
 \usepackage{ragged2e}
 
-% Mehrere Fussnoten nacheinander mit Komma separiert
-\usepackage[hang, multiple]{footmisc}
+% Mehrere Fussnoten nacheinander mit Komma separiert % multiple entfernt, da nicht kompatibel zu hyperref. Fix, um mehrere Fussnoten per Komma zu trennen, findet sich weiter unten
+\usepackage[hang]{footmisc}
 \setlength{\footnotemargin}{1em}
 
 % todo Aufgaben als Kommentare verfassen für verschiedene Editoren
 \usepackage{todonotes}
 
-%Pakete für Tabellen
+% Verhindert, dass nur eine Zeile auf der nächsten Seite steht
+\setlength{\marginparwidth}{2cm}
+\usepackage[all]{nowidow}
+
+%-----------------------------------
+% Farbdefinitionen
+%-----------------------------------
+\definecolor{darkblack}{rgb}{0,0,0}
+\definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
+\definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+
+%-----------------------------------
+% Pakete für Tabellen
+%-----------------------------------
 \usepackage{epstopdf}
 \usepackage{nicefrac} % Brüche
 \usepackage{multirow}
 \usepackage{rotating} % vertikal schreiben
 \usepackage{mdwlist}
-\usepackage{tabularx}% für breitenangabe
+\usepackage{tabularx}% für Breitenangabe
 
-\definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
-\definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
-% Colors for listings
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-
+%-----------------------------------
 % sauber formatierter Quelltext
+%-----------------------------------
 \usepackage{listings}
 % JavaScript als Sprache definieren:
 \lstdefinelanguage{JavaScript}{
@@ -114,12 +127,20 @@
   	stringstyle=\color{mauve}         % string literal style
 }
 
+%-----------------------------------
+%Literaturverzeichnis Einstellungen
+%-----------------------------------
+
 % Biblatex
+
+\usepackage{url}
+\urlstyle{same}
 
 %%%% Neuer Leitfaden (2018)
 \usepackage[
 backend=biber,
-style=ext-authoryear,
+style=ext-authoryear-ibid, % Auskommentieren und nächste Zeile kommentieren, um "Ebd." (ebenda) für sich-wiederholende Fussnoten zu nutzen
+%style=ext-authoryear,
 maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
 maxbibnames=999,
 mergedate=false,
@@ -160,12 +181,16 @@ mincrossrefs = 1
 % siehe Leitfaden S. 14
 \AtBeginBibliography{\singlespacing}
 
-%Silbentrennung
+%-----------------------------------
+% Silbentrennung
+%-----------------------------------
 \usepackage{hyphsubst}
 \HyphSubstIfExists{ngerman-x-latest}{%
 \HyphSubstLet{ngerman}{ngerman-x-latest}}{}
 
+%-----------------------------------
 % Pfad fuer Abbildungen
+%-----------------------------------
 \graphicspath{{./}{./abbildungen/}}
 
 %-----------------------------------
@@ -177,7 +202,6 @@ mincrossrefs = 1
 % Paket für die Nutzung von Anhängen
 %-----------------------------------
 \usepackage{appendix}
-
 
 %-----------------------------------
 % Zeilenabstand 1,5-zeilig
@@ -200,8 +224,29 @@ mincrossrefs = 1
 \usepackage[printonlyused]{acronym}
 
 %-----------------------------------
+% Symbolverzeichnis
+%-----------------------------------
+% Quelle: https://www.namsu.de/Extra/pakete/Listofsymbols.pdf
+\usepackage[final]{listofsymbols}
+
+%-----------------------------------
+% Glossar
+%-----------------------------------
+\usepackage{glossaries}
+\glstoctrue %Auskommentieren, damit das Glossar nicht im Inhaltsverzeichnis angezeigt wird.
+\makenoidxglossaries
+\input{abkuerzungen/glossar}
+
+%-----------------------------------
 % PDF Meta Daten setzen
 %-----------------------------------
+\usepackage{hyperref}
+% Behebt die falsche Darstellung der Lesezeichen in PDF-Dateien, welche eine Übersetzung besitzen
+% siehe Issue 149
+\makeatletter
+\pdfstringdefDisableCommands{\let\selectlanguage\@gobble}
+\makeatother
+
 \hypersetup{
     pdfinfo={
         Title={\myTitel},
@@ -210,6 +255,16 @@ mincrossrefs = 1
         Build=1.1
     }
 }
+
+% Mehrere Referenzen hintereinander bei Verwendung von Footcite durch Kommata trennen
+\usepackage{fnpct}
+\setfnpct{dont-mess-around}
+\AdaptNoteOpt\footcite\multfootcite
+
+%-----------------------------------
+% PlantUML
+%-----------------------------------
+%\usepackage{plantuml}
 
 %-----------------------------------
 % Umlaute in Code korrekt darstellen
@@ -246,6 +301,11 @@ mincrossrefs = 1
 \renewcommand{\headrulewidth}{0.4pt}
 %\renewcommand{\headrulewidth}{0pt}
 
+%-----------------------------------
+% Damit die hochgestellten Zahlen auch auf die Fußnote verlinkt sind (siehe Issue 169)
+%-----------------------------------
+\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, citecolor=darkblack, menucolor=darkblack, urlcolor=darkblack, linktoc=all, bookmarksnumbered=false, pdfpagemode=UseOutlines, pdftoolbar=true}
+\urlstyle{same}%gleiche Schriftart für den Link wie für den Text
 
 %-----------------------------------
 % Start the document here:
@@ -253,77 +313,28 @@ mincrossrefs = 1
 \begin{document}
 
 \pagenumbering{Roman}								% Seitennumerierung auf römisch umstellen
-\renewcommand{\refname}{\langde{Literaturverzeichnis}
-						\langen{Bibliography}}		% "Literatur" in
-%"Literaturverzeichnis" umbenennen
 \newcolumntype{C}{>{\centering\arraybackslash}X}	% Neuer Tabellen-Spalten-Typ:
 %Zentriert und umbrechbar
 
 %-----------------------------------
+% Textcommands
+%-----------------------------------
+\input{skripte/textcommands}
+
+%-----------------------------------
 % Titlepage
 %-----------------------------------
-\begin{titlepage}
-	\newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
-	\begin{center}
-		\textbf{\myHochschulName}\\
-		\textbf{\langde{Hochschulzentrum}\langen{university location} \myHochschulStandort}\\
-		\vspace{1.5cm}
-			\includegraphics[width=3cm]{abbildungen/fomLogo} \\
-		\vspace{1.5cm}
-		\langde{Berufsbegleitender Studiengang}
-		\langen{part-time degree program}\\
-		\myStudiengang, \mySemesterZahl. Semester\\
-		\vspace{2cm}
-		\textbf{\myThesisArt}\\
-		\textbf{
-				\langde{zur Erlangung des Grades eines}
-				\langen{to obtain the degree of}
-				}\\
-		\textbf{\myAkademischerGrad}\\
-		% Oder für Hausarbeiten:
-		%\textbf{im Rahmen der Lehrveranstaltung}\\
-		%\textbf{\myLehrveranstaltung}\\
-		\vspace{2cm}
-		\langde{über das Thema}
-		\langen{on the subject}\\
-		\Large{\myTitel}\\
-		\vspace{0.2cm}
-	\end{center}
-	\normalsize
-	\vfill
-	\begin{tabbing}
-		Links \= Mitte \=Mittez \= Rechts\kill
-		\langde{Betreuer}
-		\langen{Advisor}: \> \> \>\myBetreuer\\
-		\> \> \\
-
-		\langde{Autor}
-		\langen{Author}: \> \> \> \myAutor\\
-		\> \> \>  \langde{Matrikelnr.}
-				\langen{Matriculation Number}: \myMatrikelNr\\
-		\> \> \> \myAdresse\\
-		\> \> \>  \\
-		\langde{Abgabe}
-		\langen{Submission}: \> \> \> \myAbgabeDatum
-	\end{tabbing}
-\end{titlepage}
-
-%-------Ende Titelseite-------------
-
-%-----------------------------------
-% Sperrvermerk
-%-----------------------------------
-%\input{kapitel/anhang/sperrvermerk}
+\input{kapitel/titelseite}
 
 %-----------------------------------
 % Inhaltsverzeichnis
 %-----------------------------------
+% Um das Tabellen- und Abbbildungsverzeichnis zu de/aktivieren ganz oben in Documentclass schauen
 \setcounter{page}{2}
-\addtocontents{toc}{\protect\enlargethispage{-20mm}}
-\clearpage
+\addtocontents{toc}{\protect\enlargethispage{-20mm}}% Die Zeile sorgt dafür, dass das Inhaltsverzeichnisseite auf die zweite Seite gestreckt wird und somit schick aussieht. Das sollte eigentlich automatisch funktionieren. Wer rausfindet wie, kann das gern ändern.
+\setcounter{tocdepth}{4}
 \tableofcontents
 \newpage
-\setcounter{tocdepth}{2} %wurde vorher in zusaetzlichesMaterial.tex auf 0 gesetzt um Inhalt des Anhangs zu verbergen. Dadurch gehen allerdings Abbildungs und Tabellenverzeichnis kaputt.
 
 %-----------------------------------
 % Abbildungsverzeichnis
@@ -338,36 +349,61 @@ mincrossrefs = 1
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
+% Falls das Abkürzungsverzeichnis nicht im Inhaltsverzeichnis angezeigt werden soll
+% dann folgende Zeile auskommentieren.
+\addcontentsline{toc}{section}{\abbreHeadingName}
 \input{abkuerzungen/acronyms}
 \newpage
+
+%-----------------------------------
+% Symbolverzeichnis
+%-----------------------------------
+% In Overleaf führt der Einsatz des Symbolverzeichnisses zu einem Fehler, der aber ignoriert werdne kann
+% Falls das Symbolverzeichnis nicht im Inhaltsverzeichnis angezeigt werden soll
+% dann folgende Zeile auskommentieren.
+\addcontentsline{toc}{section}{\symheadingname}
+\input{skripte/symbolDef}
+\listofsymbols
+\newpage
+
+%-----------------------------------
+% Glossar
+%-----------------------------------
+\printnoidxglossaries
+\newpage
+
+%-----------------------------------
+% Sperrvermerk
+%-----------------------------------
+%\input{kapitel/anhang/sperrvermerk}
+
 %-----------------------------------
 % Seitennummerierung auf arabisch und ab 1 beginnend umstellen
 %-----------------------------------
 \pagenumbering{arabic}
 \setcounter{page}{1}
-% Die folgende Zeile trägt ALLE Werke aus literatur.bib in das
-% Literaturverzeichnis ein, egal ob sie zietiert wurden oder nicht.
-% Der Befehl ist also nur zum Test der Skripte sinnvoll und muss bei echten
-% Arbeiten entfernt werden.
-%\nocite{*}
+
 %-----------------------------------
 % Kapitel / Inhalte
 %-----------------------------------
-\input{kapitel/einleitung/einleitung}
-\input{kapitel/kapitel_1/kapitel_1}
-\input{kapitel/kapitel_2/kapitel_2}
-\input{kapitel/fazit/fazit}
+% Die Kapitel werden über folgende Datei eingebunden
+\input{skripte/kapitelUebersicht.tex}
 
 %-----------------------------------
-% Anhang
+% Apendix / Anhang
 %-----------------------------------
 \newpage
-\section*{Anhang} %Überschrift "Anhang", ohne Nummerierung
-\addcontentsline{toc}{section}{\langde{Anhang}\langen{Appendix}} %Den Anhang ohne Nummer zum Inhaltsverzeichnis hinzufügen
+\section*{\AppendixName} %Überschrift "Anhang", ohne Nummerierung
+\addcontentsline{toc}{section}{\AppendixName} %Den Anhang ohne Nummer zum Inhaltsverzeichnis hinzufügen
+
 \begin{appendices}
+% Nachfolgende Änderungen erfolgten aufgrund von Issue 163
+\makeatletter
+\renewcommand\@seccntformat[1]{\csname the#1\endcsname:\quad}
+\makeatother
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}} %
-	\renewcommand{\thesection}{\langde{Anhang}\langen{Appendix} \arabic{section}:}
-	\renewcommand\thesubsection{\langde{Anhang}\langen{Appendix} \arabic{section}.\arabic{subsection}:}
+	\renewcommand{\thesection}{\AppendixName\ \arabic{section}}
+	\renewcommand\thesubsection{\AppendixName\ \arabic{section}.\arabic{subsection}}
 	\input{kapitel/anhang/anhang}
 \end{appendices}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
@@ -376,6 +412,13 @@ mincrossrefs = 1
 % Literaturverzeichnis
 %-----------------------------------
 \newpage
+
+% Die folgende Zeile trägt ALLE Werke aus literatur.bib in das
+% Literaturverzeichnis ein, egal ob sie zietiert wurden oder nicht.
+% Der Befehl ist also nur zum Test der Skripte sinnvoll und muss bei echten
+% Arbeiten entfernt werden.
+%\nocite{*}
+
 %\addcontentsline{toc}{section}{Literatur}
 
 % Die folgenden beiden Befehle würden ab dem Literaturverzeichnis wieder eine
@@ -414,8 +457,8 @@ mincrossrefs = 1
 % Inhaltsverzeichnis, sondern gehören zum Literaturverzeichnis.
 % Die Option heading=bibintoc würde die Internetquelle als eigenen Eintrag im
 % Inhaltsverzeicnis anzeigen.
-%\printbibliography[type=online,heading=bibintoc,title={Internetquellen}]
-\printbibliography[type=online,title={\langde{Internetquellen}\langen{Internet sources}}]
+%\printbibliography[type=online,heading=bibintoc,title={\headingNameInternetSources}]
+\printbibliography[type=online,heading=subbibliography,title={\headingNameInternetSources}]
 
 \input{kapitel/anhang/erklaerung}
 \end{document}

@@ -1,8 +1,8 @@
-\usepackage{xpatch} 
+\usepackage{xpatch}
 
-\setlength\bibhang{1cm} 
+\setlength\bibhang{1cm}
 
-%%% Weitere Optionen 
+%%% Weitere Optionen
 %\boolitem[false]{citexref} %Wenn incollection, inbook, inproceedings genutzt wird nicht den zugehörigen parent auch in Literaturverzeichnis aufnehmen
 
 %Aufräumen die Felder werden laut Leitfaden nicht benötigt.
@@ -46,14 +46,14 @@
 
 \renewcommand*{\finentrypunct}{}%Kein Punkt am ende des Literaturverzeichnisses
 
-\renewcommand*{\newunitpunct}{\addcomma\space} 
-\DeclareDelimFormat[bib,biblist]{nametitledelim}{\addcolon\space} 
-\DeclareDelimFormat{titleyeardelim}{\newunitpunct} 
+\renewcommand*{\newunitpunct}{\addcomma\space}
+\DeclareDelimFormat[bib,biblist]{nametitledelim}{\addcolon\space}
+\DeclareDelimFormat{titleyeardelim}{\newunitpunct}
 %Namen kursiv schreiben
-\renewcommand*{\mkbibnamefamily}{\mkbibemph} 
-\renewcommand*{\mkbibnamegiven}{\mkbibemph} 
-\renewcommand*{\mkbibnamesuffix}{\mkbibemph} 
-\renewcommand*{\mkbibnameprefix}{\mkbibemph} 
+\renewcommand*{\mkbibnamefamily}{\mkbibemph}
+\renewcommand*{\mkbibnamegiven}{\mkbibemph}
+\renewcommand*{\mkbibnamesuffix}{\mkbibemph}
+\renewcommand*{\mkbibnameprefix}{\mkbibemph}
 
 % Die Trennung mehrerer Autorennamen erfolgt durch Kommata.
 % siehe Beispiele im Leitfaden S. 16
@@ -61,48 +61,48 @@
 %\DeclareDelimFormat{multinamedelim}{\addsemicolon\addspace}
 
 %Delimiter für mehrere und letzten Namen gleich setzen
-\DeclareDelimAlias{finalnamedelim}{multinamedelim} 
+\DeclareDelimAlias{finalnamedelim}{multinamedelim}
 
-\DeclareNameAlias{default}{family-given} 
+\DeclareNameAlias{default}{family-given}
 \DeclareNameAlias{sortname}{default}  %Nach Namen sortieren
 
 
 \DeclareFieldFormat{editortype}{\mkbibparens{#1}}
-\DeclareDelimFormat{editortypedelim}{\addspace} 
-\DeclareFieldFormat{translatortype}{\mkbibparens{#1}} 
-\DeclareDelimFormat{translatortypedelim}{\addspace} 
-\DeclareDelimFormat[bib,biblist]{innametitledelim}{\addcomma\space} 
+\DeclareDelimFormat{editortypedelim}{\addspace}
+\DeclareFieldFormat{translatortype}{\mkbibparens{#1}}
+\DeclareDelimFormat{translatortypedelim}{\addspace}
+\DeclareDelimFormat[bib,biblist]{innametitledelim}{\addcomma\space}
 
-\DeclareFieldFormat*{citetitle}{#1} 
-\DeclareFieldFormat*{title}{#1} 
-\DeclareFieldFormat*{booktitle}{#1} 
-\DeclareFieldFormat*{journaltitle}{#1} 
+\DeclareFieldFormat*{citetitle}{#1}
+\DeclareFieldFormat*{title}{#1}
+\DeclareFieldFormat*{booktitle}{#1}
+\DeclareFieldFormat*{journaltitle}{#1}
 
-\xpatchbibdriver{online} 
-  {\usebibmacro{organization+location+date}\newunit\newblock} 
-  {} 
-  {}{} 
+\xpatchbibdriver{online}
+  {\usebibmacro{organization+location+date}\newunit\newblock}
+  {}
+  {}{}
 
-\DeclareFieldFormat[online]{date}{\mkbibparens{#1}} 
+\DeclareFieldFormat[online]{date}{\mkbibparens{#1}}
 \DeclareFieldFormat{urltime}{\addspace #1\addspace \langde{Uhr}\langen{MEZ}}
 \DeclareFieldFormat{urldate}{%urltime zu urldate hinzufügen
   [\langde{Zugriff}\langen{Access}\addcolon\addspace
   #1\printfield{urltime}]
 }
-\DeclareFieldFormat[online]{url}{\mkbibacro{URL}\addcolon\space <\url{#1}>}
-\renewbibmacro*{url+urldate}{% 
-  \usebibmacro{url}% 
-  \ifentrytype{online} 
-    {\setunit*{\addspace}% 
+\DeclareFieldFormat[online]{url}{<\url{#1}>}
+\renewbibmacro*{url+urldate}{%
+  \usebibmacro{url}%
+  \ifentrytype{online}
+    {\setunit*{\addspace}%
      \iffieldundef{year}
        {\printtext[date]{\langde{keine Datumsangabe}\langen{no Date} }}
-       {\usebibmacro{date}}}% 
-    {}% 
-  \setunit*{\addspace}% 
+       {\usebibmacro{date}}}%
+    {}%
+  \setunit*{\addspace}%
   \usebibmacro{urldate}
-  } 
+  }
 
-%Verhindern, dass bei mehreren Quellen des gleichen Autors im gleichen Jahr 
+%Verhindern, dass bei mehreren Quellen des gleichen Autors im gleichen Jahr
 %Buchstaben nach der Jahreszahl angezeigt werden wenn sich das Keyword in usera unterscheidet.
 \DeclareExtradate{
   \scope{
@@ -112,7 +112,7 @@
     \scope{
       \field{usera}
      }
-}       
+}
 
 %% Anzeige des Jahres nach dem Stichwort (usera) im Literaturverzeichnis
 %% Wenn das Jahr bei Online-Quellen nicht explizit angegeben wurde, wird nach
@@ -120,65 +120,66 @@
 %% Datumsangabe'. Ist das Jahr definiert, wird es an beiden Stellen ausgegeben.
 %% Das Zugriffsdatum (urldate) spielt hier keine Rolle.
 %% Für Nicht-Online-Quellen wird nichts geändert.
-\renewbibmacro*{date+extradate}{% 
-  \printtext[parens]{% 
-    \printfield{usera}% 
+\renewbibmacro*{date+extradate}{%
+  \printtext[parens]{%
+    \printfield{usera}%
     \setunit{\printdelim{titleyeardelim}}%
-    \ifentrytype{online} 
-       {\setunit*{\addspace\addcomma\addspace}% 
+    \ifentrytype{online}
+       {\setunit*{\addspace\addcomma\addspace}%
          \iffieldundef{year}
-           {\bibstring{nodate}} 
-       {\printlabeldateextra}}% 
+           {\bibstring{nodate}}
+       {\printlabeldateextra}}%
        {\printlabeldateextra}}}
- 
+
 %% Anzeige des Jahres nach dem Stichwort (usera) in der Fussnote
 %% das Stichwort hat der Aufrufer hier schon ausgegeben.
 %% siehe auch Kommentar zu: \renewbibmacro*{date+extradate}
-\renewbibmacro*{cite:labeldate+extradate}{% 
-    \ifentrytype{online} 
-       {\setunit*{\addspace\addcomma\addspace}% 
+\renewbibmacro*{cite:labeldate+extradate}{%
+    \ifentrytype{online}
+       {\setunit*{\addspace\addcomma\addspace}%
          \iffieldundef{year}
-           {\bibstring{nodate}} 
-       {\printlabeldateextra}}% 
+           {\bibstring{nodate}}
+       {\printlabeldateextra}}%
        {\printlabeldateextra}}
- 
 
-\DefineBibliographyStrings{german}{ 
-  nodate    = {{}o.\adddot\addspace J\adddot}, 
-  andothers = {et\addabbrvspace al\adddot} 
-} 
+
+\DefineBibliographyStrings{german}{
+  nodate    = {{}o.\adddot\addspace J\adddot},
+  andothers = {et\addabbrvspace al\adddot}
+}
 \DefineBibliographyStrings{english}{
   nodate    = {{}n.\adddot\addspace d\adddot},
   andothers = {et\addabbrvspace al\adddot}
 }
-\DeclareSourcemap{ 
-  \maps[datatype=bibtex]{ 
-    \map{ 
-      \step[notfield=translator, final] 
-      \step[notfield=editor, final] 
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[notfield=translator, final]
+      \step[notfield=editor, final]
       \step[fieldset=author, fieldvalue={{{\langde{o\noexpand\adddot\addspace V\noexpand\adddot}\langen{Anon}}}}]
     }
-    \map{ 
-      \pernottype{online} 
+    \map{
+      \pernottype{online}
       \step[fieldset=location, fieldvalue={\langde{o\noexpand\adddot\addspace O\noexpand\adddot}\langen{s\noexpand\adddot I\noexpand\adddot}}]
     }
-  } 
-} 
+  }
+}
 
-\renewbibmacro*{cite}{% 
-  \iffieldundef{shorthand} 
-    {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}} 
-       {\usebibmacro{cite:label}% 
-        \setunit{\printdelim{nonametitledelim}}} 
-       {\printnames{labelname}% 
-        \setunit{\printdelim{nametitledelim}}}% 
-     \printfield{usera}% 
-     \setunit{\printdelim{titleyeardelim}}% 
-     \usebibmacro{cite:labeldate+extradate}} 
-    {\usebibmacro{cite:shorthand}}} 
+\renewbibmacro*{cite}{%
+  \iffieldundef{shorthand}
+    {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+       {\usebibmacro{cite:label}%
+        \setunit{\printdelim{nonametitledelim}}}
+       {\printnames{labelname}%
+        \setunit{\printdelim{nametitledelim}}}%
+     \printfield{usera}%
+     \setunit{\printdelim{titleyeardelim}}%
+     \usebibmacro{cite:labeldate+extradate}}
+    {\usebibmacro{cite:shorthand}}}
 
     \renewcommand*{\jourvoldelim}{\addcomma\addspace}% Trennung zwischen journalname und Volume. Sonst Space; Laut Leitfaden richtig
-    \hypersetup{hidelinks} %sonst sind Fußnoten grün. Dadurch werden Links allerdings nicht mehr farbig dargestellt
+    %Aufgrund der Änderung bzgl des Issues 169 in der thesis_main.tex musste ich die Zeile auskommentieren. Konnte aber das Verhalten, dass die Fußnoten grün sind, im nachhinein nicht feststellen.
+    %\hypersetup{hidelinks} %sonst sind Fußnoten grün. Dadurch werden Links allerdings nicht mehr farbig dargestellt
 
 \renewbibmacro*{journal+issuetitle}{%
   \usebibmacro{journal}%
@@ -207,30 +208,32 @@
 % wenn es keinen solchen Eintrag gibt, dann auch nicht ausgeben, z.B. 'o. S.'
 % Wenn man das will, kann man das 'o. S.' ja explizit angeben. Andernfalls steht
 % sonst auch bei Webseiten 'o. S.' da, was laut Leitfaden nicht ok ist.
-\renewbibmacro*{postnote}{% 
-  \setunit{\postnotedelim}% 
-  \iffieldundef{postnote} 
+\renewbibmacro*{postnote}{%
+  \setunit{\postnotedelim}%
+  \iffieldundef{postnote}
     {} %{\printtext{\langde{o.S\adddot}\langen{no page number}}}
-    {\printfield{postnote}}} 
-    
+    {\printfield{postnote}}}
+
 % Abstand bei Änderung Anfangsbuchstabe ca. 1.5 Zeilen
 \setlength{\bibinitsep}{0.75cm}
 
 % nur in den Zitaten/Fussnoten den Vornamen abkürzen (nicht im
 % Literaturverzeichnis)
 
-\DeclareDelimFormat{nonameyeardelim}{\addcomma\space} 
-\DeclareDelimFormat{nameyeardelim}{\addcomma\space} 
+\DeclareDelimFormat{nonameyeardelim}{\addcomma\space}
+\DeclareDelimFormat{nameyeardelim}{\addcomma\space}
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
-    {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+    {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+       {\usebibmacro{cite:ibid}}
+    {\printtext[bibhyperref]{\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
        {\usebibmacro{cite:label}%
         \setunit{\printdelim{nonameyeardelim}}}
-      {\toggletrue{abx@bool@giveninits}
+      {\toggletrue{abx@bool@giveninits}%
         \printnames[family-given]{labelname}%
         \setunit{\printdelim{nameyeardelim}}}%
       \printfield{usera}%
-      \setunit{\printdelim{titleyeardelim}}% 
-     \usebibmacro{cite:labeldate+extradate}}
+      \setunit{\printdelim{titleyeardelim}}%
+     \usebibmacro{cite:labeldate+extradate}}}}
    {\usebibmacro{cite:shorthand}}}

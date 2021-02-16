@@ -16,38 +16,42 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 1. [Für die eigene Arbeit nutzen](#für-die-eigene-arbeit-nutzen)
     1. [Klassischer Download](#klassischer-download)
     2. [Fork auf Github](#fork-auf-github)
-2. [Vorlage personalisieren](#vorlage-personalisieren)
-3. [Dokumentensprache](#Dokumentensprache)
-4. [Fußnoten](#fußnoten)
-5. [Literaturverzeichnis](#literaturverzeichnis)
-6. [Sperrvermerk](#sperrvermerk)
-7. [Quellcode einbinden](#quellcode-einbinden)
-8. [Schriftarten](#schriftarten)
-10. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
+1. [Vorlage personalisieren](#vorlage-personalisieren)
+1. [Dokumentensprache](#Dokumentensprache)
+1. [TextCommands](#TextCommands)
+1. [Fußnoten](#fußnoten)
+1. [Inhaltsverzeichnis Latex](#inhaltsverzeichnis-latex)
+1. [Literaturverzeichnis](#literaturverzeichnis)
+1. [Sperrvermerk](#sperrvermerk)
+1. [Quellcode einbinden](#quellcode-einbinden)
+1. [Schriftarten](#schriftarten)
+1. [PlantUML](#plantuml)
+1. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
     1. [Docker unter Linux / macOS / Windows](#docker-unter-linux--macos--windows)
     2. [LaTeX-Pakete](#latex-pakete)
     3. [Image selbst bauen](#image-selbst-bauen)
     4. [Fehlerbehandlung](#fehlerbehandlung)
-11. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
+1. [LaTeX mit Windows Subsystem for Linux kompilieren](#latex-mit-windows-subsystem-for-linux-kompilieren)
+1. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
     1. [Texpad](#texpad)
-    2. [Visual Stuido Code](#visual-studio-code)
-12. [Wörter zählen](#wörter-zählen)
+    2. [Visual Studio Code](#visual-studio-code)
+1. [Wörter zählen](#wörter-zählen)
     1. [TeXcount](#texcount)
     2. [Unix / macOS Script](#unix--macos-script)
-13. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
-14. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
-15. [Disclaimer](#disclaimer)
-16. [Lizenz](#lizenz)
+1. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
+1. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
+1. [Disclaimer](#disclaimer)
+1. [Lizenz](#lizenz)
 
 ## Für die eigene Arbeit nutzen
 
 Aufgrund der gewählten [Lizenz](./LICENSE) [MIT Lizenz](https://en.wikipedia.org/wiki/MIT_License), darfst du diese Vorlage für den persönlichen oder kommerziellen Gebrauch nutzen und abändern.
-Um dies zu tun gibt es mehrere Möglichkeiten, die wir nachfolgend kurz vorstellen.
+Um dies zu tun, gibt es mehrere Möglichkeiten, die wir nachfolgend kurz vorstellen.
 
 **Generell gilt**:
-Dieses Dokument beschreibt eine ganze Menge Details, die dir beim erstellen und bearbeiten des Dokument hilfreich sein könnten.
+Dieses Dokument beschreibt eine ganze Menge Details, die dir beim Erstellen und bearbeiten des Dokuments hilfreich sein könnten.
 Leider wird es unmöglich sein, jede Frage abzudecken.
-Solltest du uns kontaktieren wollen um eine Frage zu stellen, ein Problem mit zuteilen oder um einfach nur mal Danke sagen zu wollen, eröffne doch ein [neues Issue](https://github.com/andygrunwald/FOM-LaTeX-Template/issues/new) in diesem Projekt.
+Solltest du uns kontaktieren wollen, um eine Frage zu stellen, ein Problem mit zuteilen oder um einfach nur mal Danke sagen zu wollen, eröffne doch ein [neues Issue](https://github.com/andygrunwald/FOM-LaTeX-Template/issues/new) in diesem Projekt.
 
 ### Klassischer Download
 
@@ -58,7 +62,7 @@ Danach kannst du, wie gewohnt, die Dateien lokal bearbeiten, deine Arbeit schrei
 
 Die bessere Alternative zum klassischen Download ist ein *Fork* auf Github.
 Wie das im Detail funktioniert beschreibt der Artikel [Fork A Repo](https://help.github.com/articles/fork-a-repo/).
-Das ganze hat primär zwei Vorteile:
+Das Ganze hat primär zwei Vorteile:
 
 * Du hast automatisch ein Backup deiner Arbeit auf Github
 * Andere Personen / Studenten können sich deine Arbeit ansehen, diese verbessern, diese weiter verwenden (und ggf. Zeit sparen) oder daraus lernen (bedenke, all diese Vorteile hast du auch durch dieses Projekt)
@@ -66,15 +70,15 @@ Das ganze hat primär zwei Vorteile:
 
 ## Vorlage personalisieren
 
-Wenn du diese Vorlage nutzt ist der erste Einstiegspunkt die Datei [`skripte/meta.tex`](./skripte/meta.tex).
-In der Datei haben wir einige Variablen hinterlegt, die im Dokument (u.a. auf dem Deckblatt) genutzt werden.
+Wenn du diese Vorlage nutzt, ist der erste Einstiegspunkt die Datei [`skripte/meta.tex`](./skripte/meta.tex).
+In der Datei haben wir einige Variablen hinterlegt, die im Dokument (u. a. auf dem Deckblatt) genutzt werden.
 
 Ersetze die Muster-Werte durch deine persönlichen Angaben und diese werden automatisch im Dokument verwendet.
 
 ## Dokumentensprache
 
-Die Vorlage ist sowohl auf Deutsch, als auch auf Englisch umgesetzt. Dadurch wird das Titelblatt, Verzeichnisüberschriften und auch der Inhalt des Literaturverzeichnis auf die englische Sprache umgestellt.
-Um die Datei auf Englisch zu kompilieren muss mit docker-compose folgender Befehl umgesetzt werden:
+Die Vorlage ist sowohl auf Deutsch, als auch auf Englisch umgesetzt. Dadurch wird das Titelblatt, Verzeichnisüberschriften und auch der Inhalt des Literaturverzeichnisses auf die englische Sprache umgestellt.
+Um die Datei auf Englisch zu kompilieren, muss mit docker-compose folgender Befehl umgesetzt werden:
 ```
 docker-compose run --service-ports fom ./compile.sh en
 ```
@@ -82,8 +86,38 @@ Ohne Docker muss die Datei mit der compile.sh folgendermaßen aufgerufen werden:
 ```
 ./compile.sh en
 ```
-Für die Batch-Datei ist das Kompilieren auf Englisch leider noch nicht möglich.
+Für die Batch-Datei ist das Kompilieren auf Englisch über folgenden Workaround möglich.
+1. Suche in der thesis_main.tex nach der Codezeile `%\def\FOMEN{}`
+2. Entkommentiere diese Codezeile, indem du das Prozentzeichen entfernst
+3. Kompiliere neu
+
+Anmerkung: Der beschriebene Workaround funktioniert auch, wenn du Overleaf oder einen anderen TEX-Editor verwendest und die compile.bat nicht benötigst.
+
 Nach dem kompilieren findet sich das Ergebnis in der Datei [`thesis_main.pdf`](./thesis_main.pdf). Die [`thesis_englisch.pdf`](./thesis_englisch.pdf) ist nur dazu da auf Github die Möglichkeit aufzuzeigen.
+
+## TextCommands
+
+Das Arbeiten mit Commands innerhalb des Textes kann eine schöne Möglichkeit darstellen um:
+- Wörter oder Abkürzungen, welche häufig falsch geschrieben werden, einmalig zu definieren
+- bestimmte Wörter die z. B. einfach zu lang sind durch ein Kürzel schneller schreiben zu können
+- Wörter oder Abkürzungen die häufig verwendet werden nie an der falschen Stelle zu trenen
+
+In meinen Arbeiten haben ich gemerkt, dass es sinnvoll ist verschiedene standard Abkürzungen zu verwenden und diese nur einmalig zu definieren. Beispielsweise habe ich die Abkürzung von "zum Beispiel" --> "z. B." immer ohne Leerzeichen geschrieben. Allerdings ist die Schreibweise mit Leerzeichen [wesentlich korrekter](https://de.wiktionary.org/wiki/z._B.#:~:text=Anmerkung%3A,z.B.). Einmal richtig definiert, lässt sich die Abkürzung "z. B." im Text-File einfach durch folgenden Code aufrufen:
+```
+\zb
+```
+Man sparrt sich sogar 2 Tastaturanschläge ;-)
+
+Auf der Seite skripte\textcommands.tex befinden sich zwei Bereiche:
+- common textCommands
+- project individual textCommands
+
+Hier könnt ihr die verschiedenen Commands definieren und dann sind sie auch zentral an einer Stelle verfügbar und pflegbar.
+
+TextCommands können bei Bedarf auch zweisprachig gepflegt werden:
+```
+\newcommand{\vglf}{\langde{Vgl.}\langen{compare}}
+```
 
 ## Fußnoten
 
@@ -101,7 +135,41 @@ Dazu kann der Custom-Befehl `\fullfootcite[Vgl. ][Seite 1]{Balzert.2008}` genutz
 Vgl. Balzert, Helmut et al. (2008), Seite 1.
 ```
 
-Wird die englische Version genutzt muss "Vgl." durch "compare" und "S." durch "p." ersetzt werden.
+Wird die englische Version genutzt, muss "Vgl." durch "compare" und "S." durch "p." ersetzt werden.
+Beim verwenden von [Textcommands](#textcommands) müssen "Vgl." und "S." nicht manuell geändert werden. Dies wird automatisch erledigt.
+Beispiel für die Verwendung von Textcommands (der Output sieht wie oben aus):
+```
+\footcite[\vglf][\pagef 1]{Balzert.2008}
+```
+
+## Inhaltsverzeichnis Latex
+
+**Ebene des ausgegebenen Inhaltsverzeichnis einstellen**<br>
+Bis zu welcher Ebene das Inhaltsverzeichnis aufgelistet wird, kann über tocdepth Parameter eingestellt werden
+```latex
+\setcounter{tocdepth}{4}
+```
+
+**Tabellen- und Abbildungsverzeichnis im Inhaltsverzeichnis**<br>
+Die Anzeige des Tabbellen- und des Abbildungsverzeichnis lässt sich gleich am Anfang in der \documentclass einstellen.
+
+**Glossar im Inhaltsverzeichnis**<br>
+Folgenden Eintrag auskommentieren, damit das Glossar nicht im Inhaltsverzeichnis angezeigt wird
+```latex
+\glstoctrue
+```
+
+**Symbolverzeichnis**<br>
+Damit das Symbolverzeichnis nicht mehr angezeigt wird, folgendes auskommentieren
+```latex
+ \addcontentsline{toc}{section}{Symbolverzeichnis}
+```
+
+**Abkürzungsverzeichnis**<br>
+Damit das Symbolverzeichnis nicht mehr angezeigt wird, folgendes auskommentieren
+```latex
+\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+```
 
 ## Literaturverzeichnis
 
@@ -125,7 +193,7 @@ Und die folgenden Zeilen einkommentieren und ggf. anpassen.
 
 ## Sperrvermerk
 
-Sollte ein Sperrvermerk für die Arbeit notwendig sein, so kann dieser durch einkommentieren der folgenden Zeile aktiviert werden:
+Sollte ein Sperrvermerk für die Arbeit notwendig sein, so kann dieser durch Einkommentieren der folgenden Zeile aktiviert werden:
 
 ```latex
 \input{kapitel/anhang/sperrvermerk}
@@ -135,8 +203,8 @@ Die Angaben zu Titel der Arbeit und Name der Firma werden dabei aus den Metadate
 
 ## Quellcode einbinden
 
-Um euren Quellcode einzubinden, wurde bereits das Packet *listings* in der Datei [*thesis_main.tex*](./thesis_main.tex) eingebunden.
-Dieses wird dort auch mit den Farben für Kommentare, Strings, etc konfiguriert.
+Um euren Quellcode einzubinden, wurde bereits das Paket *listings* in der Datei [*thesis_main.tex*](./thesis_main.tex) eingebunden.
+Dieses wird dort auch mit den Farben für Kommentare, Strings, etc. konfiguriert.
 Folgendermaßen könnt ihr Quellcode einbauen:
 
 ```latex
@@ -148,7 +216,7 @@ Für eine genauere Beschreibung aller im Standard verfügbaren Sprachen empfehle
 
 ## Schriftarten
 
-Die voreingestellte Schriftart enthält Serifen. Mit den folgenden Zeilen kann in der Datei [*thesis_main.tex*](./thesis_main.tex) die Nutzung der Schfriftart Helvet erzwungen werden.
+Die voreingestellte Schriftart enthält Serifen. Mit den folgenden Zeilen kann in der Datei [*thesis_main.tex*](./thesis_main.tex) die Nutzung der Schriftart Helvet erzwungen werden.
 
 ```latex
 % Überschreibe die default Schriftart mit helvet
@@ -156,17 +224,35 @@ Die voreingestellte Schriftart enthält Serifen. Mit den folgenden Zeilen kann i
 \renewcommand\familydefault{\sfdefault}
 ```
 
+## PlantUML
+PlantUML ist ein Open-Source-Tool, mit dem UML-Diagramme aus einfacher Textsprache erstellt werden können.
+
+Um PlantUml benutzen zu können, müssen folgende Voraussetzungen erfüllt sein:
+
+* Das Prozentzeichen muss vor der Zeile `\usepackage{plantuml}` in der `thesis_main.tex` entfernt werden
+* Der PlantUML Code muss von `\begin{plantuml}` `\end{plantuml}` umhüllt werden
+* Die `plantuml.jar` muss vorhanden sein, Download unter [PlantUML](https://sourceforge.net/projects/plantuml/files/plantuml.jar/download)
+* Kopiere die `plantuml.jar` zu einem lokalen Ordner (z.B., `mkdir -p ~/bin/plantuml && cp ~/Downloads/plantuml.jar ~/bin/plantuml`)
+* Installiere Graphviz (PlantUML ist davon abhängig).
+
+Folgendes muss in der `~/.bashrc` oder `zshconfig` sein:
+
+```
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home'
+export PLANTUML_JAR='$HOME/bin/plantuml/plantuml.jar'
+export GRAPHVIZ_DOT='/usr/local/bin/dot'
+```
 
 ## LaTeX zu PDF kompilieren
 
 Wir empfehlen das Dokument mit Docker (siehe unten) zu kompilieren.
 
-Alternativ kann auch über die Ausführung der Skripte kompiliert werden, dafür müssen aber die unten beschriebenen Latex-Pakete installiert sein.
+Alternativ kann auch über die Ausführung der Skripte kompiliert werden, dafür müssen aber die unten beschriebenen [LaTeX-Pakete](#latex-pakete) installiert sein.
 Unter **Windows** muss dafür die beiliegende `compile.bat` ausführen.
 Benutzer von **macOS** und **Linux** verwenden bitte die ```compile.sh```.
 
 
-Wenn das kompilieren nicht ohne Fehler möglich ist, kontrolliert bitte ganz genau eure LaTeX-versionen oder nutzt Docker.
+Wenn das Kompilieren nicht ohne Fehler möglich ist, kontrolliert bitte ganz genau eure LaTeX-Versionen oder nutzt Docker.
 
 
 ### Docker unter Linux / macOS / Windows
@@ -176,16 +262,16 @@ In diesem Container sind alle Vorraussetzungen mit der richtigen Software und de
 
 Voraussetzung ist eine installierte [Docker engine](https://docs.docker.com/engine/installation/).
 
-Um die **PDF ohne die Installation der LaTeX-Pakete zu kompilieren muss folgender Befehl in eurem Projekt-Ordner** ( da wo die compile.sh bzw compile.bat liegt) ausgeführt werden:
+Um die **PDF-Datei ohne die Installation der LaTeX-Pakete zu kompilieren, muss folgender Befehl in eurem Projekt-Ordner** ( da wo die compile.sh bzw compile.bat liegt) ausgeführt werden:
 
 ```
 docker-compose up
 ```
 
 
-Den Befehl lasst ihr einfach über eure Kommandozeile bzw. PowerShell laufen (in Windows cmd.exe bzw. powershell.exe, beim Mac ist es das Terminal). Zum Projektordner könnt ihr kommen, indem ihr über den cd Befehl dorthin navigiert oder im Windows-Explorer in diesen Ordner wechselt und dann bei gedrückter Shift-Taste die rechte Maus-Taste klickt. Dort müsst ihr dann im Menü den Eintrag : "Öffne Kommandozeile hier" auswählen.
+Den Befehl lasst ihr einfach über eure Kommandozeile bzw. PowerShell laufen (in Windows cmd.exe bzw. powershell.exe, beim Mac ist es das Terminal). Zum Projektordner könnt ihr kommen, indem ihr über den cd Befehl dorthin navigiert oder im Windows-Explorer in diesen Ordner wechselt und dann bei gedrückter Shift-Taste die rechte Maus-Taste klickt. Dort müsst ihr dann im Menü den Eintrag: "Öffne Kommandozeile hier" auswählen.
 
-Falls es hier zu Problemen kommt, wenn ein gecachtes Image verwendet wird können die folgende Befehle ausgeführt werden:
+Falls es hier zu Problemen kommt, wenn ein gecachtes Image verwendet wird, können die folgenden Befehle ausgeführt werden:
 
 ```
 docker-compose build --no-cache
@@ -206,10 +292,9 @@ Wenn Du _[MikTex](http://miktex.org/)_ oder _[MacTex](http://tug.org/mactex/)_ v
 
 Weiterhin wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Version 1.8) für das Literaturverzeichnisses benötigt.
 
-
 ### Fehlerbehandlung
 
-Falls unter Windows der folgende Fehler auftritt checkt `git` die Dateien mit Windows Line Endings aus. Dies verursacht im Ubuntu Container einen Fehler.
+Falls unter Windows der folgende Fehler auftritt, checkt `git` die Dateien mit Windows Line Endings aus. Dies verursacht im Ubuntu Container einen Fehler.
 
 ```
   env: bash\r: No such file or directory
@@ -223,16 +308,32 @@ git config --global core.autocrlf true
 
 #### Image selbst bauen
 
-Wenn du das Docker Image selbst bauen möchtest, kannst du es mit dem nachfolgenden Befehl tun:
+Wenn Du das Docker Image selbst bauen möchtest, kannst Du es mit dem nachfolgenden Befehl tun:
 
 ```
 docker build -t andygrunwald/fom-latex-template .
 ```
 
+## LaTeX mit Windows Subsystem for Linux kompilieren 
+Eine mögliche Alternative zu Docker:
+
+1. WSL und Distribution installieren und konfigurieren (siehe [Microsoft Docs](https://docs.microsoft.com/en-US/windows/wsl/install-win10))
+1. Fork des Repositories erzeugen (siehe oben) und Dein Repository klonen (siehe [Github](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)) 
+1. TexLive und benötigte Pakete installieren 
+```
+sudo apt-get install texlive texlive-lang-german texlive-latex-extra texlive-bibtex-extra texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-lang-german texlive-luatex biber xz-utils
+```
+4. Installation überprüfen, durch Erzeugen der PDF-Datei.
+```
+./compile.sh
+```
+5. (optional) Visual Studio Code mit Extension "Remote - WSL" benutzen (siehe [Microsoft VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl&WT.mc_id=-blog-scottha))
+
+
 ## IDE zur Bearbeitung nutzen
 
 Prinzipiell reicht ein normaler Text-Editor zur Bearbeitung aus.
-Jedoch kannst du zum schreiben der Arbeit auch ein IDE verwenden.
+Jedoch kannst du zum Schreiben der Arbeit auch ein IDE verwenden.
 Hierzu gibt es nachfolgend einige Software:
 
 - [TeXstudio](http://texstudio.sourceforge.net/) (Windows, macOS, Linux)
@@ -253,6 +354,16 @@ Wer eine etwas moderne IDE benutzen möchte, kann auch Visual Studio Code verwen
 [Latex Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
 Mit Hilfe der Extension kann das Projekt kompiliert und als Vorschau angesehen werden. In der ```settings.json``` sind die Einstellungen der ```compile.sh``` für Latex Workshop hinterlegt.
+
+Zusätzlich kann die Extension [LTeX](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex) hilfreich sein, die eine **offline Grammatik- und Rechtschreibprüfung** für LaTeX-Dokumente bietet.
+
+## Overleaf zur Bearbeitung nutzen
+
+Anstatt dir einen TEX-Editor und alle weiteren Pakete selber zu installieren und wie oben beschrieben zu kompilieren etc. kannst du auch Online-Tools wie Overleaf (https://www.overleaf.com/) verwenden. Beides hat seine Vor- und Nachteile auf die hier nicht näher eingegangen wird.
+
+Zum Einbinden dieser Vorlage in Overleaf gibt es zwei Möglichkeiten:
+1. Der [klassische Download](#klassischer-download) wonach du das ZIP-File einfach bei Overleaf wieder hochlädst.
+2. Du kannst deinen [Fork von Github](#fork-auf-github) in Overleaf einbinden.
 
 ## Wörter zählen
 
@@ -291,14 +402,9 @@ Wenn du das erste mal mit [Git](https://git-scm.com/), [Github](https://github.c
 
 ## Disclaimer
 
-Diese Vorlage wurde zu meiner Studiumszeit erstellt und genutzt.
-Die Grundlage waren die damaligen Formatierungsregeln für Abschlussarbeiten der FOM (Standort Düsseldorf).
-I.d.R. sind diese jedoch für jeden Standort gültig.
-Ab und zu weichen einzelne Professoren davon ab.
-
-Mein Studium habe ich inzwischen abgeschlossen und deswegen nutze ich diese Vorlage nicht mehr aktiv.
-Jedoch wird sie von mehreren Personen genutzt, weiter gepflegt und angepasst.
-Ich versuche das Projekt soweit wie zeitlich möglich weiter zu betreuen, bitte jedoch um Verständnis, wenn eine Antwort nicht innerhalb einer Stunde vorliegt.
+Die Nutzung des Projektes ist auf eigene Gefahr und es kann keine Vollständigkeit gewährleistet werden.
+Bitte überprüfe das Ergebnis erneut anhand der entsprechenden Leitfäden deines Studiengangs.
+Einzelne Standorte und Professoren stellen abgeänderte Leitfäden bereit.
 
 ## Lizenz
 

@@ -140,11 +140,44 @@ Diese Fußnote\footcite[Vgl.][S.1]{Beckert.2012} ist nur dazu da zu zeigen, wie 
 \subsection{Abkürzungen}
 Abkürzungen werden mithilfe des Pakets Acronym eingebunden. Alle Abkürzungen sollten in der Datei acronyms.tex mithilfe des \begin{verbatim}
 	\acro
-\end{verbatim} Befehls festgelegt. Im Text werden diese dann mit \begin{verbatim}
+\end{verbatim} Befehls festgelegt werden. Im Text werden diese dann mit \begin{verbatim}
 	\ac{Abkürzung}
-\end{verbatim} benutzt. Bei der ersten Verwendung einer Abkürzung wird der der Begriff in beiden Formen dargestellt. So wie hier: \ac{WYSIWYG}. Nur wenn eine Abkürzung tatsächlich verwendet wird erscheint sie auch im Abkürzungsverzeichnis.
+\end{verbatim} benutzt. Bei der ersten Verwendung einer Abkürzung wird der Begriff in beiden Formen dargestellt. So wie hier: \ac{WYSIWYG}. Nur wenn eine Abkürzung tatsächlich verwendet wird erscheint sie auch im Abkürzungsverzeichnis.
 
 Sollte es im Abkürzungsverzeichnis zu Anzeigefehlern kommen kann dies daher rühren, dass eine Abkürzung verwendet wird, die länger ist als \ac{WYSIWYG}. In diesem Fall müsst ihr in der Datei acronyms.tex den Parameter [WYSIWYG] durch eure längere Abkürzung ersetzen.
+
+\subsection{Formeln}
+Um eine Formel nach links aus zurichten muss sie zwischen \& und \& eingesetzt werden:
+
+\textbf{Formel 1: Erste Formel}
+\begin{flalign}
+   & L_P{=} 10lg \cdot \frac{P}{1 mW} &
+\end{flalign}
+\cite[Quelle: In Anlehnung an][S. 4]{Beckert.2012}
+
+
+Etwas mehr Text.
+
+Ansonsten wird sie mittig ausgerichtet test.
+% Mehr infos: http://www.ctex.org/documents/packages/math/amsldoc.pdf
+
+\textbf{Formel 2: Zweite Formel}
+\begin{flalign}
+   L_P{=} 10lg \cdot \frac{P}{1 mW}
+\end{flalign}
+\cite[Quelle: In Anlehnung an][S. 4]{Beckert.2012}
+
+\subsection{Symbole}
+% die folgenden Symbole haben nicht mit der Formel oben drüber zu tun
+Das hier ist ein definiertes Symbol: \symnz und das hier auch \AB . Symbole werden in der Datei Skripte symboldef.tex zentral definiert.
+
+\subsection{Glossar}
+Begriffserklärungen bzw. das \gls{glossar} wird mithilfe des Pakets \gls{glossaries} eingebunden. Alle Begriffe die erklärt werden sollen, sollten in der Datei glossar.tex mithilfe des \begin{verbatim}
+	\newglossaryentry
+\end{verbatim} Befehls festgelegt werden. Im Text werden diese dann mit \begin{verbatim}
+	\gls{Begriff}
+\end{verbatim} benutzt.
+
 
 \subsection{Listen und Aufzählungen}
 \subsubsection{Listen}
@@ -177,3 +210,17 @@ thesis_main.pdf
 \end{lstlisting}
 
 Dies ist der Inhalt der Batchdatei \enquote{compile.bat}.
+
+\subsection{PlantUML}
+
+\begin{lstlisting}
+\begin{plantuml}
+@startuml
+Class01 <|-- Class02
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 -- Class10
+@enduml
+\end{plantuml}
+\end{lstlisting}
