@@ -7,4 +7,4 @@ jobs:
       - uses: xu-cheng/texlive-action/full@v1
         with:
           run: |
-            compile.sh
+            ./compile.sh
