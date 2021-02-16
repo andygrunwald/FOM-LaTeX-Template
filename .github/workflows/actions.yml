@@ -1,5 +1,10 @@
-name: Github Action for LaTeX
-  uses: xu-cheng/latex-action@v2
-  with:
-    root_file: |
-      thesis_main.tex
+name: Build LaTeX document
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: thesis_main.tex
