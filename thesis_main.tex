@@ -60,8 +60,8 @@
 \renewcommand\familydefault{\sfdefault}
 \usepackage{ragged2e}
 
-% Mehrere Fussnoten nacheinander mit Komma separiert % multiple entfernt, da nicht kompatibel zu hyperref. Fix, um mehrere Fussnoten per Komma zu trennen, findet sich weiter unten
-\usepackage[hang]{footmisc}
+% Mehrere Fussnoten nacheinander mit Komma separiert
+\usepackage[hang,multiple]{footmisc}
 \setlength{\footnotemargin}{1em}
 
 % todo Aufgaben als Kommentare verfassen für verschiedene Editoren
@@ -240,7 +240,7 @@ mincrossrefs = 1
 %-----------------------------------
 % PDF Meta Daten setzen
 %-----------------------------------
-\usepackage{hyperref}
+\usepackage[hyperfootnotes=false]{hyperref} %hyperfootnotes=false deaktiviert die Verlinkung der Fußnote. Ansonsten inkompaibel zum Paket "footmisc"
 % Behebt die falsche Darstellung der Lesezeichen in PDF-Dateien, welche eine Übersetzung besitzen
 % siehe Issue 149
 \makeatletter
@@ -255,11 +255,6 @@ mincrossrefs = 1
         Build=1.1
     }
 }
-
-% Mehrere Referenzen hintereinander bei Verwendung von Footcite durch Kommata trennen
-\usepackage{fnpct}
-\setfnpct{dont-mess-around}
-\AdaptNoteOpt\footcite\multfootcite
 
 %-----------------------------------
 % PlantUML
