@@ -1,12 +1,22 @@
-on: [push]
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - main
+      - github-actions
+  pull_request:
+    branches:
+      - main
 jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: xu-cheng/texlive-action/full@v1
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
         with:
           run: |
-            tlmgr update --self
-            tlmgr install biblatex-ext
+            ./compile.sh en
             ./compile.sh
