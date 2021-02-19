@@ -1,6 +1,6 @@
 # LaTeX-Vorlage für die FOM Hochschule für Oekonomie & Management
 
-[![Build Status](https://travis-ci.org/andygrunwald/FOM-LaTeX-Template.svg?branch=master)](https://travis-ci.org/andygrunwald/FOM-LaTeX-Template)
+[![Build](https://github.com/SimonHaak/FOM-LaTeX-Template/actions/workflows/Check.yml/badge.svg)](https://github.com/SimonHaak/FOM-LaTeX-Template/actions/workflows/Check.yml)
 
 Eine [LaTeX](https://de.wikipedia.org/wiki/LaTeX)-Vorlage für den persönlichen Gebrauch für Haus-, Seminar-, Bachelor und Master-Arbeiten an der [FOM Hochschule für Oekonomie & Management](https://www.fom.de/).
 
