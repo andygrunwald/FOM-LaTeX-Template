@@ -1,0 +1,46 @@
+on:
+  schedule:
+  - cron: "5 1 * * *"
+  push:
+  workflow_dispatch:
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: Compile LaTeX document (German)
+        uses: xu-cheng/texlive-action/full@v1
+        with:
+          run: |
+            ./compile.sh
+      - name: Compile LaTeX document (English)
+        uses: xu-cheng/texlive-action/full@v1
+        with:
+          run: |
+            ./compile.sh en
+      - name: Upload german PDF as Artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v2
+        with:
+          name: thesis_main.pdf
+          path:
+            thesis_main.pdf
+      - name: Upload english PDF as Artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v2
+        with:
+          name: thesis_englisch.pdf
+          path:
+            thesis_englisch.pdf
+      - name: Upload PDF Files to Release
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "*.pdf"
+          tags: false
+          overwrite: true
+          draft: true
+          update_latest_release: true
