@@ -302,6 +302,13 @@ mincrossrefs = 1
 \hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, citecolor=darkblack, menucolor=darkblack, urlcolor=darkblack, linktoc=all, bookmarksnumbered=false, pdfpagemode=UseOutlines, pdftoolbar=true}
 \urlstyle{same}%gleiche Schriftart für den Link wie für den Text
 
+%----------------------------------
+% Präfix in das Abbildungs- und Tabellenverzeichnis aufnehmen, statt nur der Nummerierung. (Leitfaden Beispiele, Stand 05/2020)
+%----------------------------------
+\usepackage[titles]{tocloft}
+\renewcommand{\cftfigfont}{\langde{Abbildung}\langen{Figure} }
+\renewcommand{\cfttabfont}{\langde{Tabelle}\langen{Table} }
+
 %-----------------------------------
 % Start the document here:
 %-----------------------------------
