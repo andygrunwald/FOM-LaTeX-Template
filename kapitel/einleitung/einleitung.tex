@@ -1,16 +1,11 @@
 \section{Einleitung}
-Dies soll eine \LaTeX{}-Vorlage für den persönlichen Gebrauch werden. Sie hat weder einen Anspruch auf Richtigkeit, noch auf Vollständigkeit. Die Quellen liegen auf Github zur allgemeinen Verwendung. Verbesserungen sind jederzeit willkommen.
 
-\subsection{Zielsetzung}
-Kleiner Reminder für mich in Bezug auf die Dinge, die wir bei der Thesis beachten sollten und \LaTeX{}-Vorlage für die Thesis.
-
-\subsection{Aufbau der Arbeit}
-Kapitel \ref{infos} enthält die Inhalte des Thesis-Days und alles, was zum inhaltlichen erstellen der Thesis relevant sein könnte. In Kapitel \ref{latexDetails} \nameref{latexDetails} findet ihr wichtige Anmerkungen zu \LaTeX{}, wobei die wirklich wichtigen Dinge im Quelltext dieses Dokumentes stehen (siehe auch die Verzeichnisstruktur in Abbildung \ref{fig:verzeichnisStruktur}).
-
-
-\begin{figure}[H]
-\caption{Verzeichnisstruktur der \LaTeX{}-Datein}\label{fig:verzeichnisStruktur}
-\includegraphics[width=0.9\textwidth]{verzeichnisStruktur}
+Die Digitalisierung nimmt stetig zu. Immer mehr Menschen konsumieren digitalen Content. Alleine im Januar nutzten 2,74 Milliarden Menschen Facebook, dicht gefolgt von YouTube mit 2,291 Milliarden und WhatsApp mit 2 Millarden Konsumenten \parencite[vgl.][]{Statista181086}. Durch die Corona Pandemie kann weiter deutlich gemacht werden, dass sich Unternehmen diesem Wandel stellen und Maßnahmen ergreifen müssen, die die Digitalisierung zusätzlich treibt \parencite[vgl.][]{StatistaInfografik23499}. 
 \\
-Quelle: Eigene Darstellung
-\end{figure}
+Eine Möglichkeit dieser Schnelllebigkeit am Markt standzuhalten sind die Etablierung von agileren Softwarezyklen und -releases. Diese ''agile Softwarentwicklung'' hat sich sowohl bei Startups als auch in großen Sotware-Häusern bewährt. Durch die meistens tägliche Abstimmung, was erledigt wurde, was heute auf der Agenda steht und wo es ''haken'' kann kann innerhalb des Projektsteams schneller und besser für das Produkt und vor allem im Sinne der Auftraggeber gearbeitet respektive entwickelt werden. Das agile Arbeiten ermöglicht Feedback von Stakeholdern, Auftraggebern, Test-Nutzer etc. zeitnah zu berücksichtigen und bei Bedarf einzuarbeiten \parencite[vgl.][]{scherzinger2011agil}.
+\\
+Nicht nur die Entwicklung und die Bereitstellungszyklen spielen eine große Rolle, sondern auch die Art der Bereitstellung und mit welchen Tools es stattfinden kann und sollte. 
+\\
+In der modernen IT findet die Verwendung von Docker-Containern weltweiten Anklang und ist mittlerweile überall primär im Einsatz \parencite[vgl.][]{Statista1224618}. Die containerisierten Images für die Container sind hochstandadisiert und werden als leichtgewichtige, modulare \ac*{VM's} verwendet auf denen die agil entwickelte Software bereitgestellt werden kann \parencite[vgl.][]{RedHatDockerWhatIs}. Geeignete Orchestratoren zum managen der Verfügbarkeit und Skalierbarkeit sind unter anderem Docker Compose (4,8\%), OpenShift (15\%), jedoch nicht zuletzt die beliebteste Lösung - Kubernetes mit 75\% weltweitem Nutzungsanteil \parencite[vgl.][]{Statista1224681}.
+\\
+Die populärste Orchestrierungslösung Kubernetes und dessen Möglichkeiten in ihrer Verwendung zur Containerbereitstellung soll in dieser Hausarbeit analysiert und in einem Praxisbeispiel aus meiner beruflichen Tätigkeit illustriert werden.
