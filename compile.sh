@@ -4,6 +4,8 @@ CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 compile=""
 biberarg=""
 CMD_LATEX=lualatex
+# avoid $TEMP warning
+export TERM=xterm-256color
 
 echo "Compiling in Language: $1"
 if [ "$1" = "en" ] || [ "$2" = "en" ] ; then

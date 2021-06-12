@@ -5,13 +5,11 @@
 # 	or use 
 #	docker-compose up
 
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo 'deb [trusted=yes] http://ppa.launchpad.net/jonathonf/texlive-2018/ubuntu bionic main' > /etc/apt/sources.list.d/texlive.list \
-	&& echo 'deb-src [trusted=yes] http://ppa.launchpad.net/jonathonf/texlive-2018/ubuntu bionic main' >> /etc/apt/sources.list.d/texlive.list \
-	&& apt-get update \
+RUN apt-get update \
 	&& apt-get install -y \
 		wget \
 		texlive-latex-recommended \
@@ -19,7 +17,7 @@ RUN echo 'deb [trusted=yes] http://ppa.launchpad.net/jonathonf/texlive-2018/ubun
 		texlive-fonts-recommended \
 		texlive-bibtex-extra \
 		texlive-lang-german \
-		texlive-generic-extra \
+		texlive-plain-generic \
 		texlive-luatex \
 		biber \
 		xz-utils \
