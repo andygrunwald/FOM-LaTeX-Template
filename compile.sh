@@ -4,7 +4,7 @@ CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 compile=""
 biberarg=""
 CMD_LATEX=lualatex
-# avoid $TEMP warning
+# avoid $TERM warning
 export TERM=xterm-256color
 
 echo "Compiling in Language: $1"
