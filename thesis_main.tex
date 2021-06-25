@@ -218,6 +218,13 @@ mincrossrefs = 1
 \sloppy					%Abstände variieren
 \pagestyle{headings}
 
+%----------------------------------
+% Präfix in das Abbildungs- und Tabellenverzeichnis aufnehmen, statt nur der Nummerierung (siehe Issue #206).
+%----------------------------------
+\KOMAoption{listof}{entryprefix} % Siehe KOMA-Script Doku v3.28 S.153
+\BeforeStartingTOC[lof]{\renewcommand*\autodot{:}} % Für den Doppelpunkt hinter Präfix im Abbildungsverzeichnis
+\BeforeStartingTOC[lot]{\renewcommand*\autodot{:}} % Für den Doppelpunkt hinter Präfix im Tabellenverzeichnis
+
 %-----------------------------------
 % Abkürzungsverzeichnis
 %-----------------------------------
