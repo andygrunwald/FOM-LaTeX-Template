@@ -17,9 +17,11 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
     1. [Klassischer Download](#klassischer-download)
     2. [Fork auf Github](#fork-auf-github)
 1. [Vorlage personalisieren](#vorlage-personalisieren)
-1. [Dokumentensprache](#Dokumentensprache)
-1. [TextCommands](#TextCommands)
-1. [Fußnoten](#fußnoten)
+1. [Dokumentensprache](#dokumentensprache)
+1. [TextCommands](#textcommands)
+1. [Zitation](#zitation)
+    1. [Chicago-Style in Fußnoten](#chicago-style-in-fußnoten)
+    2. [IEEE-Style im Text](#ieee-style-im-text)
 1. [Inhaltsverzeichnis Latex](#inhaltsverzeichnis-latex)
 1. [Literaturverzeichnis](#literaturverzeichnis)
 1. [Sperrvermerk](#sperrvermerk)
@@ -119,10 +121,13 @@ TextCommands können bei Bedarf auch zweisprachig gepflegt werden:
 \newcommand{\vglf}{\langde{Vgl.}\langen{compare}}
 ```
 
-## Fußnoten
+## Zitation
+Es gibt viele Zitationsstile, deshalb schaut ihr am besten in den für euch gültigen Leitfaden und sprecht dann die präferierte/vorgegebene Zitationsweise mit eurem Dozenten ab.
 
-Einige Professoren bevorzugen ein anderes Fußnoten-Format.
-Das Standard-Format kann mit `\footcite[Vgl. ][Seite 1]{Balzert.2008}` genutzt werden und gibt folgendes aus:
+### Chicago-Style in Fußnoten
+**Achtung, nicht für Arbeiten in der Wirtschaftspsychologie**
+
+Das Standard-Format kann mit `\footcite[Vgl. ][Seite 1]{Balzert.2008}` genutzt werden und gibt Folgendes aus:
 
 ```
 Vgl. Balzert et al. (2008), Seite 1.
@@ -140,6 +145,48 @@ Beim verwenden von [Textcommands](#textcommands) müssen "Vgl." und "S." nicht m
 Beispiel für die Verwendung von Textcommands (der Output sieht wie oben aus):
 ```
 \footcite[\vglf][\pagef 1]{Balzert.2008}
+```
+
+### IEEE-Style im Text
+**Achtung, nur im Hochschulbereich IT-Management**
+
+Der IEEE Zitationsstil wird hauptsächlich in technischen Studiengängen verwendet und ist ein sehr einfacher Zitationsstil, da hier nicht auf Dinge wie z.B. "vgl."/"ebd." geachtet werden muss. Ein direktes Zitat steht in Anführungszeichen. Wird ohne Anführungszeichen zitiert weiß man, dass es ein indirektes Zitat ist ("vgl." kann dann weg gelassen werden). Normalerweise müssten auch keine Seitenzahlen angegeben werden, jedoch steht im aktuellen Leitfaden des Hochschulbereichs IT-Management, dass bei jeglicher Zitationsweise die Seitenzahl anzugeben ist, deshalb auch bei IEEE.
+Um IEEE zu nutzen, müssen die Optionen des package BibLaTeX (`\usepackage[options]{biblatex}`) in der `thesis_main.tex` angepasst werden:
+```
+usepackage[
+backend=biber,
+style=ieee,
+maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
+maxbibnames=999,
+date=iso,
+seconds=true, %werden nicht verwendet, so werden aber Warnungen unterdrückt.
+urldate=iso,
+dashed=false,
+autocite=inline,
+useprefix=true, % 'von' im Namen beachten (beim Anzeigen)
+mincrossrefs = 1
+]{biblatex}%iso dateformat für YYYY-MM-DD
+```
+Des Weiteren müssen die Modifikationen für BibLaTeX auskommentiert werden:
+```
+%\input{skripte/modsBiblatex2018}
+```
+Nach dem Auskommentieren der Modifikationen für das Literaturverzeichnis stimmt es leider nicht mehr zu 100% mit den Vorgaben überein, wobei der Leitfaden hier auch sehr vage formuliert ist. Am besten mit dem Dozenten sprechen, ob das BibLaTeX-Format passt. 
+
+Durch das Auskommentieren der BibLaTeX Modifikationen müssen im Anschluss folgende Zeilen hinzugefügt werden:
+```
+%% et al. anstatt u. a. bei mehr als drei Autoren.
+\DefineBibliographyStrings{ngerman}{ 
+	andothers = {{et\,al\adddot}},             
+}
+\DefineBibliographyStrings{english}{ 
+	andothers = {{et\,al\adddot}},             
+}
+```
+
+Im Text kann anschließend mit `\cite[S.~99]{Kornmeier2018}` oder `\cite[S.~99-102]{Kornmeier2018}` oder `\cite{Kornmeier2018}` zitiert werden:
+```
+Im Text kann anschließend mit [1, S. 99] oder [1, S. 99-102] oder [1] zitiert werden.
 ```
 
 ## Inhaltsverzeichnis Latex
