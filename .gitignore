@@ -24,3 +24,5 @@
 
 # IDEs
 .texpadtmp/
+/out/
+/.idea/
