@@ -153,7 +153,7 @@ Beispiel für die Verwendung von Textcommands (der Output sieht wie oben aus):
 Der IEEE Zitationsstil wird hauptsächlich in technischen Studiengängen verwendet und ist ein sehr einfacher Zitationsstil, da hier nicht auf Dinge wie z.B. "vgl."/"ebd." geachtet werden muss. Ein direktes Zitat steht in Anführungszeichen. Wird ohne Anführungszeichen zitiert weiß man, dass es ein indirektes Zitat ist ("vgl." kann dann weg gelassen werden). Normalerweise müssten auch keine Seitenzahlen angegeben werden, jedoch steht im aktuellen Leitfaden des Hochschulbereichs IT-Management, dass bei jeglicher Zitationsweise die Seitenzahl anzugeben ist, deshalb auch bei IEEE.
 Um IEEE zu nutzen, müssen die Optionen des package BibLaTeX (`\usepackage[options]{biblatex}`) in der `thesis_main.tex` angepasst werden:
 ```
-usepackage[
+\usepackage[
 backend=biber,
 style=ieee,
 maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
