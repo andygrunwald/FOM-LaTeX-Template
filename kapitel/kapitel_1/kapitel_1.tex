@@ -54,18 +54,59 @@ Die Tokens dienen nämlich als Eingabewerte für viele weitergehende Prozessschr
 In jedem Text befinden sich Wörter, die wenig Informationsgehalt bei der Textanalyse bieten.
 Solche Wörter werden auch als \textbf{Stop Words} bezeichnet.
 Beispiele für solche Stop Words sind Artikel oder
-Präpositionen wie der, die, das, ein, in, mit.
+Präpositionen wie \glqq{der}\grqq, \glqq{die}\grqq, \glqq{das}\grqq, \glqq{ein}\grqq,
+\glqq{in}\grqq, \glqq{mit}\grqq, etc.
 Im Analyseprozess stellt jedes unterschiedliche Wort eine eigene Dimension dar.
 Durch die Entfernung der Stop Words wird somit die Dimensionshöhe reduziert bei gleichzeitiger Beibehaltung des
 Informationsgehaltes des jeweiligen Satzes/Textes.~\footcite[\vglf][\pagef 3]{mohan.2015}\\
 Neben der klassischen Methode, die Stop Words auf Basis einer vordefinierten Liste zu entfernen, sind diverse
 mathematische und nicht-mathematische Methoden entwickelt worden, um Stop Words in Texten zu identifizieren und zu
 bereinigen.\footnote{Detailiertere Informationen zu unterschiedlichen Methoden für die Entfernung von Stop Words
-können \cite{jivani.2011} entnommen werden.}\\
+können \cite{mohan.2015} entnommen werden.}\\
 
-Annotationen: POS \\
+\textcolor{red}{Annotationen: POS ergänzen!!!!}
+Die Annotationen eines Textes sollen die Funktion des jeweiligen Wortes im Kontext des gesamten Satzes identifizieren.
+\\
 
-Normalisieren: Lemma / Stemming
+
+Bei dem \textbf{Normalisieren} von Texten wird das Ziel verfolgt ähnliche Wörter zu vereinheitlichen bzw.
+diese auf einen Standard zu bringen.
+Dieser Prozess soll vor allem die Dimensionen reduzieren, um die Berechnungen zu vereinfachen und gleichzeitig die
+Effizienz durch die Standardiesierung der Wörter erhöhen.
+\newline
+Bei der Normalisierung von Wörtern wird häufig auf die Techniken des \textbf{Stemming} oder der \textbf{Lemmatization}
+zurückgegriffen.
+Das Stemming ist ein Prozess, der zugrundeliegende Wörter auf den Wortstamm herunterbricht.~\footcite[\vglf][\pagef 5]
+{khyani.2021}
+Dieser Wortstamm ist im Ergebnis häufig kein echtes Wort, sondern oftmals eine Buchstabenkombination bzw.
+ein Präfix, den viele Wörter gemeinsam haben.~\footcite[\vglf][\pagef 5]{khyani.2021}
+Es existiert eine Vielzahl an Stemming-Algorithmen, dessen Performance vom jeweiligen Einsatzbereich abhängt, sodass
+noch kein Standard etabliert ist.\footnote{Eine ausführliche Analyse unterschiedlicher Stemming-Algorithmen kann
+\cite{jivani.2011} entnommen werden.}
+\newline
+Die Idee bei der Lemmatization ist das so genannte \grqq{Lemma}\grqq{} oder auch die Vokabularform eines Wortes
+zu identifizieren.~\footcite[\vglf][\pagef 7]{khyani.2021}
+Der Prozess ist ähnlich dem des Stemmings, jedoch mit dem Unterschied im Ausgabewert.
+Während beim Stemming der Ausgabewert der Wortstamm ist und oftmals kein echtes Wort,
+ist der Ausgabewert bei der Lemmatization das Grundwort aus beispielsweise einem Wörterbuch.~\footcite[\vglf]
+[\pagef 7]{khyani.2021}
+Die Abbilung  \ref{fig:2_1_2_Stem_Lemma} verdeutlicht die Unterschiede der Lemmatization und des Stemmings anhand
+des englischen Wortes \grqq{change}\grqq{} bzw. dessen Abwandlungen.
+
+\begin{figure}[H]
+    \caption{Stemming vs. Lemmatization}\label{fig:2_1_2_Stem_Lemma}
+    \includegraphics[width=0.9\textwidth]{2_1_2_Stem_Lemma}
+    \\
+    \textit{Quelle: Eigene Darstellung in Anlehnung an}~\cite[\pagef 7]{khyani.2021}
+\end{figure}
+
 
 \subsection{Named Entity Recognition}
+
+\begin{itemize}
+    \item Was ist NER
+    \item Wie kommen wir an Daten und Tools?
+    \item Was sind NER-Möglichkeiten - Klassische NER / DL-NER)
+\end{itemize}
+
 \subsection{Named Entity Linking}
