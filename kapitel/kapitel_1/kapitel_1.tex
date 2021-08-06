@@ -1,8 +1,5 @@
 \newpage
-\section{Grundlagen der Auswertung unstrukturierter Daten} \label{infos}
-Siehe auch Wissenschaftliches Arbeiten~\footcite[\vglf][S. 1]{savic.2020}. %ohne textcommands
-Damit sollten alle wichtigen Informationen abgedeckt sein ;-)~\footcite[\vglf][\pagef 1]{savic.2020} %mit textcommands
-Hier gibt es noch ein Beispiel für ein direktes Zitat\footcite[][\pagef 1]{savic.2020} %mit textcommands
+\section{Theoretisch Grundlagen der Named Entity Pipeline} \label{infos}
 
 \subsection{Text Preprocessing} \label{TextPreprocessing}
 Text Mining bezeichnet den Prozess, um wesentliche bekannte aber auch unbekannte Informationen aus Textdaten zu
@@ -24,7 +21,7 @@ Im Wesentlichen geht es in allen \og Anwendungsgebieten um die Wissen durch das 
     \textit{Quelle: Eigene Darstellung in Anlehnung an}~\cite[\pagef 1]{mohan.2015}
 \end{figure}
 
-Wie der Abbildung{}\ref{fig:2_1_1_KDT_Process} entnommen werden kann, stellt die Vorverarbeitung von Volltextdaten bei nahe
+Wie der Abbildung~\ref{fig:2_1_1_KDT_Process} entnommen werden kann, stellt die Vorverarbeitung von Volltextdaten bei nahe
 zu jeder Aufgabe im \ac{NLP} einen essentiellen und kritischen Schritt dar,
 da hierbei die fundamentale Basis für die Weiterverarbeitung
 sowie die Entwicklung der Modelle geschaffen wird.~\footcite[\vglf][\pagef 2]{gurusamy.2014}
@@ -67,9 +64,31 @@ mathematische und nicht-mathematische Methoden entwickelt worden, um Stop Words 
 bereinigen.\footnote{Detailiertere Informationen zu unterschiedlichen Methoden für die Entfernung von Stop Words
 können{}\cite{mohan.2015} entnommen werden.}\\
 
-\textcolor{red}{Annotationen: POS ergänzen!!!!}
 Die Annotationen eines Textes sollen die Funktion des jeweiligen Wortes im Kontext des gesamten Satzes identifizieren.
-\\
+Eine gängige Methode ist dabei das so genannte \ac{POS}-Tagging.
+Jener ist ein Prozess, der die Zuweisungen einzelner Wörter zur \ac{POS} bzw{.} zu lexikalischen Klassenmarkern wie
+Nomen, Verben, Adjektiven, usw{.} vornimmt.~\footcite[\vglf][\pagef 1]{kumawat.2015}
+Bei der Erkennung der Funktion eines Satzes treten folgende Hauptprobleme auf:
+\begin{itemize}
+    \item Mehrdeutige Wörter
+    \item Unbekannte Wörter
+\end{itemize}
+Ersteres stellt das wichtigste Problem dar.
+Es gibt Wörter, für die es mehr als einen Tag geben kann.
+Dieses Problem wird durch einen Fokus des Wortes im Satzkontext gelöst.~\footcite[\vglf][\pagef 1]{gurleenkaursidhu.2013}
+Andersrum existieren Wörter, die zwar denselben Tag haben, jedoch unterschiedliche Bedeutungen im Satzkontext einnehmen.
+~\footcite[\vglf][\pagef 1]{gurleenkaursidhu.2013} Eine Lösung ist hierbei die Betrachtung des einzelnen Wortes, statt dem
+Kontext.
+Das menschliche Auge kann solch eine Differenzierung schnell vornehmen, während es für eine Maschine mühselige Arbeit
+und einen Lernprozess darstellt.
+Wie zuvor angeführt, ist es für die automatische \ac{POS}-Erkennung notwendig ein Modell zu trainieren.
+Hier wurden mit der Zeit diverse Methodiken entwickelt, die sich auf oberster Ebene in überwachte und unüberwachte
+Methoden aufteilen.
+Bei den überwachten Ansätzen wird das \ac{POS}-Modell auf Basis eines Datensatzes trainiert, bei dem die \ac{POS}-Werte
+bekannt sind, während das Modell bei den unüberwachten Ansätzen die \ac{POS}-Werte selbst induziert, da dem
+Trainings-Datensatz keine bekannten Werte vorliegen.~\footnote{Eine detailierte Übersicht über vorhandene \ac{POS}-
+Methoden sind in~\cite{kumawat.2015} zu finden.}
+
 
 
 Bei dem \textbf{Normalisieren} von Texten wird das Ziel verfolgt ähnliche Wörter zu vereinheitlichen bzw.
@@ -93,7 +112,7 @@ Der Prozess ist ähnlich dem des Stemmings, jedoch mit dem Unterschied im Ausgab
 Während beim Stemming der Ausgabewert der Wortstamm ist und oftmals kein echtes Wort,
 ist der Ausgabewert bei der Lemmatization das Grundwort aus beispielsweise einem Wörterbuch.~\footcite[\vglf]
 [\pagef 7]{khyani.2021}
-Die Abbilung{}\ref{fig:2_1_2_Stem_Lemma} verdeutlicht die Unterschiede der Lemmatization und des Stemmings anhand
+Die Abbilung~\ref{fig:2_1_2_Stem_Lemma} verdeutlicht die Unterschiede der Lemmatization und des Stemmings anhand
 des englischen Wortes \grqq{change}\grqq{} bzw.
 dessen Abwandlungen.
 
@@ -111,11 +130,6 @@ umgewandelt.
 
 \subsection{Named Entity Recognition} \label{NER}
 
-\begin{itemize}
-    \item Was ist NER
-    \item Wie kommen wir an Daten und Tools?
-    \item Was sind NER-Möglichkeiten - Klassische NER / DL-NER)
-\end{itemize}
 Mithilfe der \ac{NER} wird das Ziel verfolgt automatisiert Eigennamen in Texten zu identifizieren,
 dessen semantische Typen wie beispielsweise Personen, Ort, Organisationen vordefiniert wurden.~\footcite[\vglf]
 [\pagef 1]{nadeau.2007}
@@ -126,7 +140,7 @@ In der Forschung existiert eine Vielzahl an Definitionen für die zu erkennenden
 folgende zwei Kategorien aufgeteilt werden können:
 \begin{itemize}
     \item Generische (\zb Personen und Ort)
-    \item Domänenspezifische (\zb Proteine, Enzyme und Gene)~\footcite[\vglf][\pagef 1]{li.2020}
+    \item Domänenspezifische (\zb Proteine, Enzyme und Gene)~\footcite[\vglf][\pagef 1]{li.2018}
 \end{itemize}
 Bei den in der \ac{NER} angewandten Techniken wird zwischen
 \begin{itemize}
@@ -136,7 +150,7 @@ Bei den in der \ac{NER} angewandten Techniken wird zwischen
     \item Deep-Learning Ansätze
 \end{itemize}
 unterschieden, wobei die drei erstgenannten den traditionellen Ansätzen zugehörig sind.~\footcite[\vglf][\pagef 1]
-{li.2020}
+{li.2018}
 Regelbasierte Systeme beruhen auf manuell erstellten Regeln.
 Die zugrundeliegenden Regeln können hierbei \zb aus domänenspezifischen Ortsverzeichnisen oder syntaktisch-lexikalischen
 Mustern abgeleitet worden sein.\newline
@@ -144,28 +158,28 @@ Das Clustering ist ein typischer Ansatz für unüberwachte \ac{NER}-Systeme.~\fo
 Auf Basis von Kontextähnlichkeiten werden geclusterte Gruppen generiert aus denen schiließlich die
 Entitäten extrahiert werden.
 Die Idee bei dieser Technik ist mithilfe eines großen Corpus lexikalische Muster und Statistiken zu berechnen, um daraus
-auf im Text benannte Entitäten schließen zu können.~\footcite[\vglf][\pagef 4]{li.2020}\newline
+auf im Text benannte Entitäten schließen zu können.~\footcite[\vglf][\pagef 4]{li.2018}\newline
 Im Teilbereich der überwachten Ansätze ist \ac{NER} hauptsächlich eine Klassifikationsaufgabe.
 Ausgehend von annotierten Datensätzen werden Merkmale entwickelt, um jedes Trainingsbeispiel zu repräsentieren.
-~\footcite[\vglf][\pagef 4]{li.2020}
+~\footcite[\vglf][\pagef 4]{li.2018}
 Für die Entwicklung der Modelle kommen dann Algorithmen des \ac{ML} zu Einsatz, um aus den gegeben annotierten
-Datensätzen Vorhersagemodelle für noch ungesehene Daten zu erlernen.~\footcite[\vglf][\pagef 4]{li.2020}
+Datensätzen Vorhersagemodelle für noch ungesehene Daten zu erlernen.~\footcite[\vglf][\pagef 4]{li.2018}
 Essentiell in überwachten \ac{NER}-Systemen ist die Entwicklung der Merkmale.
 Merkmalsvektoren abstrahieren dabei den Text, bei der ein Wort durch einen oder mehrere boolische, numerische oder
 nominale Werte dargestellt wird.~\footcite[\vglf][\pagef 7]{nadeau.2007}\newline
 Neben den eben erläuterten traditionellen Methoden für die \ac{NER} wurden in den letzten Jahren Ansätze im Bereich des
-\ac{DL} entwickelt, welche sich bewährt haben und Spitzenergebnisse erzielen.~\footcite[\vglf][\pagef 5]{li.2020}
+\ac{DL} entwickelt, welche sich bewährt haben und Spitzenergebnisse erzielen.~\footcite[\vglf][\pagef 5]{li.2018}
 Der Einsatz von \ac{DL} hat wesentliche Vorteile gegenüber den traditionellen Methoden.
 Zum einen ist es durch die besondere Architektur und den Verarbeitungsmöglichkeiten im Bereich des \ac{DL} über
 mehrschichtige künstliche neuronale Netze möglich nicht-lineare Zusammenhänge zu erkennen und zu lernen und zum anderen
 erleichtern \ac{DL}-basierte Modelle durch ihre Automation und Selbstständigkeit beim Lernen die Arbeit.~\footcite
-[\vglf][\pagef 5]{li.2020}\newline
+[\vglf][\pagef 5]{li.2018}\newline
 \newline
 Die \ac{NER} umfasst zwei Teilaufgaben: Typenidentifikation und Grenzerkennung
 Die Bewertung eines entwickelten \ac{NER}-Systems wird in der Regel durch den Vergleich mit den mennschlich getätigten
 Annotationen vorgenommen.
 Der Vergleich kann entweder über eine exakte oder durch eine partielle Übereinstimmungsevaluation vorgnommen werden.
-~\footcite[\vglf][\pagef 3 f.]{li.2020}
+~\footcite[\vglf][\pagef 3 f.]{li.2018}
 Bei der exakten Übereinstimmungsevaluation wird geprüft, ob das System sowohl den richtigen Typen als auch die Grenzen
 korrekt identifiziert.~\footcite[\vglf][\pagef 3]{tjongkimsang.2003}
 Bei der partiellen Übereinstimmungsevaluation genügt es, wenn, unabhängig von den Grenzen, eine korrekte Identifikation
