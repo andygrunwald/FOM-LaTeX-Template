@@ -1,17 +1,47 @@
 \newpage
 \section{Praxis} \label{latexDetails}
 \subsection{Erstellung eines domänenspezifischen NER Modells}
-Wie im Kapitel \ref{NER} erläutert lässt sich zwischen allgemeinen und domänenspezifischen \ac{NER}-Modellen unterscheiden. Domänenspezifische Modelle sind dabei solche, die für einen dedizierten Themenbereich erstellt wurden und daher in diesem Kontext besonders gute Ergebnisse erzielen.
+Wie im Kapitel \ref{NER} erläutert, lässt sich zwischen allgemeinen und domänenspezifischen \ac{NER}-Modellen unterscheiden.\footcite[vgl.][S.47]{nouvel2016} Domänenspezifische Modelle sind dabei solche, die für einen dedizierten Themenbereich erstellt wurden und daher in diesem Kontext besonders gute Ergebnisse erzielen.
 Es gibt bereits spezialisierte Modelle im Bereich der Medizin die mit einem medizinischen Korpus trainiert wurden. Dazu zählen zum Beispiel BioBERT, ScispaCy oder Y\footcite[S.12]{li2020}. Im folgenden beschreiben wir, wie wir ein eigenes Modell für das Themengebiet der Urtikaria-Forschung erstellt haben.
 \subsubsection{Labeling von Trainingsdaten}
 Das Annotieren von Trainingsdaten hat einen zentralen Anteil bei der Erstellung eines eigenen Modells. Akkurate Daten sind essentiell für die Genauigkeit des resultierenden Modells. Neben der Menge der zum Training zur Verfügung stehenden Daten ist es unterlässlich, dass diese widerspruchsfrei sind.
 
-\subsubsection{Annotierungsrichtlinien}
+\subsubsection{Auswahl der Labels}
+Die Auswahl der Labels muss für den Anwendungsfall angemessen sein. Je nachdem was die Zielstellung des Projektes ist, können unterschieliche Labels erforderlich sein, um die notwendigen Zusammenhänge abzubilden.
+In der vorliegenden Arbeit wurden X Entitäten ausgewählt. Diese sind Disease, Treatment, .... Die hier getroffene Auswahl basiert zum einen auf in der einschlägigen Literatur gewählten Labels und zum anderem auf den im Rahmen des CAPTUM Projektes umrissenen Entitäten.
+
+\subsubsection{Annotierungsaufgaben}
+
+\subsubsection{Richtlinien zur Annotation}
 \footcite[vgl.][]{neves2014}
 
-\subsubsection{Software}
+\subsubsection{Verwendete Software}
+Für die Annotation der Entitäten wurde Doccano verwendet.\footcite[vgl.][S.]{hirokinakayama2021} Dabei handelt es sich um ein open source Tool zur Text Klassifikation, Sequenzlabeling und Sequenz zu Sequenz Aufgaben.
+Zur Unterstützung der Annotierung und um den Aufwand zu reduzieren, wurde auf das Auto Labeling Feature der Software zurückgegriffen. Dabei kann eine Backendanwendung konfiguriert werden, die auf Basis eines trainierten Modells Vorschläge zur Annotation unterbreitet.
+Für diese Funktionalität wurden von uns zunächst die ersten 100 Textabschnitte ohne Backend annotiert und die gewonnenen Daten dann für das initiale Modell verwendet.
 \footcite[vgl.][]{neves2014a}
 
+\subsubsection{Analyse zum Inter-Annotator Agreement \ac{IAA}}\label{sec:IAA}
+Das \acf*{IAA} ist ein Maß der Übereinstimmung von Annotationen die von mehreren Personen getätigt wurden. Von dem Score lassen sich allgemein Rückschlüsse ziehen, wie zuverlässig der Annotierungsprozess ablief. \footcite[vgl.][S.298]{ide2017} Der Grundgedanke dabei ist, dass ein hoher Score für die Reproduzierbarkeit der Ergebnisse spricht und Ausdruck ist von der Klarheit der Richtlinien.
+
+% https://towardsdatascience.com/inter-annotator-agreement-2f46c6d37bf3
+\begin{itemize}
+    \item Cohens K\footcite[vgl.][S.]{cohen1960}
+    \item Fleiss K\footcite[vgl.][S.]{fleiss1971}
+\end{itemize}
+
+\subsubsection{Labeling von Trainingsdaten}
+Das Labeling der Daten wurde von zwei Personen ohne medizinischen Hintergrund ausgeführt. Um dennoch eine möglichst hohe Qualität der Annotationen zu erhalten, haben die teilnehmenden Personen bei Unklarheit im Internet recherchiert. Wie im Abschnitt \ref{sec:IAA} beschrieben ist, wurde dadurch dennoch eine verhältnismäßig gute Genauigkeit erzielt.
+Insgesamt wurden dadurch X Textabschnitte annotiert, die zufällig aus dem Gesamtcorpus von 465 einzigartigen Texten ausgewählt wurden. Dies entspricht einem Anteil von circa 0.01\%, relativ gesehen zu der Gesamtzahl von 57764 Abschnitten.
+
+% Das annotieren von Trainingsdaten hat einen zentralen Anteil bei der Erstellung eines eigenen Modells. Akkurate Daten sind essentiell für die Genauigkeit des resultierenden Modells. Neben der Menge der zum Training zur Verfügung stehenden Daten ist es außerdem unerlässlich, dass diese widerspruchsfrei sind.
+
+\begin{itemize}
+    \item Notwendige Menge an Annotationen
+    \item Aufstellung der Label (Ontologie?)
+    \item Richtlininien zur Annotation
+    \item Auswahl der Software (Doccano, Spacy)
+\end{itemize}
 \subsubsection{Training des Modells}
 Für das Training des Modells werden die annotierten Daten aus den vorherigen Schritten verwendet.
 Für das Training des Modells wurde die \acl*{NLP} Bibliothek spaCy\footcite[]{spacy2} verwendet. Diese wurde im Hinblick auf ihre umfangreichen Funktionalitäten und benutzerfreundlichkeit ausgewählt.
@@ -25,6 +55,11 @@ Für das Training des Modells wurde die \acl*{NLP} Bibliothek spaCy\footcite[]{s
 
 Die Parameter für das Training des Modells orientieren sich im Wesentlichen an den voreingestellten Werten. Es wurden keine starken Änderungen vorgenommen, da bei den beteiligten Personen bisher noch nicht die notwendige Erfahrung vorhanden war um ein Parametertuning vorzunehmen.
 Bei der zugrundeliegenden Architektur handelt es sich somit um einen sogenannten Transition Based Parser. Dieser funktioniert indem...
+\begin{itemize}
+    \item Spacy CLI
+    \item Training mit default settings
+\end{itemize}
+Das annotieren von Trainingsdaten hat einen zentralen Anteil bei der Erstellung eines eigenen Modells. Akkurate Daten sind essentiell für die Genauigkeit des resultierenden Modells. Neben der Menge der zum Training zur Verfügung stehenden Daten ist es unterlässlich, dass diese widerspruchsfrei sind.
 
 \subsubsection{Evaluierung des Modells}
 \footcite[]{tsai2006}
