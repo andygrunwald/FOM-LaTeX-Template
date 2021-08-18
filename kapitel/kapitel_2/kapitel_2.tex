@@ -46,6 +46,10 @@ Insgesamt wurden dadurch X Textabschnitte annotiert, die zufällig aus dem Gesam
 Für das Training des Modells werden die annotierten Daten aus den vorherigen Schritten verwendet.
 Für das Training des Modells wurde die \acl*{NLP} Bibliothek spaCy\footcite[]{spacy2} verwendet. Diese wurde im Hinblick auf ihre umfangreichen Funktionalitäten und benutzerfreundlichkeit ausgewählt.
 
+Das Training erfolgt über den \textit{spacy train} Befehl und wird über ein config file konfiguriert. Die Parameter für das Training des Modells orientieren sich im Wesentlichen an den voreingestellten Werten.\footcite[vgl.]{ostkamp2021} Die Library kommt mit einer Standardkonfig, die für diesen Anwendungsfall ohne Änderungen übernommen wurde.
+
+Für einige \ac*{nlp} tasks wie die \textit{text classification} können unterschiedliche Architekturen gewählt werden, für die \acl*{NER} ist nur der \textit{Transition Based Parser} verfügbar.\footcite{zotero-182}
+
 \begin{itemize}
     \item Warum SpaCy
     \item Modellarchitektur ()
@@ -53,8 +57,8 @@ Für das Training des Modells wurde die \acl*{NLP} Bibliothek spaCy\footcite[]{s
     \item Trainingsparameter
 \end{itemize}
 
-Die Parameter für das Training des Modells orientieren sich im Wesentlichen an den voreingestellten Werten. Es wurden keine starken Änderungen vorgenommen, da bei den beteiligten Personen bisher noch nicht die notwendige Erfahrung vorhanden war um ein Parametertuning vorzunehmen.
-Bei der zugrundeliegenden Architektur handelt es sich somit um einen sogenannten Transition Based Parser. Dieser funktioniert indem...
+
+Bei der zugrundeliegenden Architektur handelt es sich um einen sogenannten Transition Based Parser.\footcite{zotero-182} Diesem liegt das Konzept von Übergängen zwischen Wörtern zugrunde. Auf Basis der Annahme, dass der \acl*{POS} tag eines Wortes abhängig ist von bisherigen Wörtern (dem sogenannten \textit{state}) eines Satzes, lassen sich Wahrscheinlichkeiten für Übergänge vom letzten hin zum nächsten Tag aufstellen.\footcite{honnibal2013a} Diese werden in eine sogenannte \textit{transition matrix} überführt, die die Wahrscheinlichkeiten enthält für die Nachfolge eines Tags auf einen anderen.
 \begin{itemize}
     \item Spacy CLI
     \item Training mit default settings
