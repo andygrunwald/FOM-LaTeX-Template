@@ -8,7 +8,7 @@ Das Annotieren von Trainingsdaten hat einen zentralen Anteil bei der Erstellung 
 
 \subsubsection{Auswahl der Labels}
 Die Auswahl der Labels muss für den Anwendungsfall angemessen sein. Je nachdem was die Zielstellung des Projektes ist, können unterschiedliche Labels erforderlich sein, um die notwendigen Zusammenhänge abzubilden.
-In der vorliegenden Arbeit wurden X Entitäten ausgewählt. Diese sind Disease, Treatment, .... Die hier getroffene Auswahl basiert zum einen auf in der einschlägigen Literatur gewählten Labels und zum anderem auf den im Rahmen des CAPTUM Projektes umrissenen Entitäten.\footcite[vgl.][S.]{li2016}\footcite[vgl.][S.]{eickhoff2020}
+In der vorliegenden Arbeit wurden 5 Entitäten ausgewählt. Diese sind Disease, Treatment, Biomarker, Diagnostic und Person. Die hier getroffene Auswahl basiert zum einen auf in der einschlägigen Literatur gewählten Labels und zum anderem auf den im Rahmen des CAPTUM Projektes umrissenen Entitäten.\footcite[vgl.][S.]{li2016}\footcite[vgl.][S.]{eickhoff2020}
 
 \subsubsection{Annotierungsaufgaben}
 
@@ -63,9 +63,8 @@ Bei der zugrundeliegenden Architektur handelt es sich um einen sogenannten Trans
     \item Spacy CLI
     \item Training mit default settings
 \end{itemize}
-Das Annotieren von Trainingsdaten hat einen zentralen Anteil bei der Erstellung eines eigenen Modells. Akkurate Daten sind essentiell für die Genauigkeit des resultierenden Modells. Neben der Menge der zum Training zur Verfügung stehenden Daten ist es unterlässlich, dass diese widerspruchsfrei sind.
 
-Wie im Kapitel \ref*{NER} beschrieben, werden zur Evaluierung eines Modells der f-Score verwendet, der aus XY berechnet wird. Dieser setzt sich aus Precision und Recall, also dem Anteil der XY zusammen.
+Wie im Kapitel \ref{NER} beschrieben, werden zur Evaluierung eines Modells der f-Score verwendet, der aus XY berechnet wird. Dieser setzt sich aus Precision und Recall, also dem Anteil der XY zusammen.
 
 \begin{figure}[H]
     \centering
@@ -73,7 +72,9 @@ Wie im Kapitel \ref*{NER} beschrieben, werden zur Evaluierung eines Modells der 
 	\label{fig:TrainPrecisionRecall}
     \includegraphics[width=1\textwidth]{spacy_train_precision_recall}
 \end{figure}
-In Abbildung \ref*{fig:TrainPrecisionRecall} sind Precision, Recall und der f-Score des Trainings für zwei Basismodelle dargestellt. Diese sind das spaCy-eigene \glqq{en\_core\_web\_md}\grqq und das im Rahmen der BioCreative 5 Challenge erstellte \glqq{en\_ner\_bc5cdr\_md}\grqq. Für beide Modelle gilt, dass sich das Verhältnis von Precision und Recall über mehrere Trainingsepochen hinweg nicht wesentlich verbessert beziehungsweise stagnativ bei circa 70\% einpendelt. Die Wahl des Modells macht unter dieser Betrachtung folglich nicht wesentlich einen Unterschied. Dies deutet darauf hin, dass das Modell beim Training nicht wesentlich konvergiert, das heißt in XY übergeht.
+In Abbildung \ref{fig:TrainPrecisionRecall} sind Precision, Recall und der f-Score des Trainings für zwei Basismodelle dargestellt. Diese sind das spaCy-eigene \glqq{en\_core\_web\_md}\grqq{} und das im Rahmen der BioCreative 5 Challenge erstellte \glqq{en\_ner\_bc5cdr\_md}\grqq. Für beide Modelle gilt, dass sich das Verhältnis von Precision und Recall über mehrere Trainingsepochen hinweg nicht wesentlich verbessert beziehungsweise stagnativ bei circa 70\% einpendelt. Die Wahl des Modells macht unter dieser Betrachtung folglich nicht wesentlich einen Unterschied. Dies deutet darauf hin, dass das Modell beim Training nicht wesentlich konvergiert, das heißt in XY übergeht.
+
+Die Wahl des Basismodells für das weitere Annotieren sowie nachfolgende Schritte fiel dennoch auf das scispacy Modell, da dieses insgesamt mit mehr Daten trainiert wurde. Daher gehen wir davon aus, dass dieses Modell besser generalisieren wird, das heißt bei unbekannten Daten bessere Klassifikationen treffen wird.
 % \footcite[vgl.]{zotero-163}\footcite[vgl.]{zotero-165}
 \begin{figure}[H]
     \centering
