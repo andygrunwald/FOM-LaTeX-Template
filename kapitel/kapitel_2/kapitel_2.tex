@@ -2,7 +2,7 @@
 \section{Praxis} \label{latexDetails}
 \subsection{Erstellung eines domänenspezifischen NER Modells}
 Wie im Kapitel \ref{NER} erläutert, lässt sich zwischen allgemeinen und domänenspezifischen \ac{NER}-Modellen unterscheiden.\footcite[vgl.][S.47]{nouvel2016} Domänenspezifische Modelle sind dabei solche, die für einen dedizierten Themenbereich erstellt wurden und daher in diesem Kontext besonders gute Ergebnisse erzielen.
-Es gibt bereits spezialisierte Modelle im Bereich der Medizin die mit einem medizinischen Korpus trainiert wurden. Dazu zählen zum Beispiel BioBERT, ScispaCy oder Y\footcite[S.12]{li2020}. Im folgenden beschreiben wir, wie wir ein eigenes Modell für das Themengebiet der Urtikaria-Forschung erstellt haben.
+Es gibt bereits spezialisierte Modelle im Bereich der Medizin die mit einem medizinischen Korpus trainiert wurden. Dazu zählen zum Beispiel BioBERT, ScispaCy oder Y\footcite[S.12]{li2020}. Diese beinhalten bereits zahlreiche medizinische Konzepte und Entitäten, allerdings mussten wir feststellen, dass auch sie für unseren Anwendungsfall \textit{out of the box} nicht alle erforderlichen Entitäten der hier betrachteten Domäne erkennen. Daher haben wir uns entschlossen ein eigenes Modell für das Themengebiet der Urtikaria-Forschung auf Basis eines sciSpacy Modells zu erstellen.
 \subsubsection{Labeling von Trainingsdaten}
 Das Annotieren von Trainingsdaten hat einen zentralen Anteil bei der Erstellung eines eigenen Modells. Akkurate Daten sind essentiell für die Genauigkeit des resultierenden Modells. Neben der Menge der zum Training zur Verfügung stehenden Daten ist es unterlässlich, dass diese widerspruchsfrei sind.
 
@@ -46,7 +46,7 @@ Insgesamt wurden dadurch X Textabschnitte annotiert, die zufällig aus dem Gesam
 Für das Training des Modells werden die annotierten Daten aus den vorherigen Schritten verwendet.
 Für das Training des Modells wurde die \acl{NLP} Bibliothek spaCy\footcite[]{spacy2} verwendet. Diese wurde im Hinblick auf ihre umfangreichen Funktionalitäten und benutzerfreundlichkeit ausgewählt.
 
-Das Training erfolgt über den \textit{spacy train} Befehl und wird über ein config file konfiguriert. Die Parameter für das Training des Modells orientieren sich im Wesentlichen an den voreingestellten Werten.\footcite[vgl.]{ostkamp2021} Die Library kommt mit einer Standardkonfig, die für diesen Anwendungsfall ohne Änderungen übernommen wurde.
+Das Training erfolgt über den \textit{spacy train} Befehl mit Trainingsparametern die über ein config file definiert werden. Die Parameter für das Training des Modells wurden von uns nicht verändert und orientieren sich somit an den empfohlenen Werten.\footcite[vgl.]{ostkamp2021}%\footcite[vgl.]{zotero-193}
 
 Für einige \ac{NLP} tasks wie die \textit{text classification} können unterschiedliche Architekturen gewählt werden, für die \acl*{NER} ist nur der \textit{Transition Based Parser} verfügbar.\footcite{zotero-182}
 
@@ -84,7 +84,7 @@ Die Wahl des Basismodells für das weitere Annotieren sowie nachfolgende Schritt
 \end{figure}
 \footcite[]{tsai2006}
 
-\subsection{Markeranalyse}
-\subsection{Überführung in Tabellenstruktur}
-\subsection{Markerkorrelationen}
-\subsection{Aufstellung des Gradingsystems}
+% \subsection{Markeranalyse}
+% \subsection{Überführung in Tabellenstruktur}
+% \subsection{Markerkorrelationen}
+% \subsection{Aufstellung des Gradingsystems}
