@@ -13,37 +13,41 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 
 ## Inhaltsverzeichnis
 
-1. [Für die eigene Arbeit nutzen](#für-die-eigene-arbeit-nutzen)
-    1. [Klassischer Download](#klassischer-download)
-    2. [Fork auf Github](#fork-auf-github)
-1. [Vorlage personalisieren](#vorlage-personalisieren)
-1. [Dokumentensprache](#dokumentensprache)
-1. [TextCommands](#textcommands)
-1. [Zitation](#zitation)
-    1. [Chicago-Style in Fußnoten](#chicago-style-in-fußnoten)
-    2. [IEEE-Style im Text](#ieee-style-im-text)
-1. [Inhaltsverzeichnis Latex](#inhaltsverzeichnis-latex)
-1. [Literaturverzeichnis](#literaturverzeichnis)
-1. [Sperrvermerk](#sperrvermerk)
-1. [Quellcode einbinden](#quellcode-einbinden)
-1. [Schriftarten](#schriftarten)
-1. [PlantUML](#plantuml)
-1. [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
-    1. [Docker unter Linux / macOS / Windows](#docker-unter-linux--macos--windows)
-    2. [LaTeX-Pakete](#latex-pakete)
-    3. [Image selbst bauen](#image-selbst-bauen)
-    4. [Fehlerbehandlung](#fehlerbehandlung)
-1. [LaTeX mit Windows Subsystem for Linux kompilieren](#latex-mit-windows-subsystem-for-linux-kompilieren)
-1. [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
-    1. [Texpad](#texpad)
-    2. [Visual Studio Code](#visual-studio-code)
-1. [Wörter zählen](#wörter-zählen)
-    1. [TeXcount](#texcount)
-    2. [Unix / macOS Script](#unix--macos-script)
-1. [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
-1. [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
-1. [Disclaimer](#disclaimer)
-1. [Lizenz](#lizenz)
+[LaTeX-Vorlage für die FOM Hochschule für Oekonomie & Management](#latex-vorlage-für-die-fom-hochschule-für-oekonomie--management)
+  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+  - [Für die eigene Arbeit nutzen](#für-die-eigene-arbeit-nutzen)
+    - [Klassischer Download](#klassischer-download)
+    - [Fork auf Github](#fork-auf-github)
+  - [Vorlage personalisieren](#vorlage-personalisieren)
+  - [Dokumentensprache](#dokumentensprache)
+  - [TextCommands](#textcommands)
+  - [Zitation](#zitation)
+    - [Chicago-Style in Fußnoten](#chicago-style-in-fußnoten)
+    - [IEEE-Style im Text](#ieee-style-im-text)
+  - [Inhaltsverzeichnis Latex](#inhaltsverzeichnis-latex)
+  - [Literaturverzeichnis](#literaturverzeichnis)
+  - [Sperrvermerk](#sperrvermerk)
+  - [Quellcode einbinden](#quellcode-einbinden)
+  - [Schriftarten](#schriftarten)
+  - [PlantUML](#plantuml)
+  - [LaTeX zu PDF kompilieren](#latex-zu-pdf-kompilieren)
+    - [Docker unter Linux / macOS / Windows](#docker-unter-linux--macos--windows)
+    - [LaTeX-Pakete](#latex-pakete)
+    - [Fehlerbehandlung](#fehlerbehandlung)
+      - [Image selbst bauen](#image-selbst-bauen)
+  - [LaTeX mit Windows Subsystem for Linux kompilieren](#latex-mit-windows-subsystem-for-linux-kompilieren)
+  - [IDE zur Bearbeitung nutzen](#ide-zur-bearbeitung-nutzen)
+    - [Texpad](#texpad)
+    - [Visual Studio Code](#visual-studio-code)
+  - [Overleaf zur Bearbeitung nutzen](#overleaf-zur-bearbeitung-nutzen)
+  - [Wörter zählen](#wörter-zählen)
+- [Verschiedene Features](#verschiedene-features)
+- [TeXcount](#texcount)
+- [Unix / macOS Script](#unix--macos-script)
+- [Ich habe eine Frage oder ein Problem](#ich-habe-eine-frage-oder-ein-problem)
+- [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)
+- [Disclaimer](#disclaimer)
+- [Lizenz](#lizenz)
 
 ## Für die eigene Arbeit nutzen
 
@@ -415,6 +419,11 @@ Zum Einbinden dieser Vorlage in Overleaf gibt es zwei Möglichkeiten:
 ## Wörter zählen
 
 Gerade bei der Verwendung eines Texteditors ist das Zählen der Wörter unter umständen eine mühselige Aufgabe. Mit den folgenden Vorschlägen kann man die Wörter der Arbeit zählen:
+
+## Verschiedene Features
+
+Im Ordner "Dokumentation" findet sich verschiedene Einzelanleitungen zu Features
+
 
 ### TeXcount
 
