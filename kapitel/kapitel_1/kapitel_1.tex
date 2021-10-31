@@ -1,14 +1,123 @@
 \newpage
 \section{Grundlagen} \label{sec:grundlagen}
-Siehe auch Wissenschaftliches Arbeiten~\footcite[\vglf][S. 1]{Balzert.2008}. %ohne textcommands
-Damit sollten alle wichtigen Informationen abgedeckt sein ;-)~\footcite[\vglf][\pagef 1]{Balzert.2008} %mit textcommands
-Hier gibt es noch ein Beispiel für ein direktes Zitat\footcite[][\pagef 1]{Balzert.2008} %mit textcommands
 
 \subsection{Grundlagen von [Semantic Segmentation]}
-\subsection{Grundlagen von Satellitenbildern}
-\subsubsection{3 vs 16 Band}
-\subsubsection{GeoTiff}
-\subsection{CNN's}
+
+\subsection{Satellitenbilder als Datengrundlage}
+
+Die Datenquellen für die semantische Segmentierung erzeugen zum Großteil große Satellitensysteme aus dem Weltraum heraus.
+Von dortaus können schnell und kostengünstig Daten über große Gebietsflächen gesammelt werden.\footcite[][\pagef 2]
+{landgrebe.1997}
+Diese Fernerkundungssysteme sind in der Lage durch Lichtstrahlung Informationen von Objekten aus unterschiedlichen
+Dimensionen heraus zu sammeln.
+Satelliten sind so in der Lage Bilder eines selben Objektes oder einer Perspektive zu generieren, welches sich durch
+die Strahlung auf unterschiedlichen Wellenlängenbändern unterscheidet.
+Wie in Abbilung~\ref{fig:Spektrum} dargestellt nimmt das menschliche Auge lediglich einen kleinen Bereich des
+elektromagnetischen Spektrums wahr, welcher sich aufteilt in einen roten, einen grünen und einen blauen Bereich.
+Bilder, die von der Farbgebung so aussehen, wie das menschliche Auge das abgebildete Objekt auch in der Natur wahrnimmt,
+sind mithilfe des roten, grünen und blauen Wellenbereichs erzeugt worden.
+Aus diesem Grund werden diese Bilder auch häufig RGB-Bilder genannt.
+~\footcite[\vglf] {\textcolor{red}{Hier muss noch eine Quelle hin}}
+Bilder aus anderen Spektralbereichen, die das menschliche Auge nicht wahrnehmen kann, enthalten jedoch weitreichende
+Informationen zur Identifikation diverser Objekte aus der Landwirtschaft, Lebensmittelproduktion, städtische sowie
+außerstädtische Gebiete, Öl- und Minearlexplation etc.~\footcite[\vglf][\pagef 2]{landgrebe.1997}
+Abbilidung~\ref{fig:RGB_vs_16_Band} zeigt exemplarisch ein RGB-Bild mit einem Bild auf Basis von sechszehn
+Spektralbändern.~\footnote{\textcolor{red}{Hier noch die 16 Spektralbänder ergänzen}}
+Ein weiterer Grund dafür, dass für die Datengewinnung in Form derartiger Bildaufnahmen auf Fernerkundungssysteme
+zurückgegriffen wird, ist die synoptische und ganzheitliche Sicht auf die Erde.
+Von der Position aus dem All können so kostengünstig Daten unterschiedlichster Positionen der Erde erzeugt
+werden.~\footcite[\vglf][\pagef 2]{landgrebe.1997}
+Um aus dieser Position Bilder zu generieren sind Satellitensysteme mit Sensoren ausgestattet.
+Die Sensoren werden häufig unterschieden in
+\begin {itemize}
+    \item Multispektrale Sensoren
+    \item Hyperspektrale Sensoren
+\end {itemize}
+Multispektralsensoren sind in einer parallelen Anordnung am Saltellitensystem angebracht und messen häufig zwischen drei
+und sechs Spektralbänder im sichtbaren bis mittleren Infrarotbereich des elektromagnetischen Spektrums, während
+hyperspektrale Fernerkundungssensoren in der Lage sind viele, sehr schmale zusammenhängende Spektralbänder im
+sichtbaren, nahen und mittleren und thermischen Infrarotbereich des elektromagnetischen Spektrums zu erfassen.
+~\footcite[\vglf][\pagef 1]{govender.2007}
+Generel wird im Bereich zwischen zwei und zehn Spektralbändern noch von multispektralen Systemen gesprochen, während
+alle Bilder, die Informationen aus mehr als zehn Spektralbndern enthalten, von einem hyperspektralen System erzeugt
+worden sind.~\footcite[\vglf][\pagef 2]{ibraheem.2015}
+Abbildung~\ref{fig:multispectral_hyperspectral} stellt multispektrale und hyperspektrale Bilder vergleichend gegenüber.
+Um die Bildinformationen zu speichern, müssen drei Dimensionen für jedes Pixel gespeichert werden.
+In der Abbildung ~\ref{fig:datacube_multispectral} wird der dreidimensionale Datenwürfel \(I(x,y,\lambda)\) illustriert.
+Die Koordinaten \(x,y\) beeinhalten die räumlichen Informationen des Bildes und die dritte Dimension \(\lambda\)
+speichert die Daten des Spektralbandes mit der Dichte \(I\).~\footcite[\vglf][\pagef 2]{ibraheem.2015}
+
+\begin{figure}[H]
+    \caption {Elektromagnetisches Spektrum} \label{fig:Spektrum}
+    \includegraphics[width=0.9\textwidth]{spektralbaender.png}
+    \\
+    \textit{Quelle:~\cite[][\pagef 7]{ditzinger.2013}}
+\\
+\end{figure}
+
+\begin{figure}[H]
+    \caption {RGB vs. 16-Band Bild}\label{fig:RGB_vs_16_Band}
+    %\includegraphics[width=0.9\textwidth]{}
+    \textcolor{red}{\textit{Hier muss noch ein Beispielbild rein...vermutlich aus unserem Datensatz}}
+    \\
+\end{figure}
+
+\begin{figure}[H]
+    \caption {Vergleich multispektraler und hyperspektraler Bildaufnahmen}\label{fig:multispectral_hyperspectral}
+    \includegraphics[width=0.9\textwidth]{multispectral_hyperspectral.png}
+    \\
+    \textit{Quelle:~\cite[][\pagef 2]{ibraheem.2015}}
+    \\
+\end{figure}
+
+\begin{figure}[H]
+    \caption {(a) Datenwürfel eines multispektralen Bildes, (b) Spektrum des Pixels \(P(i,j)\)}
+    \label{fig:datacube_multispectral}
+    \includegraphics[width=0.9\textwidth]{datacube_spectral.png}
+    \\
+    \textit{Quelle:~\cite[][\pagef 3]{ibraheem.2015}}
+    \\
+\end{figure}
+
+Die Informationen werden zeilenweise oder bandweise gespeichert.~\footcite[\vglf][\pagef 2]{upadhyay.2012}
+Bei dem Zeilenweisen speichern der Bilder wird ein \(M*N\)-Bild mit \(K\)-Bändern enthält die Bilddatei \(M*K\) Zeilen
+und \(N\) Spalten.
+Die ersten \(K\) Zeilen der Bilddatei entsprechen dabei der ersten Pixelreihe der Aufnahme, die nächsten \(K\) Zeilen
+der zweiten Pixelreihe, usw.
+Bei der bandweisen Speicherung der Bilder werden die gesamten Bildinformationen je Band nacheinander gespeichert.
+Es wird also jeweils eine \(M*N\) für das erste Band untereinander geschrieben, dann die \(M*N\)-Matrix für das zweite
+Band, bis zum \(K\)-ten Band.
+
+Gespeichert werden die Dateien häufig in Formaten die *.mat oder *.tif.
+Bei diesen Formaten ist die Möglichkeit gegeben zusätzlich zu den Bildinformationen georgrafische Informationen wie
+beispielsweise Lagedaten in Form von Koordinaten zu speichern.
+
+\subsection{Neuronale Netzwerkarchitekturen zu Segmentierung von Satellitenbildern}
+
+Für die maschinelle Verarbeitung von Bildern kommen häufig neuronale Netzwerkstrukturen zum Einsatz, da mit solchen in
+der Vergangenheit bahnbrechende Ergebnisse auf diesem Gebiet erzielt werden konnte.~\footcite[\vglf][\pagef 1]{pritt.2020}
+Die spezielle Art der Netzwerkarchitektur für solche Anwendungsgebiete sind die \ac{CNNs}.
+Die Idee bei \ac{CNNs} ist es, einen oder meist mehrere rechteckige \glqq{Filter}\grqq über ein Bild schieben, was im
+mathematischen Sinne einer Faltung bzw\. einer Convolution entspricht.
+Ziel ist es die Gewichte der Filter so optimal zu trainieren, dass jeder Filter jeweils ein bestimmtes Merkmal eines Bildes
+erkennen kann.
+Je mehr Filter das neuronale Netzwerk also hat, desto mehr Merkmale kann es extrahieren und damit komplexere Muster lernen.
+Der Filter wir wie oben bereits erwähnt von zu Gewichten repräsentiert, die zu trainieren sind.
+Um die Rechenanforderungen zu reduzieren, wird die Größe des Filters im Laufe eines Netzwerks in der Regel kleiner,
+während ihre Anzahl jedoch steigt, sodass Merkamale auf granularerer Ebene gelernt werden können.
+
+Der ursprüngliche Zweck der \ac{CNN}-Architektur ist es einem Bild eine Klasse zuzuordnen.
+Wenn Bilder mehrere Klassen enthalten, muss es zusätzlich ermöglicht werden die Größe und Lokalisierung der jeweiligen
+Klassen innerhalb des Bildes zu erhalten.
+Gleichzeitig muss das Netzwerk tief genug sein, um die einzelnen Klassen zu \glqq{lernen}\grqq, damit es zwischen den
+Klassen unterscheiden kann.
+Es kann also nicht die reine downsampling-Architektur verwendet werden, wie sie es im klassischenen \ac{CNN} der Fall ist,
+sondern die Informationen an welcher Stelle welche Objektklasse lokalisiert sind, müssen ebenfalls gegeben sein.
+Das Problem wird durch die Idee des \ac{FCN} weitestgehend gelöst.
+Während bei einem reinen \ac{CNN} die erste Schicht der Größe des Bildes entsprechen muss, da es fest mit dem
+Eingabebild verbunden ist, wird bei einem \ac{FCN} das Modell ab der ersten Schicht bereits faltbar gemacht, sodass das
+Modell auch gleichzeitig unabhängig von der Größe der Inputdaten ist und damit mehr Flexibilität gewährleistet.
+
 \subsection{Jaccard Score}
-\subsection{Vorgehen/Methodik}
-\subsubsection{IBM Prozess|CRISP mit HOT OSM Business Case}
+%\subsection{Vorgehen/Methodik}
+%\subsubsection{IBM Prozess|CRISP mit HOT OSM Business Case}
