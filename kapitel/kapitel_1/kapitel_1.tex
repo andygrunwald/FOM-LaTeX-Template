@@ -96,8 +96,8 @@ beispielsweise Lagedaten in Form von Koordinaten zu speichern.
 
 Für die maschinelle Verarbeitung von Bildern kommen häufig neuronale Netzwerkstrukturen zum Einsatz, da mit solchen in
 der Vergangenheit bahnbrechende Ergebnisse auf diesem Gebiet erzielt werden konnte.~\footcite[\vglf][\pagef 1]{pritt.2020}
-Die spezielle Art der Netzwerkarchitektur für solche Anwendungsgebiete sind die \ac{CNNs}.
-Die Idee bei \ac{CNNs} ist es, einen oder meist mehrere rechteckige \glqq{Filter}\grqq über ein Bild schieben, was im
+Die spezielle Art der Netzwerkarchitektur für solche Anwendungsgebiete sind die \ac{CNN}s.
+Die Idee bei \ac{CNN}s ist es, einen oder meist mehrere rechteckige \glqq{Filter}\grqq über ein Bild schieben, was im
 mathematischen Sinne einer Faltung bzw\. einer Convolution entspricht.
 Ziel ist es die Gewichte der Filter so optimal zu trainieren, dass jeder Filter jeweils ein bestimmtes Merkmal eines Bildes
 erkennen kann.
@@ -111,12 +111,95 @@ Wenn Bilder mehrere Klassen enthalten, muss es zusätzlich ermöglicht werden di
 Klassen innerhalb des Bildes zu erhalten.
 Gleichzeitig muss das Netzwerk tief genug sein, um die einzelnen Klassen zu \glqq{lernen}\grqq, damit es zwischen den
 Klassen unterscheiden kann.
-Es kann also nicht die reine downsampling-Architektur verwendet werden, wie sie es im klassischenen \ac{CNN} der Fall ist,
+Es kann also nicht die reine downsampling Architektur verwendet werden, wie sie es im klassischenen \ac{CNN} der Fall ist,
 sondern die Informationen an welcher Stelle welche Objektklasse lokalisiert sind, müssen ebenfalls gegeben sein.
-Das Problem wird durch die Idee des \ac{FCN} weitestgehend gelöst.
+Das soeben geschilderte Problem wird durch die Idee des \ac{FCN} weitestgehend gelöst.
 Während bei einem reinen \ac{CNN} die erste Schicht der Größe des Bildes entsprechen muss, da es fest mit dem
 Eingabebild verbunden ist, wird bei einem \ac{FCN} das Modell ab der ersten Schicht bereits faltbar gemacht, sodass das
 Modell auch gleichzeitig unabhängig von der Größe der Inputdaten ist und damit mehr Flexibilität gewährleistet.
+Des Weiteren werden durch eine vollständig verbundene Schicht globale Bildinformationen verarbeitet, was sich generell
+für eine Klassifizierungsaufgabe gut eignet.
+Wenn es jedoch darum geht das Bild zu segmentieren sind die kleineren Faltungsschichten, die von vorn herein über das
+Bild gleiten können mehr von Vorteil.
+Zusammenfassend werden bei \ac{FCN}s also die voll verknüpften Schichten der \ac{CNN}s durch Faltungsschichten ersetzt.
+Abbildung~\ref{fig:CNN_FCN} verdeutlicht die Funktionsweise eines \ac{CNN}, welches ein reines Katzenbild der Klasse
+\glqq{Cat}\grqq zuordnet, während das \ac{FCN} dazu in der Lage die Klasse \glqq{Cat}\grqq in einem Bild mit mehreren
+Klassen zu lokalisieren.
+Ebenfalls ist in der Abbilung~\ref{fig:CNN_FCN} ersichtlich, dass die Auflösung der Heatmap nicht der des Eingabebildes
+entspricht.
+Der nächste Schritt ist demnach die grobe Merkamalszuordnung möglichst in die Ursprungsauflösung zurückzuübersetzen.
+Dieser Schritt ist in der Literatur oft als \glqq{learned upsampling}\grqq bezeichnet.
+Nachdem beim downsampling die Größe der Schichten immer kleiner geworden sind, um eine gewisse Detailtiefe beim Lernen
+zu trainieren, ist das Vorgehen beim upsamling genau andersherum, um die Merkmalskarte auf die Ursprungsgröße des
+Ausgangsbildes zu bringen.
+Während beim downsampling die Filter über die Eingabedaten gleiten und Punktprodukte an jeder Position berechnen und
+jeweils einen Ausgabewert weiterleiten, wird jeder Filterwert beim upsampling mit einem Eingabepixel multipliziert, über
+dem der Filter positioniert ist.
+Die Ergebnisse werden anschließend auf die Ausgabe-Merkmalskarte projiziert.
+Filterprojetionen, die sich in der Ausgabe überschneiden werden in der regel addiert.
+Abbildung~\ref{fig:upsampling} veranschaulicht die Vorgehensweise beim upsampling.
+Sowohl im downsampling als auch im upsampling werden also die Filter vom neuronalen Netz trainiert.
+Im Ergebnis wird also die grobe Ausgabe wieder in Pixel übersetzt.
+Die Ergebnisse dabei sind jedoch ungenau und nicht trennscharf, da nur das Hinzufügen einer Upsamplingschicht allein
+den großen Schritt von der Detailtiefe des Downsamplings hin zum Ausgangsformat nicht bewältigen kann.
+Die Trennschärfe wird durch die sogenannte \glqq{Skip-Layer-Fusion}\grqq gelöst.
+Hier werden durch Skip-Verbindungen, die eine Fusion zwischen nicht benachbarten Schichten darstellen, die Informationen
+genutzt, um den räumlichen Kontext, der beim detailreichen Lernen einzelner Klassen verloren geht, mehr zu
+berücksichtigen bzw\. zu übertragen
+Dadurch soll das Spannungsverhältnis zwischen Detailtiefe und Lokalisierung versucht werden zu lösen.
+In der Abbildung~\ref{fig:skiplayer} wird das gesamte Vorgehen einmal veranschaulicht.
+Hier ist das downsampling vom Ausgangsbild bis zur letzten Faltunsschicht, die nur noch eine Dimension hat dargestellt.
+Der letzte Schritt ist das upsampling, welches in der Abbildung in der obersten Reihe zu aller erst ohne Skip-Layer
+Fusion dargestellt ist.
+Dort ist zu erkennen, dass die Projektion der Merkmalskarte grob funktioniert.
+In der zweiten Zeile werden die informationen aus der vorangehenden pool4 Schicht mit berücksichtigt, welches im Ergebnis
+einen höheren Detailierungsgrad aufweist.
+In der dritten Zeile werden die pool3 und die pool4 Schicht berücksichtigt, welche die Segementierungskarte noch genauer
+machen.\\
+
+
+
+\begin{figure}[H]
+    \caption {\ac{CNN} und \ac{FCN} im Vergleich}
+    \label{fig:CNN_FCN}
+    %\includegraphics[width=0.9\textwidth]{datacube_spectral.png}
+    \\
+    \textit{\textcolor{red}{Hier muss noch das CNN und FCN rein}}
+    \\
+\end{figure}
+
+\begin{figure}[H]
+    \caption {Learnable Upsampling}
+    \label{fig:upsampling}
+    %\includegraphics[width=0.9\textwidth]{datacube_spectral.png}
+    \\
+    \textit{\textcolor{red}{Hier muss noch das upsampling rein}}
+    \\
+\end{figure}
+
+\begin{figure}[H]
+    \caption {Skip Layer Fusion}
+    \label{fig:skiplayer}
+    %\includegraphics[width=0.9\textwidth]{datacube_spectral.png}
+    \\
+    \textit{\textcolor{red}{Hier muss noch die skip-Layer fusion rein}}
+    \\
+\end{figure}
+
+Eine Weiterentwicklung des \ac{FCN}s ist das U-Net.
+Dieses Modell soll die oftmals kritisierte Ungenauigkeit der \ac{FCN}s an den Segmentierungsgrenzen beheben bzw\.
+optimieren.
+Die Architektur der U-Net sieht aus wie der Buchstabe \glqq{U}\grqq und ist im Folgenden exemplatisch dargestellt.
+
+\begin{figure}[H]
+    \caption {U-Net}
+    \label{fig:uNet}
+    %\includegraphics[width=0.9\textwidth]{datacube_spectral.png}
+    \\
+    \textit{\textcolor{red}{Hier muss noch das U-Net rein}}
+    \\
+\end{figure}
+
 
 \subsection{Jaccard Score}
 %\subsection{Vorgehen/Methodik}
