@@ -1,13 +1,12 @@
 \newpage
-\section{Grundlagen} \label{sec:grundlagen}
+\section{Grundlagen}\label{sec:grundlagen}
 
 \subsection{Grundlagen von [Semantic Segmentation]}
 
 \subsection{Satellitenbilder als Datengrundlage}
 
 Die Datenquellen für die semantische Segmentierung erzeugen zum Großteil große Satellitensysteme aus dem Weltraum heraus.
-Von dortaus können schnell und kostengünstig Daten über große Gebietsflächen gesammelt werden.\footcite[][\pagef 2]
-{landgrebe.1997}
+Von dortaus können schnell und kostengünstig Daten über große Gebietsflächen gesammelt werden.\footcite[][\pagef 2]{landgrebe.1997}
 Diese Fernerkundungssysteme sind in der Lage durch Lichtstrahlung Informationen von Objekten aus unterschiedlichen
 Dimensionen heraus zu sammeln.
 Satelliten sind so in der Lage Bilder eines selben Objektes oder einer Perspektive zu generieren, welches sich durch
@@ -17,7 +16,7 @@ elektromagnetischen Spektrums wahr, welcher sich aufteilt in einen roten, einen 
 Bilder, die von der Farbgebung so aussehen, wie das menschliche Auge das abgebildete Objekt auch in der Natur wahrnimmt,
 sind mithilfe des roten, grünen und blauen Wellenbereichs erzeugt worden.
 Aus diesem Grund werden diese Bilder auch häufig RGB-Bilder genannt.
-~\footcite[\vglf] {\textcolor{red}{Hier muss noch eine Quelle hin}}
+~\footcite[\vglf]{\textcolor{red}{Hier muss noch eine Quelle hin}}
 Bilder aus anderen Spektralbereichen, die das menschliche Auge nicht wahrnehmen kann, enthalten jedoch weitreichende
 Informationen zur Identifikation diverser Objekte aus der Landwirtschaft, Lebensmittelproduktion, städtische sowie
 außerstädtische Gebiete, Öl- und Minearlexplation etc.~\footcite[\vglf][\pagef 2]{landgrebe.1997}
@@ -48,15 +47,17 @@ Die Koordinaten \(x,y\) beeinhalten die räumlichen Informationen des Bildes und
 speichert die Daten des Spektralbandes mit der Dichte \(I\).~\footcite[\vglf][\pagef 2]{ibraheem.2015}
 
 \begin{figure}[H]
-    \caption {Elektromagnetisches Spektrum} \label{fig:Spektrum}
-    \includegraphics[width=0.9\textwidth]{spektralbaender.png}
+    \caption {Elektromagnetisches Spektrum}
+    \label{fig:Spektrum}
+    \includegraphics[width=0.9\textwidth]{abbildungen/spektralbaender.png}
     \\
     \textit{Quelle:~\cite[][\pagef 7]{ditzinger.2013}}
-\\
+    \\
 \end{figure}
 
 \begin{figure}[H]
-    \caption {RGB vs. 16-Band Bild}\label{fig:RGB_vs_16_Band}
+    \caption {RGB vs. 16-Band Bild}
+    \label{fig:RGB_vs_16_Band}
     %\includegraphics[width=0.9\textwidth]{}
     \textcolor{red}{\textit{Hier muss noch ein Beispielbild rein...vermutlich aus unserem Datensatz}}
     \\
@@ -64,7 +65,7 @@ speichert die Daten des Spektralbandes mit der Dichte \(I\).~\footcite[\vglf][\p
 
 \begin{figure}[H]
     \caption {Vergleich multispektraler und hyperspektraler Bildaufnahmen}\label{fig:multispectral_hyperspectral}
-    \includegraphics[width=0.9\textwidth]{multispectral_hyperspectral.png}
+    \includegraphics[width=0.9\textwidth]{abbildungen/multispectral_hyperspectral.png}
     \\
     \textit{Quelle:~\cite[][\pagef 2]{ibraheem.2015}}
     \\
@@ -73,7 +74,7 @@ speichert die Daten des Spektralbandes mit der Dichte \(I\).~\footcite[\vglf][\p
 \begin{figure}[H]
     \caption {(a) Datenwürfel eines multispektralen Bildes, (b) Spektrum des Pixels \(P(i,j)\)}
     \label{fig:datacube_multispectral}
-    \includegraphics[width=0.9\textwidth]{datacube_spectral.png}
+    \includegraphics[width=0.9\textwidth]{abbildungen/datacube_spectral.png}
     \\
     \textit{Quelle:~\cite[][\pagef 3]{ibraheem.2015}}
     \\
@@ -155,36 +156,36 @@ Dort ist zu erkennen, dass die Projektion der Merkmalskarte grob funktioniert.
 In der zweiten Zeile werden die informationen aus der vorangehenden pool4 Schicht mit berücksichtigt, welches im Ergebnis
 einen höheren Detailierungsgrad aufweist.
 In der dritten Zeile werden die pool3 und die pool4 Schicht berücksichtigt, welche die Segementierungskarte noch genauer
-machen.\\
+machen.
 
 
 
-\begin{figure}[H]
-    \caption {\ac{CNN} und \ac{FCN} im Vergleich}
-    \label{fig:CNN_FCN}
-    %\includegraphics[width=0.9\textwidth]{datacube_spectral.png}
-    \\
-    \textit{\textcolor{red}{Hier muss noch das CNN und FCN rein}}
-    \\
-\end{figure}
+% \begin{figure}[H]
+%     \caption {\ac{CNN} und \ac{FCN} im Vergleich}
+%     \label{fig:CNN_FCN}
+%     %\includegraphics[width=0.9\textwidth]{abbildungen/datacube_spectral.png}
+%     \\
+%     \textit{\textcolor{red}{Hier muss noch das CNN und FCN rein}}
+%     \\
+% \end{figure}
 
-\begin{figure}[H]
-    \caption {Learnable Upsampling}
-    \label{fig:upsampling}
-    %\includegraphics[width=0.9\textwidth]{datacube_spectral.png}
-    \\
-    \textit{\textcolor{red}{Hier muss noch das upsampling rein}}
-    \\
-\end{figure}
+% \begin{figure}[H]
+%     \caption {Learnable Upsampling}
+%     \label{fig:upsampling}
+%     %\includegraphics[width=0.9\textwidth]{abbildungen/datacube_spectral.png}
+%     \\
+%     \textit{\textcolor{red}{Hier muss noch das upsampling rein}}
+%     \\
+% \end{figure}
 
-\begin{figure}[H]
-    \caption {Skip Layer Fusion}
-    \label{fig:skiplayer}
-    %\includegraphics[width=0.9\textwidth]{datacube_spectral.png}
-    \\
-    \textit{\textcolor{red}{Hier muss noch die skip-Layer fusion rein}}
-    \\
-\end{figure}
+% \begin{figure}[H]
+%     \caption {Skip Layer Fusion}
+%     \label{fig:skiplayer}
+%     %\includegraphics[width=0.9\textwidth]{abbildungen/datacube_spectral.png}
+%     \\
+%     \textit{\textcolor{red}{Hier muss noch die skip-Layer fusion rein}}
+%     \\
+% \end{figure}
 
 Eine Weiterentwicklung des \ac{FCN}s ist das U-Net.
 Dieses Modell soll die oftmals kritisierte Ungenauigkeit der \ac{FCN}s an den Segmentierungsgrenzen beheben bzw\.
@@ -194,7 +195,7 @@ Die Architektur der U-Net sieht aus wie der Buchstabe \glqq{U}\grqq und ist im F
 \begin{figure}[H]
     \caption {U-Net}
     \label{fig:uNet}
-    %\includegraphics[width=0.9\textwidth]{datacube_spectral.png}
+    \includegraphics[width=0.9\textwidth]{abbildungen/datacube_spectral.png}
     \\
     \textit{\textcolor{red}{Hier muss noch das U-Net rein}}
     \\
