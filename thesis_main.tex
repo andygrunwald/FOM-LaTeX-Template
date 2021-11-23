@@ -139,7 +139,7 @@
 %%%% Neuer Leitfaden (2018)
 \usepackage[
 backend=biber,
-style=ext-authoryear-ibid, % Auskommentieren und nächste Zeile kommentieren, um "Ebd." (ebenda) für sich-wiederholende Fussnoten zu nutzen
+style=ext-authoryear-ibid, % Auskommentieren und nächste Zeile einkommentieren, falls "Ebd." (ebenda) nicht für sich-wiederholende Fussnoten genutzt werden soll.
 %style=ext-authoryear,
 maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
 maxbibnames=999,
@@ -217,6 +217,13 @@ mincrossrefs = 1
 
 \sloppy					%Abstände variieren
 \pagestyle{headings}
+
+%----------------------------------
+% Präfix in das Abbildungs- und Tabellenverzeichnis aufnehmen, statt nur der Nummerierung (siehe Issue #206).
+%----------------------------------
+\KOMAoption{listof}{entryprefix} % Siehe KOMA-Script Doku v3.28 S.153
+\BeforeStartingTOC[lof]{\renewcommand*\autodot{:}} % Für den Doppelpunkt hinter Präfix im Abbildungsverzeichnis
+\BeforeStartingTOC[lot]{\renewcommand*\autodot{:}} % Für den Doppelpunkt hinter Präfix im Tabellenverzeichnis
 
 %-----------------------------------
 % Abkürzungsverzeichnis
