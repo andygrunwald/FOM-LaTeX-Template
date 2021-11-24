@@ -1,7 +1,40 @@
 \newpage
 \section{Grundlagen}\label{sec:grundlagen}
 
-\subsection{Grundlagen von [Semantic Segmentation]}
+Um dem weiteren Verlauf der Projektarbeit folgen zu können, werden zunächst relevante
+Grundlagen zur Semantischen Segmentierung und Satellitenbildern vermittelt.
+Weiterhin wird die Methodik anhand von Convolutional Neural Networks, der Jaccard Score
+und das Vorgehen im Projekt mittels CRSIP-DM erläutert.
+
+\subsection{Semantische Segmentierung}
+
+{\textcolor{red}{QUELLEN}}
+
+Die semantische Segmentierung ist ein Teilgebiet der Bildverarbeitung, in der ein digitales Bild mittels
+unterschiedlicher Algorithmen und Techniken analysiert wird.
+Im Vergleich zu anderen Methoden dieser Art, wie die Object Detection oder Image Classification, wird bei der
+semantischen Segmentierung jedem einzelnen Pixel im Bild eine der zuvor definierten Klassen zugeordnet.
+Wird beispielsweise bei der Object Detection ein Rahmen um jedes Objekt gebildet, versucht die semantische
+Segmentierung eine Grenze um jedes Objekt zu ziehen, um so die verschiedenen Klassen zu deuten.
+Zur Abgrenzung der Klassen kann jeder eine Farbkategorie zugeordnet werden. Die folgende Abbildung soll dies
+anhand eines Beispiels veranschaulichen.
+
+    {\textcolor{red}{ABBILDUNG}}
+
+In dem Bild werden die drei Objekte Person, Motorrad und Hintergrund als unterschiedliche Klassen eingeordnet.
+Trifft das Modell bei der Segmentierung auf einen Pixel der Klasse Motorrad, wird dieser in der Farbe Türkis eingefärbt.
+Ebenso werden die Pixel der andersartigen Klassen in heterogene Farben gefärbt.
+Ergebnis der Segmentierung ist ein Bild, in dem jedes Pixel einer anderen Klasse zugeordnet ist. \\
+Durch die präzise Kennzeichnung jedes Pixels im Bild kann die semantische Segmentierung in vielen Branchen
+angewendet werden.
+Dazu gehören beispielsweise das Autonome Fahren, bei dem durch die Technik andere Autos oder Fußgänger identifiziert
+werden können.
+Ein alternativer Anwendungsfall wäre in der Medizin, bei dem krebsbedingte Anomalien in Zellen erkannt werden.
+In dieser Ausarbeitung wird die Anwendung der semantischen Segmentierung auf Satellitenbilder behandelt, bei der Berge,
+Flüsse oder Straßen klassifiziert werden. \\
+Es gibt verschiedene Techniken für die semantische Segmentierung von Bildern, wie das Verwenden von Random
+Forests oder das k-means Clustering.
+Im Bezug auf die Genauigkeiten sind jedoch neuronale Netze die erfolgreichste Technik.
 
 \subsection{Satellitenbilder als Datengrundlage}
 
@@ -187,6 +220,8 @@ machen.
 %     \\
 % \end{figure}
 
+\subsubsection{U-Net}
+
 Eine Weiterentwicklung des \ac{FCN}s ist das U-Net.
 Dieses Modell soll die oftmals kritisierte Ungenauigkeit der \ac{FCN}s an den Segmentierungsgrenzen beheben bzw\.
 optimieren.
@@ -201,7 +236,83 @@ Die Architektur der U-Net sieht aus wie der Buchstabe \glqq{U}\grqq und ist im F
     \\
 \end{figure}
 
+\subsubsection{SegNet}
+{\textcolor{red}{QUELLEN}}
+Eine Neural Network Architektur, die speziell für die Funktionalität der semantischen Segmentierung vorgesehen ist,
+ist das SegNet.
+Es ist eine effiziente Methode für die pixelweise Segmentierung von Bildern.
+Ein SegNet besteht aus einem Netzwerk von jeweils fünf Encoder und Decoder.
+Die nachfolgende Abbildung verdeutlicht dies.
+
+    {\textcolor{red}{ABBILDUNG}}
+
+Innerhalb des Encoder-Netzwerkes gibt es wiederum 13 Faltungsschichten.
+Jeder Encoder wendet Faltung, Stapelnormalisierung und Nichtlinearität an.
+Im Anschluss wird jeweils ein Pooling auf die Ergebnisse angewendet. Die Ergebnisse der Encoder werden gespeichert.
+Da die Ausgabe im Encoder-Netzwerk durch das Durchlaufen der verschiedenen Schichten eine geringere Auflösung aufweist,
+können die Ergebnisse für eine Bildsegmentierung nicht verwendet werden.
+Um die Ausgabe für die Segmentierung zu nutzen, folgt ein Decoder-Netzwerk, welches den Zweck hat,
+schrittweise die Auflösung auf die Größe der Eingabegröße zu erhöhen. \\
+Die Schichten im Decoder-Netzwerk arbeiten ähnlich wie das Encoder-Netzwerk.
+Der Unterschied liegt darin, dass sie keine Nichtlinearität aufweisen und die Eingabe in den Faltungsschichten
+mithilfe der zuvor gespeicherten Indizes hochrechnen. Schlussendlich wird die Ausgabe der Decoder-Schichten in
+einen Softmax-Klassifikator geleitet, welcher eine Vorhersage hinsichtlich der Einordnung der Pixel im Bild liefert.
 
 \subsection{Jaccard Score}
+
+{\textcolor{red}{QUELLEN}}
+
+Es gibt unterschiedliche Metriken, um die Qualität eines Modells zu bewerten. Hierzu zählen die Pixel Genauigkeit,
+der F1 Score oder auch der Jaccard Score. Letzteres ist eine der am häufigsten verwendeten Metriken
+für die semantische Segmentierung.
+Durch ihn wird die Ähnlichkeit zwischen der Grundwahrheit und dem Segmentierungsergebnis gemessen.
+Er wird anhand der nachfolgenden Formel ermittelt:
+
+{\textcolor{red}{FORMEL}}
+
+In dieser Gleichung wird die Grundwahrheit als G dargestellt und das Segmentierungsergebnis als S.
+Unter dem Kürzel A wird die Operation der Zählmenge verstanden. Anders ausgedrückt entspricht der Zähler der Anzahl
+der Bilder, die richtig positiv (TP) sind und der Nenner entspricht der Gesamtheit von übereinstimmendem und
+nicht übereinstimmendem Pixel. Der Jaccard Score kann einen Wert von 0-1 annehmen.
+1 steht dabei für eine perfekt übereinstimmende Segmentierung und 0 für keine Übereinstimmung.
+Der Jaccard Score ist damit eine unkomplizierte und äußerst effektive Metrik für die semantische Segmentierung.
+
+\subsection{CRISP-DM}
+
+{\textcolor{red}{QUELLEN}}
+
+Die Abkürzung CRISP-DM steht für „Cross Industry Standard Process for Data Mining“.
+Hierunter wird ein Prozess verstanden, der branchenübergreifend für Data Mining angewendet werden kann.
+Er dient als Leitlinie, um neue und nützliche Erkenntnisse aus Datenbeständen zu gewinnen.
+Der Prozess der Wissensgenerierung ist in mehrere Phasen unterteilt, die ein- oder mehrfach durchlaufen werden.
+In der nachfolgenden Abbildung sind die sechs Phasen des Modells abgebildet, die vom Datenverständnis bis zur
+Bereitstellung der Ergebnisse reichen.
+
+    {\textcolor{red}{ABBILDUNG}}
+
+Die erste Phase des Business Unterstanding dient dazu den Anwendungsfall zu verstehen und damit einhergehende
+Anforderungen und Ziele ans Data Mining festzulegen. Als Ergebnis dieser Phase soll die Aufgabenstellung formuliert
+sein und ein grober Zeitplan für das Projekt feststehen. \\
+Die zweite Phase nennt sich Data Understanding. In diesem Schritt sollen die zur Verfügung stehenden Daten für das
+Data Mining hinsichtlich deren Qualität, Verarbeitbarkeit und Inhalt näher betrachtet werden.
+Eine explorative Analyse hilft dabei, sich einen ersten guten Überblick zu verschaffen. \\
+Ziel der darauffolgenden Phase der Data Preparation ist es, einen finalen Datensatz für die weitergehenden Schritte
+der Analyse zu erstellen. Die Anforderungen an den Datensatz ergeben sich aus den ersten beiden Phasen des
+Business Understanding und des Data Understanding. Aufgaben, die in dieser Phase anfallen können das Zusammenführen
+von Datensätzen, die Ableitung neuer Attribute, das Entfernen oder Ersetzen von leeren oder fehlenden Werten oder
+das Aufteilen des Datensatzes in Trainings- und Testdaten sein. Diese Phase beansprucht oftmals die meisten
+Zeit im Prozess des Data Minings.\\
+Im Anschluss an die Data Preparation folgt das Modeling. Dieser Schritt stellt den Kern des Data Mining Prozesses dar,
+denn auf dem festgelegten Datensatz werden verschiedene Data Mining Methoden angewandt, um schlussendlich ein oder
+mehrere Modelle für den zuvor definierten Anwendungsfall zu erstellen. \\
+Der fünfte Schritt im CRISP-DM nennt sich Evaluation. In diesem Schritt ist es entscheidend die Aufgabenstellung mit
+den erstellten Datenmodellen abzugleichen. Um das ideale Modell auszuwählen, kann es gegebenenfalls vorkommen,
+dass einige vorherige Schritte wiederholt werden müssen. Schlussendlich kann die letzte Phase eingeleitet werden. \\
+Diese wird als Deployment bezeichnet. In dieser Phase werden die neu gewonnenen Erkenntnisse für den Auftraggeber
+zusammengefasst und verständlich aufbereitet, um letztendlich Verbesserungen im Unternehmen hervorzurufen.\\
+CRISP-DM ermöglicht somit ein standardisiertes Modell für strukturiertes und effizientes Data Mining.
+Alle wichtigen Phasen werden abgedeckt, um relevante Ergebnisse erzielen zu können.
+
+
 %\subsection{Vorgehen/Methodik}
 %\subsubsection{IBM Prozess|CRISP mit HOT OSM Business Case}
