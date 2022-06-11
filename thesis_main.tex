@@ -136,27 +136,19 @@
 \usepackage{url}
 \urlstyle{same}
 
-%%%% Neuer Leitfaden (2018)
-\usepackage[
-backend=biber,
-style=ext-authoryear-ibid, % Auskommentieren und nächste Zeile einkommentieren, falls "Ebd." (ebenda) nicht für sich-wiederholende Fussnoten genutzt werden soll.
-%style=ext-authoryear,
-maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
-maxbibnames=999,
-mergedate=false,
-date=iso,
-seconds=true, %werden nicht verwendet, so werden aber Warnungen unterdrückt.
-urldate=iso,
-innamebeforetitle,
-dashed=false,
-autocite=footnote,
-doi=false,
-useprefix=true, % 'von' im Namen beachten (beim Anzeigen)
-mincrossrefs = 1
-]{biblatex}%iso dateformat für YYYY-MM-DD
+%%%% DIN 1505 Leitfaden
+\usepackage[backend=biber, style=din]{biblatex}%iso dateformat für YYYY-MM-DD
 
 %weitere Anpassungen für BibLaTex
-\input{skripte/modsBiblatex2018}
+%\input{skripte/modsBiblatex2018}
+
+%% et al. anstatt u. a. bei mehr als drei Autoren.
+\DefineBibliographyStrings{ngerman}{ 
+	andothers = {{et\,al\adddot}},             
+}
+\DefineBibliographyStrings{english}{ 
+	andothers = {{et\,al\adddot}},             
+}
 
 %%%%% Alter Leitfaden. Ggf. Einkommentieren und Bereich hierüber auskommentieren
 %\usepackage[

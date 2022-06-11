@@ -1,0 +1,284 @@
+% Original:
+% $Id: standard.bbx,v 1.6 2011/07/29 19:21:28 lehman stable $
+% Angepasst:
+% din.bbx, v2012-06-27, Michael Domhardt
+% gekürzt nach Vorschlag von moewew vom 5. Nov. 2015, siehe: https://github.com/domhardt/BibLaTeX-DIN1505/issues/1#issuecomment-154122346
+
+\ProvidesFile{din.bbx}[2015/09/06, v2015-09-06, DIN 1505 style for biblatex, Michael Domhardt]
+
+\RequireBibliographyStyle{standard}
+
+\setlength{\bibhang}{0em}% hängender Einzug der Bibliografie
+%\setlength{\bibitemsep}{\baselineskip}% Abstand zwischen zwei Einträgen im Literaturverzeichnis
+\setlength{\bibinitsep}{\baselineskip}% Abstand zwischen zwei unterschiedlichen Anfangsbuchstaben im Literaturverzeichnis
+
+\renewcommand*{\labelnamepunct}{\addcolon\addspace}% nach den Autoren- und Herausgebernamen folgt ein Doppelpunkt
+
+%\DeclareNameAlias{default}{last-first}% Nachnamen stehen bei Autoren und Herausgebern vor dem Vorname
+\DeclareNameAlias{default}{family-given}% Nachnamen stehen bei Autoren und Herausgebern vor dem Vorname
+
+\DeclareFieldFormat[article]{title}{#1\midsentence}% keine Anführungszeichen beim Titel von Zeitschriftenbeiträgen
+%\DeclareFieldFormat[article]{date}{(#1)\midsentence}% Klammern um das Jahr bei Zeitschriftenbeiträgen
+\DeclareFieldFormat[article]{number}{Nr. #1\midsentence}% Klammern um das Jahr bei Zeitschriftenbeiträgen
+
+\DeclareFieldFormat[incollection]{title}{#1\midsentence}% keine Anführungszeichen beim Beitr�gen in Sammelwerken
+
+\DeclareFieldFormat[inproceedings]{title}{#1\midsentence}% keine Anführungszeichen beim Titel von Konferenzbeiträgen
+
+\DeclareFieldFormat[inbook]{title}{#1\midsentence}% keine Anf�hrungszeichen beim Titel von Buchbeitr�gen
+
+\DeclareFieldFormat[thesis]{title}{\mkbibemph{#1}\midsentence}% keine Anführungszeichen dafür kursiver Titel bei Dissertationen
+
+
+\renewcommand*{\finentrypunct}{}% Punkt am Ende der Publikation entfernen
+
+
+\DeclareFieldFormat{editortype}{\mkbibparens{#1}}
+
+\renewcommand*{\multinamedelim}{\addsemicolon\space}
+\renewcommand*{\finalnamedelim}{\addsemicolon\space}
+
+\renewbibmacro*{editor}{% Komma vor Herausgeberk�rzel entfernen
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\printnames{editor}%
+    \setunit{\space}% <- hier
+    \usebibmacro{editorstrg}%
+     \clearname{editor}}
+    {}}
+
+\renewbibmacro*{editor+others}{% Komma vor Herausgeberkürzel entfernen
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\printnames{editor}%
+     \setunit{\space}% <- hier
+     \usebibmacro{editor+othersstrg}%
+     \clearname{editor}}
+    {}}
+
+\AtBeginBibliography{%
+%  \renewcommand*{\mkbibnamelast}[1]{\textsc{#1}}% Nachnamen bei Autoren und Herausgebern in Kapitälchen
+  \renewcommand*{\mkbibnamefamily}[1]{\textsc{#1}}% Nachnamen bei Autoren und Herausgebern in Kapitälchen
+  \renewcommand*{\multinamedelim}{\addsemicolon\addspace}%  Spatium und Semikolon als Autoren- und Herausgebertrenner
+  \renewcommand*{\finalnamedelim}{\multinamedelim}%  Spatium und Semikolon als Autoren- und Herausgebertrenner
+  }
+
+% zusätzlicher Eintragstyp @standard
+% geändert von @misc
+\DeclareBibliographyDriver{standard}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{series+number}% Nummer zuerst
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{howpublished}%
+  \newunit\newblock
+  \printfield{type}%
+  \newunit
+  \printfield{version}%
+  \newunit
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{organization+location+date}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{inbook}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{bybookauthor}%
+  \newunit\newblock
+  \usebibmacro{editor+others}% Herausgeber (Hrsg.) statt hrsg. von Herausgeber
+  \setunit{\labelnamepunct}\newblock%
+  \usebibmacro{maintitle+booktitle}%
+  \newunit\newblock
+%  \usebibmacro{byeditor+others}%
+%  \newunit\newblock
+  \printfield{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+
+\DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \printlist{language}%
+  \usebibmacro{in:}%
+  \usebibmacro{editor+others}% Herausgeber (Hrsg.) statt hrsg. von Herausgeber
+  \setunit{\labelnamepunct}\newblock%
+  \usebibmacro{maintitle+booktitle}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{inproceedings}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{editor+others}%
+  \setunit{\labelnamepunct}\newblock%
+  \usebibmacro{maintitle+booktitle}%
+  \newunit\newblock
+  \usebibmacro{event+venue+date}%
+  \newunit\newblock
+  \newunit\newblock
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \printlist{organization}%
+  \newunit
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\renewbibmacro*{journal+issuetitle}{%
+  \usebibmacro{journal}%
+  \setunit*{\addspace}%
+  \iffieldundef{series}
+    {}
+    {\newunit
+     \printfield{series}%
+     \setunit{\addspace}}%
+% ab hier neu
+  \printfield{volume}%
+  \setunit{\addspace}%
+  \usebibmacro{issue+date}%
+  \setunit{\addspace}%
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}%
+%  \usebibmacro{volume+number+eid}%
+%  \setunit{\addspace}%
+%  \usebibmacro{issue+date}%
+% bis hier neu
+  \setunit{\addcolon\space}%
+  \usebibmacro{issue}%
+  \newunit}
+
+\endinput
