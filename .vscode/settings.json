@@ -51,5 +51,8 @@
                 "%DOCFILE%"
             ]
         }
-    ]
+    ],
+    "ltex.additionalRules.enablePickyRules": false,
+    "ltex.language": "de-DE",
+    "cSpell.language": "en,de-DE"
 }
