@@ -95,11 +95,11 @@
   \ifentrytype{online}
     {\setunit*{\addspace}%
      \iffieldundef{year}
-       {\printtext[date]{\langde{keine Datumsangabe}\langen{no Date} }}
-       {\usebibmacro{date}}}%
+       {\printtext[date]{keine Datumsangabe }}
+       {\usebibmacro{date}}%
+       \setunit*{\addspace}%
+       \usebibmacro{urldate}}%
     {}%
-  \setunit*{\addspace}%
-  \usebibmacro{urldate}
   }
 
 %Verhindern, dass bei mehreren Quellen des gleichen Autors im gleichen Jahr
