@@ -339,6 +339,16 @@ Wenn Du _[MikTex](http://miktex.org/)_ oder _[MacTex](http://tug.org/mactex/)_ v
 
 Weiterhin wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Version 1.8) für das Literaturverzeichnisses benötigt.
 
+### Github-Actions automated Build
+
+Dem Projekt ist ein Github Workflow beigelegt, mit dem das Projekt nach einem push auf GitHub, sowie täglich je einmal automatisch kompiliert wird. Dieses Skript benötigt zugriff auf die compile.sh Datei, welche manuell gegeben werden muss. Dies erfolgt in der Console mit dem folgenden Befehl:
+
+```
+git update-index --chmod=+x compile.sh
+```
+
+Bei dem nächsten Push auf GitHub funktioniert das Skript dann, da es jetzt auf die Datei zugreifen kann.
+
 ### Fehlerbehandlung
 
 Falls unter Windows der folgende Fehler auftritt, checkt `git` die Dateien mit Windows Line Endings aus. Dies verursacht im Ubuntu Container einen Fehler.
