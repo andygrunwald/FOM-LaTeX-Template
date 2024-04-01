@@ -11,12 +11,12 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v4
       - name: Compile LaTeX document (German)
-        uses: xu-cheng/texlive-action/full@v2
+        uses: xu-cheng/texlive-action@v2
         with:
           run: |
             ./compile.sh
       - name: Compile LaTeX document (English)
-        uses: xu-cheng/texlive-action/full@v2
+        uses: xu-cheng/texlive-action@v2
         with:
           run: |
             ./compile.sh en
