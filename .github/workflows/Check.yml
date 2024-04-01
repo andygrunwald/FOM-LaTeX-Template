@@ -22,14 +22,14 @@ jobs:
             ./compile.sh en
       - name: Upload german PDF as Artifact
         if: github.ref != 'refs/heads/master' &&  github.event_name == 'push'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: thesis_main.pdf
           path:
             thesis_main.pdf
       - name: Upload english PDF as Artifact
         if: github.ref != 'refs/heads/master' &&  github.event_name == 'push'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: thesis_englisch.pdf
           path:
