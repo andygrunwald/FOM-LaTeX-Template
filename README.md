@@ -426,6 +426,11 @@ Unter Unix und macOS kann das mitgelieferte Script helfen die Wörter zu zählen
 
 Das Skript wird einfach über `sh ./countwords.sh` gestartet.
 
+### Overleaf
+
+Overleaf hat eine integriete Funktion zum Zählen der Wörter. Diese findet man in [Overleaf](https://de.overleaf.com/learn/how-to/Is_there_a_way_to_run_a_word_count_that_doesn%27t_include_LaTeX_commands%3F) unter Menü -> Aktionen -> Wortanzahl.
+Um bestimmte Bereiche von der Wortanzahl auszuschießen, können `%TC:ignore` und `%TC:endignore` genutzt werden. Diese Vorlage ist so konfiguriert, dass nur Wörter aus den Kapiteln gezählt werden.
+
 ## Ich habe eine Frage oder ein Problem
 
 Ab und zu kommt es vor, dass es nicht klappt wie beschrieben oder man eine Frage hat.
