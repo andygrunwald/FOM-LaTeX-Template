@@ -182,11 +182,16 @@ mincrossrefs = 1
 \AtBeginBibliography{\singlespacing}
 
 %-----------------------------------
-% Silbentrennung
+% Silbentrennung (Vgl. Leitfaden S.17) 
 %-----------------------------------
 \usepackage{hyphsubst}
 \HyphSubstIfExists{ngerman-x-latest}{%
 \HyphSubstLet{ngerman}{ngerman-x-latest}}{}
+\usepackage[ngerman]{babel}
+\usepackage{microtype}
+
+\hyphenpenalty=5000 % Minimiert die Trennung
+\exhyphenpenalty=5000 % Minimiert die Trennung am Zeilenende
 
 %-----------------------------------
 % Pfad fuer Abbildungen
