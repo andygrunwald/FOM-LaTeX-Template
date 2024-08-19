@@ -1,25 +1,32 @@
 name: Build
+
 on:
   schedule:
   - cron: "5 1 * * *"
   push:
   workflow_dispatch:
+
 jobs:
   build_latex:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4
+
       - name: Compile LaTeX document (German)
         uses: xu-cheng/texlive-action@v2
         with:
+          texlive_version: 2024
           run: |
             ./compile.sh
+
       - name: Compile LaTeX document (English)
         uses: xu-cheng/texlive-action@v2
         with:
+          texlive_version: 2024
           run: |
             ./compile.sh en
+
       - name: Upload german PDF as Artifact
         if: github.ref != 'refs/heads/master' &&  github.event_name == 'push'
         uses: actions/upload-artifact@v4
@@ -27,6 +34,7 @@ jobs:
           name: thesis_main.pdf
           path:
             thesis_main.pdf
+
       - name: Upload english PDF as Artifact
         if: github.ref != 'refs/heads/master' &&  github.event_name == 'push'
         uses: actions/upload-artifact@v4
@@ -34,6 +42,7 @@ jobs:
           name: thesis_englisch.pdf
           path:
             thesis_englisch.pdf
+
       - name: Upload PDF Files to Release
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         uses: xresloader/upload-to-github-release@v1

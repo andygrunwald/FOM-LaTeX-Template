@@ -7,8 +7,6 @@
 
 FROM ubuntu:24.04
 
-ENV DEBIAN_FRONTEND noninteractive
-
 RUN apt-get update \
 	&& apt-get install -y \
 		wget \
@@ -21,16 +19,20 @@ RUN apt-get update \
 		texlive-luatex \
 		biber \
 		xz-utils \
-		python \
-		python-pygments \
+		python3 \
+		python3-pygments \
 		--no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
+
 # This can get removed at some point due to docker-compose
 VOLUME ["/data"]
 
 WORKDIR /data
+
 COPY ./compile.sh /compile.sh
+
 RUN chmod +x /compile.sh
+
 ENTRYPOINT ["./compile.sh"]
 
 CMD lualatex --version && biber --version
