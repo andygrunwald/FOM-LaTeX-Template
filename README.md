@@ -339,6 +339,16 @@ Wenn Du _[MikTex](http://miktex.org/)_ oder _[MacTex](http://tug.org/mactex/)_ v
 
 Weiterhin wird _[Biblatex](http://www.ctan.org/pkg/biblatex)_ und _Biber_ (>= Version 1.8) für das Literaturverzeichnisses benötigt.
 
+### Github-Actions automated Build
+
+Dem Projekt ist ein Github Workflow beigelegt, mit dem das Projekt nach einem push auf GitHub, sowie täglich je einmal automatisch kompiliert wird. Dieses Skript benötigt zugriff auf die compile.sh Datei, welche manuell gegeben werden muss. Dies erfolgt in der Console mit dem folgenden Befehl:
+
+```
+git update-index --chmod=+x compile.sh
+```
+
+Bei dem nächsten Push auf GitHub funktioniert das Skript dann, da es jetzt auf die Datei zugreifen kann.
+
 ### Fehlerbehandlung
 
 Falls unter Windows der folgende Fehler auftritt, checkt `git` die Dateien mit Windows Line Endings aus. Dies verursacht im Ubuntu Container einen Fehler.
@@ -425,6 +435,11 @@ Gerade bei der Verwendung eines Texteditors ist das Zählen der Wörter unter um
 Unter Unix und macOS kann das mitgelieferte Script helfen die Wörter zu zählen. Dafür muss nur [detex](https://github.com/pkubowicz/opendetex) installiert werden. Unter macOS kann `detex` mittels [homebrew](https://brew.sh/index_de) über den Befehl `brew install opendetex` installiert werden.
 
 Das Skript wird einfach über `sh ./countwords.sh` gestartet.
+
+### Overleaf
+
+Overleaf hat eine integriete Funktion zum Zählen der Wörter. Diese findet man in [Overleaf](https://de.overleaf.com/learn/how-to/Is_there_a_way_to_run_a_word_count_that_doesn%27t_include_LaTeX_commands%3F) unter Menü -> Aktionen -> Wortanzahl.
+Um bestimmte Bereiche von der Wortanzahl auszuschießen, können `%TC:ignore` und `%TC:endignore` genutzt werden. Diese Vorlage ist so konfiguriert, dass nur Wörter aus den Kapiteln gezählt werden.
 
 ## Ich habe eine Frage oder ein Problem
 
