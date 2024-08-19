@@ -1,0 +1,22 @@
+name: Hadolint
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "5 1 * * *"
+
+jobs:
+  hadolint:
+    name: Hadolint
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: hadolint/hadolint-action@v3.1.0
+      with:
+        dockerfile: Dockerfile
