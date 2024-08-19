@@ -1,3 +1,4 @@
+%TC:ignore - ignoriert die folgnden Wörter beim Wordcount in Overleaf 
 %-----------------------------------
 % Define document and include general packages
 %-----------------------------------
@@ -399,8 +400,11 @@ mincrossrefs = 1
 %-----------------------------------
 % Kapitel / Inhalte
 %-----------------------------------
+%TC:endignore - berücksichtigt die folgnden Wörter beim Wordcount in Overleaf
 % Die Kapitel werden über folgende Datei eingebunden
 \input{skripte/kapitelUebersicht.tex}
+
+%TC:ignore - ignoriert die folgnden Wörter beim Wordcount in Overleaf
 
 %-----------------------------------
 % Apendix / Anhang
@@ -475,3 +479,5 @@ mincrossrefs = 1
 
 \input{kapitel/anhang/erklaerung}
 \end{document}
+
+%TC:endignore - benötigt für Wordcount in Overleaf
