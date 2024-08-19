@@ -16,12 +16,14 @@ jobs:
       - name: Compile LaTeX document (German)
         uses: xu-cheng/texlive-action@v2
         with:
+          texlive_version: 2023
           run: |
             ./compile.sh
 
       - name: Compile LaTeX document (English)
         uses: xu-cheng/texlive-action@v2
         with:
+          texlive_version: 2023
           run: |
             ./compile.sh en
 
