@@ -44,24 +44,24 @@ if [[ "${RETVAL}" -ne 0 ]] ; then
     exit ${RETVAL}
 fi
 
-rm *.bbl 2> /dev/null
-rm *.blg 2> /dev/null
-rm *.aux 2> /dev/null
-rm *.bcf 2> /dev/null
-rm *.ilg 2> /dev/null
-rm *.lof 2> /dev/null
-rm *.log 2> /dev/null
-rm *.lot 2> /dev/null
-rm *.nlo 2> /dev/null
-rm *.nls* 2> /dev/null
-rm *.out 2> /dev/null
-rm *.toc 2> /dev/null
-rm *.run.xml 2> /dev/null
-rm *.lot 2> /dev/null
-rm *.sub 2> /dev/null
-rm *.suc 2> /dev/null
-rm *.syc 2> /dev/null
-rm *.sym 2> /dev/null
+rm ./*.bbl 2> /dev/null
+rm ./*.blg 2> /dev/null
+rm ./*.aux 2> /dev/null
+rm ./*.bcf 2> /dev/null
+rm ./*.ilg 2> /dev/null
+rm ./*.lof 2> /dev/null
+rm ./*.log 2> /dev/null
+rm ./*.lot 2> /dev/null
+rm ./*.nlo 2> /dev/null
+rm ./*.nls* 2> /dev/null
+rm ./*.out 2> /dev/null
+rm ./*.toc 2> /dev/null
+rm ./*.run.xml 2> /dev/null
+rm ./*.lot 2> /dev/null
+rm ./*.sub 2> /dev/null
+rm ./*.suc 2> /dev/null
+rm ./*.syc 2> /dev/null
+rm ./*.sym 2> /dev/null
 
 echo "PDF Compile: Success"
 
