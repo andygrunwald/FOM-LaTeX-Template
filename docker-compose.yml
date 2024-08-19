@@ -1,8 +1,7 @@
-version: "3"
 services:
   fom:
-      build: . # use this to build the local Dockerfile
-      # image: andygrunwald/fom-latex-template # use this to build from the image
-      volumes:
-        - ./:/data
-      command: ./compile.sh
+    build: . # use this to build the local Dockerfile
+    # image: andygrunwald/fom-latex-template # use this to build from the image
+    volumes:
+      - ./:/data
+    command: ./compile.sh
