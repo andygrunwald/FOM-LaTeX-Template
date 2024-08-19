@@ -7,6 +7,7 @@
 
 FROM ubuntu:24.04
 
+# hadolint ignore=DL3008
 RUN apt-get update \
 	&& apt-get install -y \
 		wget \
@@ -35,4 +36,5 @@ RUN chmod +x /compile.sh
 
 ENTRYPOINT ["./compile.sh"]
 
-CMD lualatex --version && biber --version
+CMD ["lualatex", "--version"]
+# CMD ["biber" "--version"]
