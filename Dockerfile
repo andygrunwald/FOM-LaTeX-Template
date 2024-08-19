@@ -35,4 +35,5 @@ RUN chmod +x /compile.sh
 
 ENTRYPOINT ["./compile.sh"]
 
-CMD lualatex --version && biber --version
+CMD ["lualatex", "--version"]
+# CMD ["biber" "--version"]
