@@ -124,7 +124,22 @@ TextCommands können bei Bedarf auch zweisprachig gepflegt werden:
 ## Zitation
 Es gibt viele Zitationsstile, deshalb schaut ihr am besten in den für euch gültigen Leitfaden und sprecht dann die präferierte/vorgegebene Zitationsweise mit eurem Dozenten ab.
 
-### Chicago-Style in Fußnoten
+Die Vorlage unterstützt verschiedene Zitationsstile, die über die Variable `\citationstyle` in der Datei thesis_main.tex ausgewählt werden können. Mögliche Werte sind `ieee`, `fom_2018` und `fom_alt`. Stellt sicher, dass der Wert der Variable korrekt gesetzt ist, um den gewünschten Zitationsstil zu aktivieren. 
+Sucht nach der Zeile `\newcommand{\citationstyle}{fom_2018}` im thesis_main.tex um Anpassungen wie folgt vorzunehmen
+
+Aktivieren des Zitationssils für den neuen (2018) FOM Leitfaden (per Default aktiv):
+```
+\newcommand{\citationstyle}{fom_2018}  <- dies ist der Default, hier muss nichts geändert werden!
+```
+
+Aktivieren des Zitationssils für den alten FOM Leitfaden wie folgt:
+```
+\newcommand{\citationstyle}{fom_alt}
+```
+
+
+
+### Chicago-Style in Fußnoten ()
 **Achtung, nicht für Arbeiten in der Wirtschaftspsychologie**
 
 Das Standard-Format kann mit `\footcite[Vgl. ][Seite 1]{Balzert.2008}` genutzt werden und gibt Folgendes aus:
@@ -151,7 +166,13 @@ Beispiel für die Verwendung von Textcommands (der Output sieht wie oben aus):
 **Achtung, nur im Hochschulbereich IT-Management**
 
 Der IEEE Zitationsstil wird hauptsächlich in technischen Studiengängen verwendet und ist ein sehr einfacher Zitationsstil, da hier nicht auf Dinge wie z.B. "vgl."/"ebd." geachtet werden muss. Ein direktes Zitat steht in Anführungszeichen. Wird ohne Anführungszeichen zitiert weiß man, dass es ein indirektes Zitat ist ("vgl." kann dann weg gelassen werden). Normalerweise müssten auch keine Seitenzahlen angegeben werden, jedoch steht im aktuellen Leitfaden des Hochschulbereichs IT-Management, dass bei jeglicher Zitationsweise die Seitenzahl anzugeben ist, deshalb auch bei IEEE.
-Um IEEE zu nutzen, müssen die Optionen des package BibLaTeX (`\usepackage[options]{biblatex}`) in der `thesis_main.tex` angepasst werden:
+
+Aktivieren des IEEE Zitationssils wie folgt:
+```
+\newcommand{\citationstyle}{ieee}
+```
+
+Folgende Optionen werden automatisch angepasst:
 ```
 \usepackage[
 backend=biber,
@@ -167,13 +188,13 @@ useprefix=true, % 'von' im Namen beachten (beim Anzeigen)
 mincrossrefs = 1
 ]{biblatex}%iso dateformat für YYYY-MM-DD
 ```
-Des Weiteren müssen die Modifikationen für BibLaTeX auskommentiert werden:
+Des Weiteren werden die Modifikationen für BibLaTeX auskommentiert:
 ```
 %\input{skripte/modsBiblatex2018}
 ```
 Nach dem Auskommentieren der Modifikationen für das Literaturverzeichnis stimmt es leider nicht mehr zu 100% mit den Vorgaben überein, wobei der Leitfaden hier auch sehr vage formuliert ist. Am besten mit dem Dozenten sprechen, ob das BibLaTeX-Format passt. 
 
-Durch das Auskommentieren der BibLaTeX Modifikationen müssen im Anschluss folgende Zeilen hinzugefügt werden:
+Durch das Auskommentieren der BibLaTeX Modifikationen werden im Anschluss folgende Zeilen hinzugefügt:
 ```
 %% et al. anstatt u. a. bei mehr als drei Autoren.
 \DefineBibliographyStrings{ngerman}{ 

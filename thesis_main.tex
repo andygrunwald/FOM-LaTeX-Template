@@ -137,44 +137,73 @@
 
 \usepackage{url}
 \urlstyle{same}
-
-%%%% Neuer Leitfaden (2018)
-\usepackage[
-backend=biber,
-style=ext-authoryear-ibid, % Auskommentieren und nächste Zeile einkommentieren, falls "Ebd." (ebenda) nicht für sich-wiederholende Fussnoten genutzt werden soll.
-%style=ext-authoryear,
-maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
-maxbibnames=999,
-mergedate=false,
-date=iso,
-seconds=true, %werden nicht verwendet, so werden aber Warnungen unterdrückt.
-urldate=iso,
-innamebeforetitle,
-dashed=false,
-autocite=footnote,
-doi=false,
-useprefix=true, % 'von' im Namen beachten (beim Anzeigen)
-mincrossrefs = 1
-]{biblatex}%iso dateformat für YYYY-MM-DD
-
-%weitere Anpassungen für BibLaTex
-\input{skripte/modsBiblatex2018}
-
-%%%%% Alter Leitfaden. Ggf. Einkommentieren und Bereich hierüber auskommentieren
-%\usepackage[
-%backend=biber,
-%style=numeric,
-%citestyle=authoryear,
-%url=false,
-%isbn=false,
-%notetype=footonly,
-%hyperref=false,
-%sortlocale=de]{biblatex}
-
-%weitere Anpassungen für BibLaTex
-%\input{skripte/modsBiblatex}
-
-%%%% Ende Alter Leitfaden
+\newcommand{\citationstyle}{fom_2018} % Mögliche Werte: ieee, fom_2018, fom_alt
+% Laden des entsprechenden Zitationsstils basierend auf der Variable \citationstyle
+\ifthenelse{\equal{\citationstyle}{ieee}}{
+    % Einstellungen für IEEE-Zitationsstil
+	\usepackage[
+		backend=biber,
+		style=ieee,
+		maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
+		maxbibnames=999,
+		date=iso,
+		seconds=true, %werden nicht verwendet, so werden aber Warnungen unterdrückt.
+		urldate=iso,
+		dashed=false,
+		autocite=inline,
+		useprefix=true, % 'von' im Namen beachten (beim Anzeigen)
+		mincrossrefs = 1
+	]{biblatex}%iso dateformat für YYYY-MM-DD
+    % et al. anstatt u. a. bei mehr als drei Autoren.
+    \DefineBibliographyStrings{ngerman}{
+        andothers = {{et\,al\adddot}},
+    }
+    \DefineBibliographyStrings{english}{
+        andothers = {{et\,al\adddot}},
+    }
+}{
+    \ifthenelse{\equal{\citationstyle}{fom_2018}}{
+        % Einstellungen für Neuer Leitfaden (2018)
+		\usepackage[
+			backend=biber,
+			style=ext-authoryear-ibid, % Auskommentieren und nächste Zeile einkommentieren, falls "Ebd." (ebenda) nicht für sich-wiederholende Fussnoten genutzt werden soll.
+			%style=ext-authoryear,
+			maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
+			maxbibnames=999,
+			mergedate=false,
+			date=iso,
+			seconds=true, %werden nicht verwendet, so werden aber Warnungen unterdrückt.
+			urldate=iso,
+			innamebeforetitle,
+			dashed=false,
+			autocite=footnote,
+			doi=false,
+			useprefix=true, % 'von' im Namen beachten (beim Anzeigen)
+			mincrossrefs = 1
+		]{biblatex}%iso dateformat für YYYY-MM-DD
+        %weitere Anpassungen für BibLaTex
+        \input{skripte/modsBiblatex2018}
+    }{
+        \ifthenelse{\equal{\citationstyle}{fom_alt}}{
+            % Einstellungen für Alter Leitfaden
+            \usepackage[
+                backend=biber,
+                style=numeric,
+                citestyle=authoryear,
+                url=false,
+                isbn=false,
+                notetype=footonly,
+                hyperref=false,
+                sortlocale=de
+            ]{biblatex}
+            %weitere Anpassungen für BibLaTex
+            \input{skripte/modsBiblatex}
+        }{
+            % Fehlerbehandlung für ungültige Werte
+            \PackageError{thesis_main}{Ungueltiger Wert fuer \noexpand\citationstyle: \citationstyle}{Bitte setzen Sie \noexpand\citationstyle auf ieee, fom_2018 oder fom_alt.}
+        }
+    }
+}
 
 %Bib-Datei einbinden
 \addbibresource{literatur/literatur.bib}
