@@ -7,6 +7,15 @@ CMD_LATEX=lualatex
 # avoid $TERM warning
 export TERM=xterm-256color
 
+# Function to remove temporary files from previously crashed runs
+cleanup() {
+    rm -f ./*.bbl ./*.blg ./*.aux ./*.bcf ./*.ilg ./*.lof ./*.log ./*.lot ./*.nlo ./*.nls* ./*.out ./*.toc ./*.run.xml ./*.sub ./*.suc ./*.syc ./*.sym
+}
+
+# Remove existing PDF and temporary files at the beginning
+rm -f "$CURRENT_DIR/thesis_main.pdf"
+cleanup
+
 echo "Compiling in Language: $1"
 if [ "$1" = "en" ] || [ "$2" = "en" ] ; then
   compile="$CMD_LATEX --shell-escape --jobname=\"thesis_englisch\" \"\def\FOMEN{}\input{$CURRENT_DIR/thesis_main.tex}\""
@@ -44,24 +53,8 @@ if [[ "${RETVAL}" -ne 0 ]] ; then
     exit ${RETVAL}
 fi
 
-rm ./*.bbl 2> /dev/null
-rm ./*.blg 2> /dev/null
-rm ./*.aux 2> /dev/null
-rm ./*.bcf 2> /dev/null
-rm ./*.ilg 2> /dev/null
-rm ./*.lof 2> /dev/null
-rm ./*.log 2> /dev/null
-rm ./*.lot 2> /dev/null
-rm ./*.nlo 2> /dev/null
-rm ./*.nls* 2> /dev/null
-rm ./*.out 2> /dev/null
-rm ./*.toc 2> /dev/null
-rm ./*.run.xml 2> /dev/null
-rm ./*.lot 2> /dev/null
-rm ./*.sub 2> /dev/null
-rm ./*.suc 2> /dev/null
-rm ./*.syc 2> /dev/null
-rm ./*.sym 2> /dev/null
+# Remove temporary files at the end
+cleanup
 
 echo "PDF Compile: Success"
 
