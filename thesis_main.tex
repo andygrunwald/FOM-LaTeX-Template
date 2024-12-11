@@ -164,6 +164,7 @@
 }{
     \ifthenelse{\equal{\citationstyle}{fom_2018}}{
         % Einstellungen für Neuer Leitfaden (2018)
+		\usepackage{datetime2}
 		\usepackage[
 			backend=biber,
 			style=ext-authoryear-ibid, % Auskommentieren und nächste Zeile einkommentieren, falls "Ebd." (ebenda) nicht für sich-wiederholende Fussnoten genutzt werden soll.
@@ -494,7 +495,7 @@
 % noch weitere Arten von Zusammenfassungen eines Literaturverzeichnisse zu
 % erzeugen.
 % Beispiel: [type=book,type=article]
-\printbibliography[nottype=online,heading=bibintoc,title={\langde{Literaturverzeichnis}\langen{Bibliography}}]
+\printbibliography[nottype=online, notkeyword=KI-Zitat,heading=bibintoc,title={\headingNameBibliography}]
 
 % neue Seite für Internetquellen-Verzeichnis
 \newpage
@@ -503,8 +504,15 @@
 % Inhaltsverzeichnis, sondern gehören zum Literaturverzeichnis.
 % Die Option heading=bibintoc würde die Internetquelle als eigenen Eintrag im
 % Inhaltsverzeicnis anzeigen.
-%\printbibliography[type=online,heading=bibintoc,title={\headingNameInternetSources}]
-\printbibliography[type=online,heading=subbibliography,title={\headingNameInternetSources}]
+%\printbibliography[type=online,notkeyword=KI-Zitat,heading=bibintoc,title={\headingNameInternetSources}]
+\printbibliography[type=online, notkeyword=KI-Zitat,heading=subbibliography,title={\headingNameInternetSources}]
+
+% KI-Verzeichnis
+\newpage
+
+
+%\printbibliography[filter=KI-Zitate,heading=bibintoc,title={\headingNameKISources}]
+\printbibliography[keyword=KI-Zitat,heading=subbibliography,title={\headingNameKISources}]
 
 \input{kapitel/anhang/erklaerung}
 \end{document}
