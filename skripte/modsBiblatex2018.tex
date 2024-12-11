@@ -237,3 +237,58 @@
       \setunit{\printdelim{titleyeardelim}}%
      \usebibmacro{cite:labeldate+extradate}}}}
    {\usebibmacro{cite:shorthand}}}
+
+
+   \DeclareSourcemap{
+    \maps[datatype=bibtex]{
+      \map{
+        \step[fieldsource=version_day, fieldtarget=userd]
+        \step[fieldsource=version_month, fieldtarget=usere]
+        % version_year wird nicht gemappt, da es nicht benötigt wird
+      }
+    }
+  }
+
+
+% Anpassungen für das KI-Verzeichnis
+  % Hilfsbefehl für den Monatsnamen
+  \newcommand{\monthname}[1]{%
+    \DTMgermanmonthname{#1}%
+  }
+
+  % URL-Feld klickbar machen und ohne Zusatz ausgeben
+  \DeclareFieldFormat{url}{\url{#1}}
+
+  \renewbibmacro*{url}{%
+    \printfield[url]{url}%
+  }
+
+  \renewbibmacro*{url+urldate}{%
+    \usebibmacro{url}
+    \iffieldundef{urldate}{}{\setunit{\addspace}\usebibmacro{urldate}}%
+  }
+  % version-Feld in eckigen Klammern
+  \DeclareFieldFormat[software]{version}{\mkbibbrackets{#1}}
+
+  % Makro für die zusammengesetzte Versionsangabe (nur Tag und Monat)
+  \newbibmacro*{fullversion}{%
+    \iffieldundef{userd}{}{%
+      \iffieldundef{usere}{}{%
+        \printtext{\mkbibparens{Version vom \printfield{userd}.\space
+        \monthname{\thefield{usere}}}}%
+        \setunit{\space}%
+      }%
+    }%
+  }
+
+  % Treiber für @software-Einträge
+  \DeclareBibliographyDriver{software}{%
+    \usebibmacro{begentry}%
+    \printnames{author}\adddot\space
+    \mkbibparens{\printfield{year}}\adddot\space
+    \printfield{title}\space
+    \usebibmacro{fullversion}\space
+    \printfield{version}\adddot\space
+    (\printfield{url})
+    \usebibmacro{finentry}%
+  }
