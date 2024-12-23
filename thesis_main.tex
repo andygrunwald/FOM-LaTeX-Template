@@ -204,6 +204,74 @@
         }
     }
 }
+% Dieser gesamte Block wird für KI-Zitate verwendet
+
+% Ausschreiben der Monatsnamen in Deutsch und Englisch
+\DeclareFieldFormat{monthname}{%
+  \langde{%
+    \ifcase #1\relax
+    \or Januar%
+    \or Februar%
+    \or März%
+    \or April%
+    \or Mai%
+    \or Juni%
+    \or Juli%
+    \or August%
+    \or September%
+    \or Oktober%
+    \or November%
+    \or Dezember%
+    \fi
+  }%
+  \langen{%
+    \ifcase #1\relax
+    \or january%
+    \or february%
+    \or march%
+    \or april%
+    \or may%
+    \or june%
+    \or july%
+    \or august%
+    \or september%
+    \or october%
+    \or november%
+    \or december%
+    \fi
+  }%
+}
+
+% Formatierung der Versionsnummer in eckigen Klammern
+\DeclareFieldFormat{version}{\mkbibbrackets{#1}}
+
+% Makro, um das Datum und die Version eines Software-Zitats auszugeben
+\newbibmacro*{printsoftwareversiondate}{
+  \langde{(Version vom \printfield{day}.\space\printfield[monthname]{month})}%
+  \langen{(\printfield[monthname]{month} \printfield{day} version)}%
+  \iffieldundef{version}
+    {}
+    {\space\printfield{version}}
+}
+
+% Treiber für @software, der das gewünschte Ausgabeformat erzeugt
+\DeclareBibliographyDriver{software}{%
+  \usebibmacro{begentry}%
+  \printnames{author}\adddot\space
+  \printtext[parens]{\printfield{year}}\adddot\space
+  \printfield{title}\space
+  \usebibmacro{printsoftwareversiondate}
+  \iffieldundef{note}
+    {}
+      {\printtext[parens]{\printfield{note}}\adddot\space}
+  \printtext[parens]{%
+    \begingroup
+    \DeclareFieldFormat{url}{\url{##1}}%
+    \printfield{url}%
+    \endgroup
+  }%
+  \usebibmacro{finentry}%
+}
 
 %Bib-Datei einbinden
 \addbibresource{literatur/literatur.bib}
@@ -494,7 +562,7 @@
 % noch weitere Arten von Zusammenfassungen eines Literaturverzeichnisse zu
 % erzeugen.
 % Beispiel: [type=book,type=article]
-\printbibliography[nottype=online,heading=bibintoc,title={\langde{Literaturverzeichnis}\langen{Bibliography}}]
+\printbibliography[nottype=online, notkeyword=KI-Zitat,heading=bibintoc,title={\headingNameBibliography}]
 
 % neue Seite für Internetquellen-Verzeichnis
 \newpage
@@ -503,8 +571,15 @@
 % Inhaltsverzeichnis, sondern gehören zum Literaturverzeichnis.
 % Die Option heading=bibintoc würde die Internetquelle als eigenen Eintrag im
 % Inhaltsverzeicnis anzeigen.
-%\printbibliography[type=online,heading=bibintoc,title={\headingNameInternetSources}]
-\printbibliography[type=online,heading=subbibliography,title={\headingNameInternetSources}]
+%\printbibliography[type=online,notkeyword=KI-Zitat,heading=bibintoc,title={\headingNameInternetSources}]
+\printbibliography[type=online, notkeyword=KI-Zitat,heading=subbibliography,title={\headingNameInternetSources}]
+
+% KI-Verzeichnis
+\newpage
+
+
+%\printbibliography[filter=KI-Zitate,heading=bibintoc,title={\headingNameKISources}]
+\printbibliography[keyword=KI-Zitat,heading=subbibliography,title={\headingNameKISources}]
 
 \input{kapitel/anhang/erklaerung}
 \end{document}
