@@ -370,20 +370,6 @@ git update-index --chmod=+x compile.sh
 
 Bei dem nächsten Push auf GitHub funktioniert das Skript dann, da es jetzt auf die Datei zugreifen kann.
 
-### Fehlerbehandlung
-
-Falls unter Windows der folgende Fehler auftritt, checkt `git` die Dateien mit Windows Line Endings aus. Dies verursacht im Ubuntu Container einen Fehler.
-
-```
-  env: bash\r: No such file or directory
-```
-
-Mit dem folgenden Befehl kann man `git` dazu zwingen alle Dateien mit UNIX Zeilenendungen zu laden (siehe [stackoverflow](https://stackoverflow.com/questions/29045140/env-bash-r-no-such-file-or-directory)):
-
-```
-git config --global core.autocrlf true
-```
-
 #### Image selbst bauen
 
 Wenn Du das Docker Image selbst bauen möchtest, kannst Du es mit dem nachfolgenden Befehl tun:
