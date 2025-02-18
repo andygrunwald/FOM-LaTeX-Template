@@ -110,21 +110,17 @@ Von den vielen verfügbaren Literatur-Paketen habe ich mich für Biblatex entsch
 
 In der für den Leitfaden 2018 aktualisierten Version sind außerdem Beispiele für \enquote{online},\footcite[Vgl.][]{website:angular:aboutAngular} also Webseiten, und \enquote{article},\footcite[Vgl.][S. 140]{Decker2009} also wissenschaftliche Artikel, enthalten.
 
-Laut Leitfaden sollen maximal 3 Autoren genannt werden und danach mit
-\enquote{et. al.} bzw. \enquote{u.a.} ergänzt werden. Damit im Literaturverzeichnis auch nur max.
-3 Autoren stehen, muss man beim Füllen der literatur.bib-Datei darauf achten auch nur 3
-einzutragen. Weitere Autoren kann man einfach mit \enquote{and others} ergänzen.
-Siehe Eintrag für \enquote{Balzert.2008}. Zitiert man dann diese Werk, werden auch in
-der Fussnote alle Autoren korrekt genannt wie in dieser
-Fußnote\footcite[Vgl.][S. 1]{Balzert.2008} zu sehen ist.
-
-Hat man dagegen mehr als 3 Autoren in der bib-Datei hinterlegt, stehen im
-Literaturverzeichnis alle drin. In der Fussnote dagegen, steht nur
-einer\footcite[Vgl.][S. 1]{Balzert2.2008}, was dem Leitfaden widerspricht.
-
-Die Anzahl von 3 wird übrigens über die Option \enquote{maxcitenames=3} des
-biblatex-Packages gesetzt. Man muss selbst schauen, dass die Anzahl der Autoren
-in den Bib-Dateien mit der Optionseinstellung übereinstimmt.
+Laut Leitfaden sollen in einer Fußnote maximal 2 Autoren genannt werden. Bei Quellen mit drei oder 
+mehr Verfassern wird nur der erste Autor aufgeführt, gefolgt von
+\enquote{et. al.} bzw. \enquote{u.a.}. Im Literaturverzeichnis hingegen müssen alle Autoren angegeben werden.
+Beim Zitieren dieser Werke werden in der Fußnote die Autoren korrekt genannt, wie in 
+dieser Fußnote\footcite[Vgl.][S. 1]{Balzert0.2008},
+dieser Fußnote\footcite[Vgl.][S. 1]{Balzert1.2008} und
+dieser Fußnote\footcite[Vgl.][S. 1]{Balzert2.2008} zu sehen ist.
+In der Datei \texttt{literatur/literatur.bib} können daher alle Autoren ohne Bedenken erfasst werden.
+BibTeX findet die richtige Zitierweise automatisch.
+Die maximale Anzahl der angezeigten Autoren in Zitaten wird übrigens durch die Option \enquote{maxcitenames=3} des
+\textit{biblatex}-Packages festgelegt.
 
 \subsubsection{Beispielfußnoten}
 Diese Fussnote soll zeigen, wie mit einem \enquote{von} vor dem Namen des Autors
