@@ -14,14 +14,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Compile LaTeX document (German)
-        uses: xu-cheng/texlive-action@v2
+        uses: xu-cheng/texlive-action@v3
         with:
           texlive_version: 2024
           run: |
             ./compile.sh
 
       - name: Compile LaTeX document (English)
-        uses: xu-cheng/texlive-action@v2
+        uses: xu-cheng/texlive-action@v3
         with:
           texlive_version: 2024
           run: |
