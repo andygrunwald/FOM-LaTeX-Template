@@ -29,7 +29,7 @@ jobs:
 
       - name: Upload german PDF as Artifact
         if: github.ref != 'refs/heads/master' &&  github.event_name == 'push'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: thesis_main.pdf
           path:
@@ -37,7 +37,7 @@ jobs:
 
       - name: Upload english PDF as Artifact
         if: github.ref != 'refs/heads/master' &&  github.event_name == 'push'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: thesis_englisch.pdf
           path:
