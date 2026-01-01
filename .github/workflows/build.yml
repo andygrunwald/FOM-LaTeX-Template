@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Compile LaTeX document (German)
         uses: xu-cheng/texlive-action@v3
